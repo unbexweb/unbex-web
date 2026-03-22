@@ -1,19 +1,20 @@
 :root {
 
   /* ========== COLORES ========== */
---color-primary: #1a1a2e;
---color-secondary: #16213e;
---color-background: #0f0f0f;
---color-background-alt: #1a1a1a;
+--color-primary: #4B2556;
+--color-secondary: #3a1c43;
+--color-background: #1a0d1f;
+--color-background-alt: #2a1530;
 --color-text: #ffffff;
---color-text-light: #aaaaaa;
---color-accent: #e94560;
---color-overlay: rgba(0,0,0,0.55);
+--color-text-light: #FDE3D8;
+--color-accent: #FDE3D8;
+--color-overlay: rgba(75, 37, 86, 0.6);
 
 
   /* ========== TIPOGRAFÍA ========== */
---font-primary: 'Inter', sans-serif;
---font-secondary: 'Inter', sans-serif;
+--font-primary: 'Marseilazi', sans-serif;
+--font-secondary: 'BrightSunshine', cursive;
+--font-body: 'Montserrat', sans-serif;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;

@@ -1,8 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Marseilazi';
+  src: url('../fonts/Marseilazi.otf') format('opentype'),
+       url('../fonts/Marseilazi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BrightSunshine';
+  src: url('../fonts/Bright Sunshine Demo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 /* ========== BASE ========== */
 body {
-  font-family: var(--font-primary, 'Inter', sans-serif);
+  font-family: var(--font-body);
   background-color: var(--color-background);
   color: var(--color-text);
 }
@@ -134,8 +149,8 @@ body {
 .hero__cta {
   display: inline-block;
   padding: 0.75rem 2rem;
-  background-color: var(--color-accent);
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #4B2556;
   border-radius: var(--border-radius-md);
   font-size: var(--text-base);
   font-weight: 500;
