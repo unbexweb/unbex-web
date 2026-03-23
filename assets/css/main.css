@@ -163,7 +163,7 @@ body {
 
 .hero__volume {
   position: absolute;
-  bottom: var(--spacing-sm);
+  bottom: 6rem;
   right: var(--spacing-sm);
   z-index: 3;
   font-size: 1.5rem;
