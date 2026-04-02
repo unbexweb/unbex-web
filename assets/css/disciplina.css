@@ -50,17 +50,36 @@
 }
 
 .disciplina-hero__title {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   font-family: var(--font-primary);
   color: #ffffff;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .disciplina-hero__desc {
   font-size: var(--text-base);
   color: rgba(255,255,255,0.8);
   font-family: var(--font-body);
+  max-width: 560px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .disciplina-hero__title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .disciplina-hero__title {
+    font-size: var(--text-hero);
+  }
+
+  .disciplina-hero__content {
+    max-width: 800px;
+  }
 }
 
 .disciplina-hero__whatsapp {

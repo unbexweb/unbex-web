@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Pilates Mat — Unbex" />
+    <title>Pilates Mat | Unbex</title>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/variables.css" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/disciplina.css" />
+  </head>
+  <body>
+    <!-- TOPBAR -->
+    <div class="topbar" id="topbar">
+      <!-- Teléfono, horarios, redes sociales — PENDIENTE -->
+    </div>
+
+    <!-- LOGO FLOTANTE -->
+    <a href="../index.html" class="navbar__logo" id="siteLogo">
+      <img src="../assets/img/logo.png" alt="Unbex" />
+    </a>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+      <div class="navbar__container">
+        <button class="navbar__toggle" id="navbarToggle"><span></span><span></span><span></span></button>
+        <ul class="navbar__menu" id="navbarMenu">
+          <li class="navbar__item navbar__item--dropdown"><a href="#" class="navbar__link">Disciplinas ▾</a><ul class="navbar__dropdown" id="disciplinasDropdown"></ul></li>
+          <li class="navbar__item navbar__item--dropdown"><a href="#" class="navbar__link">Servicios ▾</a><ul class="navbar__dropdown" id="serviciosDropdown"></ul></li>
+          <li><a href="../index.html#precios" class="navbar__link">Precios</a></li>
+          <li><a href="../index.html#contacto" class="navbar__link">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section class="disciplina-hero" id="disciplinaHero">
+      <div class="disciplina-hero__video-container">
+        <iframe class="disciplina-hero__video" id="disciplinaVideo"
+          src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=VIDEO_ID&controls=0&enablejsapi=1"
+          allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="disciplina-hero__overlay"></div>
+      </div>
+      <div class="disciplina-hero__content">
+        <p class="disciplina-hero__salon">Salón M&B</p>
+        <h1 class="disciplina-hero__title">Pilates Mat</h1>
+        <p class="disciplina-hero__desc">Fortalecimiento del core, postura y conciencia corporal.</p>
+        <a class="disciplina-hero__whatsapp" id="disciplinaWhatsapp" href="#" target="_blank">Quiero saber más</a>
+      </div>
+      <button class="hero__volume" id="heroVolume" aria-label="Activar sonido">🔇</button>
+    </section>
+    <section class="disciplina-info">
+      <div class="section__container">
+        <div class="disciplina-info__grid">
+          <div class="disciplina-info__descripcion">
+            <h2 class="section__title">¿Qué es el Pilates Mat?</h2>
+            <p class="disciplina-info__texto">El Pilates Mat es una modalidad de Pilates que se practica sobre una colchoneta, trabajando el fortalecimiento del core, la mejora postural y la conciencia corporal.</p>
+            <p class="disciplina-info__texto">Es ideal para todas las edades y niveles, especialmente para quienes buscan un entrenamiento de bajo impacto con grandes beneficios.</p>
+          </div>
+          <div class="disciplina-info__horarios">
+            <h2 class="section__title">Horarios</h2>
+            <div class="horarios__tabla" id="horariosTabla"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer"><div class="footer__container"><p class="footer__copy">&copy; 2025 Unbex. Todos los derechos reservados.</p></div></footer>
+    <a class="whatsapp-float" id="whatsappFloat" href="#" target="_blank" aria-label="WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="30" height="30">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.121 1.533 5.855L.057 23.885a.5.5 0 0 0 .612.612l6.03-1.476A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.65-.518-5.16-1.42l-.37-.22-3.83.938.957-3.832-.242-.382A9.944 9.944 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+    </a>
+    <script src="../data/disciplines.js"></script>
+    <script src="../assets/js/video.js"></script>
+    <script src="../assets/js/whatsapp.js"></script>
+    <script src="../assets/js/animations.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/menu.js"></script>
+  </body>
+</html>

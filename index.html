@@ -14,35 +14,33 @@
 
   <body>
 
+    <!-- TOPBAR -->
+    <div class="topbar" id="topbar">
+      <!-- Teléfono, horarios, redes sociales — PENDIENTE -->
+    </div>
+
+    <!-- LOGO FLOTANTE -->
+    <a href="index.html" class="navbar__logo" id="siteLogo">
+      <img src="assets/img/logo.png" alt="Unbex" />
+    </a>
+
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
-      <div class="navbar__container">
-        <a href="index.html" class="navbar__logo">
-          <img src="assets/img/logo.png" alt="Unbex" />
-        </a>
-        <button class="navbar__toggle" id="navbarToggle" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <ul class="navbar__menu" id="navbarMenu">
-          <li class="navbar__item navbar__item--dropdown">
-            <a href="#disciplinas" class="navbar__link">Disciplinas ▾</a>
-            <ul class="navbar__dropdown" id="disciplinasDropdown">
-              <!-- Se cargan dinámicamente desde data/disciplines.js -->
-            </ul>
-          </li>
-          <li class="navbar__item navbar__item--dropdown">
-            <a href="#servicios" class="navbar__link">Servicios ▾</a>
-            <ul class="navbar__dropdown" id="serviciosDropdown">
-              <!-- Se cargan dinámicamente desde data/disciplines.js -->
-            </ul>
-          </li>
-          <li><a href="#precios" class="navbar__link">Precios</a></li>
-          <li><a href="#contacto" class="navbar__link">Contacto</a></li>
-        </ul>
-      </div>
-    </nav>
+  <div class="navbar__container">
+    <button class="navbar__toggle" id="navbarToggle" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="navbar__menu" id="navbarMenu">
+      <li><a href="#disciplinas" class="navbar__link">Disciplinas</a></li>
+      <li><a href="#servicios" class="navbar__link">Servicios</a></li>
+      <li><a href="#precios" class="navbar__link">Precios</a></li>
+      <li><a href="#contacto" class="navbar__link">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
 
     <!-- HERO -->
     <section class="hero" id="hero">
@@ -68,24 +66,30 @@
 
     <!-- DISCIPLINAS -->
     <section class="disciplinas" id="disciplinas">
-      <div class="section__container">
-        <h2 class="section__title">Nuestras Disciplinas</h2>
-        <p class="section__subtitle">Encontrá la actividad que se adapta a vos</p>
-        <div class="disciplinas__grid" id="disciplinasGrid">
-          <!-- Se cargan dinámicamente desde data/disciplines.js -->
-        </div>
-      </div>
-    </section>
+      <section class="section">
+  <div class="section__container">
+    
+    <span class="section__eyebrow">LO QUE HACEMOS</span>
+    <h2 class="section__title">Nuestras disciplinas</h2>
+    <p class="section__subtitle">Encontrá la actividad que se adapta a vos</p>
 
-    <!-- SERVICIOS -->
-    <section class="servicios" id="servicios">
-      <div class="section__container">
-        <h2 class="section__title">Nuestros Servicios</h2>
-        <p class="section__subtitle">Más allá del entrenamiento</p>
-        <div class="servicios__grid" id="serviciosGrid">
-          <!-- Se cargan dinámicamente desde data/disciplines.js -->
-        </div>
-      </div>
+    <div id="disciplinasContainer" class="cards"></div>
+
+  </div>
+</section>
+
+
+<section class="section" id="servicios">
+  <div class="section__container">
+
+    <span class="section__eyebrow">MÁS ALLÁ DEL ENTRENAMIENTO</span>
+    <h2 class="section__title">Nuestros servicios</h2>
+    <p class="section__subtitle">Atención profesional e individual</p>
+
+    <div id="serviciosContainer" class="cards"></div>
+
+  </div>
+</section>
     </section>
 
     <!-- PRECIOS -->
@@ -125,9 +129,11 @@
 
     <!-- JS -->
     <script src="data/disciplines.js"></script>
+    <script src="assets/js/video.js"></script>
     <script src="assets/js/whatsapp.js"></script>
     <script src="assets/js/animations.js"></script>
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/cards.js"></script>
     <script src="assets/js/main.js"></script>
-
   </body>
 </html>

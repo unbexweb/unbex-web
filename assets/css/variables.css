@@ -2,9 +2,13 @@
 
   /* ========== COLORES ========== */
 --color-primary: #4B2556;
+--color-primary-light: #7a3d87;
 --color-secondary: #3a1c43;
 --color-background: #1a0d1f;
 --color-background-alt: #2a1530;
+--color-rose-soft: #f5c6c6;
+--color-rose-light: #fce8e8;
+--color-rose-pale: #fff0f0;
 --color-text: #ffffff;
 --color-text-light: #FDE3D8;
 --color-accent: #FDE3D8;
