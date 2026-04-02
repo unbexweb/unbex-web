@@ -1,5 +1,24 @@
 (function () {
 
+  function renderFlipCards(data, containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    container.innerHTML = data.map(item => `
+      <div class="card-wrapper">
+        <a href="${item.url}" class="card-inner">
+          <div class="card-front" style="background-image: url('assets/img/disciplinas/${item.img}')">
+            <span class="card-nombre">${item.nombre}</span>
+          </div>
+          <div class="card-back">
+            <span class="card-nombre">${item.nombre}</span>
+            <p class="card-desc">${item.desc}</p>
+          </div>
+        </a>
+      </div>
+    `).join('');
+  }
+
   function renderCards(data, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -15,7 +34,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    renderCards(disciplinas, "disciplinasContainer");
+    renderFlipCards(disciplinas, "disciplinasContainer");
     renderCards(servicios, "serviciosContainer");
   });
 
