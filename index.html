@@ -18,7 +18,13 @@
 
     <!-- TOPBAR -->
     <div class="topbar" id="topbar">
-      <!-- Teléfono, horarios, redes sociales — PENDIENTE -->
+      <div class="topbar__content">
+        <a href="https://wa.me/5491123989560" class="topbar__link" target="_blank">📞 11 2398-9560</a>
+        <span class="topbar__sep">|</span>
+        <a href="https://instagram.com/unbex.ar" class="topbar__link" target="_blank">Instagram @unbex.ar</a>
+        <span class="topbar__sep">|</span>
+        <a href="https://facebook.com/unbex.ar" class="topbar__link" target="_blank">Facebook @unbex.ar</a>
+      </div>
     </div>
 
     <!-- LOGO FLOTANTE -->
@@ -38,8 +44,10 @@
     <ul class="navbar__menu" id="navbarMenu">
       <li><a href="#disciplinas" class="navbar__link">Disciplinas</a></li>
       <li><a href="#servicios" class="navbar__link">Servicios</a></li>
+      <li><a href="#horarios" class="navbar__link">Horarios</a></li>
       <li><a href="#precios" class="navbar__link">Precios</a></li>
       <li><a href="#contacto" class="navbar__link">Contacto</a></li>
+      <li><a href="trabajar-con-nosotros.html" class="navbar__link navbar__link--cta">Trabajá con nosotros</a></li>
     </ul>
   </div>
 </nav>
@@ -94,6 +102,23 @@
 </section>
     </section>
 
+    <!-- HORARIOS -->
+    <section class="horarios" id="horarios">
+      <div class="section__container">
+        <span class="section__eyebrow">CUÁNDO ENTRENAMOS</span>
+        <h2 class="section__title">Horarios</h2>
+        <p class="section__subtitle">Elegí tu salón y encontrá tu turno ideal</p>
+
+        <div class="horarios__tabs" id="horariosTabs">
+          <button class="horarios__tab horarios__tab--active" data-salon="black">Salón Black</button>
+          <button class="horarios__tab" data-salon="mb">Salón M&amp;B</button>
+        </div>
+
+        <div class="horarios__panel" id="horarios-black"></div>
+        <div class="horarios__panel" id="horarios-mb"></div>
+      </div>
+    </section>
+
     <!-- PRECIOS -->
     <section class="precios" id="precios">
       <div class="section__container">
@@ -114,6 +139,15 @@
       </div>
     </section>
 
+    <!-- TRABAJÁ CON NOSOTROS -->
+    <section class="trabaja-banner">
+      <div class="trabaja-banner__content">
+        <h2 class="trabaja-banner__title">¿Querés ser parte del equipo Unbex?</h2>
+        <p class="trabaja-banner__sub">Sumate a nuestro staff. Siempre estamos abiertos a incorporar nuevos integrantes al equipo.</p>
+        <a href="trabajar-con-nosotros.html" class="trabaja-banner__btn">Ver más</a>
+      </div>
+    </section>
+
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer__container">
@@ -131,6 +165,7 @@
 
     <!-- JS -->
     <script src="data/disciplines.js"></script>
+    <script src="assets/js/horarios.js"></script>
     <script src="assets/js/video.js"></script>
     <script src="assets/js/whatsapp.js"></script>
     <script src="assets/js/animations.js"></script>

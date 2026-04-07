@@ -9,20 +9,33 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const disciplinasDropdown = document.getElementById("disciplinasDropdown");
-  const serviciosDropdown = document.getElementById("serviciosDropdown");
+  const serviciosDropdown   = document.getElementById("serviciosDropdown");
 
   const enSubcarpeta = window.location.pathname.includes("/disciplinas/");
   const base = enSubcarpeta ? "../" : "";
 
-  // CARGA DINÁMICA
+  // DROPDOWN DISCIPLINAS — agrupado por salón
   if (disciplinasDropdown) {
-    disciplinas.forEach(d => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${base + d.url}">${d.nombre}</a>`;
-      disciplinasDropdown.appendChild(li);
+    const grupos = [
+      { label: "Salón Black", items: disciplinas.filter(d => d.salon === "black") },
+      { label: "Salón M&B",   items: disciplinas.filter(d => d.salon === "mb")    },
+    ];
+
+    grupos.forEach(grupo => {
+      const header = document.createElement("li");
+      header.className = "dropdown__salon-header";
+      header.textContent = grupo.label;
+      disciplinasDropdown.appendChild(header);
+
+      grupo.items.forEach(d => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="${base + d.url}">${d.nombre}</a>`;
+        disciplinasDropdown.appendChild(li);
+      });
     });
   }
 
+  // DROPDOWN SERVICIOS
   if (serviciosDropdown) {
     servicios.forEach(s => {
       const li = document.createElement("li");
@@ -39,13 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     link.addEventListener('click', (e) => {
       e.preventDefault();
-
-      // cerrar otros
-      dropdowns.forEach(i => {
-        if (i !== item) i.classList.remove('open');
-      });
-
-      // toggle actual
+      dropdowns.forEach(i => { if (i !== item) i.classList.remove('open'); });
       item.classList.toggle('open');
     });
   });
