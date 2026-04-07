@@ -177,6 +177,10 @@ body.salon-mb {
   --color-accent:         var(--color-rose-soft);
 }
 
+body.salon-mb .disciplina-hero {
+  background-color: rgba(122, 61, 135, 0.55);
+}
+
 /* Navbar y topbar siempre en tema oscuro, sin importar el salón */
 body.salon-mb .navbar,
 body.salon-mb .navbar__menu,
