@@ -1,19 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 export default function HeroDisciplina({ disciplina, videoId }) {
   const [muted, setMuted] = useState(true);
+  const iframeRef = useRef(null);
   const imgSrc = `/img/disciplinas/${disciplina.img}`;
+
+  function toggleMute() {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const comando = muted ? 'unMute' : 'mute';
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: comando, args: [] }),
+      '*'
+    );
+    setMuted(prev => !prev);
+  }
 
   return (
     <section className="disciplina-hero" id="disciplinaHero">
       <div className="disciplina-hero__video-container">
         {videoId ? (
           <iframe
+            ref={iframeRef}
             className="disciplina-hero__video"
             id="disciplinaVideo"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
             title={disciplina.nombre}
             allow="autoplay; encrypted-media"
             allowFullScreen
@@ -53,7 +67,7 @@ export default function HeroDisciplina({ disciplina, videoId }) {
         <button
           className="hero__volume"
           id="heroVolume"
-          onClick={() => setMuted(prev => !prev)}
+          onClick={toggleMute}
           aria-label={muted ? 'Activar sonido' : 'Silenciar'}
         >
           {muted ? '🔇' : '🔊'}

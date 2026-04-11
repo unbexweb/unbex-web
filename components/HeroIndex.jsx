@@ -1,21 +1,33 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 const VIDEO_ID = 'rAFygka9w_o';
 
 export default function HeroIndex() {
   const [muted, setMuted] = useState(true);
+  const iframeRef = useRef(null);
 
-  const videoSrc = `https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=${muted ? 1 : 0}&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`;
+  function toggleMute() {
+    const iframe = iframeRef.current;
+    if (!iframe) return;
+
+    const comando = muted ? 'unMute' : 'mute';
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: comando, args: [] }),
+      '*'
+    );
+    setMuted(prev => !prev);
+  }
 
   return (
     <section className="hero" id="hero">
       <div className="hero__video-container">
         <iframe
+          ref={iframeRef}
           className="hero__video"
           id="heroVideo"
-          src={videoSrc}
+          src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
           title="Unbex Hero"
           allow="autoplay; encrypted-media"
           allowFullScreen
@@ -34,7 +46,7 @@ export default function HeroIndex() {
       <button
         className="hero__volume"
         id="heroVolume"
-        onClick={() => setMuted(prev => !prev)}
+        onClick={toggleMute}
         aria-label={muted ? 'Activar sonido' : 'Silenciar'}
       >
         {muted ? '🔇' : '🔊'}
