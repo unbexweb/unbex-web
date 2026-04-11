@@ -933,7 +933,8 @@ button {
 .horario-turno:hover { background: var(--color-primary); transform: scale(1.05); }
 
 /* ========== SALÓN M&B — paleta rosa ========== */
-body.salon-mb {
+body.salon-mb,
+main.salon-mb {
   --color-background:     var(--color-rose-pale);
   --color-background-alt: var(--color-rose-light);
   --color-text:           var(--color-secondary);
@@ -941,13 +942,15 @@ body.salon-mb {
   --color-accent:         var(--color-rose-soft);
 }
 
-body.salon-mb .horario-turno {
+body.salon-mb .horario-turno,
+main.salon-mb .horario-turno {
   background: var(--color-rose-soft);
   color: var(--color-primary);
   border-color: rgba(75, 37, 86, 0.2);
 }
 
-body.salon-mb .disciplina-hero { background-color: rgba(122, 61, 135, 0.55); }
+body.salon-mb .disciplina-hero,
+main.salon-mb .disciplina-hero { background-color: rgba(122, 61, 135, 0.55); }
 
 body.salon-mb .navbar,
 body.salon-mb .navbar__menu,

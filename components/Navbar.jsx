@@ -3,23 +3,27 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { disciplinas } from '@/data/disciplines';
+import { disciplinas, servicios } from '@/data/disciplines';
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen]         = useState(false);
   const [disciplinasOpen, setDisciplinasOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const [serviciosOpen, setServiciosOpen]     = useState(false);
 
-  // Cerrar dropdown al hacer click fuera
+  const discRef = useRef(null);
+  const servRef = useRef(null);
+
+  // Cerrar dropdowns al click fuera
   useEffect(() => {
-    function handleClickOutside(e) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setDisciplinasOpen(false);
-      }
+    function handleClick(e) {
+      if (discRef.current && !discRef.current.contains(e.target)) setDisciplinasOpen(false);
+      if (servRef.current && !servRef.current.contains(e.target)) setServiciosOpen(false);
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
   }, []);
+
+  const closeAll = () => { setDisciplinasOpen(false); setServiciosOpen(false); setMenuOpen(false); };
 
   const black = disciplinas.filter(d => d.salon === 'black');
   const mb    = disciplinas.filter(d => d.salon === 'mb');
@@ -42,43 +46,68 @@ export default function Navbar() {
 
         {/* Menú */}
         <ul className={`navbar__menu${menuOpen ? ' open' : ''}`}>
-          <li className={`navbar__item navbar__item--dropdown${disciplinasOpen ? ' open' : ''}`} ref={dropdownRef}>
+
+          {/* DISCIPLINAS */}
+          <li
+            className={`navbar__item navbar__item--dropdown${disciplinasOpen ? ' open' : ''}`}
+            ref={discRef}
+          >
             <button
               className="navbar__link"
-              onClick={() => setDisciplinasOpen(prev => !prev)}
+              onClick={() => { setDisciplinasOpen(prev => !prev); setServiciosOpen(false); }}
               aria-expanded={disciplinasOpen}
             >
               Disciplinas ▾
             </button>
-
             <ul className="navbar__dropdown" id="disciplinasDropdown">
               <li className="dropdown__salon-header">Salón Black</li>
               {black.map(d => (
                 <li key={d.clave}>
-                  <Link href={`/disciplinas/${d.clave}`} onClick={() => { setDisciplinasOpen(false); setMenuOpen(false); }}>
-                    {d.nombre}
-                  </Link>
+                  <Link href={`/disciplinas/${d.clave}`} onClick={closeAll}>{d.nombre}</Link>
                 </li>
               ))}
               <li className="dropdown__salon-header">Salón M&amp;B</li>
               {mb.map(d => (
                 <li key={d.clave}>
-                  <Link href={`/disciplinas/${d.clave}`} onClick={() => { setDisciplinasOpen(false); setMenuOpen(false); }}>
-                    {d.nombre}
+                  <Link href={`/disciplinas/${d.clave}`} onClick={closeAll}>{d.nombre}</Link>
+                </li>
+              ))}
+            </ul>
+          </li>
+
+          {/* SERVICIOS */}
+          <li
+            className={`navbar__item navbar__item--dropdown${serviciosOpen ? ' open' : ''}`}
+            ref={servRef}
+          >
+            <button
+              className="navbar__link"
+              onClick={() => { setServiciosOpen(prev => !prev); setDisciplinasOpen(false); }}
+              aria-expanded={serviciosOpen}
+            >
+              Servicios ▾
+            </button>
+            <ul className="navbar__dropdown">
+              {servicios.map(s => (
+                <li key={s.nombre}>
+                  <Link href="/#servicios" onClick={closeAll}>
+                    {s.icono} {s.nombre}
                   </Link>
                 </li>
               ))}
             </ul>
           </li>
 
+          {/* HORARIOS */}
           <li className="navbar__item">
-            <Link href="/#horarios" className="navbar__link" onClick={() => setMenuOpen(false)}>
+            <Link href="/#horarios" className="navbar__link" onClick={closeAll}>
               Horarios
             </Link>
           </li>
 
+          {/* CTA */}
           <li className="navbar__item">
-            <Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={() => setMenuOpen(false)}>
+            <Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={closeAll}>
               Trabajá con nosotros
             </Link>
           </li>
