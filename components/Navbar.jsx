@@ -32,98 +32,86 @@ export default function Navbar() {
   const mb    = disciplinas.filter(d => d.salon === 'mb');
 
   return (
-    <nav className="navbar" id="navbar">
-      <div className="navbar__container">
+    <>
+      {/* Logo flotante — fuera del nav para no romper position:fixed con backdrop-filter */}
+      <Link href="/" className="navbar__logo" id="siteLogo">
+        <Image src="/img/logo.png" alt="Unbex" width={120} height={64} priority />
+      </Link>
 
-        <Link href="/" className="navbar__logo" id="siteLogo">
-          <Image src="/img/logo.png" alt="Unbex" width={120} height={64} priority />
-        </Link>
+      <nav className="navbar" id="navbar">
+        <div className="navbar__container">
 
-        {/* Hamburguesa */}
-        <button
-          className="navbar__toggle"
-          id="navbarToggle"
-          aria-label="Abrir menú"
-          onClick={() => setMenuOpen(prev => !prev)}
-        >
-          <span /><span /><span />
-        </button>
+          <button
+            className="navbar__toggle"
+            id="navbarToggle"
+            aria-label="Abrir menú"
+            onClick={() => setMenuOpen(prev => !prev)}
+          >
+            <span /><span /><span />
+          </button>
 
-        {/* ── HOME: anchors simples ── */}
-        {isHome && (
-          <ul className={`navbar__menu${menuOpen ? ' open' : ''}`} id="navbarMenu">
-            <li><a href="#disciplinas" className="navbar__link" onClick={closeAll}>Disciplinas</a></li>
-            <li><a href="#servicios"   className="navbar__link" onClick={closeAll}>Servicios</a></li>
-            <li><a href="#horarios"    className="navbar__link" onClick={closeAll}>Horarios</a></li>
-            <li><a href="#precios"     className="navbar__link" onClick={closeAll}>Precios</a></li>
-            <li><a href="#contacto"    className="navbar__link" onClick={closeAll}>Contacto</a></li>
-            <li>
-              <Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={closeAll}>
-                Trabajá con nosotros
-              </Link>
-            </li>
-          </ul>
-        )}
+          {/* HOME: anchors simples */}
+          {isHome && (
+            <ul className={`navbar__menu${menuOpen ? ' open' : ''}`} id="navbarMenu">
+              <li><a href="#disciplinas" className="navbar__link" onClick={closeAll}>Disciplinas</a></li>
+              <li><a href="#servicios"   className="navbar__link" onClick={closeAll}>Servicios</a></li>
+              <li><a href="#horarios"    className="navbar__link" onClick={closeAll}>Horarios</a></li>
+              <li><a href="#precios"     className="navbar__link" onClick={closeAll}>Precios</a></li>
+              <li><a href="#contacto"    className="navbar__link" onClick={closeAll}>Contacto</a></li>
+              <li>
+                <Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={closeAll}>
+                  Trabajá con nosotros
+                </Link>
+              </li>
+            </ul>
+          )}
 
-        {/* ── OTRAS PÁGINAS: dropdowns ── */}
-        {!isHome && (
-          <ul className={`navbar__menu${menuOpen ? ' open' : ''}`} id="navbarMenu">
+          {/* OTRAS PÁGINAS: dropdowns */}
+          {!isHome && (
+            <ul className={`navbar__menu${menuOpen ? ' open' : ''}`} id="navbarMenu">
 
-            {/* Disciplinas dropdown */}
-            <li
-              className={`navbar__item navbar__item--dropdown${disciplinasOpen ? ' open' : ''}`}
-              ref={discRef}
-            >
-              <a
-                href="/#disciplinas"
-                className="navbar__link"
-                onClick={e => { e.preventDefault(); setDisciplinasOpen(prev => !prev); setServiciosOpen(false); }}
-              >
-                Disciplinas ▾
-              </a>
-              <ul className="navbar__dropdown" id="disciplinasDropdown">
-                <li className="dropdown__salon-header">Salón Black</li>
-                {black.map(d => (
-                  <li key={d.clave}>
-                    <Link href={`/disciplinas/${d.clave}`} onClick={closeAll}>{d.nombre}</Link>
-                  </li>
-                ))}
-                <li className="dropdown__salon-header">Salón M&amp;B</li>
-                {mb.map(d => (
-                  <li key={d.clave}>
-                    <Link href={`/disciplinas/${d.clave}`} onClick={closeAll}>{d.nombre}</Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
+              <li className={`navbar__item navbar__item--dropdown${disciplinasOpen ? ' open' : ''}`} ref={discRef}>
+                <a href="/#disciplinas" className="navbar__link"
+                  onClick={e => { e.preventDefault(); setDisciplinasOpen(p => !p); setServiciosOpen(false); }}>
+                  Disciplinas ▾
+                </a>
+                <ul className="navbar__dropdown" id="disciplinasDropdown">
+                  <li className="dropdown__salon-header">Salón Black</li>
+                  {black.map(d => (
+                    <li key={d.clave}>
+                      <Link href={`/disciplinas/${d.clave}`} onClick={closeAll}>{d.nombre}</Link>
+                    </li>
+                  ))}
+                  <li className="dropdown__salon-header">Salón M&amp;B</li>
+                  {mb.map(d => (
+                    <li key={d.clave}>
+                      <Link href={`/disciplinas/${d.clave}`} onClick={closeAll}>{d.nombre}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
 
-            {/* Servicios dropdown */}
-            <li
-              className={`navbar__item navbar__item--dropdown${serviciosOpen ? ' open' : ''}`}
-              ref={servRef}
-            >
-              <a
-                href="/#servicios"
-                className="navbar__link"
-                onClick={e => { e.preventDefault(); setServiciosOpen(prev => !prev); setDisciplinasOpen(false); }}
-              >
-                Servicios ▾
-              </a>
-              <ul className="navbar__dropdown" id="serviciosDropdown">
-                {servicios.map(s => (
-                  <li key={s.nombre}>
-                    <Link href="/#servicios" onClick={closeAll}>{s.icono} {s.nombre}</Link>
-                  </li>
-                ))}
-              </ul>
-            </li>
+              <li className={`navbar__item navbar__item--dropdown${serviciosOpen ? ' open' : ''}`} ref={servRef}>
+                <a href="/#servicios" className="navbar__link"
+                  onClick={e => { e.preventDefault(); setServiciosOpen(p => !p); setDisciplinasOpen(false); }}>
+                  Servicios ▾
+                </a>
+                <ul className="navbar__dropdown" id="serviciosDropdown">
+                  {servicios.map(s => (
+                    <li key={s.nombre}>
+                      <Link href="/#servicios" onClick={closeAll}>{s.icono} {s.nombre}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
 
-            <li><Link href="/#precios"  className="navbar__link" onClick={closeAll}>Precios</Link></li>
-            <li><Link href="/#contacto" className="navbar__link" onClick={closeAll}>Contacto</Link></li>
-          </ul>
-        )}
+              <li><Link href="/#precios"  className="navbar__link" onClick={closeAll}>Precios</Link></li>
+              <li><Link href="/#contacto" className="navbar__link" onClick={closeAll}>Contacto</Link></li>
+            </ul>
+          )}
 
-      </div>
-    </nav>
+        </div>
+      </nav>
+    </>
   );
 }
