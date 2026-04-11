@@ -15,7 +15,7 @@ export default function HeroIndex() {
     const comando = muted ? 'unMute' : 'mute';
     iframe.contentWindow.postMessage(
       JSON.stringify({ event: 'command', func: comando, args: [] }),
-      '*'
+      'https://www.youtube.com'
     );
     setMuted(prev => !prev);
   }
