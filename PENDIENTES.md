@@ -1,67 +1,19 @@
-# Pendientes — Unbex Web
+# Pendientes — Unbex Web (migración Next.js)
 
-## Necesitan datos externos
+## Alta prioridad
 
-### 1. VIDEO_ID de YouTube — páginas de disciplinas
-Cada página tiene `VIDEO_ID` como placeholder en el iframe del hero.
-Reemplazar con el ID real del video de YouTube (la parte después de `v=` en la URL).
+- [ ] **Sección Precios** — completar con planes y valores reales (actualmente placeholder vacío en `app/page.jsx`)
+- [ ] **Sección Contacto** — agregar mapa, redes y datos de contacto (actualmente placeholder vacío en `app/page.jsx`)
 
-| Página | Archivo | Video actual |
-|--------|---------|--------------|
-| Body Pump | disciplinas/body-pump.html | `VIDEO_ID` ❌ |
-| Crossfit & Funcional | disciplinas/crossfit-funcional.html | `VIDEO_ID` ❌ |
-| FIIT | disciplinas/fiit.html | `VIDEO_ID` ❌ |
-| Jiu Jitsu | disciplinas/jiu-jitsu.html | `VIDEO_ID` ❌ |
-| Judo Kids | disciplinas/judo-kids.html | `VIDEO_ID` ❌ |
-| Localizada | disciplinas/localizada.html | `VIDEO_ID` ❌ |
-| Musculación | disciplinas/musculacion.html | `VIDEO_ID` ❌ |
-| Pilates | disciplinas/pilates.html | `VIDEO_ID` ❌ |
-| Stretching | disciplinas/stretching.html | `VIDEO_ID` ❌ |
-| Tercera Edad | disciplinas/tercera-edad.html | `VIDEO_ID` ❌ |
-| Yoga | disciplinas/yoga.html | `VIDEO_ID` ❌ |
-| Zumba | disciplinas/zumba.html | `VIDEO_ID` ❌ |
+## Media prioridad
 
-> Ejemplo: si el video es `https://youtube.com/watch?v=abc123`, el ID es `abc123`.
+- [ ] **Página 404 personalizada** — crear `app/not-found.jsx` con diseño del sitio en vez de la página genérica de Next.js
+- [ ] **Open Graph / meta social** — agregar `og:image`, `og:url` y `twitter:card` en `app/layout.jsx` para que el link se vea bien al compartir en WhatsApp/Instagram
+- [ ] **Videos de disciplinas** — cargar IDs de YouTube en `.env.local` para las disciplinas que tienen video (actualmente solo Crossfit tiene)
+- [ ] **HSTS** — descomentar `Strict-Transport-Security` en `next.config.mjs` una vez que el sitio esté en producción con HTTPS
 
----
+## Baja prioridad / A evaluar
 
-### 2. Número de WhatsApp
-Hay botones de WhatsApp en todas las páginas de disciplinas con `href="#"`.
-Se necesita: número con código de país (ej: `5491112345678`).
-
-Archivos a actualizar:
-- `disciplinas/*.html` → elemento `#disciplinaWhatsapp`
-- `index.html` → elemento `#whatsappFloat` (si aplica)
-- `assets/js/whatsapp.js` → puede centralizar la lógica
-
----
-
-### 3. Horarios por disciplina
-Cada página tiene `<div id="horariosTabla"></div>` vacío.
-Se puede poblar con JS desde `data/disciplines.js` o directo en HTML.
-
-Formato sugerido para cada clase:
-
-```
-Lunes y Miércoles — 18:00 hs
-Sábados — 10:00 hs
-```
-
----
-
-### 4. Secciones de index.html incompletas
-
-| ID | Sección | Estado |
-|----|---------|--------|
-| `#preciosGrid` | Precios | Div vacío, sin datos ni JS |
-| `#contactoRedes` | Contacto / Redes | Div vacío, sin datos ni JS |
-
----
-
-## Archivos reservados para implementar
-
-| Archivo | Propósito |
-|---------|-----------|
-| `assets/js/animations.js` | Animaciones (scroll, entrada de elementos) |
-| `assets/js/whatsapp.js` | Lógica del botón flotante de WhatsApp |
-| `assets/js/main.js` | Lógica general de index.html |
+- [ ] **Favicon y manifest** — agregar `manifest.json` y íconos para PWA / "Agregar a pantalla de inicio"
+- [ ] **Textos de disciplinas** — evaluar si conviene moverlos a un CMS o JSON para que el cliente los edite sin tocar código
+- [ ] **Merge a main** — cuando la migración Next.js esté aprobada, mergear `migration-next` → `main`
