@@ -5,15 +5,15 @@ import HorariosTable from '@/components/HorariosTable';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
 import HeroDisciplina from './HeroDisciplina';
-import { disciplinas, DISCIPLINA_VIDEOS, CONTACTO } from '@/data/disciplines';
+import { disciplinas, DISCIPLINA_VIDEOS } from '@/data/disciplines';
 
-// Genera las rutas estáticas en build time
 export function generateStaticParams() {
   return disciplinas.map(d => ({ slug: d.clave }));
 }
 
-export function generateMetadata({ params }) {
-  const disciplina = disciplinas.find(d => d.clave === params.slug);
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const disciplina = disciplinas.find(d => d.clave === slug);
   if (!disciplina) return {};
   return {
     title: `${disciplina.nombre} — Unbex Argentina`,
@@ -21,8 +21,8 @@ export function generateMetadata({ params }) {
   };
 }
 
-export default function DisciplinaPage({ params }) {
-  const { slug } = params;
+export default async function DisciplinaPage({ params }) {
+  const { slug } = await params;
   const disciplina = disciplinas.find(d => d.clave === slug);
 
   if (!disciplina) notFound();
