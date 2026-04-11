@@ -8,7 +8,6 @@ const DIAS_ORDER = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
 function buildTable(salon) {
   const filas = horarios.filter(h => h.salon === salon);
   const horas = [...new Set(filas.map(h => h.hora))].sort();
-
   return { filas, horas };
 }
 
@@ -19,8 +18,7 @@ function getNombreCorto(clave) {
 
 function getCell(filas, hora, dia) {
   const coincidentes = filas.filter(f => f.hora === hora && f.dias.includes(dia));
-  if (!coincidentes.length) return null;
-  return coincidentes;
+  return coincidentes.length ? coincidentes : null;
 }
 
 function TablaHorarios({ salon }) {
@@ -56,8 +54,7 @@ function TablaHorarios({ salon }) {
                             className={`horarios__badge ${esCombinada ? 'horarios__badge--combinada' : 'horarios__badge--especifica'}`}
                             title={cell.nota || ''}
                           >
-                            {getNombreCorto(clave)}
-                            {cell.nota && ' *'}
+                            {getNombreCorto(clave)}{cell.nota ? ' *' : ''}
                           </span>
                         ));
                       })}
@@ -77,15 +74,13 @@ export default function HorariosGrid() {
   const [tab, setTab] = useState('black');
 
   return (
-    <section id="horarios">
+    <section className="horarios" id="horarios">
       <div className="section__container">
-        <span className="section__eyebrow">Planificá tu semana</span>
+        <span className="section__eyebrow">CUÁNDO ENTRENAMOS</span>
         <h2 className="section__title">Horarios</h2>
-        <p className="section__subtitle">
-          Encontrá el turno que mejor se adapta a tu rutina.
-        </p>
+        <p className="section__subtitle">Elegí tu salón y encontrá tu turno ideal</p>
 
-        <div className="horarios__tabs">
+        <div className="horarios__tabs" id="horariosTabs">
           <button
             className={`horarios__tab${tab === 'black' ? ' horarios__tab--active' : ''}`}
             onClick={() => setTab('black')}
@@ -100,10 +95,10 @@ export default function HorariosGrid() {
           </button>
         </div>
 
-        <div className={`horarios__panel${tab === 'black' ? ' horarios__panel--active' : ''}`}>
+        <div className={`horarios__panel${tab === 'black' ? ' horarios__panel--active' : ''}`} id="horarios-black">
           <TablaHorarios salon="black" />
         </div>
-        <div className={`horarios__panel${tab === 'mb' ? ' horarios__panel--active' : ''}`}>
+        <div className={`horarios__panel${tab === 'mb' ? ' horarios__panel--active' : ''}`} id="horarios-mb">
           <TablaHorarios salon="mb" />
         </div>
       </div>

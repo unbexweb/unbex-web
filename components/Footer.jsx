@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <p className="footer__copy">
-        © {new Date().getFullYear()} Unbex Argentina. Todos los derechos reservados.
-      </p>
+      <div className="footer__container">
+        <p className="footer__copy">© 2025 Unbex. Todos los derechos reservados.</p>
+      </div>
     </footer>
   );
 }

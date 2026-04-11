@@ -5,25 +5,25 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 
 export const metadata = {
-  title: 'Trabajá con nosotros — Unbex Argentina',
-  description: 'Unite al equipo Unbex. Buscamos profesores e instructores comprometidos con el bienestar.',
+  title: 'Trabajá con nosotros | Unbex',
+  description: 'Si te apasiona el movimiento, el bienestar y ayudar a otros a superarse, este es tu lugar.',
 };
 
 const beneficios = [
   {
-    icono: '💼',
-    titulo: 'Ambiente profesional',
-    desc: 'Trabajá en un espacio moderno, con equipamiento de primera y un equipo comprometido con la excelencia.',
-  },
-  {
-    icono: '🌱',
-    titulo: 'Crecimiento real',
-    desc: 'Te apoyamos en tu desarrollo profesional con capacitaciones, feedback constante y oportunidades de crecimiento.',
+    icono: '🏋️',
+    titulo: 'Pasión compartida',
+    desc: 'Trabajá rodeado de personas que viven el deporte y el bienestar como un estilo de vida.',
   },
   {
     icono: '🤝',
-    titulo: 'Comunidad Unbex',
-    desc: 'Formá parte de una comunidad que valora el bienestar, la motivación y el trabajo en equipo.',
+    titulo: 'Comunidad real',
+    desc: 'Formá parte de un equipo unido, con buen clima de trabajo y valores genuinos.',
+  },
+  {
+    icono: '📈',
+    titulo: 'Crecimiento profesional',
+    desc: 'Desarrollá tu carrera en un espacio en expansión con oportunidades reales.',
   },
 ];
 
@@ -38,16 +38,22 @@ export default function TrabajarConNosotros() {
           <div className="trabaja-hero__bg" />
           <div className="trabaja-hero__overlay" />
           <div className="trabaja-hero__content">
-            <h1 className="hero__title">Trabajá con nosotros</h1>
-            <p className="hero__subtitle">Sumate al equipo que mueve a Unbex</p>
+            <p className="disciplina-hero__salon">ÚNETE AL EQUIPO</p>
+            <h1 className="disciplina-hero__title">Trabajá con nosotros</h1>
+            <p className="disciplina-hero__desc">
+              Si te apasiona el movimiento, el bienestar y ayudar a otros a superarse, este es tu lugar.
+            </p>
           </div>
         </section>
 
         {/* BENEFICIOS */}
         <section className="trabaja-info">
           <div className="section__container">
-            <span className="section__eyebrow">Por qué elegirnos</span>
-            <h2 className="section__title">¿Por qué Unbex?</h2>
+            <span className="section__eyebrow">POR QUÉ ELEGIRNOS</span>
+            <h2 className="section__title">Un lugar donde crecer</h2>
+            <p className="section__subtitle">
+              En Unbex valoramos a las personas tanto como al entrenamiento.
+            </p>
             <div className="trabaja-beneficios">
               {beneficios.map(b => (
                 <div key={b.titulo} className="trabaja-card">
@@ -63,7 +69,7 @@ export default function TrabajarConNosotros() {
         {/* FORMULARIO */}
         <section className="trabaja-postulate">
           <div className="section__container">
-            <span className="section__eyebrow">Unite al equipo</span>
+            <span className="section__eyebrow">UNITE AL EQUIPO</span>
             <h2 className="section__title">Postulate</h2>
             <p className="section__subtitle">
               Completá el formulario y nos ponemos en contacto a la brevedad.

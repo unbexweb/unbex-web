@@ -1,23 +1,17 @@
-import { CONTACTO } from '@/data/disciplines';
-
 export default function Topbar() {
   return (
-    <div className="topbar">
+    <div className="topbar" id="topbar">
       <div className="topbar__content">
-        <a href={`tel:${CONTACTO.telefono}`} className="topbar__link">
-          📞 {CONTACTO.telefono}
+        <a href="https://wa.me/5491123989560" className="topbar__link" target="_blank" rel="noopener noreferrer">
+          📞 11 2398-9560
         </a>
-        <span className="topbar__sep">·</span>
-        <a href={`mailto:${CONTACTO.email}`} className="topbar__link">
-          ✉ {CONTACTO.email}
+        <span className="topbar__sep">|</span>
+        <a href="https://instagram.com/unbex.ar" className="topbar__link" target="_blank" rel="noopener noreferrer">
+          Instagram @unbex.ar
         </a>
-        <span className="topbar__sep">·</span>
-        <a href={CONTACTO.instagram} target="_blank" rel="noopener noreferrer" className="topbar__link">
-          Instagram
-        </a>
-        <span className="topbar__sep">·</span>
-        <a href={CONTACTO.facebook} target="_blank" rel="noopener noreferrer" className="topbar__link">
-          Facebook
+        <span className="topbar__sep">|</span>
+        <a href="https://facebook.com/unbex.ar" className="topbar__link" target="_blank" rel="noopener noreferrer">
+          Facebook @unbex.ar
         </a>
       </div>
     </div>

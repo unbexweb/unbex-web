@@ -16,7 +16,7 @@ export async function generateMetadata({ params }) {
   const disciplina = disciplinas.find(d => d.clave === slug);
   if (!disciplina) return {};
   return {
-    title: `${disciplina.nombre} — Unbex Argentina`,
+    title: `${disciplina.nombre} | Unbex`,
     description: disciplina.desc,
   };
 }
@@ -28,36 +28,41 @@ export default async function DisciplinaPage({ params }) {
   if (!disciplina) notFound();
 
   const videoId = DISCIPLINA_VIDEOS[slug] || null;
-  const isMb = disciplina.salon === 'mb';
-  const waMsg = `Hola! Quiero info sobre ${disciplina.nombre} en Unbex`;
+  const isMb    = disciplina.salon === 'mb';
 
   return (
     <>
       <Topbar />
       <Navbar />
       <main className={isMb ? 'salon-mb' : ''}>
+
         <HeroDisciplina disciplina={disciplina} videoId={videoId} />
 
-        {/* INFO */}
-        <section style={{ background: isMb ? 'var(--color-rose-pale)' : 'var(--color-background)' }}>
+        {/* INFO — 2 columnas: descripción + horarios */}
+        <section className="disciplina-info">
           <div className="section__container">
-            <h2 className="section__title">{disciplina.nombre}</h2>
-            <p className="section__subtitle">{disciplina.desc}</p>
+            <div className="disciplina-info__grid">
+
+              <div className="disciplina-info__descripcion">
+                <h2 className="section__title">¿Qué es {disciplina.nombre}?</h2>
+                <p className="disciplina-info__texto">{disciplina.desc}</p>
+              </div>
+
+              <div className="disciplina-info__horarios">
+                <h2 className="section__title">Horarios</h2>
+                <div className="horarios__tabla" id="horariosTabla">
+                  <HorariosTable clave={slug} />
+                </div>
+              </div>
+
+            </div>
           </div>
         </section>
 
-        {/* HORARIOS */}
-        <section style={{ background: isMb ? 'var(--color-rose-light)' : 'var(--color-background-alt)' }}>
-          <div className="section__container">
-            <span className="section__eyebrow">Planificá tu semana</span>
-            <h2 className="section__title">Horarios</h2>
-            <HorariosTable clave={slug} />
-          </div>
-        </section>
       </main>
 
       <Footer />
-      <WhatsappFloat mensaje={waMsg} />
+      <WhatsappFloat mensaje={`Hola! Quiero info sobre ${disciplina.nombre} en Unbex`} />
     </>
   );
 }

@@ -932,6 +932,32 @@ button {
 
 .horario-turno:hover { background: var(--color-primary); transform: scale(1.05); }
 
+/* ========== DISCIPLINA INFO — layout 2 columnas ========== */
+.disciplina-info {
+  background: var(--color-background);
+}
+
+.disciplina-info__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .disciplina-info__grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+.disciplina-info__texto {
+  font-size: var(--text-base);
+  color: var(--color-text-light);
+  line-height: 1.75;
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.9;
+}
+
 /* ========== SALÓN M&B — paleta rosa ========== */
 body.salon-mb,
 main.salon-mb {
