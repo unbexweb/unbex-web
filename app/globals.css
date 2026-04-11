@@ -117,20 +117,27 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  height: 18px;
+  height: 26px;
   z-index: 101;
   background-color: var(--color-primary);
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 0 var(--spacing-sm);
 }
 
 .topbar__content {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 10px;
+  justify-content: space-between;
+}
+
+.topbar__group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .topbar__link {
@@ -139,19 +146,37 @@ button {
   font-size: 10px;
   letter-spacing: 0.03em;
   transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .topbar__link:hover { color: var(--color-accent); }
+
+.topbar__icon {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
 
 .topbar__sep {
   color: rgba(255,255,255,0.25);
   font-size: 10px;
 }
 
+/* Ocultar email en mobile muy pequeño */
+@media (max-width: 480px) {
+  .topbar__group:first-child .topbar__link:last-child,
+  .topbar__group:first-child .topbar__sep:last-of-type {
+    display: none;
+  }
+}
+
 /* ========== NAVBAR ========== */
 .navbar {
   position: fixed;
-  top: 18px;
+  top: 26px;
   left: 0;
   width: 100%;
   z-index: 100;
