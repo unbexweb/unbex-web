@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 
-const VIDEO_ID = 'rAFygka9w_o';
+const VIDEO_ID = process.env.NEXT_PUBLIC_VIDEO_HERO || null;
 
 export default function HeroIndex() {
   const [muted, setMuted] = useState(true);
@@ -23,15 +23,19 @@ export default function HeroIndex() {
   return (
     <section className="hero" id="hero">
       <div className="hero__video-container">
-        <iframe
-          ref={iframeRef}
-          className="hero__video"
-          id="heroVideo"
-          src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
-          title="Unbex Hero"
-          allow="autoplay; encrypted-media"
-          allowFullScreen
-        />
+        {VIDEO_ID ? (
+          <iframe
+            ref={iframeRef}
+            className="hero__video"
+            id="heroVideo"
+            src={`https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
+            title="Unbex Hero"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
+          />
+        ) : (
+          <div className="hero__video hero__video--fallback" />
+        )}
         <div className="hero__overlay" />
       </div>
 
@@ -43,14 +47,16 @@ export default function HeroIndex() {
         </a>
       </div>
 
-      <button
-        className="hero__volume"
-        id="heroVolume"
-        onClick={toggleMute}
-        aria-label={muted ? 'Activar sonido' : 'Silenciar'}
-      >
-        {muted ? '🔇' : '🔊'}
-      </button>
+      {VIDEO_ID && (
+        <button
+          className="hero__volume"
+          id="heroVolume"
+          onClick={toggleMute}
+          aria-label={muted ? 'Activar sonido' : 'Silenciar'}
+        >
+          {muted ? '🔇' : '🔊'}
+        </button>
+      )}
     </section>
   );
 }
