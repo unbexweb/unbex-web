@@ -35,7 +35,7 @@ export default function Navbar() {
     <>
       {/* Logo flotante — fuera del nav para no romper position:fixed con backdrop-filter */}
       <Link href="/" className="navbar__logo" id="siteLogo">
-        <Image src="/img/logo.png" alt="Unbex" width={120} height={64} priority />
+        <Image src="/img/logo.png" alt="Unbex" width={160} height={94} priority style={{ height: '100%', width: 'auto' }} />
       </Link>
 
       <nav className="navbar" id="navbar">

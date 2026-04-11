@@ -213,7 +213,7 @@ button {
 }
 
 .navbar__logo img {
-  height: 64px;
+  height: calc(var(--topbar-height) + var(--navbar-height));
   width: auto;
 }
 
