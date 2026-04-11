@@ -51,7 +51,7 @@ export default async function DisciplinaPage({ params }) {
               <div className="disciplina-info__horarios">
                 <h2 className="section__title">Horarios</h2>
                 <div className="horarios__tabla" id="horariosTabla">
-                  <HorariosTable clave={slug} />
+                  <HorariosTable clave={slug} nombreDisciplina={disciplina.nombre} />
                 </div>
               </div>
 

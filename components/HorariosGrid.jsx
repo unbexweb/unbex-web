@@ -3,26 +3,38 @@
 import { useState } from 'react';
 import { horarios, disciplinas, DIAS_SEMANA } from '@/data/disciplines';
 
-const DIAS_ORDER = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
+const ORDEN_DIAS = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
+const LABEL_EXTRA = { oly: 'OLY', allout: 'Allout' };
 
-function buildTable(salon) {
-  const filas = horarios.filter(h => h.salon === salon);
-  const horas = [...new Set(filas.map(h => h.hora))].sort();
-  return { filas, horas };
+function getDisciplinaMap() {
+  return new Map(disciplinas.map(d => [d.clave, d]));
 }
 
-function getNombreCorto(clave) {
-  const d = disciplinas.find(d => d.clave === clave);
-  return d ? (d.short || d.nombre) : clave;
+const DISC_MAP = getDisciplinaMap();
+
+function labelDisciplina(clave, useShort) {
+  const d = DISC_MAP.get(clave);
+  if (d) return (useShort && d.short) ? d.short : d.nombre;
+  if (LABEL_EXTRA[clave]) return LABEL_EXTRA[clave];
+  return clave.charAt(0).toUpperCase() + clave.slice(1).replace(/-/g, ' ');
 }
 
-function getCell(filas, hora, dia) {
-  const coincidentes = filas.filter(f => f.hora === hora && f.dias.includes(dia));
-  return coincidentes.length ? coincidentes : null;
+function badgeTexto(entry) {
+  const combinada = entry.claves.length > 1;
+  return entry.claves.map(c => labelDisciplina(c, combinada)).join('/');
+}
+
+function badgeTitulo(entry) {
+  return entry.claves.map(c => labelDisciplina(c, false)).join(', ') +
+    (entry.nota ? ' — ' + entry.nota : '');
 }
 
 function TablaHorarios({ salon }) {
-  const { filas, horas } = buildTable(salon);
+  const entradas = horarios.filter(h => h.salon === salon);
+  const horas = [...new Set(entradas.map(h => h.hora))].sort();
+
+  // Solo días que tienen al menos una clase en este salón
+  const dias = ORDEN_DIAS.filter(d => entradas.some(h => h.dias.includes(d)));
 
   return (
     <div className="horarios__table-wrap">
@@ -30,7 +42,7 @@ function TablaHorarios({ salon }) {
         <thead>
           <tr>
             <th className="horarios__th-hora">Hora</th>
-            {DIAS_ORDER.map(dia => (
+            {dias.map(dia => (
               <th key={dia}>{DIAS_SEMANA[dia]}</th>
             ))}
           </tr>
@@ -39,24 +51,31 @@ function TablaHorarios({ salon }) {
           {horas.map(hora => (
             <tr key={hora}>
               <td className="horarios__hora">{hora}</td>
-              {DIAS_ORDER.map(dia => {
-                const cells = getCell(filas, hora, dia);
-                if (!cells) return <td key={dia}><span className="horarios__empty">—</span></td>;
+              {dias.map(dia => {
+                const matches = entradas.filter(h => h.hora === hora && h.dias.includes(dia));
+
+                if (!matches.length) {
+                  return (
+                    <td key={dia}>
+                      <span className="horarios__empty">—</span>
+                    </td>
+                  );
+                }
 
                 return (
                   <td key={dia}>
                     <div className="horarios__cell">
-                      {cells.map((cell, i) => {
-                        const esCombinada = cell.claves.length > 1;
-                        return cell.claves.filter(c => c !== 'oly').map(clave => (
+                      {matches.map((entry, i) => {
+                        const combinada = entry.claves.length > 1;
+                        return (
                           <span
-                            key={`${i}-${clave}`}
-                            className={`horarios__badge ${esCombinada ? 'horarios__badge--combinada' : 'horarios__badge--especifica'}`}
-                            title={cell.nota || ''}
+                            key={i}
+                            className={`horarios__badge ${combinada ? 'horarios__badge--combinada' : 'horarios__badge--especifica'}`}
+                            title={badgeTitulo(entry)}
                           >
-                            {getNombreCorto(clave)}{cell.nota ? ' *' : ''}
+                            {badgeTexto(entry)}
                           </span>
-                        ));
+                        );
                       })}
                     </div>
                   </td>
@@ -83,12 +102,14 @@ export default function HorariosGrid() {
         <div className="horarios__tabs" id="horariosTabs">
           <button
             className={`horarios__tab${tab === 'black' ? ' horarios__tab--active' : ''}`}
+            data-salon="black"
             onClick={() => setTab('black')}
           >
             Salón Black
           </button>
           <button
             className={`horarios__tab${tab === 'mb' ? ' horarios__tab--active' : ''}`}
+            data-salon="mb"
             onClick={() => setTab('mb')}
           >
             Salón M&amp;B
