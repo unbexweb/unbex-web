@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { horarios, disciplinas, DIAS_SEMANA } from '@/data/disciplines';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const ORDEN_DIAS = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
 const LABEL_EXTRA = { oly: 'OLY', allout: 'Allout' };
@@ -30,6 +31,7 @@ function badgeTitulo(entry) {
 }
 
 function TablaHorarios({ salon }) {
+  const [wrapRef, isVisible] = useIntersectionObserver({ threshold: 0.05 });
   const entradas = horarios.filter(h => h.salon === salon);
   const horas = [...new Set(entradas.map(h => h.hora))].sort();
 
@@ -37,7 +39,7 @@ function TablaHorarios({ salon }) {
   const dias = ORDEN_DIAS.filter(d => entradas.some(h => h.dias.includes(d)));
 
   return (
-    <div className="horarios__table-wrap">
+    <div ref={wrapRef} className={`horarios__table-wrap${isVisible ? ' is-visible' : ''}`}>
       <table className="horarios__table">
         <thead>
           <tr>

@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { precios, WA_NUMBER } from '@/data/disciplines';
+import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 
 const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 
@@ -29,10 +30,19 @@ function fmt(n) {
   return '$' + n.toLocaleString('es-AR');
 }
 
-function PlanCard({ plan, nombre }) {
+function PlanCard({ plan, nombre, animDelay = 0 }) {
+  const [ref, isVisible] = useIntersectionObserver();
+  const [effectiveDelay, setEffectiveDelay] = useState(animDelay);
+  useEffect(() => {
+    if (animDelay > 0 && window.matchMedia('(max-width: 768px)').matches) setEffectiveDelay(0);
+  }, [animDelay]);
   const waLink = WA_BASE + encodeURIComponent(`Hola! Quiero consultar sobre el plan ${plan.plan} de ${nombre} en Unbex 💪`);
   return (
-    <div className={`precio-card${plan.destacado ? ' precio-card--destacado' : ''}`}>
+    <div
+      ref={ref}
+      className={`precio-card anim-scale${isVisible ? ' is-visible' : ''}${plan.destacado ? ' precio-card--destacado' : ''}`}
+      style={effectiveDelay ? { '--anim-delay': `${effectiveDelay}ms` } : undefined}
+    >
       {plan.destacado && <span className="precio-card__badge">Más elegido</span>}
       <p className="precio-card__plan">{plan.plan}</p>
       <p className="precio-card__precio">{fmt(plan.precio)}</p>
@@ -55,8 +65,8 @@ function BloquePrecios({ bloque }) {
         <p className="precio-bloque__desc">{bloque.desc}</p>
       </div>
       <div className="precio-bloque__cards">
-        {bloque.planes.map(p => (
-          <PlanCard key={p.plan} plan={p} nombre={bloque.nombre} />
+        {bloque.planes.map((p, i) => (
+          <PlanCard key={p.plan} plan={p} nombre={bloque.nombre} animDelay={i * 60} />
         ))}
       </div>
     </div>

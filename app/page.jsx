@@ -9,6 +9,7 @@ import DisciplinaCard from '@/components/DisciplinaCard';
 import ServicioCard from '@/components/ServicioCard';
 import HorariosGrid from '@/components/HorariosGrid';
 import PreciosSection from '@/components/PreciosSection';
+import AnimatedSection from '@/components/AnimatedSection';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
 import { disciplinas, servicios } from '@/data/disciplines';
@@ -42,11 +43,11 @@ export default function Home() {
           <section className="section">
             <div className="section__container">
               <span className="section__eyebrow">SALÓN BLACK</span>
-              <h2 className="section__title">Fuerza y rendimiento</h2>
-              <p className="section__subtitle">Entrenamiento de alta intensidad, musculación y disciplinas de potencia</p>
+              <AnimatedSection as="h2" className="section__title">Fuerza y rendimiento</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamiento de alta intensidad, musculación y disciplinas de potencia</AnimatedSection>
               <div className="cards">
-                {disciplinas.filter(d => d.salon === 'black').map(d => (
-                  <DisciplinaCard key={d.clave} disciplina={d} />
+                {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
+                  <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
                 ))}
               </div>
             </div>
@@ -56,11 +57,11 @@ export default function Home() {
           <section className="section">
             <div className="section__container">
               <span className="section__eyebrow">SALÓN M&amp;B</span>
-              <h2 className="section__title">Movimiento y bienestar</h2>
-              <p className="section__subtitle">Yoga, pilates, zumba, artes marciales y más actividades grupales</p>
+              <AnimatedSection as="h2" className="section__title">Movimiento y bienestar</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Yoga, pilates, zumba, artes marciales y más actividades grupales</AnimatedSection>
               <div className="cards">
-                {disciplinas.filter(d => d.salon === 'mb').map(d => (
-                  <DisciplinaCard key={d.clave} disciplina={d} />
+                {disciplinas.filter(d => d.salon === 'mb').map((d, i) => (
+                  <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
                 ))}
               </div>
             </div>
@@ -70,11 +71,11 @@ export default function Home() {
           <section className="section" id="servicios">
             <div className="section__container">
               <span className="section__eyebrow">MÁS ALLÁ DEL ENTRENAMIENTO</span>
-              <h2 className="section__title">Nuestros servicios</h2>
-              <p className="section__subtitle">Atención profesional e individual</p>
+              <AnimatedSection as="h2" className="section__title">Nuestros servicios</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Atención profesional e individual</AnimatedSection>
               <div className="cards" id="serviciosContainer">
-                {servicios.map(s => (
-                  <ServicioCard key={s.nombre} servicio={s} />
+                {servicios.map((s, i) => (
+                  <ServicioCard key={s.nombre} servicio={s} animDelay={i * 80} />
                 ))}
               </div>
             </div>
