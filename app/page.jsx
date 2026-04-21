@@ -1,3 +1,6 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -5,27 +8,58 @@ import HeroIndex from '@/components/HeroIndex';
 import DisciplinaCard from '@/components/DisciplinaCard';
 import ServicioCard from '@/components/ServicioCard';
 import HorariosGrid from '@/components/HorariosGrid';
+import PreciosSection from '@/components/PreciosSection';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
 import { disciplinas, servicios } from '@/data/disciplines';
 
 export default function Home() {
+  const [videoActivo, setVideoActivo] = useState(null);
+  const [estaEnHero, setEstaEnHero] = useState(true);
+
+  useEffect(() => {
+    function onScroll() {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+      setEstaEnHero(window.scrollY < hero.offsetHeight * 0.85);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
     <>
-      <Topbar />
-      <Navbar />
+      <Topbar oculto={estaEnHero} />
+      <Navbar onDisciplinaHover={setVideoActivo} estaEnHero={estaEnHero} />
       <main>
-        <HeroIndex />
+        <HeroIndex videoActivo={videoActivo} estaEnHero={estaEnHero} />
 
         {/* DISCIPLINAS */}
         <section className="disciplinas" id="disciplinas">
+
+          {/* SALÓN BLACK */}
           <section className="section">
             <div className="section__container">
-              <span className="section__eyebrow">LO QUE HACEMOS</span>
-              <h2 className="section__title">Nuestras disciplinas</h2>
-              <p className="section__subtitle">Encontrá la actividad que se adapta a vos</p>
-              <div className="cards" id="disciplinasContainer">
-                {disciplinas.map(d => (
+              <span className="section__eyebrow">SALÓN BLACK</span>
+              <h2 className="section__title">Fuerza y rendimiento</h2>
+              <p className="section__subtitle">Entrenamiento de alta intensidad, musculación y disciplinas de potencia</p>
+              <div className="cards">
+                {disciplinas.filter(d => d.salon === 'black').map(d => (
+                  <DisciplinaCard key={d.clave} disciplina={d} />
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* SALÓN M&B */}
+          <section className="section">
+            <div className="section__container">
+              <span className="section__eyebrow">SALÓN M&amp;B</span>
+              <h2 className="section__title">Movimiento y bienestar</h2>
+              <p className="section__subtitle">Yoga, pilates, zumba, artes marciales y más actividades grupales</p>
+              <div className="cards">
+                {disciplinas.filter(d => d.salon === 'mb').map(d => (
                   <DisciplinaCard key={d.clave} disciplina={d} />
                 ))}
               </div>
@@ -50,13 +84,8 @@ export default function Home() {
         {/* HORARIOS */}
         <HorariosGrid />
 
-        {/* PRECIOS (placeholder) */}
-        <section className="precios" id="precios">
-          <div className="section__container">
-            <h2 className="section__title">Planes y Precios</h2>
-            <div className="precios__grid" id="preciosGrid"></div>
-          </div>
-        </section>
+        {/* PRECIOS */}
+        <PreciosSection />
 
         {/* CONTACTO (placeholder) */}
         <section className="contacto" id="contacto">

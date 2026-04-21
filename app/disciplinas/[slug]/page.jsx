@@ -27,14 +27,15 @@ export default async function DisciplinaPage({ params }) {
 
   if (!disciplina) notFound();
 
-  const videoId = DISCIPLINA_VIDEOS[slug] || null;
-  const isMb    = disciplina.salon === 'mb';
+  const videoId  = DISCIPLINA_VIDEOS[slug] || null;
+  const isMb     = disciplina.salon === 'mb';
+  const isBlack  = disciplina.salon === 'black';
 
   return (
     <>
       <Topbar />
       <Navbar />
-      <main className={isMb ? 'salon-mb' : ''}>
+      <main className={isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''}>
 
         <HeroDisciplina disciplina={disciplina} videoId={videoId} />
 
@@ -46,6 +47,9 @@ export default async function DisciplinaPage({ params }) {
               <div className="disciplina-info__descripcion">
                 <h2 className="section__title">¿Qué es {disciplina.nombre}?</h2>
                 <p className="disciplina-info__texto">{disciplina.desc}</p>
+                {disciplina.descLarga && (
+                  <p className="disciplina-info__texto">{disciplina.descLarga}</p>
+                )}
               </div>
 
               <div className="disciplina-info__horarios">
