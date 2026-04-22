@@ -6,13 +6,13 @@ import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
 import HeroIndex from '@/components/HeroIndex';
 import DisciplinaCard from '@/components/DisciplinaCard';
-import ServicioCard from '@/components/ServicioCard';
 import HorariosGrid from '@/components/HorariosGrid';
 import PreciosSection from '@/components/PreciosSection';
 import AnimatedSection from '@/components/AnimatedSection';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
-import { disciplinas, servicios } from '@/data/disciplines';
+import ConsultoriosGrid from '@/components/ConsultoriosGrid';
+import { disciplinas, consultorios } from '@/data/disciplines';
 
 export default function Home() {
   const [videoActivo, setVideoActivo] = useState(null);
@@ -67,17 +67,15 @@ export default function Home() {
             </div>
           </section>
 
-          {/* SERVICIOS */}
-          <section className="section" id="servicios">
+          {/* CONSULTORIOS */}
+          <section className="section" id="consultorios">
             <div className="section__container">
-              <span className="section__eyebrow">MÁS ALLÁ DEL ENTRENAMIENTO</span>
-              <AnimatedSection as="h2" className="section__title">Nuestros servicios</AnimatedSection>
-              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Atención profesional e individual</AnimatedSection>
-              <div className="cards" id="serviciosContainer">
-                {servicios.map((s, i) => (
-                  <ServicioCard key={s.nombre} servicio={s} animDelay={i * 80} />
-                ))}
-              </div>
+              <span className="section__eyebrow">CONSULTORIO INTERDISCIPLINARIO</span>
+              <AnimatedSection as="h2" className="section__title">Consultorios</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>
+                En nuestro consultorio entendemos que el entrenamiento es solo una parte del éxito. Ofrecemos un abordaje interdisciplinario único con profesionales dedicados a optimizar tu cuerpo y mente.
+              </AnimatedSection>
+              <ConsultoriosGrid items={consultorios} />
             </div>
           </section>
         </section>

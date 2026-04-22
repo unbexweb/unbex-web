@@ -55,11 +55,8 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
       </div>
 
       <div className="hero__content">
-        <h1 className="hero__title">Bienvenido a Unbex</h1>
-        <p className="hero__subtitle">Entrenamiento. Bienestar. Comunidad.</p>
-        <a href="#disciplinas" className="hero__cta">
-          Conocé nuestras disciplinas
-        </a>
+        <h1 className="hero__title">Unbex</h1>
+        <p className="hero__subtitle">Unbeatable experience</p>
       </div>
 
       {VIDEO_DEFAULT && (

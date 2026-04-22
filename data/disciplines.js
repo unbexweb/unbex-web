@@ -66,15 +66,15 @@ export const disciplinas = [
   },
   {
     clave:  'funcional',
-    nombre: 'Funcional',
-    short:  'Funcional',
+    nombre: 'Cross Funcional',
+    short:  'Cross Funcional',
     salon:  'black',
     img:    'funcional.jpg',
     desc:   'Entrenamiento funcional adaptado a tu nivel. Movimientos reales, resultados reales. Cupo limitado.',
     descLarga: 'El entrenamiento funcional trabaja los patrones de movimiento del cuerpo humano: empujar, halar, agachar, rotar y cargar. Cada clase está diseñada para mejorar tu rendimiento en la vida cotidiana y en el deporte, con una metodología 100% adaptable a tu nivel y objetivos.',
     icono:  '🏃',
     color:  'card--blue',
-    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Funcional en Unbex 🏃'),
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Cross Funcional en Unbex 🏃'),
   },
   {
     clave:  'musculacion',
@@ -208,7 +208,7 @@ export const precios = {
     {
       id: 'black',
       nombre: 'Salón Black',
-      desc: 'Musculación, Crossfit, Funcional, 3ra Edad',
+      desc: 'Musculación, Crossfit, Cross Funcional, 3ra Edad',
       planes: [
         { plan: '4 clases',  precio: 34650, efvo: 31500 },
         { plan: '8 clases',  precio: 48400, efvo: 44000 },
@@ -300,6 +300,15 @@ export const servicios = [
   { nombre: 'Depilación',             desc: 'Servicio de depilación profesional.',                  icono: '✨', color: 'card--green' },
   { nombre: 'Entrenamiento personal', desc: 'Planificación adaptada a tus objetivos.',             icono: '👤', color: 'card--blue'  },
   { nombre: 'Evaluaciones físicas',   desc: 'Medición y seguimiento de tu progreso.',              icono: '📋', color: 'card--red'   },
+];
+
+export const consultorios = [
+  { nombre: 'Kinesiología',            icono: '🩺', desc: 'Recuperación de lesiones y descarga muscular para mantenerte siempre en movimiento y evaluaciones de fuerza. Consultas, tratamientos y mediciones.',                                                                                                                                          wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Kinesiología en Unbex 🩺') },
+  { nombre: 'Nutrición',               icono: '🥗', desc: 'Planes de alimentación personalizados de calidad según tus metas, mediciones antropométricas para que conozcas tu composición corporal y objetivos a corto, mediano y largo plazo con seguimiento profesional.',                                                                           wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Nutrición en Unbex 🥗') },
+  { nombre: 'Psicología Deportiva',    icono: '🧠', desc: 'Fortalecé tu mentalidad para superar cualquier obstáculo. Gestión del estrés y motivación.',                                                                                                                                                                                              wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Psicología Deportiva en Unbex 🧠') },
+  { nombre: 'Acupuntura',              icono: '🪡', desc: 'Alivio del dolor y equilibrio sistémico y energético.',                                                                                                                                                                                                                                    wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Acupuntura en Unbex 🪡') },
+  { nombre: 'Detox Pedilúvico Iónico', icono: '💧', desc: 'Limpieza profunda de toxinas a través de los pies activando tu sistema linfático para mejorar tu circulación y energía.',                                                                                                                                                                 wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Detox Pedilúvico Iónico en Unbex 💧') },
+  { nombre: 'Masaje Deportivo',        icono: '💆', desc: 'Recuperación post-entrenamiento. Descomprime tu contractura o libera tu sobrecarga muscular.',                                                                                                                                                                                             wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Masaje Deportivo en Unbex 💆') },
 ];
 
 export const horarios = [
