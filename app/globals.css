@@ -383,7 +383,7 @@ button {
     position: static;
     width: auto;
     padding: 0;
-    gap: 30px;
+    gap: 10px;
     align-items: center;
     background-color: transparent;
   }
