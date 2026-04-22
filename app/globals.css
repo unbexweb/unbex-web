@@ -1633,6 +1633,91 @@ body.salon-mb .topbar {
 
 .footer__copy { font-size: var(--text-sm); color: var(--color-text-light); }
 
+/* ========== PÁGINA COMUNIDAD UNBEX ========== */
+.comunidad-hero__bg {
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(245,198,198,0.5) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 70%, rgba(122,61,135,0.55) 0%, transparent 60%),
+    #2a0e3a;
+}
+
+main.salon-mb .trabaja-hero__overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.comunidad-valores {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (min-width: 768px) {
+  .comunidad-valores { grid-template-columns: repeat(4, 1fr); }
+}
+
+.comunidad-card {
+  background: rgba(75, 37, 86, 0.1);
+  border-color: rgba(122, 61, 135, 0.25);
+}
+
+.comunidad-card:hover {
+  background: rgba(75, 37, 86, 0.2);
+}
+
+.comunidad-numeros {
+  background: var(--color-background-alt);
+  padding: var(--spacing-lg) 0;
+}
+
+.comunidad-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: var(--spacing-md);
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .comunidad-stats { grid-template-columns: repeat(4, 1fr); }
+}
+
+.comunidad-stat__numero {
+  display: block;
+  font-family: var(--font-primary);
+  font-size: var(--text-3xl);
+  font-weight: 100;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.comunidad-stat__label {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+}
+
+.comunidad-cta-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .comunidad-cta-btns { flex-direction: row; justify-content: center; }
+}
+
+.comunidad-cta-secondary {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.comunidad-cta-secondary:hover { color: var(--color-text); }
+
 /* ========== PÁGINA TRABAJAR CON NOSOTROS ========== */
 .trabaja-hero {
   position: relative;

@@ -38,6 +38,11 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
               <a href="#contacto" className="navbar-lateral__link" onClick={closeAll}>Contacto</a>
             </li>
             <li>
+              <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
+                Comunidad Unbex
+              </Link>
+            </li>
+            <li>
               <Link href="/trabajar-con-nosotros" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
                 Trabajá con nosotros
               </Link>
@@ -71,6 +76,11 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
               <li><a href="#precios"     className="navbar__link" onClick={closeAll}>Precios</a></li>
               <li><a href="#contacto"    className="navbar__link" onClick={closeAll}>Contacto</a></li>
               <li>
+                <Link href="/comunidad-unbex" className="navbar__link navbar__link--cta" onClick={closeAll}>
+                  Comunidad Unbex
+                </Link>
+              </li>
+              <li>
                 <Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={closeAll}>
                   Trabajá con nosotros
                 </Link>
@@ -90,6 +100,7 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
               <li><Link href="/#horarios"    className="navbar__link" onClick={closeAll}>Horarios</Link></li>
               <li><Link href="/#precios"     className="navbar__link" onClick={closeAll}>Precios</Link></li>
               <li><Link href="/#contacto"           className="navbar__link" onClick={closeAll}>Contacto</Link></li>
+              <li><Link href="/comunidad-unbex"        className="navbar__link navbar__link--cta" onClick={closeAll}>Comunidad Unbex</Link></li>
               <li><Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={closeAll}>Trabajá con nosotros</Link></li>
               <li><Link href="/tene-tu-unbex"         className="navbar__link navbar__link--cta" onClick={closeAll}>Tené tu Unbex</Link></li>
             </ul>
