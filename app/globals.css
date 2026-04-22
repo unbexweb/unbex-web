@@ -1520,16 +1520,16 @@ body.salon-mb .topbar {
   position: absolute;
   inset: 0;
   background: var(--color-rose-pale);
-  opacity: 0.45;
-  transition: opacity 0.25s ease;
   pointer-events: none;
   z-index: 0;
 }
 
-.consultorio-card:hover::before { opacity: 0.6; }
+.consultorio-card {
+  box-shadow: 0 2px 12px rgba(58, 28, 67, 0.2);
+}
 
 .consultorio-card:hover {
-  box-shadow: 0 4px 16px rgba(58, 28, 67, 0.15);
+  box-shadow: 0 6px 24px rgba(58, 28, 67, 0.35);
   transform: translateY(-2px);
 }
 
