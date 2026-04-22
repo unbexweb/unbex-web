@@ -86,11 +86,60 @@ export default function Home() {
         {/* PRECIOS */}
         <PreciosSection />
 
-        {/* CONTACTO (placeholder) */}
+        {/* CONTACTO */}
         <section className="contacto" id="contacto">
           <div className="section__container">
-            <h2 className="section__title">Contacto</h2>
-            <div className="contacto__redes" id="contactoRedes"></div>
+            <span className="section__eyebrow">ENCONTRANOS</span>
+            <AnimatedSection as="h2" className="section__title">Contacto</AnimatedSection>
+            <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>
+              Estamos en el corazón de Buenos Aires, listos para recibirte.
+            </AnimatedSection>
+
+            <div className="contacto__layout">
+              <div className="contacto__info">
+                <div className="contacto__dato">
+                  <span className="contacto__dato-icono">📍</span>
+                  <div>
+                    <p className="contacto__dato-titulo">Dirección</p>
+                    <p className="contacto__dato-texto">Pacheco 1956, C1431<br />Ciudad Autónoma de Buenos Aires</p>
+                  </div>
+                </div>
+                <div className="contacto__dato">
+                  <span className="contacto__dato-icono">🕐</span>
+                  <div>
+                    <p className="contacto__dato-titulo">Horarios</p>
+                    <p className="contacto__dato-texto">Lunes a Viernes: 7:00 – 21:00<br />Sábados: 9:00 – 12:00</p>
+                  </div>
+                </div>
+                <div className="contacto__dato">
+                  <span className="contacto__dato-icono">💬</span>
+                  <div>
+                    <p className="contacto__dato-titulo">WhatsApp</p>
+                    <a
+                      href="https://wa.me/5491123989560"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contacto__dato-texto contacto__wa-link"
+                    >
+                      +54 9 11 2398-9560
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <div className="contacto__mapa">
+                <iframe
+                  title="Ubicación Unbex"
+                  src="https://maps.google.com/maps?q=Pacheco+1956%2C+C1431+Buenos+Aires%2C+Argentina&output=embed&z=16"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
