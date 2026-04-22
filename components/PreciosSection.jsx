@@ -17,10 +17,10 @@ const TABS = [
 ];
 
 const BLOQUES_POR_TAB = {
-  black:         [precios.clases.find(b => b.id === 'black')],
-  mb:            [precios.clases.find(b => b.id === 'mb')],
-  full:          [precios.clases.find(b => b.id === 'full')],
-  jubilados:     [precios.clases.find(b => b.id === 'jubilados')],
+  black:           [precios.clases.find(b => b.id === 'black')],
+  mb:              [precios.clases.find(b => b.id === 'mb')],
+  full:            [precios.clases.find(b => b.id === 'full')],
+  jubilados:       [precios.clases.find(b => b.id === 'jubilados')],
   'open-box':      [precios.espacio.find(b => b.id === 'open-box')],
   'open-matutino': [precios.espacio.find(b => b.id === 'open-matutino')],
   'all-out':       [precios.espacio.find(b => b.id === 'all-out')],
@@ -73,10 +73,51 @@ function BloquePrecios({ bloque }) {
   );
 }
 
+function PreciosAcordeon() {
+  const [openIds, setOpenIds] = useState([]);
+
+  function toggle(id) {
+    setOpenIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
+  }
+
+  return (
+    <div className="precios-acordeon">
+      {TABS.map(t => {
+        const isOpen = openIds.includes(t.id);
+        const bloque = BLOQUES_POR_TAB[t.id][0];
+        return (
+          <div key={t.id} className={`precios-acordeon__item${isOpen ? ' precios-acordeon__item--open' : ''}`}>
+            <button className="precios-acordeon__header" onClick={() => toggle(t.id)}>
+              <span className="precios-acordeon__label">{t.label}</span>
+              <span className="precios-acordeon__chevron">{isOpen ? '−' : '+'}</span>
+            </button>
+            <div className="precios-acordeon__body">
+              <div className="precios-acordeon__cards">
+                {bloque.planes.map((p, i) => (
+                  <PlanCard key={p.plan} plan={p} nombre={bloque.nombre} animDelay={0} />
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function PreciosSection() {
   const [tab, setTab] = useState('black');
+  const [isMobile, setIsMobile] = useState(false);
 
-  const waInicio = WA_BASE + encodeURIComponent('Hola! Quiero empezar con las 3 clases de prueba en Unbex 🎉');
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 640px)');
+    setIsMobile(mq.matches);
+    const handler = e => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const waInicio  = WA_BASE + encodeURIComponent('Hola! Quiero empezar con las 3 clases de prueba en Unbex 🎉');
   const waConsulta = WA_BASE + encodeURIComponent('Hola! Quiero consultar sobre los planes de Unbex 💪');
 
   return (
@@ -92,27 +133,33 @@ export default function PreciosSection() {
 
         <h2 className="section__title">Planes y Precios</h2>
 
-        <div className="horarios__tabs">
-          {TABS.map(t => (
-            <button
-              key={t.id}
-              className={`horarios__tab${tab === t.id ? ' horarios__tab--active' : ''}`}
-              onClick={() => setTab(t.id)}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
-
-        {TABS.map(t => (
-          <div key={t.id} className={`horarios__panel${tab === t.id ? ' horarios__panel--active' : ''}`}>
-            <div className="precios__contenido">
-              {BLOQUES_POR_TAB[t.id].map(bloque => (
-                <BloquePrecios key={bloque.id} bloque={bloque} />
+        {isMobile ? (
+          <PreciosAcordeon />
+        ) : (
+          <>
+            <div className="horarios__tabs">
+              {TABS.map(t => (
+                <button
+                  key={t.id}
+                  className={`horarios__tab${tab === t.id ? ' horarios__tab--active' : ''}`}
+                  onClick={() => setTab(t.id)}
+                >
+                  {t.label}
+                </button>
               ))}
             </div>
-          </div>
-        ))}
+
+            {TABS.map(t => (
+              <div key={t.id} className={`horarios__panel${tab === t.id ? ' horarios__panel--active' : ''}`}>
+                <div className="precios__contenido">
+                  {BLOQUES_POR_TAB[t.id].map(bloque => (
+                    <BloquePrecios key={bloque.id} bloque={bloque} />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </>
+        )}
 
         <div className="precios__cta-bottom">
           <p className="precios__cta-bottom-text">¿No encontrás tu plan? Consultanos</p>

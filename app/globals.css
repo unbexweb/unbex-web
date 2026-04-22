@@ -1903,6 +1903,66 @@ body.salon-mb .topbar {
   color: var(--color-accent);
 }
 
+/* ========== PRECIOS ACORDEÓN (mobile) ========== */
+.precios-acordeon {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.precios-acordeon__item {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-background-alt);
+}
+
+.precios-acordeon__header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  font-weight: 100;
+  letter-spacing: 0.04em;
+}
+
+.precios-acordeon__item--open .precios-acordeon__header {
+  background: var(--color-primary);
+  color: var(--color-accent);
+}
+
+.precios-acordeon__chevron {
+  font-size: 1.2rem;
+  font-weight: 100;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.precios-acordeon__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.precios-acordeon__item--open .precios-acordeon__body {
+  max-height: 1200px;
+}
+
+.precios-acordeon__cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0.75rem;
+}
+
 /* ========== RESPONSIVE MOBILE ========== */
 @media (max-width: 640px) {
 
