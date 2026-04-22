@@ -71,7 +71,7 @@
 /* ========== FUENTE DESCRIPTIVA — BrightSunshine para todo texto que no sea título ni label ========== */
 
 /* ========== SCROLL OFFSET para header fijo ========== */
-#disciplinas, #servicios, #horarios, #precios, #contacto {
+#disciplinas, #consultorios, #horarios, #precios, #contacto {
   scroll-margin-top: var(--header-total);
 }
 
@@ -94,6 +94,7 @@ body {
   font-family: var(--font-body);
   background-color: var(--color-background);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 img, video {
@@ -794,7 +795,12 @@ button {
   border-radius: var(--border-radius-lg);
 }
 
-.card-wrapper:hover .card-inner { transform: rotateY(180deg); }
+.card-wrapper:hover .card-inner,
+.card-wrapper--flipped .card-inner { transform: rotateY(180deg); }
+
+@media (hover: none) {
+  .card-wrapper:hover .card-inner { transform: none; }
+}
 
 .card-front,
 .card-back {
@@ -1895,6 +1901,49 @@ body.salon-mb .topbar {
 .navbar-lateral__link:hover {
   background: rgba(122, 61, 135, 0.4);
   color: var(--color-accent);
+}
+
+/* ========== RESPONSIVE MOBILE ========== */
+@media (max-width: 640px) {
+
+  /* Tabs: scroll horizontal sin romper el diseño */
+  .horarios__tabs {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-radius: 12px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+  .horarios__tabs::-webkit-scrollbar { display: none; }
+
+  /* Tabla horarios: scroll horizontal si no entra */
+  .horarios__table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .horarios__table {
+    min-width: 420px;
+  }
+
+  /* Hero: título y subtítulo más compactos */
+  .hero__title { font-size: var(--text-xl); }
+  .hero__subtitle { font-size: var(--text-sm); }
+
+  /* Secciones: menos padding lateral */
+  .section__container { padding-left: var(--spacing-sm); padding-right: var(--spacing-sm); }
+
+  /* Disciplina hero: título más chico */
+  .disciplina-hero__title { font-size: var(--text-2xl); }
+  .disciplina-hero__desc  { font-size: var(--text-base); }
+
+  /* Precios: cards en 1 columna */
+  .precio-bloque__cards { grid-template-columns: 1fr; }
+
+  /* Consultorios: 1 columna ya está pero aseguramos */
+  .consultorios-grid { grid-template-columns: 1fr; }
 }
 
 
