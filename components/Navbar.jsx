@@ -15,12 +15,12 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
     <>
       {/* Logo flotante */}
       <Link href="/" className="navbar__logo" id="siteLogo">
-        <Image src="/img/logo.png" alt="Unbex" width={160} height={94} priority style={{ height: '100%', width: 'auto' }} />
+        <Image src="/img/logo.png" alt="Unbex" width={160} height={94} priority />
       </Link>
 
-      {/* Nav lateral — solo home, solo desktop, solo en hero */}
+      {/* Nav lateral — solo home, solo desktop, siempre visible */}
       {isHome && (
-        <nav className={`navbar-lateral${estaEnHero ? ' navbar-lateral--activo' : ''}`} aria-label="Navegación lateral">
+        <nav className="navbar-lateral navbar-lateral--activo" aria-label="Navegación lateral">
           <ul className="navbar-lateral__menu">
             <li onMouseEnter={() => onDisciplinaHover?.(null)} onMouseLeave={() => onDisciplinaHover?.(null)}>
               <a href="#disciplinas" className="navbar-lateral__link" onClick={closeAll}>Disciplinas</a>
@@ -56,7 +56,7 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
         </nav>
       )}
 
-      <nav className={`navbar${isHome && estaEnHero ? ' navbar--hero-mode' : ''}`} id="navbar">
+      <nav className={`navbar${isHome ? ' navbar--hero-mode' : ''}`} id="navbar">
         <div className="navbar__container">
 
           <button

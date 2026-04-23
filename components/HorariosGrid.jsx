@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { horarios, disciplinas, DIAS_SEMANA } from '@/data/disciplines';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import TabHint from '@/components/TabHint';
 
 const ORDEN_DIAS = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
 const LABEL_EXTRA = { oly: 'OLY', allout: 'Allout' };
@@ -91,8 +92,12 @@ function TablaHorarios({ salon }) {
   );
 }
 
+const SALON_IDS = ['black', 'mb'];
+
 export default function HorariosGrid() {
   const [tab, setTab] = useState('black');
+  const tabsRef = useRef(null);
+  const activeIndex = SALON_IDS.indexOf(tab);
 
   return (
     <section className="horarios" id="horarios">
@@ -101,21 +106,24 @@ export default function HorariosGrid() {
         <h2 className="section__title">Horarios</h2>
         <p className="section__subtitle">Elegí tu salón y encontrá tu turno ideal</p>
 
-        <div className="horarios__tabs" id="horariosTabs">
-          <button
-            className={`horarios__tab${tab === 'black' ? ' horarios__tab--active' : ''}`}
-            data-salon="black"
-            onClick={() => setTab('black')}
-          >
-            Salón Black
-          </button>
-          <button
-            className={`horarios__tab${tab === 'mb' ? ' horarios__tab--active' : ''}`}
-            data-salon="mb"
-            onClick={() => setTab('mb')}
-          >
-            Salón M&amp;B
-          </button>
+        <div className="tab-hint-wrap">
+          <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
+          <div className="horarios__tabs" ref={tabsRef} id="horariosTabs">
+            <button
+              className={`horarios__tab${tab === 'black' ? ' horarios__tab--active' : ''}`}
+              data-salon="black"
+              onClick={() => setTab('black')}
+            >
+              Salón Black
+            </button>
+            <button
+              className={`horarios__tab${tab === 'mb' ? ' horarios__tab--active' : ''}`}
+              data-salon="mb"
+              onClick={() => setTab('mb')}
+            >
+              Salón M&amp;B
+            </button>
+          </div>
         </div>
 
         <div className={`horarios__panel${tab === 'black' ? ' horarios__panel--active' : ''}`} id="horarios-black">

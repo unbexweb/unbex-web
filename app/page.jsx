@@ -31,9 +31,9 @@ export default function Home() {
 
   return (
     <>
-      <Topbar oculto={estaEnHero} />
+      <Topbar oculto={true} />
       <Navbar onDisciplinaHover={setVideoActivo} estaEnHero={estaEnHero} />
-      <main>
+      <main className="home-main">
         <HeroIndex videoActivo={videoActivo} estaEnHero={estaEnHero} />
 
         {/* DISCIPLINAS */}

@@ -1,8 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { precios, WA_NUMBER } from '@/data/disciplines';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
+import TabHint from '@/components/TabHint';
 
 const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 
@@ -108,6 +110,8 @@ function PreciosAcordeon() {
 export default function PreciosSection() {
   const [tab, setTab] = useState('black');
   const [isMobile, setIsMobile] = useState(false);
+  const tabsRef = useRef(null);
+  const activeIndex = TABS.findIndex(t => t.id === tab);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 640px)');
@@ -132,21 +136,29 @@ export default function PreciosSection() {
         </div>
 
         <h2 className="section__title">Planes y Precios</h2>
+        <p className="precios__como-link">
+          <Link href="/como-funcionan-los-abonos">
+            Conocé cómo funcionan nuestros planes antes de elegir
+          </Link>
+        </p>
 
         {isMobile ? (
           <PreciosAcordeon />
         ) : (
           <>
-            <div className="horarios__tabs">
-              {TABS.map(t => (
-                <button
-                  key={t.id}
-                  className={`horarios__tab${tab === t.id ? ' horarios__tab--active' : ''}`}
-                  onClick={() => setTab(t.id)}
-                >
-                  {t.label}
-                </button>
-              ))}
+            <div className="tab-hint-wrap">
+              <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
+              <div className="horarios__tabs" ref={tabsRef}>
+                {TABS.map(t => (
+                  <button
+                    key={t.id}
+                    className={`horarios__tab${tab === t.id ? ' horarios__tab--active' : ''}`}
+                    onClick={() => setTab(t.id)}
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {TABS.map(t => (

@@ -221,12 +221,13 @@ button {
   z-index: 102;
   display: flex;
   align-items: center;
-  height: calc(var(--topbar-height) + var(--navbar-height));
+  height: 110px;
 }
 
 .navbar__logo img {
-  height: calc(var(--topbar-height) + var(--navbar-height));
+  height: 110px;
   width: auto;
+  display: block;
 }
 
 .navbar__toggle {
@@ -863,6 +864,42 @@ button {
   opacity: 0.85;
 }
 
+/* ========== TAB HINT — dedo flotante ========== */
+.tab-hint-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 0;
+}
+
+/* Wrapper externo: sólo maneja el desplazamiento horizontal */
+.tab-hint {
+  display: block;
+  text-align: center;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  transition: transform 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+}
+
+/* Elemento interno: sólo maneja el bounce vertical */
+.tab-hint__bounce {
+  display: inline-block;
+  font-size: 1rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  animation: finger-bounce 1.2s ease-in-out infinite;
+}
+
+@keyframes finger-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-hint__bounce { animation: none; }
+}
+
 /* ========== HORARIOS — TABS ========== */
 .horarios__tabs {
   display: flex;
@@ -1241,6 +1278,24 @@ body.salon-mb .topbar {
   padding: var(--spacing-xl) 0;
 }
 
+.precios__como-link {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.precios__como-link a {
+  font-size: var(--text-base);
+  color: var(--color-rosa);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.precios__como-link a:hover {
+  border-bottom-color: var(--color-rosa);
+}
+
 .precios__cta-top {
   display: flex;
   flex-direction: column;
@@ -1277,9 +1332,14 @@ body.salon-mb .topbar {
 .precios__contenido {
   display: flex;
   flex-direction: column;
-  margin-top: var(--spacing-lg);
+  margin-top: var(--spacing-sm);
   border-radius: var(--border-radius-md);
   overflow: hidden;
+}
+
+/* Tabs dentro de precios: menos margen inferior que en horarios */
+.precios .horarios__tabs {
+  margin-bottom: var(--spacing-xs);
 }
 
 .precio-bloque {
@@ -1417,7 +1477,7 @@ body.salon-mb .topbar {
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-xs);
-  margin-top: var(--spacing-xl);
+  margin-top: var(--spacing-md);
   text-align: center;
 }
 
@@ -2003,6 +2063,16 @@ main.salon-mb .trabaja-hero__overlay {
     opacity: 0;
     transform: translateY(-100%);
     pointer-events: none;
+  }
+}
+
+/* ========== HOME — padding por sidebar fijo ========== */
+@media (min-width: 768px) {
+  .home-main { padding-left: 220px; }
+  /* El hero es full-bleed — escapa del padding del sidebar */
+  .home-main > .hero {
+    margin-left: -220px;
+    width: 100vw;
   }
 }
 
