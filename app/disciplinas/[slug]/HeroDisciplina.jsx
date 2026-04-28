@@ -51,7 +51,6 @@ export default function HeroDisciplina({ disciplina, videoId }) {
           {disciplina.salon === 'black' ? 'Salón Black' : 'Salón M&B'}
         </p>
         <h1 className="disciplina-hero__title">{disciplina.nombre}</h1>
-        <p className="disciplina-hero__desc">{disciplina.desc}</p>
         <a
           className="disciplina-hero__whatsapp"
           id="disciplinaWhatsapp"
