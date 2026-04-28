@@ -385,9 +385,28 @@ export const horarios = [
   { salon:'black', dias:['sab'], hora:'11:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'12:00', claves:['allout'],                             nota:null },
 
-  // Open Box — disponibilidad por reserva (sentinel 'reservas' → sort al final del grid)
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'reservas', claves:['open-box'], nota:'07:00 a 21:00' },
-  { salon:'black', dias:['sab'],                         hora:'reservas', claves:['open-box'], nota:'09:00 a 13:00' },
+  // Open Box — L-V 07:00–21:00 · Sábado 09:00–14:00 (badge junto a las demás clases)
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'08:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'09:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'10:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'11:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'12:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'13:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'14:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'15:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'16:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'17:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'18:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'19:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'20:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'21:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['sab'],                         hora:'09:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['sab'],                         hora:'10:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['sab'],                         hora:'11:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['sab'],                         hora:'12:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['sab'],                         hora:'13:00', claves:['open-box'], nota:null },
+  { salon:'black', dias:['sab'],                         hora:'14:00', claves:['open-box'], nota:null },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SALÓN M&B

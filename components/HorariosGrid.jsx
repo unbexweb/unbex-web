@@ -53,7 +53,7 @@ function TablaHorarios({ salon }) {
         <tbody>
           {horas.map(hora => (
             <tr key={hora}>
-              <td className="horarios__hora">{hora === 'reservas' ? 'Reservas' : hora}</td>
+              <td className="horarios__hora">{hora}</td>
               {dias.map(dia => {
                 const matches = entradas.filter(h => h.hora === hora && h.dias.includes(dia));
 
