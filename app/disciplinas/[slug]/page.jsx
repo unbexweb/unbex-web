@@ -54,31 +54,9 @@ export default async function DisciplinaPage({ params }) {
 
               <div className="disciplina-info__horarios">
                 <h2 className="section__title">Horarios</h2>
-                {slug === 'open-box' ? (
-                  <div className="openbox-horarios">
-                    <p className="disciplina-info__texto">
-                      Reservas disponibles por hora. Consultanos para coordinar tu turno.
-                    </p>
-                    <div className="openbox-horarios__grid">
-                      <div className="openbox-horarios__card">
-                        <span className="openbox-horarios__dia">Lunes a Viernes</span>
-                        <span className="openbox-horarios__rango">07:00 — 21:00</span>
-                      </div>
-                      <div className="openbox-horarios__card">
-                        <span className="openbox-horarios__dia">Sábado</span>
-                        <span className="openbox-horarios__rango">09:00 — 14:00</span>
-                      </div>
-                      <div className="openbox-horarios__card openbox-horarios__card--cerrado">
-                        <span className="openbox-horarios__dia">Domingo</span>
-                        <span className="openbox-horarios__rango">Cerrado</span>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="horarios__tabla" id="horariosTabla">
-                    <HorariosTable clave={slug} nombreDisciplina={disciplina.nombre} />
-                  </div>
-                )}
+                <div className="horarios__tabla" id="horariosTabla">
+                  <HorariosTable clave={slug} nombreDisciplina={disciplina.nombre} />
+                </div>
               </div>
 
             </div>
