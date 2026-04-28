@@ -864,6 +864,42 @@ button {
   opacity: 0.85;
 }
 
+.card-back .card-desc--soon {
+  opacity: 0.45;
+  font-style: italic;
+  font-size: 0.8rem;
+}
+
+.card-back__info {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.card-back__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-back__label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #4B2556;
+  opacity: 0.5;
+}
+
+.card-back__valor {
+  font-size: 0.8rem;
+  color: #4B2556;
+  line-height: 1.3;
+  opacity: 0.88;
+}
+
 /* ========== TAB HINT — dedo flotante ========== */
 .tab-hint-wrap {
   display: flex;
