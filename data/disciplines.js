@@ -63,6 +63,9 @@ export const disciplinas = [
     icono:  '⚡',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Crossfit en Unbex ⚡'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'funcional',
@@ -75,6 +78,9 @@ export const disciplinas = [
     icono:  '🏃',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Cross Funcional en Unbex 🏃'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'musculacion',
@@ -86,6 +92,9 @@ export const disciplinas = [
     icono:  '💪',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Musculación en Unbex 💪'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'tercera-edad',
@@ -96,6 +105,9 @@ export const disciplinas = [
     icono:  '🌟',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre la clase de 3ra Edad en Unbex 🌟'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'open-box',
@@ -106,6 +118,9 @@ export const disciplinas = [
     icono:  '🏟️',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Open Box en Unbex 🏟️'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   // ── SALÓN M&B ─────────────────────────────────────────────────────────────
   {
@@ -117,6 +132,9 @@ export const disciplinas = [
     icono:  '🧘',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Yoga en Unbex 🧘'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'stretching',
@@ -127,6 +145,9 @@ export const disciplinas = [
     icono:  '🤸',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Stretching en Unbex 🤸'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'pilates',
@@ -137,6 +158,9 @@ export const disciplinas = [
     icono:  '🧘',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Pilates Mat en Unbex 🧘'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'zumba',
@@ -147,6 +171,9 @@ export const disciplinas = [
     icono:  '💃',
     color:  'card--red',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Zumba en Unbex 💃'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'judo-kids',
@@ -157,6 +184,9 @@ export const disciplinas = [
     icono:  '🥋',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Judo Kids en Unbex 🥋'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'jiu-jitsu',
@@ -167,6 +197,9 @@ export const disciplinas = [
     icono:  '🥋',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Jiu Jitsu en Unbex 🥋'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'fiit',
@@ -177,6 +210,9 @@ export const disciplinas = [
     icono:  '🔥',
     color:  'card--red',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre FIIT en Unbex 🔥'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'localizada',
@@ -187,6 +223,9 @@ export const disciplinas = [
     icono:  '💪',
     color:  'card--red',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Localizada/GAP en Unbex 💪'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
   {
     clave:  'body-pump',
@@ -197,6 +236,9 @@ export const disciplinas = [
     icono:  '🏋️',
     color:  'card--red',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Body Pump en Unbex 🏋️'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
   },
 ];
 
@@ -342,6 +384,10 @@ export const horarios = [
   { salon:'black', dias:['sab'], hora:'10:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'11:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'12:00', claves:['allout'],                             nota:null },
+
+  // Open Box — disponibilidad por reserva (sentinel 'reservas' → sort al final del grid)
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'reservas', claves:['open-box'], nota:'07:00 a 21:00' },
+  { salon:'black', dias:['sab'],                         hora:'reservas', claves:['open-box'], nota:'09:00 a 13:00' },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SALÓN M&B

@@ -110,7 +110,7 @@ function PreciosAcordeon() {
 export default function PreciosSection() {
   const [tab, setTab] = useState('black');
   const [isMobile, setIsMobile] = useState(false);
-  const tabsRef = useRef(null);
+  const tabsRef = useRef([]);
   const activeIndex = TABS.findIndex(t => t.id === tab);
 
   useEffect(() => {
@@ -147,11 +147,12 @@ export default function PreciosSection() {
         ) : (
           <>
             <div className="tab-hint-wrap">
-              <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
-              <div className="horarios__tabs" ref={tabsRef}>
-                {TABS.map(t => (
+              <div className="horarios__tabs">
+                <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
+                {TABS.map((t, i) => (
                   <button
                     key={t.id}
+                    ref={el => tabsRef.current[i] = el}
                     className={`horarios__tab${tab === t.id ? ' horarios__tab--active' : ''}`}
                     onClick={() => setTab(t.id)}
                   >

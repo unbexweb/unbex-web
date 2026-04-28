@@ -53,7 +53,7 @@ function TablaHorarios({ salon }) {
         <tbody>
           {horas.map(hora => (
             <tr key={hora}>
-              <td className="horarios__hora">{hora}</td>
+              <td className="horarios__hora">{hora === 'reservas' ? 'Reservas' : hora}</td>
               {dias.map(dia => {
                 const matches = entradas.filter(h => h.hora === hora && h.dias.includes(dia));
 
@@ -96,7 +96,7 @@ const SALON_IDS = ['black', 'mb'];
 
 export default function HorariosGrid() {
   const [tab, setTab] = useState('black');
-  const tabsRef = useRef(null);
+  const tabsRef = useRef([]);
   const activeIndex = SALON_IDS.indexOf(tab);
 
   return (
@@ -107,9 +107,10 @@ export default function HorariosGrid() {
         <p className="section__subtitle">Elegí tu salón y encontrá tu turno ideal</p>
 
         <div className="tab-hint-wrap">
-          <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
-          <div className="horarios__tabs" ref={tabsRef} id="horariosTabs">
+          <div className="horarios__tabs" id="horariosTabs">
+            <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
             <button
+              ref={el => tabsRef.current[0] = el}
               className={`horarios__tab${tab === 'black' ? ' horarios__tab--active' : ''}`}
               data-salon="black"
               onClick={() => setTab('black')}
@@ -117,6 +118,7 @@ export default function HorariosGrid() {
               Salón Black
             </button>
             <button
+              ref={el => tabsRef.current[1] = el}
               className={`horarios__tab${tab === 'mb' ? ' horarios__tab--active' : ''}`}
               data-salon="mb"
               onClick={() => setTab('mb')}
