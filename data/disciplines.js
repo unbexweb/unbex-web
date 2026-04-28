@@ -315,46 +315,53 @@ export const horarios = [
   // ═══════════════════════════════════════════════════════════════════════════
   // SALÓN BLACK
   // ═══════════════════════════════════════════════════════════════════════════
+
+  // Turnos libres L-V (el alumno elige entre Cross / Func / Muscu)
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'08:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'09:00', claves:['musculacion'],                      nota:null },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'10:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'11:00', claves:['musculacion'],                      nota:null },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'12:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'13:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'14:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'15:00', claves:['musculacion'],                      nota:null },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'16:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'17:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'18:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'19:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','vie'],       hora:'20:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['jue'],                         hora:'20:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige · Se suma Olimpismo' },
+  { salon:'black', dias:['jue'],                         hora:'20:00', claves:['crossfit','funcional','musculacion','oly'], nota:'El alumno elige · Se suma Olimpismo' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'21:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
+
+  // Musculación exclusivo L-V
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'09:00', claves:['musculacion'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'11:00', claves:['musculacion'], nota:null },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'15:00', claves:['musculacion'], nota:null },
+
+  // 3ra Edad — Salón Black
+  { salon:'black', dias:['mar','jue'], hora:'11:00', claves:['tercera-edad'], nota:null },
+
+  // Sábado Black
   { salon:'black', dias:['sab'], hora:'09:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'10:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'11:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['sab'], hora:'12:00', claves:['musculacion'], nota:'Allout / El alumno elige' },
+  { salon:'black', dias:['sab'], hora:'12:00', claves:['allout'],                             nota:null },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SALÓN M&B
   // ═══════════════════════════════════════════════════════════════════════════
   { salon:'mb', dias:['lun','mie','vie'], hora:'09:00', claves:['fiit'] },
-  { salon:'mb', dias:['mie','vie'],       hora:'19:00', claves:['fiit'] },
-  { salon:'mb', dias:['mie','vie'],       hora:'20:00', claves:['fiit'] },
-  { salon:'mb', dias:['jue'],       hora:'10:00', claves:['pilates'] },
-  { salon:'mb', dias:['mar','jue'], hora:'17:00', claves:['pilates'] },
-  { salon:'mb', dias:['vie'],       hora:'11:00', claves:['stretching'] },
-  { salon:'mb', dias:['lun'],       hora:'12:00', claves:['stretching'] },
-  { salon:'mb', dias:['mar','jue'], hora:'18:00', claves:['stretching'] },
-  { salon:'mb', dias:['lun'], hora:'16:00', claves:['yoga'] },
-  { salon:'mb', dias:['mie'], hora:'18:00', claves:['yoga'] },
-  { salon:'mb', dias:['mar','jue'], hora:'16:00', claves:['tercera-edad'] },
-  { salon:'mb', dias:['lun','vie'], hora:'18:00', claves:['judo-kids'] },
-  { salon:'mb', dias:['mar','jue'], hora:'19:00', claves:['zumba'] },
-  { salon:'mb', dias:['sab'],       hora:'11:00', claves:['zumba'] },
-  { salon:'mb', dias:['vie'], hora:'19:00', claves:['body-pump'] },
-  { salon:'mb', dias:['mar','jue'], hora:'20:00', claves:['localizada'] },
-  { salon:'mb', dias:['sab'],       hora:'12:00', claves:['localizada'] },
-  { salon:'mb', dias:['lun','mie'], hora:'20:00', claves:['jiu-jitsu'] },
+  { salon:'mb', dias:['mie'],             hora:'19:00', claves:['fiit'] },
+  { salon:'mb', dias:['vie'],             hora:'20:00', claves:['fiit'] },
+  { salon:'mb', dias:['jue'],             hora:'10:00', claves:['pilates'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'17:00', claves:['pilates'] },
+  { salon:'mb', dias:['vie'],             hora:'11:00', claves:['stretching'] },
+  { salon:'mb', dias:['lun'],             hora:'12:00', claves:['stretching'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'18:00', claves:['stretching'] },
+  { salon:'mb', dias:['lun'],             hora:'16:00', claves:['yoga'] },
+  { salon:'mb', dias:['mie'],             hora:'18:00', claves:['yoga'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'16:00', claves:['tercera-edad'] },
+  { salon:'mb', dias:['lun','vie'],       hora:'18:00', claves:['judo-kids'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'19:00', claves:['zumba'] },
+  { salon:'mb', dias:['sab'],             hora:'11:00', claves:['zumba'] },
+  { salon:'mb', dias:['vie'],             hora:'19:00', claves:['body-pump'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'20:00', claves:['localizada'] },
+  { salon:'mb', dias:['sab'],             hora:'12:00', claves:['localizada'] },
+  { salon:'mb', dias:['lun','mie'],       hora:'20:00', claves:['jiu-jitsu'] },
 ];
