@@ -17,7 +17,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
     const comando = muted ? 'unMute' : 'mute';
     iframe.contentWindow.postMessage(
       JSON.stringify({ event: 'command', func: comando, args: [] }),
-      'https://www.youtube.com'
+      'https://www.youtube-nocookie.com'
     );
     setMuted(prev => !prev);
   }
@@ -32,9 +32,9 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
             ref={iframeRef}
             className="hero__video"
             id="heroVideo"
-            src={`https://www.youtube.com/embed/${VIDEO_DEFAULT}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_DEFAULT}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
+            src={`https://www.youtube-nocookie.com/embed/${VIDEO_DEFAULT}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_DEFAULT}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
             title="Unbex Hero"
-            allow="autoplay; encrypted-media"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
         )}
@@ -44,9 +44,9 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
           <iframe
             key={overlayVideoId}
             className="hero__video hero__video--overlay"
-            src={`https://www.youtube.com/embed/${overlayVideoId}?autoplay=1&mute=1&loop=1&playlist=${overlayVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+            src={`https://www.youtube-nocookie.com/embed/${overlayVideoId}?autoplay=1&mute=1&loop=1&playlist=${overlayVideoId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
             title="Preview disciplina"
-            allow="autoplay; encrypted-media"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
           />
         )}
