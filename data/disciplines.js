@@ -19,26 +19,26 @@ const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 export const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE || '';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// VIDEOS DE DISCIPLINAS — poner el ID de YouTube de cada disciplina acá
+// VIDEOS DE DISCIPLINAS — ID de YouTube por disciplina
 // null = sin video → el hero mostrará solo el overlay con imagen de fondo
 // ─────────────────────────────────────────────────────────────────────────────
 export const DISCIPLINA_VIDEOS = {
-  'crossfit':           process.env.NEXT_PUBLIC_VIDEO_CROSSFIT    || null,
-  'funcional':          process.env.NEXT_PUBLIC_VIDEO_FUNCIONAL   || null,
-  'musculacion':        process.env.NEXT_PUBLIC_VIDEO_MUSCULACION || null,
-  'tercera-edad':       process.env.NEXT_PUBLIC_VIDEO_TERCERA_EDAD || null,
-  'open-box':           process.env.NEXT_PUBLIC_VIDEO_OPEN_BOX    || null,
-  'yoga':               process.env.NEXT_PUBLIC_VIDEO_YOGA        || null,
-  'stretching':         process.env.NEXT_PUBLIC_VIDEO_STRETCHING  || null,
-  'pilates':            process.env.NEXT_PUBLIC_VIDEO_PILATES      || null,
-  'zumba':              process.env.NEXT_PUBLIC_VIDEO_ZUMBA        || null,
-  'judo-kids':          process.env.NEXT_PUBLIC_VIDEO_JUDO_KIDS    || null,
-  'jiu-jitsu':          process.env.NEXT_PUBLIC_VIDEO_JIU_JITSU   || null,
-  'fiit':               process.env.NEXT_PUBLIC_VIDEO_FIIT         || null,
-  'localizada':         process.env.NEXT_PUBLIC_VIDEO_LOCALIZADA   || null,
-  'body-pump':          process.env.NEXT_PUBLIC_VIDEO_BODY_PUMP    || null,
-  'servicios':          process.env.NEXT_PUBLIC_VIDEO_SERVICIOS   || 'KlvQq-FK9SQ',
-  'precios':            process.env.NEXT_PUBLIC_VIDEO_PRECIOS     || 'CatEXzcy3Uk',
+  'crossfit':     'rAFygka9w_o',
+  'funcional':    null,
+  'musculacion':  null,
+  'tercera-edad': null,
+  'open-box':     null,
+  'yoga':         null,
+  'stretching':   null,
+  'pilates':      null,
+  'zumba':        null,
+  'judo-kids':    null,
+  'jiu-jitsu':    null,
+  'fiit':         null,
+  'localizada':   null,
+  'body-pump':    null,
+  'servicios':    'KlvQq-FK9SQ',
+  'precios':      'CatEXzcy3Uk',
 };
 
 export const CONTACTO = {

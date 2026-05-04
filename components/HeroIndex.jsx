@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 import { DISCIPLINA_VIDEOS } from '@/data/disciplines';
 
-const VIDEO_DEFAULT = process.env.NEXT_PUBLIC_VIDEO_HERO || null;
+const VIDEO_DEFAULT = 'rAFygka9w_o';
 
 export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
   const [muted, setMuted] = useState(true);
