@@ -477,8 +477,8 @@ button {
 
 @media (min-width: 768px) {
   .hero--lateral-activo .hero__video-container {
-    left: 260px;
-    width: calc(100% - 260px);
+    left: 290px;
+    width: calc(100% - 290px);
   }
 
   .hero--lateral-activo .hero__content {
@@ -1411,7 +1411,11 @@ body.salon-mb .topbar {
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-xs);
-  margin-bottom: var(--spacing-lg);
+  width: fit-content;
+  margin: 0 auto var(--spacing-lg);
+  padding: 28px 40px;
+  background: var(--color-violeta);
+  border-radius: 20px;
   text-align: center;
 }
 
@@ -1536,9 +1540,9 @@ body.salon-mb .topbar {
 }
 
 .precio-card__precio {
-  font-family: var(--font-primary);
+  font-family: 'Montserrat', sans-serif;
   font-size: var(--text-2xl);
-  font-weight: 100;
+  font-weight: 700;
   color: var(--color-text);
   line-height: 1;
 }
@@ -1550,9 +1554,9 @@ body.salon-mb .topbar {
 }
 
 .precio-card__efvo-label {
-  font-family: var(--font-body);
+  font-family: 'Montserrat', sans-serif;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--color-accent);
@@ -1560,7 +1564,7 @@ body.salon-mb .topbar {
 }
 
 .precio-card__efvo-valor {
-  font-family: var(--font-body);
+  font-family: 'Montserrat', sans-serif;
   font-size: var(--text-base);
   font-weight: 700;
   color: var(--color-accent);
@@ -1802,7 +1806,18 @@ body.salon-mb .topbar {
   text-align: center;
 }
 
-.footer__copy { font-size: var(--text-sm); color: var(--color-text-light); }
+.footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.footer__copy {
+  font-size: var(--text-sm);
+  color: var(--color-text-light);
+  text-align: center;
+}
 
 /* ========== PÁGINA COMUNIDAD UNBEX ========== */
 .comunidad-hero__bg {
@@ -2178,10 +2193,10 @@ main.salon-mb .trabaja-hero__overlay {
 
 /* ========== HOME — padding por sidebar fijo ========== */
 @media (min-width: 768px) {
-  .home-main { padding-left: 260px; }
+  .home-main { padding-left: 290px; }
   /* El hero es full-bleed — escapa del padding del sidebar */
   .home-main > .hero {
-    margin-left: -260px;
+    margin-left: -290px;
     width: 100vw;
   }
 }
@@ -2193,7 +2208,7 @@ main.salon-mb .trabaja-hero__overlay {
   left: 0;
   top: 0;
   height: 100vh;
-  width: 260px;
+  width: 290px;
   z-index: 100;
   flex-direction: column;
   justify-content: flex-start;
