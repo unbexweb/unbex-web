@@ -477,8 +477,8 @@ button {
 
 @media (min-width: 768px) {
   .hero--lateral-activo .hero__video-container {
-    left: 220px;
-    width: calc(100% - 220px);
+    left: 260px;
+    width: calc(100% - 260px);
   }
 
   .hero--lateral-activo .hero__content {
@@ -935,6 +935,13 @@ button {
   .tab-hint__bounce { animation: none; }
 }
 
+/* ========== HORARIOS — CONTENEDOR ========== */
+.horarios .section__container {
+  max-width: 95%;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
 /* ========== HORARIOS — TABS ========== */
 .horarios__tabs {
   position: relative;
@@ -970,15 +977,16 @@ button {
 .horarios__panel--active { display: block; }
 
 .horarios__table-wrap {
-  border-radius: var(--border-radius-md);
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 8px;
   box-shadow: 0 0 40px rgba(0,0,0,0.6);
-  border: 1px solid rgba(255,255,255,0.08);
-  background-color: var(--color-background-alt);
-  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  background-color: #171717;
 }
 
 .horarios__table {
-  width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -987,9 +995,9 @@ button {
 
 .horarios__table thead th {
   color: var(--color-text-light);
-  padding: 6px 4px;
+  padding: 8px 6px;
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 600;
   text-align: center;
   white-space: nowrap;
@@ -998,7 +1006,8 @@ button {
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-.horarios__th-hora { text-align: left !important; width: 46px; }
+.horarios__th-hora { text-align: left !important; width: 80px; }
+.horarios__table thead th:not(.horarios__th-hora) { width: calc((100% - 80px) / 6); }
 
 .horarios__table tbody tr {
   border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -1008,7 +1017,7 @@ button {
 .horarios__table tbody tr:hover { background-color: var(--color-secondary); }
 
 .horarios__table td {
-  padding: 4px 2px;
+  padding: 6px 4px;
   text-align: center;
   vertical-align: middle;
 }
@@ -1017,7 +1026,7 @@ button {
 
 .horarios__hora {
   color: var(--color-text-light) !important;
-  font-size: 10px !important;
+  font-size: 12px !important;
   font-weight: 600 !important;
   text-align: left !important;
   white-space: nowrap;
@@ -1029,16 +1038,14 @@ button {
 .horarios__badge {
   display: inline-block;
   border-radius: 3px;
-  padding: 2px 4px;
-  font-size: 9px;
+  padding: 3px 6px;
+  font-size: 11px;
   font-family: var(--font-body);
   font-weight: 600;
   line-height: 1.3;
   white-space: nowrap;
   cursor: default;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  text-transform: none;
 }
 
 .horarios__badge--especifica { background-color: var(--color-text-light); color: var(--color-primary); }
@@ -2171,10 +2178,10 @@ main.salon-mb .trabaja-hero__overlay {
 
 /* ========== HOME — padding por sidebar fijo ========== */
 @media (min-width: 768px) {
-  .home-main { padding-left: 220px; }
+  .home-main { padding-left: 260px; }
   /* El hero es full-bleed — escapa del padding del sidebar */
   .home-main > .hero {
-    margin-left: -220px;
+    margin-left: -260px;
     width: 100vw;
   }
 }
@@ -2186,7 +2193,7 @@ main.salon-mb .trabaja-hero__overlay {
   left: 0;
   top: 0;
   height: 100vh;
-  width: 220px;
+  width: 260px;
   z-index: 100;
   flex-direction: column;
   justify-content: flex-start;
@@ -2325,7 +2332,6 @@ main.salon-mb .trabaja-hero__overlay {
 
   /* Tabla horarios: scroll horizontal si no entra */
   .horarios__table-wrap {
-    overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
   .horarios__table {
