@@ -22,6 +22,8 @@ export const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE || '';
 // VIDEOS DE DISCIPLINAS — ID de YouTube por disciplina
 // null = sin video → el hero mostrará solo el overlay con imagen de fondo
 // ─────────────────────────────────────────────────────────────────────────────
+export const VIDEO_HERO_DEFAULT = 'rAFygka9w_o';
+
 export const DISCIPLINA_VIDEOS = {
   'crossfit':     'rAFygka9w_o',
   'funcional':    null,

@@ -1,9 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { DISCIPLINA_VIDEOS } from '@/data/disciplines';
-
-const VIDEO_DEFAULT = 'rAFygka9w_o';
+import { DISCIPLINA_VIDEOS, VIDEO_HERO_DEFAULT as VIDEO_DEFAULT } from '@/data/disciplines';
 
 export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
   const [muted, setMuted] = useState(true);
@@ -56,7 +54,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
 
       <div className="hero__content">
         <h1 className="hero__title">Unbex</h1>
-        <p className="hero__subtitle">Unbeatable experience</p>
+        <p className="hero__subtitle">It's not about training, it's about unlocking yourself</p>
       </div>
 
       {VIDEO_DEFAULT && (

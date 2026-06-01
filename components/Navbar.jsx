@@ -25,6 +25,14 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
     setOpenDropdown(prev => prev === name ? null : name);
   }
 
+  function handleLogoClick(e) {
+    if (pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    closeAll();
+  }
+
   // Cierra el dropdown al hacer click fuera del navbar
   useEffect(() => {
     if (!openDropdown) return;
@@ -40,7 +48,7 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
   return (
     <>
       {/* Logo flotante */}
-      <Link href="/" className="navbar__logo" id="siteLogo">
+      <Link href="/" className="navbar__logo" id="siteLogo" onClick={handleLogoClick}>
         <Image src="/img/logo.png" alt="Unbex" width={160} height={94} priority />
       </Link>
 
@@ -159,9 +167,9 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
                 <ul className="navbar__dropdown">
                   {consultorios.map(c => (
                     <li key={c.nombre}>
-                      <a href={c.wa} target="_blank" rel="noopener noreferrer" onClick={closeAll}>
+                      <Link href="/#consultorios" onClick={closeAll}>
                         {c.icono} {c.nombre}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
