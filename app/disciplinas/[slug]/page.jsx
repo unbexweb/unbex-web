@@ -4,8 +4,8 @@ import Navbar from '@/components/Navbar';
 import HorariosTable from '@/components/HorariosTable';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
-import HeroDisciplina from './HeroDisciplina';
-import { disciplinas, DISCIPLINA_VIDEOS } from '@/data/disciplines';
+import HeroWrapper from './HeroWrapper';
+import { disciplinas, DISCIPLINA_HERO_VIDEOS } from '@/data/disciplines';
 
 export function generateStaticParams() {
   return disciplinas.map(d => ({ slug: d.clave }));
@@ -27,7 +27,7 @@ export default async function DisciplinaPage({ params }) {
 
   if (!disciplina) notFound();
 
-  const videoId  = DISCIPLINA_VIDEOS[slug] || null;
+  const videoSrc = DISCIPLINA_HERO_VIDEOS[slug] || null;
   const isMb     = disciplina.salon === 'mb';
   const isBlack  = disciplina.salon === 'black';
 
@@ -37,7 +37,7 @@ export default async function DisciplinaPage({ params }) {
       <Navbar />
       <main className={isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''}>
 
-        <HeroDisciplina disciplina={disciplina} videoId={videoId} />
+        <HeroWrapper disciplina={disciplina} videoSrc={videoSrc} />
 
         {/* INFO — 2 columnas: descripción + horarios */}
         <section className="disciplina-info">

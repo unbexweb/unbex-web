@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { precios, WA_NUMBER } from '@/data/disciplines';
 import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import TabHint from '@/components/TabHint';
@@ -136,11 +135,6 @@ export default function PreciosSection() {
         </div>
 
         <h2 className="section__title">Planes y Precios</h2>
-        <p className="precios__como-link">
-          <Link href="/como-funcionan-los-abonos">
-            Conocé cómo funcionan nuestros planes antes de elegir
-          </Link>
-        </p>
 
         {isMobile ? (
           <PreciosAcordeon />

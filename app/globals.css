@@ -492,8 +492,10 @@ button {
   height: 100%;
   border: none;
   pointer-events: none;
+  object-fit: cover;
   transform: scale(1.1);
 }
+
 
 .hero__overlay {
   position: absolute;
@@ -521,7 +523,7 @@ button {
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 20vh var(--spacing-sm) 10vh;
+  padding: 0 var(--spacing-sm) 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -599,6 +601,7 @@ button {
   height: 100%;
   border: none;
   pointer-events: none;
+  object-fit: cover;
   transform: scale(1.1);
 }
 
@@ -1830,7 +1833,7 @@ body.salon-mb .topbar {
   background:
     radial-gradient(ellipse at 70% 30%, rgba(245,198,198,0.5) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 70%, rgba(122,61,135,0.55) 0%, transparent 60%),
-    #2a0e3a;
+    url('/img/hero_fallback.jpg') center/cover no-repeat;
 }
 
 main.salon-mb .trabaja-hero__overlay {
@@ -2005,7 +2008,7 @@ main.salon-mb .trabaja-hero__overlay {
   background:
     radial-gradient(ellipse at 60% 40%, rgba(122,61,135,0.5) 0%, transparent 65%),
     radial-gradient(ellipse at 20% 70%, rgba(75,37,86,0.6) 0%, transparent 60%),
-    var(--color-background);
+    url('/img/hero_fallback.jpg') center/cover no-repeat;
 }
 
 .trabaja-hero__overlay {

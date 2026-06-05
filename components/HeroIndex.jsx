@@ -1,43 +1,60 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { DISCIPLINA_VIDEOS, VIDEO_HERO_DEFAULT as VIDEO_DEFAULT } from '@/data/disciplines';
+import { useState, useRef, useEffect } from 'react';
+import { DISCIPLINA_VIDEOS } from '@/data/disciplines';
+
+const SRC_H = '/video/hero/hero_principal_Horizontal.mp4';
+const SRC_V = '/video/hero/hero_principal_Vertical.mp4';
 
 export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
   const [muted, setMuted] = useState(true);
-  const iframeRef = useRef(null);
+  const [src, setSrc] = useState(SRC_H);
+  const videoRef = useRef(null);
 
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
 
+  // Elegir video según orientación/tamaño
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    const update = (mobile) => setSrc(mobile ? SRC_V : SRC_H);
+    update(mq.matches);
+    const handler = (e) => update(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  // Pausar al cambiar de pestaña, reanudar al volver
+  useEffect(() => {
+    const onVisibility = () => {
+      if (!videoRef.current) return;
+      document.hidden ? videoRef.current.pause() : videoRef.current.play();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, []);
+
   function toggleMute() {
-    const iframe = iframeRef.current;
-    if (!iframe) return;
-    const comando = muted ? 'unMute' : 'mute';
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: comando, args: [] }),
-      'https://www.youtube-nocookie.com'
-    );
-    setMuted(prev => !prev);
+    if (!videoRef.current) return;
+    const newMuted = !muted;
+    videoRef.current.muted = newMuted;
+    setMuted(newMuted);
   }
 
   return (
     <section className={`hero${estaEnHero ? ' hero--lateral-activo' : ''}`} id="hero">
       <div className="hero__video-container">
 
-        {/* VIDEO DEFAULT — siempre presente */}
-        {VIDEO_DEFAULT && (
-          <iframe
-            ref={iframeRef}
-            className="hero__video"
-            id="heroVideo"
-            src={`https://www.youtube-nocookie.com/embed/${VIDEO_DEFAULT}?autoplay=1&mute=1&loop=1&playlist=${VIDEO_DEFAULT}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
-            title="Unbex Hero"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
-        )}
+        <video
+          key={src}
+          ref={videoRef}
+          className="hero__video"
+          src={src}
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
 
-        {/* VIDEO OVERLAY — aparece al hacer hover sobre una disciplina */}
         {overlayVideoId && (
           <iframe
             key={overlayVideoId}
@@ -57,16 +74,14 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
         <p className="hero__subtitle">It's not about training, it's about unlocking yourself</p>
       </div>
 
-      {VIDEO_DEFAULT && (
-        <button
-          className="hero__volume"
-          id="heroVolume"
-          onClick={toggleMute}
-          aria-label={muted ? 'Activar sonido' : 'Silenciar'}
-        >
-          {muted ? '🔇' : '🔊'}
-        </button>
-      )}
+      <button
+        className="hero__volume"
+        id="heroVolume"
+        onClick={toggleMute}
+        aria-label={muted ? 'Activar sonido' : 'Silenciar'}
+      >
+        {muted ? '🔇' : '🔊'}
+      </button>
     </section>
   );
 }

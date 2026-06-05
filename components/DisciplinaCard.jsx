@@ -36,7 +36,7 @@ export default function DisciplinaCard({ disciplina, animDelay = 0 }) {
       <Link href={`/disciplinas/${clave}`} className="card-inner" onClick={handleClick}>
         <div
           className="card-front"
-          style={{ backgroundImage: `url(/img/disciplinas/${img})` }}
+          style={{ backgroundImage: `url(/img/cards/${img})` }}
         >
           <span className="card-nombre">{nombre}</span>
         </div>
