@@ -1,26 +1,21 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
-export default function HeroDisciplina({ disciplina, videoSrc }) {
-  const videoRef = useRef(null);
+export default function HeroDisciplina({ disciplina, videoId }) {
   const imgSrc = `/img/cards/${disciplina.img}`;
-
-  useEffect(() => {
-    if (videoRef.current) videoRef.current.muted = true;
-  }, []);
+  const embedSrc = videoId
+    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&modestbranding=1&playsinline=1`
+    : null;
 
   return (
     <section className="disciplina-hero" id="disciplinaHero">
       <div className="disciplina-hero__video-container">
-        {videoSrc ? (
-          <video
-            ref={videoRef}
-            className="disciplina-hero__video"
-            src={videoSrc}
-            autoPlay
-            loop
-            playsInline
+        {embedSrc ? (
+          <iframe
+            className="disciplina-hero__iframe"
+            src={embedSrc}
+            title={disciplina.nombre}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
           />
         ) : (
           <div
@@ -41,14 +36,6 @@ export default function HeroDisciplina({ disciplina, videoSrc }) {
           {disciplina.salon === 'black' ? 'Salón Black' : 'Salón M&B'}
         </p>
         <h1 className="disciplina-hero__title">{disciplina.nombre}</h1>
-        <a
-          className="disciplina-hero__whatsapp"
-          href={disciplina.wa}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Quiero saber más
-        </a>
       </div>
     </section>
   );

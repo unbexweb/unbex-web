@@ -462,6 +462,7 @@ button {
   display: flex;
   align-items: stretch;
   justify-content: center;
+  background: url('/img/hero_fallback.jpg') center/cover no-repeat;
 }
 
 .hero__video-container {
@@ -528,6 +529,7 @@ button {
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-sm);
+  transform: translateX(2vw);
 }
 
 .hero__title {
@@ -587,6 +589,7 @@ button {
   display: flex;
   align-items: stretch;
   justify-content: center;
+  background: url('/img/hero_fallback.jpg') center/cover no-repeat;
 }
 
 .disciplina-hero__video-container {
@@ -603,6 +606,19 @@ button {
   pointer-events: none;
   object-fit: cover;
   transform: scale(1.1);
+}
+
+.disciplina-hero__iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* Video 9:16 centrado. En desktop se ven los costados con hero_fallback de fondo. */
+  height: 100%;
+  width: 56.25vh;   /* ancho correcto para 9:16 a altura completa */
+  min-width: 100%;  /* mínimo ancho del contenedor en pantallas angostas */
+  transform: translate(-50%, -50%);
+  border: none;
+  pointer-events: none;
 }
 
 .disciplina-hero__overlay {
@@ -1826,6 +1842,13 @@ body.salon-mb .topbar {
   font-size: var(--text-sm);
   color: var(--color-text-light);
   text-align: center;
+}
+
+/* Footer en home: compensar el sidebar de 290px para centrar en área visible */
+@media (min-width: 768px) {
+  .home-main + .footer .footer__container {
+    padding-left: 290px;
+  }
 }
 
 /* ========== PÁGINA COMUNIDAD UNBEX ========== */

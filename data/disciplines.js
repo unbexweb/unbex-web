@@ -22,20 +22,20 @@ export const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE || '';
 // VIDEOS DE DISCIPLINAS — ID de YouTube por disciplina
 // null = sin video → el hero mostrará solo el overlay con imagen de fondo
 // ─────────────────────────────────────────────────────────────────────────────
-// Videos locales para el hero de cada página de disciplina (sin audio)
+// IDs de YouTube Shorts para el hero de cada página de disciplina
 export const DISCIPLINA_HERO_VIDEOS = {
-  'crossfit':     '/video/disciplinas/hero_disciplinas_crossfit.mov',
-  'musculacion':  '/video/disciplinas/hero_disciplinas_musculacion.mp4',
-  'tercera-edad': '/video/disciplinas/hero_disciplinas_3raedad.mov',
-  'open-box':     '/video/disciplinas/hero_disciplinas_openbox.mp4',
-  'yoga':         '/video/disciplinas/hero_disciplinas_yoga.mp4',
-  'stretching':   '/video/disciplinas/hero_disciplinas_stretching.mp4',
-  'pilates':      '/video/disciplinas/hero_disciplinas_pilates.mov',
-  'zumba':        '/video/disciplinas/hero_disciplinas_zumba.mp4',
-  'judo-kids':    '/video/disciplinas/hero_disciplinas_judokids.mp4',
-  'jiu-jitsu':    '/video/disciplinas/hero_disciplinas_jiujitsu.mp4',
-  'localizada':   '/video/disciplinas/hero_disciplinas_localizada.mov',
-  'body-pump':    '/video/disciplinas/hero_disciplinas_bodypump.mp4',
+  'crossfit':     'rhUilTNg7_Q',
+  'musculacion':  'T_Y4dwUFzSg',
+  'tercera-edad': 'r8kXY-P2lXU',
+  'open-box':     'jrbnUpwQBgw',
+  'yoga':         'wcbCO--chfM',
+  'stretching':   'z11JJCUOTI0',
+  'pilates':      'C1WyP_J1Cx0',
+  'zumba':        '7WVGXMfuy8Y',
+  'judo-kids':    '01PSK5taBeE',
+  'jiu-jitsu':    'rFYYF6iYisQ',
+  'localizada':   'BCp5wIV5FT4',
+  'body-pump':    'jv4JyOGGbzo',
 };
 
 // IDs de YouTube para el overlay del hero principal

@@ -27,7 +27,7 @@ export default async function DisciplinaPage({ params }) {
 
   if (!disciplina) notFound();
 
-  const videoSrc = DISCIPLINA_HERO_VIDEOS[slug] || null;
+  const videoId = DISCIPLINA_HERO_VIDEOS[slug] || null;
   const isMb     = disciplina.salon === 'mb';
   const isBlack  = disciplina.salon === 'black';
 
@@ -37,7 +37,7 @@ export default async function DisciplinaPage({ params }) {
       <Navbar />
       <main className={isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''}>
 
-        <HeroWrapper disciplina={disciplina} videoSrc={videoSrc} />
+        <HeroWrapper disciplina={disciplina} videoId={videoId} />
 
         {/* INFO — 2 columnas: descripción + horarios */}
         <section className="disciplina-info">

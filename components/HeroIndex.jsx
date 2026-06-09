@@ -3,40 +3,38 @@
 import { useState, useRef, useEffect } from 'react';
 import { DISCIPLINA_VIDEOS } from '@/data/disciplines';
 
-const SRC_H = '/video/hero/hero_principal_Horizontal.mp4';
-const SRC_V = '/video/hero/hero_principal_Vertical.mp4';
+const HERO_VIDEO_ID = 'IpcjENOjZSQ';
 
 export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
   const [muted, setMuted] = useState(true);
-  const [src, setSrc] = useState(SRC_H);
-  const videoRef = useRef(null);
+  const iframeRef = useRef(null);
 
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
 
-  // Elegir video según orientación/tamaño
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)');
-    const update = (mobile) => setSrc(mobile ? SRC_V : SRC_H);
-    update(mq.matches);
-    const handler = (e) => update(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
-  }, []);
+  const embedSrc = `https://www.youtube-nocookie.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${HERO_VIDEO_ID}`;
 
   // Pausar al cambiar de pestaña, reanudar al volver
   useEffect(() => {
     const onVisibility = () => {
-      if (!videoRef.current) return;
-      document.hidden ? videoRef.current.pause() : videoRef.current.play();
+      if (!iframeRef.current) return;
+      const cmd = document.hidden ? 'pauseVideo' : 'playVideo';
+      iframeRef.current.contentWindow?.postMessage(
+        JSON.stringify({ event: 'command', func: cmd, args: [] }),
+        '*'
+      );
     };
     document.addEventListener('visibilitychange', onVisibility);
     return () => document.removeEventListener('visibilitychange', onVisibility);
   }, []);
 
   function toggleMute() {
-    if (!videoRef.current) return;
+    if (!iframeRef.current) return;
     const newMuted = !muted;
-    videoRef.current.muted = newMuted;
+    const cmd = newMuted ? 'mute' : 'unMute';
+    iframeRef.current.contentWindow?.postMessage(
+      JSON.stringify({ event: 'command', func: cmd, args: [] }),
+      '*'
+    );
     setMuted(newMuted);
   }
 
@@ -44,15 +42,13 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
     <section className={`hero${estaEnHero ? ' hero--lateral-activo' : ''}`} id="hero">
       <div className="hero__video-container">
 
-        <video
-          key={src}
-          ref={videoRef}
+        <iframe
+          ref={iframeRef}
           className="hero__video"
-          src={src}
-          autoPlay
-          muted
-          loop
-          playsInline
+          src={embedSrc}
+          title="Unbex hero"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
         />
 
         {overlayVideoId && (
