@@ -86,15 +86,15 @@ export const disciplinas = [
   },
   {
     clave:  'funcional',
-    nombre: 'Cross Funcional',
-    short:  'Cross Funcional',
+    nombre: 'Funcional',
+    short:  'Funcional',
     salon:  'black',
     img:    'card_disciplinas_crossfuncional.jpg',
     desc:   'Entrenamiento funcional adaptado a tu nivel. Movimientos reales, resultados reales. Cupo limitado.',
     descLarga: 'El entrenamiento funcional trabaja los patrones de movimiento del cuerpo humano: empujar, halar, agachar, rotar y cargar. Cada clase está diseñada para mejorar tu rendimiento en la vida cotidiana y en el deporte, con una metodología 100% adaptable a tu nivel y objetivos.',
     icono:  '🏃',
     color:  'card--blue',
-    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Cross Funcional en Unbex 🏃'),
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Funcional en Unbex 🏃'),
     paraQuien: 'Quienes quieren un entrenamiento dinámico y variado, de cualquier nivel y edad.',
     objetivos: 'Mejorás tu fuerza, agilidad y resistencia con movimientos naturales aplicables a tu vida diaria.',
     duracion:  '60 minutos',
@@ -267,7 +267,7 @@ export const precios = {
     {
       id: 'black',
       nombre: 'Salón Black',
-      desc: 'Musculación, Crossfit, Cross Funcional, 3ra Edad',
+      desc: 'Musculación, Crossfit, Funcional, 3ra Edad',
       planes: [
         { plan: '4 clases',  precio: 34650, efvo: 31500 },
         { plan: '8 clases',  precio: 48400, efvo: 44000 },
