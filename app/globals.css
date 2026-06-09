@@ -1936,6 +1936,100 @@ main.salon-mb .trabaja-hero__overlay {
 
 .comunidad-cta-secondary:hover { color: var(--color-text); }
 
+/* ========== COMUNIDAD — MOMENTOS ========== */
+.comunidad-momentos {
+  padding: var(--spacing-xl) 0;
+  background: #1a0a22;
+}
+
+.comunidad-momentos .section__eyebrow,
+.comunidad-momentos .section__title,
+.comunidad-momentos .section__subtitle {
+  color: #ffffff;
+}
+
+.comunidad-momentos .section__subtitle {
+  color: #FDE3D8;
+}
+
+.comunidad-momentos__grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-lg);
+}
+
+.comunidad-momento {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.comunidad-momento__video-wrap {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+}
+
+.comunidad-momento__iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.comunidad-momento__texto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.comunidad-momento__tag {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #FDE3D8;
+  text-transform: uppercase;
+}
+
+.comunidad-momento__titulo {
+  font-size: var(--text-xl);
+  font-family: var(--font-primary);
+  color: #d4b8e8;
+}
+
+.comunidad-momento__desc {
+  font-size: var(--text-base);
+  color: #FDE3D8;
+  line-height: 1.75;
+  max-width: 42ch;
+}
+
+@media (min-width: 768px) {
+  .comunidad-momento {
+    flex-direction: row;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+
+  .comunidad-momento--invertido {
+    flex-direction: row-reverse;
+  }
+
+  .comunidad-momento__video-wrap {
+    max-width: 280px;
+  }
+
+  .comunidad-momento__texto {
+    justify-content: center;
+  }
+}
+
 /* ========== SECCIÓN CONTACTO ========== */
 .contacto {
   background: var(--color-background-alt);

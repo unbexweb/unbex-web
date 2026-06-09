@@ -35,9 +35,9 @@ const valores = [
 
 const pilares = [
   { numero: '500+', label: 'Miembros activos' },
-  { numero: '6',    label: 'Disciplinas disponibles' },
-  { numero: '7',    label: 'Días a la semana' },
-  { numero: '10+',  label: 'Años de comunidad' },
+  { numero: '14',   label: 'Disciplinas disponibles' },
+  { numero: '6',    label: 'Días a la semana' },
+  { numero: '4',    label: 'Años de comunidad' },
 ];
 
 export default function ComunidadUnbex() {
@@ -92,6 +92,61 @@ export default function ComunidadUnbex() {
                   <span className="comunidad-stat__label">{p.label}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* MOMENTOS */}
+        <section className="comunidad-momentos">
+          <div className="section__container">
+            <span className="section__eyebrow">UNBEX EN ACCIÓN</span>
+            <h2 className="section__title">Momentos que nos definen</h2>
+            <p className="section__subtitle">
+              Celebraciones, desafíos y todo lo que hace única a la comunidad Unbex.
+            </p>
+            <div className="comunidad-momentos__grid">
+
+              <div className="comunidad-momento">
+                <div className="comunidad-momento__video-wrap">
+                  <iframe
+                    className="comunidad-momento__iframe"
+                    src="https://www.youtube-nocookie.com/embed/iZz8V3jFh9s?autoplay=1&mute=1&loop=1&playlist=iZz8V3jFh9s&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    title="Fiesta Unbex"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="comunidad-momento__texto">
+                  <span className="comunidad-momento__tag">🎉 Fiesta</span>
+                  <h3 className="comunidad-momento__titulo">Fiesta Unbex</h3>
+                  <p className="comunidad-momento__desc">
+                    Porque entrenar juntos es mucho más que sudar. Cada año celebramos
+                    todo lo que logramos como comunidad — con música, energía y la familia
+                    Unbex al completo.
+                  </p>
+                </div>
+              </div>
+
+              <div className="comunidad-momento comunidad-momento--invertido">
+                <div className="comunidad-momento__video-wrap">
+                  <iframe
+                    className="comunidad-momento__iframe"
+                    src="https://www.youtube-nocookie.com/embed/sKEs6BVCbhE?autoplay=1&mute=1&loop=1&playlist=sKEs6BVCbhE&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    title="Unbex Challenge"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
+                <div className="comunidad-momento__texto">
+                  <span className="comunidad-momento__tag">💪 Challenge</span>
+                  <h3 className="comunidad-momento__titulo">Unbex Challenge</h3>
+                  <p className="comunidad-momento__desc">
+                    Un desafío que pone a prueba los límites de toda la comunidad.
+                    ¿Hasta dónde podés llegar? En Unbex, siempre más lejos de lo que creías.
+                  </p>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
