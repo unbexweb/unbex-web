@@ -14,7 +14,8 @@ export default function FormFranquicia() {
         method: 'POST',
         body: data,
       });
-      if (res.ok) { setEstado('exito'); e.target.reset(); }
+      const json = await res.json();
+      if (json.success) { setEstado('exito'); e.target.reset(); }
       else setEstado('error');
     } catch { setEstado('error'); }
   }

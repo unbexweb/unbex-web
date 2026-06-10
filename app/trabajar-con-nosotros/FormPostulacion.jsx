@@ -36,8 +36,9 @@ export default function FormPostulacion() {
         method: 'POST',
         body: data,
       });
+      const json = await res.json();
 
-      if (res.ok) {
+      if (json.success) {
         setEstado('exito');
         form.reset();
         setFileName('');
