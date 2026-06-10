@@ -14,7 +14,16 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
   const isHome = pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [isMobile, setIsMobile] = useState(true); // true por defecto → SSR-safe: no monta lateral nav
   const navRef = useRef(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   function closeAll() {
     setMenuOpen(false);
@@ -47,13 +56,18 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
 
   return (
     <>
+      {/* Overlay para el menú mobile — cierra al tocar fuera */}
+      {menuOpen && (
+        <div className="navbar__overlay" onClick={closeAll} aria-hidden="true" />
+      )}
+
       {/* Logo flotante */}
       <Link href="/" className="navbar__logo" id="siteLogo" onClick={handleLogoClick}>
         <Image src="/img/logo.png" alt="Unbex" width={160} height={94} priority />
       </Link>
 
-      {/* Nav lateral — solo home, solo desktop, siempre visible */}
-      {isHome && (
+      {/* Nav lateral — solo home, solo desktop, no se monta en mobile */}
+      {isHome && !isMobile && (
         <nav className="navbar-lateral navbar-lateral--activo" aria-label="Navegación lateral">
           <ul className="navbar-lateral__menu">
             <li onMouseEnter={() => onDisciplinaHover?.(null)} onMouseLeave={() => onDisciplinaHover?.(null)}>
@@ -97,6 +111,7 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
             className="navbar__toggle"
             id="navbarToggle"
             aria-label="Abrir menú"
+            aria-expanded={menuOpen}
             onClick={() => setMenuOpen(prev => !prev)}
           >
             <span /><span /><span />

@@ -1,19 +1,26 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { DISCIPLINA_VIDEOS } from '@/data/disciplines';
-
-const HERO_VIDEO_ID = 'IpcjENOjZSQ';
+import { DISCIPLINA_VIDEOS, HERO_VIDEOS } from '@/data/disciplines';
 
 export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
   const [muted, setMuted] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const iframeRef = useRef(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
 
-  const embedSrc = `https://www.youtube-nocookie.com/embed/${HERO_VIDEO_ID}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${HERO_VIDEO_ID}`;
+  const videoId = (isMobile && HERO_VIDEOS.mobile) ? HERO_VIDEOS.mobile : HERO_VIDEOS.desktop;
+  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoId}`;
 
-  // Pausar al cambiar de pestaña, reanudar al volver
   useEffect(() => {
     const onVisibility = () => {
       if (!iframeRef.current) return;

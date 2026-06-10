@@ -454,6 +454,19 @@ button {
   .navbar__dropdown a:hover { padding-left: 20px; }
 }
 
+/* ========== NAVBAR — OVERLAY MOBILE ========== */
+.navbar__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 95;
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .navbar__overlay { display: none !important; }
+}
+
 /* ========== HERO (INDEX) ========== */
 .hero {
   position: relative;
@@ -2479,9 +2492,9 @@ main.salon-mb .trabaja-hero__overlay {
     min-width: 420px;
   }
 
-  /* Hero: título y subtítulo más compactos */
-  .hero__title { font-size: var(--text-xl); }
-  .hero__subtitle { font-size: var(--text-sm); }
+  /* Hero: título y subtítulo — escala con el viewport */
+  .hero__title { font-size: clamp(var(--text-xl), 8vw, var(--text-3xl)); }
+  .hero__subtitle { font-size: clamp(var(--text-xs), 3.5vw, var(--text-base)); }
 
   /* Secciones: menos padding lateral */
   .section__container { padding-left: var(--spacing-sm); padding-right: var(--spacing-sm); }
@@ -2495,6 +2508,36 @@ main.salon-mb .trabaja-hero__overlay {
 
   /* Consultorios: 1 columna ya está pero aseguramos */
   .consultorios-grid { grid-template-columns: 1fr; }
+
+  /* Precios CTA: ancho completo, sin overflow horizontal */
+  .precios__cta-top {
+    width: 100%;
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+}
+
+/* ========== MOBILE (≤ 767px) — Hero centrado y correcciones de superposición ========== */
+@media (max-width: 767px) {
+  /* Hero: título y slogan centrados vertical y horizontalmente sobre el video */
+  .hero__content {
+    justify-content: center;
+    transform: none;
+    padding-top: calc(var(--header-total) + var(--spacing-xs));
+    padding-bottom: var(--spacing-lg);
+  }
+
+  /* Botón volumen: esquina inferior izquierda para no superponerse con WhatsApp */
+  .hero__volume {
+    right: auto;
+    left: var(--spacing-sm);
+    bottom: var(--spacing-md);
+  }
+
+  /* Navbar toggle: área de toque mínima (44×44px) */
+  .navbar__toggle {
+    padding: 10px;
+    margin-right: -6px;
+  }
 }
 
 

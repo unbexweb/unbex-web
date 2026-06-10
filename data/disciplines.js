@@ -58,6 +58,13 @@ export const DISCIPLINA_VIDEOS = {
   'precios':      'CatEXzcy3Uk',
 };
 
+// Videos del hero principal: desktop (horizontal) y mobile (vertical)
+// Cuando mobile sea null usa el de desktop como fallback
+export const HERO_VIDEOS = {
+  desktop: 'IpcjENOjZSQ',
+  mobile:  null, // video vertical — pendiente de subir
+};
+
 export const CONTACTO = {
   whatsapp:  WA_NUMBER,
   waLink:    'https://wa.me/' + WA_NUMBER,
