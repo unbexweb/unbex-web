@@ -146,6 +146,7 @@ button {
   opacity: 0;
   transform: translateY(-100%);
   pointer-events: none;
+  transition: none; /* arranca en estado oculto: sin animación inicial */
 }
 
 .topbar__content {
@@ -2516,14 +2517,46 @@ main.salon-mb .trabaja-hero__overlay {
   }
 }
 
-/* ========== MOBILE (≤ 767px) — Hero centrado y correcciones de superposición ========== */
+/* ========== MOBILE (≤ 767px) — Navbar, hero y correcciones de superposición ========== */
 @media (max-width: 767px) {
+  /* Navbar: fondo sólido violeta en mobile, sin transición de posición */
+  .navbar {
+    background: var(--color-primary);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 2px 16px rgba(75, 37, 86, 0.4);
+    transition: none;
+  }
+
+  /* Logo: encuadrado dentro de la banda del navbar en mobile */
+  .navbar__logo {
+    top: var(--topbar-height);
+    height: var(--navbar-height);
+  }
+  .navbar__logo img {
+    height: var(--navbar-height);
+  }
+
+  /* Cuando topbar está oculto (home), navbar y logo suben al tope de la pantalla
+     eliminando el hueco de 32px y el "salto" al cargar */
+  body:has(.topbar--oculto) .navbar {
+    top: 0;
+  }
+  body:has(.topbar--oculto) .navbar__logo {
+    top: 0;
+  }
+
   /* Hero: título y slogan centrados vertical y horizontalmente sobre el video */
   .hero__content {
     justify-content: center;
     transform: none;
     padding-top: calc(var(--header-total) + var(--spacing-xs));
     padding-bottom: var(--spacing-lg);
+  }
+
+  /* Padding-top ajustado cuando topbar está oculto — usa solo la altura del navbar */
+  body:has(.topbar--oculto) .hero__content {
+    padding-top: calc(var(--navbar-height) + var(--spacing-xs));
   }
 
   /* Botón volumen: esquina inferior izquierda para no superponerse con WhatsApp */
