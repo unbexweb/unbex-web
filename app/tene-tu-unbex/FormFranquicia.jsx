@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { FORMSPREE_ENDPOINT } from '@/data/disciplines';
 
 export default function FormFranquicia() {
   const [estado, setEstado] = useState('idle');
@@ -11,10 +10,9 @@ export default function FormFranquicia() {
     setEstado('enviando');
     const data = new FormData(e.target);
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: data,
-        headers: { Accept: 'application/json' },
       });
       if (res.ok) { setEstado('exito'); e.target.reset(); }
       else setEstado('error');
@@ -31,6 +29,8 @@ export default function FormFranquicia() {
 
   return (
     <form className="trabaja-form" onSubmit={handleSubmit}>
+      <input type="hidden" name="access_key" value="464d962d-5704-417c-91e8-30e5f32c54ab" />
+      <input type="hidden" name="subject" value="Nueva consulta de franquicia - Tené tu Unbex" />
       <div className="trabaja-form__row">
         <div className="trabaja-form__group">
           <label className="trabaja-form__label" htmlFor="nombre">Nombre</label>

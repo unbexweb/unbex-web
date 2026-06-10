@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { FORMSPREE_ENDPOINT } from '@/data/disciplines';
 
 const PUESTOS = [
   'Profesor/a de Crossfit & Funcional',
@@ -33,10 +32,9 @@ export default function FormPostulacion() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch(FORMSPREE_ENDPOINT, {
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: data,
-        headers: { Accept: 'application/json' },
       });
 
       if (res.ok) {
@@ -61,6 +59,8 @@ export default function FormPostulacion() {
 
   return (
     <form className="trabaja-form" onSubmit={handleSubmit}>
+      <input type="hidden" name="access_key" value="464d962d-5704-417c-91e8-30e5f32c54ab" />
+      <input type="hidden" name="subject" value="Nueva postulación - Unbex" />
       <div className="trabaja-form__row">
         <div className="trabaja-form__group">
           <label className="trabaja-form__label" htmlFor="nombre">Nombre</label>
@@ -105,15 +105,15 @@ export default function FormPostulacion() {
       <div className="trabaja-form__group">
         <label className="trabaja-form__label">CV (PDF)</label>
         <input
-          id="cv"
-          name="cv"
+          id="attachment"
+          name="attachment"
           type="file"
           accept=".pdf,.doc,.docx"
           className="trabaja-form__file"
           ref={fileRef}
           onChange={e => setFileName(e.target.files[0]?.name || '')}
         />
-        <label htmlFor="cv" className="trabaja-form__file-label">
+        <label htmlFor="attachment" className="trabaja-form__file-label">
           📎 {fileName || 'Adjuntar CV'}
         </label>
       </div>
