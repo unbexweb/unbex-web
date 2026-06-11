@@ -37,6 +37,7 @@ export default function FormPostulacion() {
         body: data,
       });
       const json = await res.json();
+      console.log('Web3Forms response:', json);
 
       if (json.success) {
         setEstado('exito');
@@ -45,7 +46,8 @@ export default function FormPostulacion() {
       } else {
         setEstado('error');
       }
-    } catch {
+    } catch (err) {
+      console.error('Web3Forms fetch error:', err);
       setEstado('error');
     }
   }
