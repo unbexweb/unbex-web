@@ -19,13 +19,23 @@ const PUESTOS = [
   'Otro',
 ];
 
+const MAX_FILE_MB = 5;
+
 export default function FormPostulacion() {
   const [estado, setEstado] = useState('idle'); // idle | enviando | exito | error
   const [fileName, setFileName] = useState('');
+  const [fileError, setFileError] = useState('');
   const fileRef = useRef(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    const archivo = fileRef.current?.files[0];
+    if (archivo && archivo.size > MAX_FILE_MB * 1024 * 1024) {
+      setFileError(`El archivo supera los ${MAX_FILE_MB} MB. Comprimí el PDF o usá un archivo más liviano.`);
+      return;
+    }
+    setFileError('');
     setEstado('enviando');
 
     const form = e.target;
@@ -37,7 +47,6 @@ export default function FormPostulacion() {
         body: data,
       });
       const json = await res.json();
-      console.log('Web3Forms response:', json);
 
       if (json.success) {
         setEstado('exito');
@@ -46,8 +55,7 @@ export default function FormPostulacion() {
       } else {
         setEstado('error');
       }
-    } catch (err) {
-      console.error('Web3Forms fetch error:', err);
+    } catch {
       setEstado('error');
     }
   }
@@ -114,11 +122,17 @@ export default function FormPostulacion() {
           accept=".pdf,.doc,.docx"
           className="trabaja-form__file"
           ref={fileRef}
-          onChange={e => setFileName(e.target.files[0]?.name || '')}
+          onChange={e => {
+            setFileName(e.target.files[0]?.name || '');
+            setFileError('');
+          }}
         />
         <label htmlFor="attachment" className="trabaja-form__file-label">
           📎 {fileName || 'Adjuntar CV'}
         </label>
+        {fileError && (
+          <p style={{ color: '#ff6b6b', fontSize: '0.8rem', marginTop: '0.35rem' }}>{fileError}</p>
+        )}
       </div>
 
       {estado === 'error' && (
