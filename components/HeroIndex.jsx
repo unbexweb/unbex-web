@@ -28,8 +28,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
 
   const videoActual = (esMobile && VIDEO_MOBILE) ? VIDEO_MOBILE : VIDEO_DEFAULT;
-  console.log('[HeroIndex] esMobile:', esMobile, 'videoActual:', videoActual);
-  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}`;
+  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}&cc_load_policy=0`;
 
   useEffect(() => {
     const onVisibility = () => {
