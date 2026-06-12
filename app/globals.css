@@ -511,15 +511,15 @@ button {
   transform: scale(1.1);
 }
 
-/* Video vertical mobile: altura = 100%, ancho = 100vh × 9/16 (mayor que la pantalla → overflow clippeado por .hero) */
+/* Video horizontal en mobile portrait: iframe más ancho que la pantalla → overflow recortado por .hero → efecto cover */
 @media (max-width: 767px) {
   .hero__video {
     position: absolute;
-    top: 0;
+    top: 50%;
     left: 50%;
     height: 100%;
-    width: calc(100vh * 9 / 16);
-    transform: translateX(-50%);
+    width: calc(100vh * 16 / 9);
+    transform: translate(-50%, -50%);
   }
 }
 

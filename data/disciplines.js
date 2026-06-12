@@ -62,7 +62,7 @@ export const DISCIPLINA_VIDEOS = {
 // Cuando mobile sea null usa el de desktop como fallback
 export const HERO_VIDEOS = {
   desktop: 'IpcjENOjZSQ',
-  mobile:  null, // video vertical — pendiente de subir
+  mobile:  'IpcjENOjZSQ',
 };
 
 export const CONTACTO = {

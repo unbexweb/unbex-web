@@ -3,23 +3,33 @@
 import { useState, useRef, useEffect } from 'react';
 import { DISCIPLINA_VIDEOS, HERO_VIDEOS } from '@/data/disciplines';
 
-export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
+const VIDEO_DEFAULT = HERO_VIDEOS.desktop;
+const VIDEO_MOBILE  = HERO_VIDEOS.mobile;
+
+export default function HeroIndex({ videoActivo = null, estaEnHero = false, onListo }) {
   const [muted, setMuted] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const [esMobile, setEsMobile] = useState(false);
   const iframeRef = useRef(null);
+  const listoLlamado = useRef(false);
+
+  function handleIframeLoad() {
+    if (listoLlamado.current || !onListo) return;
+    listoLlamado.current = true;
+    onListo();
+  }
 
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)');
-    setIsMobile(mq.matches);
-    const handler = (e) => setIsMobile(e.matches);
-    mq.addEventListener('change', handler);
-    return () => mq.removeEventListener('change', handler);
+    const check = () => setEsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
   }, []);
 
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
 
-  const videoId = (isMobile && HERO_VIDEOS.mobile) ? HERO_VIDEOS.mobile : HERO_VIDEOS.desktop;
-  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoId}`;
+  const videoActual = (esMobile && VIDEO_MOBILE) ? VIDEO_MOBILE : VIDEO_DEFAULT;
+  console.log('[HeroIndex] esMobile:', esMobile, 'videoActual:', videoActual);
+  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}`;
 
   useEffect(() => {
     const onVisibility = () => {
@@ -50,12 +60,14 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false }) {
       <div className="hero__video-container">
 
         <iframe
+          key={videoActual}
           ref={iframeRef}
           className="hero__video"
           src={embedSrc}
           title="Unbex hero"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          onLoad={handleIframeLoad}
         />
 
         {overlayVideoId && (
