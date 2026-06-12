@@ -42,13 +42,13 @@ export default function FormPostulacion() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch('https://formspree.io/f/xojznevd', {
+      const res = await fetch('/api/postulacion', {
         method: 'POST',
         body: data,
-        headers: { Accept: 'application/json' },
       });
+      const json = await res.json();
 
-      if (res.ok) {
+      if (json.success) {
         setEstado('exito');
         form.reset();
         setFileName('');
@@ -114,8 +114,8 @@ export default function FormPostulacion() {
       <div className="trabaja-form__group">
         <label className="trabaja-form__label">CV (PDF)</label>
         <input
-          id="attachment"
-          name="attachment"
+          id="cv"
+          name="cv"
           type="file"
           accept=".pdf,.doc,.docx"
           className="trabaja-form__file"
@@ -125,7 +125,7 @@ export default function FormPostulacion() {
             setFileError('');
           }}
         />
-        <label htmlFor="attachment" className="trabaja-form__file-label">
+        <label htmlFor="cv" className="trabaja-form__file-label">
           📎 {fileName || 'Adjuntar CV'}
         </label>
         {fileError && (
