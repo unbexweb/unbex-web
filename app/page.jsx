@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
@@ -18,6 +19,21 @@ import { disciplinas, consultorios } from '@/data/disciplines';
 export default function Home() {
   const [videoActivo, setVideoActivo] = useState(null);
   const [estaEnHero, setEstaEnHero] = useState(true);
+  const [cargando, setCargando] = useState(true);
+  const [saliendo, setSaliendo] = useState(false);
+  const listoRef = useRef(false);
+
+  function handleVideoListo() {
+    if (listoRef.current) return;
+    listoRef.current = true;
+    setSaliendo(true);
+    setTimeout(() => setCargando(false), 400);
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(handleVideoListo, 2000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     function onScroll() {
@@ -32,10 +48,22 @@ export default function Home() {
 
   return (
     <>
+      {cargando && (
+        <div className={`page-loader${saliendo ? ' page-loader--saliendo' : ''}`}>
+          <Image
+            src="/img/logo.png"
+            alt="Unbex"
+            width={180}
+            height={80}
+            className="page-loader__logo"
+            priority
+          />
+        </div>
+      )}
       <Topbar oculto={true} />
       <Navbar onDisciplinaHover={setVideoActivo} estaEnHero={estaEnHero} />
       <main className="home-main">
-        <HeroIndex videoActivo={videoActivo} estaEnHero={estaEnHero} />
+        <HeroIndex videoActivo={videoActivo} estaEnHero={estaEnHero} onListo={handleVideoListo} />
 
         {/* DISCIPLINAS */}
         <section className="disciplinas" id="disciplinas">
