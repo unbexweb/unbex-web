@@ -22,7 +22,7 @@ export async function POST(request) {
 
     await resend.emails.send({
       from: 'Unbex Web <onboarding@resend.dev>',
-      to: ['frandb@unbexargentina.com'],
+      to: ['unbex.web@gmail.com'],
       subject: `Nueva postulación - ${nombre} ${apellido}`,
       html: `
         <h2>Nueva postulación recibida</h2>
