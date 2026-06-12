@@ -511,6 +511,18 @@ button {
   transform: scale(1.1);
 }
 
+/* Video vertical mobile: altura = 100%, ancho = 100vh × 9/16 (mayor que la pantalla → overflow clippeado por .hero) */
+@media (max-width: 767px) {
+  .hero__video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: calc(100vh * 9 / 16);
+    transform: translateX(-50%);
+  }
+}
+
 
 .hero__overlay {
   position: absolute;
@@ -834,11 +846,8 @@ button {
   border-radius: var(--border-radius-lg);
 }
 
-.card-wrapper:hover .card-inner,
-.card-wrapper--flipped .card-inner { transform: rotateY(180deg); }
-
-@media (hover: none) {
-  .card-wrapper:hover .card-inner { transform: none; }
+@media (hover: hover) {
+  .card-wrapper:hover .card-inner { transform: rotateY(180deg); }
 }
 
 .card-front,
@@ -2571,6 +2580,35 @@ main.salon-mb .trabaja-hero__overlay {
     padding: 10px;
     margin-right: -6px;
   }
+}
+
+/* ─── PAGE LOADER ─────────────────────────────────────────────── */
+@keyframes loader-pulse {
+  0%, 100% { opacity: 1;    transform: scale(1);    }
+  50%       { opacity: 0.6; transform: scale(0.95); }
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-violeta);
+  transition: opacity 0.4s ease;
+  pointer-events: all;
+}
+
+.page-loader--saliendo {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page-loader__logo {
+  width: 180px;
+  height: auto;
+  animation: loader-pulse 1.8s ease-in-out infinite;
 }
 
 
