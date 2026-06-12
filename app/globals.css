@@ -2555,24 +2555,28 @@ main.salon-mb .trabaja-hero__overlay {
     top: 0;
   }
 
-  /* Hero: título y slogan centrados vertical y horizontalmente sobre el video */
+  /* Hero: título y slogan en la parte superior-central del hero */
   .hero__content {
-    justify-content: center;
+    justify-content: flex-start;
     transform: none;
-    padding-top: calc(var(--header-total) + var(--spacing-xs));
-    padding-bottom: var(--spacing-lg);
+    padding-top: calc(var(--header-total) + var(--spacing-md));
+    padding-bottom: 0;
   }
 
   /* Padding-top ajustado cuando topbar está oculto — usa solo la altura del navbar */
   body:has(.topbar--oculto) .hero__content {
-    padding-top: calc(var(--navbar-height) + var(--spacing-xs));
+    padding-top: calc(var(--navbar-height) + var(--spacing-md));
   }
 
-  /* Botón volumen: esquina inferior izquierda para no superponerse con WhatsApp */
+  /* Botón volumen: arriba a la derecha, visible sin scrollear y separado del WhatsApp */
   .hero__volume {
-    right: auto;
-    left: var(--spacing-sm);
-    bottom: var(--spacing-md);
+    top: calc(var(--header-total) + var(--spacing-sm));
+    right: var(--spacing-sm);
+    bottom: auto;
+    left: auto;
+  }
+  body:has(.topbar--oculto) .hero__volume {
+    top: calc(var(--navbar-height) + var(--spacing-sm));
   }
 
   /* Navbar toggle: área de toque mínima (44×44px) */

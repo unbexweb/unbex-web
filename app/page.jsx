@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
 import dynamic from 'next/dynamic';
-const HeroIndex = dynamic(() => import('@/components/HeroIndex'), { ssr: false });
+import HeroIndex from '@/components/HeroIndex';
 import DisciplinaCard from '@/components/DisciplinaCard';
 import HorariosGrid from '@/components/HorariosGrid';
 const PreciosSection = dynamic(() => import('@/components/PreciosSection'), { ssr: false });
