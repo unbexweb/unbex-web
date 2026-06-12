@@ -19,7 +19,7 @@ import { disciplinas, consultorios } from '@/data/disciplines';
 export default function Home() {
   const [videoActivo, setVideoActivo] = useState(null);
   const [estaEnHero, setEstaEnHero] = useState(true);
-  const [cargando, setCargando] = useState(true);
+  const [cargando, setCargando] = useState(false);
   const [saliendo, setSaliendo] = useState(false);
   const listoRef = useRef(false);
 
@@ -31,8 +31,13 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(handleVideoListo, 2000);
-    return () => clearTimeout(timer);
+    const yaVisto = sessionStorage.getItem('heroLoaderVisto');
+    if (!yaVisto) {
+      setCargando(true);
+      sessionStorage.setItem('heroLoaderVisto', 'true');
+      const timer = setTimeout(handleVideoListo, 1000);
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   useEffect(() => {
