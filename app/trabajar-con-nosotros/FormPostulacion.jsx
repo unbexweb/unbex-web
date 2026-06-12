@@ -42,13 +42,13 @@ export default function FormPostulacion() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('https://formspree.io/f/xojznevd', {
         method: 'POST',
         body: data,
+        headers: { Accept: 'application/json' },
       });
-      const json = await res.json();
 
-      if (json.success) {
+      if (res.ok) {
         setEstado('exito');
         form.reset();
         setFileName('');
@@ -70,8 +70,6 @@ export default function FormPostulacion() {
 
   return (
     <form className="trabaja-form" onSubmit={handleSubmit}>
-      <input type="hidden" name="access_key" value="464d962d-5704-417c-91e8-30e5f32c54ab" />
-      <input type="hidden" name="subject" value="Nueva postulación - Unbex" />
       <div className="trabaja-form__row">
         <div className="trabaja-form__group">
           <label className="trabaja-form__label" htmlFor="nombre">Nombre</label>
