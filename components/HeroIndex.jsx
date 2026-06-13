@@ -19,38 +19,11 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  // YT IFrame API: ocultar loader cuando el video está realmente reproduciendo (estado PLAYING = 1)
-  useEffect(() => {
-    if (!onListo) return;
-
-    function initPlayer() {
-      new window.YT.Player('hero-video', {
-        events: {
-          onStateChange(event) {
-            if (event.data === 1 && !listoLlamado.current) {
-              listoLlamado.current = true;
-              onListo();
-            }
-          },
-        },
-      });
-    }
-
-    if (window.YT && window.YT.Player) {
-      initPlayer();
-    } else {
-      const prev = window.onYouTubeIframeAPIReady;
-      window.onYouTubeIframeAPIReady = () => {
-        if (typeof prev === 'function') prev();
-        initPlayer();
-      };
-      if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
-        const tag = document.createElement('script');
-        tag.src = 'https://www.youtube.com/iframe_api';
-        document.body.appendChild(tag);
-      }
-    }
-  }, []);
+  function handleIframeLoad() {
+    if (listoLlamado.current || !onListo) return;
+    listoLlamado.current = true;
+    onListo();
+  }
 
   useEffect(() => {
     const onVisibility = () => {
@@ -85,7 +58,6 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
       <div className="hero__video-container">
 
         <iframe
-          id="hero-video"
           key={videoActual}
           ref={iframeRef}
           className="hero__video"
@@ -93,6 +65,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
           title="Unbex hero"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
+          onLoad={handleIframeLoad}
         />
 
         {overlayVideoId && (
