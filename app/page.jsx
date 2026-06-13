@@ -37,7 +37,7 @@ export default function Home() {
       return;
     }
     sessionStorage.setItem('heroLoaderVisto', 'true');
-    const timer = setTimeout(handleVideoListo, 2500);
+    const timer = setTimeout(handleVideoListo, 3000);
     return () => clearTimeout(timer);
   }, []);
 
