@@ -12,12 +12,6 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
   const iframeRef = useRef(null);
   const listoLlamado = useRef(false);
 
-  function handleIframeLoad() {
-    if (listoLlamado.current || !onListo) return;
-    listoLlamado.current = true;
-    onListo();
-  }
-
   useEffect(() => {
     const check = () => setEsMobile(window.innerWidth < 768);
     check();
@@ -25,10 +19,38 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
     return () => window.removeEventListener('resize', check);
   }, []);
 
-  const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
+  // YT IFrame API: ocultar loader cuando el video está realmente reproduciendo (estado PLAYING = 1)
+  useEffect(() => {
+    if (!onListo) return;
 
-  const videoActual = (esMobile && VIDEO_MOBILE) ? VIDEO_MOBILE : VIDEO_DEFAULT;
-  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}&cc_load_policy=0`;
+    function initPlayer() {
+      new window.YT.Player('hero-video', {
+        events: {
+          onStateChange(event) {
+            if (event.data === 1 && !listoLlamado.current) {
+              listoLlamado.current = true;
+              onListo();
+            }
+          },
+        },
+      });
+    }
+
+    if (window.YT && window.YT.Player) {
+      initPlayer();
+    } else {
+      const prev = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof prev === 'function') prev();
+        initPlayer();
+      };
+      if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+        const tag = document.createElement('script');
+        tag.src = 'https://www.youtube.com/iframe_api';
+        document.body.appendChild(tag);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const onVisibility = () => {
@@ -54,11 +76,16 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
     setMuted(newMuted);
   }
 
+  const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
+  const videoActual = (esMobile && VIDEO_MOBILE) ? VIDEO_MOBILE : VIDEO_DEFAULT;
+  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}&cc_load_policy=0`;
+
   return (
     <section className={`hero${estaEnHero ? ' hero--lateral-activo' : ''}`} id="hero">
       <div className="hero__video-container">
 
         <iframe
+          id="hero-video"
           key={videoActual}
           ref={iframeRef}
           className="hero__video"
@@ -66,7 +93,6 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
           title="Unbex hero"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          onLoad={handleIframeLoad}
         />
 
         {overlayVideoId && (
