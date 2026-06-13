@@ -203,7 +203,7 @@ export const disciplinas = [
     clave:  'judo-kids',
     nombre: 'Judo Kids',
     salon:  'mb',
-    img:    'card_disciplinas_judokids.jpg',
+    img:    'card_disciplinas_judokids.jpeg',
     desc:   'El Judo es una de las disciplinas más recomendadas para el desarrollo integral en la infancia. A través del juego y la técnica, los chicos aprenden valores fundamentales como el respeto, la disciplina y el compañerismo. Es una actividad ideal para todas las edades dentro de la etapa escolar, ayudándoles a canalizar su energía de forma positiva mientras construyen una base sólida de confianza en sí mismos.',
     icono:  '🥋',
     color:  'card--green',
