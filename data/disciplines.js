@@ -16,8 +16,6 @@ const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 // ─────────────────────────────────────────────────────────────────────────────
 // SERVICIOS EXTERNOS — cambiar acá si se migra de proveedor
 // ─────────────────────────────────────────────────────────────────────────────
-export const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE || '';
-
 // ─────────────────────────────────────────────────────────────────────────────
 // VIDEOS DE DISCIPLINAS — ID de YouTube por disciplina
 // null = sin video → el hero mostrará solo el overlay con imagen de fondo
