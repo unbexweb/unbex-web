@@ -15,7 +15,7 @@ export async function POST(request) {
 
     await resend.emails.send({
       from: 'Unbex Web <onboarding@resend.dev>',
-      to: ['unbex.web@gmail.com'],
+      to: ['frandb@unbexargentina.com'],
       subject: `Nueva consulta de franquicia - ${nombre} ${apellido}`,
       html: `
         <h2>Nueva consulta de franquicia (Tené tu Unbex)</h2>
