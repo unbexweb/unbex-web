@@ -24,18 +24,18 @@ export const FORMSPREE_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE || '';
 // ─────────────────────────────────────────────────────────────────────────────
 // IDs de YouTube Shorts para el hero de cada página de disciplina
 export const DISCIPLINA_HERO_VIDEOS = {
-  'crossfit':     'rhUilTNg7_Q',
-  'musculacion':  'T_Y4dwUFzSg',
-  'tercera-edad': 'r8kXY-P2lXU',
-  'open-box':     'jrbnUpwQBgw',
-  'yoga':         'wcbCO--chfM',
-  'stretching':   'z11JJCUOTI0',
-  'pilates':      'C1WyP_J1Cx0',
-  'zumba':        '7WVGXMfuy8Y',
-  'judo-kids':    '01PSK5taBeE',
-  'jiu-jitsu':    'rFYYF6iYisQ',
+  'crossfit':     '99h6wu9kzHg',
+  'musculacion':  'XQpj-C2ixJA',
+  'tercera-edad': 'LgDiPy5erNk',
+  'open-box':     '1KqONYTao14',
+  'yoga':         'uVzazDXbd2o',
+  'stretching':   'newpxNaMEE0',
+  'pilates':      'DKDWHG4LzPA',
+  'zumba':        'r3avBfOcJ-A',
+  'judo-kids':    'V79eKUOyZ0g',
+  'jiu-jitsu':    'nACPzNB8HO8',
   'localizada':   'BCp5wIV5FT4',
-  'body-pump':    'jv4JyOGGbzo',
+  'body-pump':    'IwbyVkPnYrE',
 };
 
 // IDs de YouTube para el overlay del hero principal
@@ -61,8 +61,8 @@ export const DISCIPLINA_VIDEOS = {
 // Videos del hero principal: desktop (horizontal) y mobile (vertical)
 // Cuando mobile sea null usa el de desktop como fallback
 export const HERO_VIDEOS = {
-  desktop: 'IpcjENOjZSQ',
-  mobile:  'IpcjENOjZSQ',
+  desktop: 'LBlgzPZ-yy8',
+  mobile:  'LBlgzPZ-yy8',
 };
 
 export const CONTACTO = {
