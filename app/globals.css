@@ -35,6 +35,11 @@
   --color-rosa:           var(--color-rose-pale);
   --color-violeta:        #4B2556;
   --color-border:         rgba(122, 61, 135, 0.25);
+  --color-star:           #FFC107;
+  --color-surface-subtle: rgba(255,255,255,0.06);
+  --color-border-subtle:  rgba(255,255,255,0.1);
+  --color-text-faded:     rgba(255,255,255,0.4);
+  --color-text-muted:     rgba(255,255,255,0.75);
 
   --font-primary:   'Marseilazi', sans-serif;
   --font-secondary: 'BrightSunshine', cursive;
@@ -831,7 +836,7 @@ button {
 /* ========== FLIP CARDS (disciplinas) ========== */
 .card-wrapper {
   perspective: 1000px;
-  height: 220px;
+  height: 250px;
   cursor: pointer;
 }
 
@@ -920,7 +925,7 @@ button {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
   width: 100%;
 }
 
@@ -931,7 +936,7 @@ button {
 }
 
 .card-back__label {
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -940,10 +945,14 @@ button {
 }
 
 .card-back__valor {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #4B2556;
   line-height: 1.3;
   opacity: 0.88;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 /* ========== TAB HINT — dedo flotante ========== */
@@ -2613,6 +2622,115 @@ main.salon-mb .trabaja-hero__overlay {
   width: 180px;
   height: auto;
   animation: loader-pulse 1.8s ease-in-out infinite;
+}
+
+/* ─── MARQUEE BANNER ─────────────────────────────────────────────── */
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.marquee-banner {
+  overflow: hidden;
+  background: var(--color-primary);
+  padding: 10px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.marquee-banner__track {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+  white-space: nowrap;
+}
+
+.marquee-banner__track span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  padding-right: 0;
+  text-transform: uppercase;
+}
+
+/* ─── MEDIOS DE PAGO (en sección precios) ───────────────────────── */
+.precios__medios-pago {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+
+.precios__medios-titulo {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-faded);
+  margin-bottom: 1rem;
+}
+
+.precios__medios-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem 1.2rem;
+}
+
+.precios__medio {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--color-surface-subtle);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+}
+
+.precios__medio-icon { font-size: 0.9rem; }
+
+.precios__medio-nombre {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* ─── GOOGLE RATING (contacto) ───────────────────────────────────── */
+.contacto__google-link {
+  text-decoration: none;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.contacto__google-link:hover { opacity: 0.8; }
+
+.contacto__estrellas {
+  color: var(--color-star);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* ─── NOSOTROS PAGE ──────────────────────────────────────────────── */
+.nosotros-mision__texto {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.nosotros-hero__bg {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(122,61,135,0.6) 0%, transparent 60%),
+    radial-gradient(ellipse at 75% 65%, rgba(75,37,86,0.5) 0%, transparent 55%),
+    url('/img/hero_fallback.jpg') center/cover no-repeat;
 }
 
 

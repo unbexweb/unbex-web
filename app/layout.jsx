@@ -5,11 +5,11 @@ const BASE_URL = 'https://www.unbexargentina.com';
 export const metadata = {
   metadataBase: new URL(BASE_URL),
   title:       'Unbex Argentina — Gimnasio',
-  description: 'Centro de entrenamiento y bienestar en Buenos Aires. Crossfit, Musculación, Yoga, Pilates, Zumba y más.',
+  description: 'Centro de entrenamiento y bienestar en Buenos Aires. Crosstraining, Musculación, Yoga, Pilates, Zumba y más.',
   icons: { icon: '/favicon.png' },
   openGraph: {
     title:       'Unbex Argentina — Gimnasio',
-    description: 'Centro de entrenamiento y bienestar en Buenos Aires. Crossfit, Musculación, Yoga, Pilates, Zumba y más.',
+    description: 'Centro de entrenamiento y bienestar en Buenos Aires. Crosstraining, Musculación, Yoga, Pilates, Zumba y más.',
     url:         BASE_URL,
     siteName:    'Unbex Argentina',
     locale:      'es_AR',
@@ -30,7 +30,7 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type':    'SportsActivityLocation',
   name:        'Unbex Argentina',
-  description: 'Centro de entrenamiento y bienestar. Crossfit, Musculación, Yoga, Pilates, Zumba y más.',
+  description: 'Centro de entrenamiento y bienestar. Crosstraining, Musculación, Yoga, Pilates, Zumba y más.',
   url:         BASE_URL,
   telephone:   '+541123989560',
   email:       'frandb@unbexargentina.com',

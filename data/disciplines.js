@@ -22,7 +22,7 @@ const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 // ─────────────────────────────────────────────────────────────────────────────
 // IDs de YouTube Shorts para el hero de cada página de disciplina
 export const DISCIPLINA_HERO_VIDEOS = {
-  'crossfit':     '99h6wu9kzHg',
+  'crosstraining':'99h6wu9kzHg',
   'musculacion':  'XQpj-C2ixJA',
   'tercera-edad': 'LgDiPy5erNk',
   'open-box':     '1KqONYTao14',
@@ -38,7 +38,7 @@ export const DISCIPLINA_HERO_VIDEOS = {
 
 // IDs de YouTube para el overlay del hero principal
 export const DISCIPLINA_VIDEOS = {
-  'crossfit':     'rAFygka9w_o',
+  'crosstraining':'rAFygka9w_o',
   'funcional':    null,
   'musculacion':  null,
   'tercera-edad': null,
@@ -75,16 +75,16 @@ export const CONTACTO = {
 export const disciplinas = [
   // ── SALÓN BLACK ──────────────────────────────────────────────────────────
   {
-    clave:     'crossfit',
-    nombre:    'Crossfit',
-    short:     'Crossfit',
+    clave:     'crosstraining',
+    nombre:    'Crosstraining',
+    short:     'Cross',
     salon:     'black',
     img:       'card_disciplinas_crossfit.jpg',
     desc:      'Entrenamiento de alta intensidad basado en movimientos olímpicos. Fuerza, potencia y comunidad. Cupo limitado.',
     descLarga: 'Es un sistema de entrenamiento de alta intensidad basado en movimientos olímpicos y gimnásticos. Lo mejor de nuestro método es que es 100% adaptable: desde jóvenes que buscan su máximo potencial hasta adultos mayores que quieren mantener su independencia y vitalidad. Aquí, la intensidad se ajusta a vos, no vos a ella.',
     icono:  '⚡',
     color:  'card--blue',
-    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Crossfit en Unbex ⚡'),
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Crosstraining en Unbex ⚡'),
     paraQuien: 'Personas de todos los niveles que buscan superarse día a día. No importa tu punto de partida, las cargas y movimientos se adaptan a vos.',
     objetivos: 'Ganás fuerza, potencia, resistencia y mejorás tu condición física general en comunidad.',
     duracion:  '60 minutos',
@@ -163,7 +163,7 @@ export const disciplinas = [
     nombre: 'Stretching',
     salon:  'mb',
     img:    'card_disciplinas_stretching.jpg',
-    desc:   'Nuestras clases de Stretching están diseñadas para liberar la tensión muscular, mejorar la postura y acelerar la recuperación de todo el cuerpo después del esfuerzo. Es el complemento indispensable para quienes hacen CrossFit o Musculación y quieren evitar lesiones mientras ganan un rango de movimiento óptimo.',
+    desc:   'Nuestras clases de Stretching están diseñadas para liberar la tensión muscular, mejorar la postura y acelerar la recuperación de todo el cuerpo después del esfuerzo. Es el complemento indispensable para quienes hacen Crosstraining o Musculación y quieren evitar lesiones mientras ganan un rango de movimiento óptimo.',
     icono:  '🤸',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Stretching en Unbex 🤸'),
@@ -202,11 +202,11 @@ export const disciplinas = [
     nombre: 'Judo Kids',
     salon:  'mb',
     img:    'card_disciplinas_judokids.jpeg',
-    desc:   'El Judo es una de las disciplinas más recomendadas para el desarrollo integral en la infancia. A través del juego y la técnica, los chicos aprenden valores fundamentales como el respeto, la disciplina y el compañerismo. Es una actividad ideal para todas las edades dentro de la etapa escolar, ayudándoles a canalizar su energía de forma positiva mientras construyen una base sólida de confianza en sí mismos.',
+    desc:   'El Judo es una de las disciplinas más recomendadas para el desarrollo integral en la infancia. Para niños de 6 a 12 años. A través del juego y la técnica, los chicos aprenden valores fundamentales como el respeto, la disciplina y el compañerismo. Una actividad que les ayuda a canalizar su energía de forma positiva mientras construyen una base sólida de confianza en sí mismos.',
     icono:  '🥋',
     color:  'card--green',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Judo Kids en Unbex 🥋'),
-    paraQuien: 'Chicos en edad escolar que quieran aprender una disciplina formativa y divertida.',
+    paraQuien: 'Niños de 6 a 12 años que quieran aprender una disciplina formativa y divertida.',
     objetivos: 'Desarrollan respeto, disciplina, confianza y canalizan su energía de forma positiva.',
     duracion:  '60 minutos',
   },
@@ -272,7 +272,7 @@ export const precios = {
     {
       id: 'black',
       nombre: 'Salón Black',
-      desc: 'Musculación, Crossfit, Funcional, 3ra Edad',
+      desc: 'Musculación, Crosstraining, Funcional, 3ra Edad',
       planes: [
         { plan: '4 clases',  precio: 34650, efvo: 31500 },
         { plan: '8 clases',  precio: 48400, efvo: 44000 },
@@ -381,17 +381,17 @@ export const horarios = [
   // ═══════════════════════════════════════════════════════════════════════════
 
   // Turnos libres L-V (el alumno elige entre Cross / Func / Muscu)
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'08:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'10:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'12:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'16:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'17:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'18:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'19:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','vie'],       hora:'20:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['jue'],                         hora:'20:00', claves:['crossfit','funcional','musculacion','oly'], nota:'El alumno elige · Se suma Olimpismo' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'21:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'08:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'10:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'12:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'16:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'17:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'18:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'19:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','vie'],       hora:'20:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['jue'],                         hora:'20:00', claves:['crosstraining','funcional','musculacion','oly'], nota:'El alumno elige · Se suma Olimpismo' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'21:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
 
   // Musculación exclusivo L-V
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'09:00', claves:['musculacion'], nota:null },
@@ -402,9 +402,9 @@ export const horarios = [
   { salon:'black', dias:['mar','jue'], hora:'11:00', claves:['tercera-edad'], nota:null },
 
   // Sábado Black
-  { salon:'black', dias:['sab'], hora:'09:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['sab'], hora:'10:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['sab'], hora:'11:00', claves:['crossfit','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['sab'], hora:'09:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['sab'], hora:'10:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['sab'], hora:'11:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'12:00', claves:['allout'],                             nota:null },
 
   // Open Box — L-V 07:00–21:00 · Sábado 09:00–14:00 (badge junto a las demás clases)

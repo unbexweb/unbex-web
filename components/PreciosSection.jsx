@@ -27,6 +27,16 @@ const BLOQUES_POR_TAB = {
   'all-out':       [precios.espacio.find(b => b.id === 'all-out')],
 };
 
+const MEDIOS_PAGO = [
+  { icono: '💵', nombre: 'Efectivo' },
+  { icono: '🔄', nombre: 'Transferencia / CVU' },
+  { icono: '📱', nombre: 'Mercado Pago' },
+  { icono: '💳', nombre: 'MODO' },
+  { icono: '💳', nombre: 'Visa' },
+  { icono: '💳', nombre: 'Mastercard' },
+  { icono: '💳', nombre: 'American Express' },
+];
+
 function fmt(n) {
   return '$' + n.toLocaleString('es-AR');
 }
@@ -48,7 +58,7 @@ function PlanCard({ plan, nombre, animDelay = 0 }) {
       <p className="precio-card__plan">{plan.plan}</p>
       <p className="precio-card__precio">{fmt(plan.precio)}</p>
       <div className="precio-card__efvo">
-        <span className="precio-card__efvo-label">Efectivo</span>
+        <span className="precio-card__efvo-label">Promo efectivo</span>
         <span className="precio-card__efvo-valor">{fmt(plan.efvo)}</span>
       </div>
       <a href={waLink} target="_blank" rel="noopener noreferrer" className="precio-card__btn">
@@ -167,6 +177,18 @@ export default function PreciosSection() {
             ))}
           </>
         )}
+
+        <div className="precios__medios-pago">
+          <p className="precios__medios-titulo">Medios de pago</p>
+          <div className="precios__medios-grid">
+            {MEDIOS_PAGO.map(m => (
+              <span key={m.nombre} className="precios__medio">
+                <span className="precios__medio-icon">{m.icono}</span>
+                <span className="precios__medio-nombre">{m.nombre}</span>
+              </span>
+            ))}
+          </div>
+        </div>
 
         <div className="precios__cta-bottom">
           <p className="precios__cta-bottom-text">¿No encontrás tu plan? Consultanos</p>

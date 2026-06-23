@@ -3,7 +3,7 @@
 import { useState, useRef } from 'react';
 
 const PUESTOS = [
-  'Profesor/a de Crossfit & Funcional',
+  'Profesor/a de Crosstraining & Funcional',
   'Profesor/a de Musculación',
   'Profesor/a de Yoga',
   'Profesor/a de Pilates Mat',

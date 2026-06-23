@@ -14,6 +14,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
 import ConsultoriosGrid from '@/components/ConsultoriosGrid';
+import MarqueeBanner from '@/components/MarqueeBanner';
 import { disciplinas, consultorios } from '@/data/disciplines';
 
 export default function Home() {
@@ -70,6 +71,7 @@ export default function Home() {
       <Navbar onDisciplinaHover={setVideoActivo} estaEnHero={estaEnHero} />
       <main className="home-main">
         <HeroIndex videoActivo={videoActivo} estaEnHero={estaEnHero} onListo={handleVideoListo} />
+        <MarqueeBanner />
 
         {/* DISCIPLINAS */}
         <section className="disciplinas" id="disciplinas">
@@ -157,6 +159,22 @@ export default function Home() {
                       className="contacto__dato-texto contacto__wa-link"
                     >
                       +54 9 11 2398-9560
+                    </a>
+                  </div>
+                </div>
+
+                <div className="contacto__dato">
+                  <span className="contacto__dato-icono">⭐</span>
+                  <div>
+                    <p className="contacto__dato-titulo">Calificación en Google</p>
+                    <a
+                      href="https://maps.google.com/maps?q=Pacheco+1956%2C+C1431+Buenos+Aires%2C+Argentina"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contacto__dato-texto contacto__google-link"
+                    >
+                      <span className="contacto__estrellas">★★★★★</span>
+                      <span> Ver reseñas en Google</span>
                     </a>
                   </div>
                 </div>

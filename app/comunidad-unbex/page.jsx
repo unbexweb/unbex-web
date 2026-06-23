@@ -37,7 +37,7 @@ const pilares = [
   { numero: '500+', label: 'Miembros activos' },
   { numero: '14',   label: 'Disciplinas disponibles' },
   { numero: '6',    label: 'Días a la semana' },
-  { numero: '4',    label: 'Años de comunidad' },
+  { numero: '2',    label: 'Años de comunidad' },
 ];
 
 export default function ComunidadUnbex() {
