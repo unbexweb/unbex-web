@@ -3,7 +3,7 @@
 export default function HeroDisciplina({ disciplina, videoId }) {
   const imgSrc = `/img/cards/${disciplina.img}`;
   const embedSrc = videoId
-    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&modestbranding=1&playsinline=1`
+    ? `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1&loop=1&playlist=${videoId}&controls=0&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3`
     : null;
 
   return (

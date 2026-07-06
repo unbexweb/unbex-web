@@ -56,12 +56,13 @@ export const DISCIPLINA_VIDEOS = {
   'precios':      'CatEXzcy3Uk',
 };
 
-// Videos del hero principal: desktop (horizontal) y mobile (vertical)
-// Cuando mobile sea null usa el de desktop como fallback
-export const HERO_VIDEOS = {
-  desktop: 'LBlgzPZ-yy8',
-  mobile:  'DQ4VHcQ3aXM',
-};
+// Videos del hero principal — array para el carrusel.
+// Cada entrada: { desktop: 'ID_YT', mobile: 'ID_YT' | null }
+// Si mobile es null, usa desktop como fallback en móvil.
+export const HERO_VIDEOS = [
+  { desktop: 'LBlgzPZ-yy8', mobile: 'DQ4VHcQ3aXM' },
+  { desktop: 'CvbFD1Qy_OQ', mobile: null },
+];
 
 export const CONTACTO = {
   whatsapp:  WA_NUMBER,
@@ -215,13 +216,14 @@ export const disciplinas = [
     nombre: 'Jiu Jitsu',
     salon:  'mb',
     img:    'card_disciplinas_jiujitsu.jpg',
-    desc:   'Más que un sistema de defensa personal, el Jiu Jitsu es un estilo de vida que promueve la disciplina y la camaradería. Nuestras clases ofrecen un ambiente seguro para aprender proyecciones, controles y escapes. Al ser un deporte de intensidad adaptable, es perfecto para jóvenes que buscan un desafío competitivo y para adultos que desean mantenerse en forma de una manera dinámica, estratégica y altamente efectiva.',
+    desc:   'Más que un sistema de defensa personal, el Jiu Jitsu es un estilo de vida que promueve la disciplina y la camaradería. Las clases están a cargo de la Academia Real Jiu Jitsu y ofrecen un ambiente seguro para aprender proyecciones, controles y escapes. Al ser un deporte de intensidad adaptable, es perfecto para jóvenes que buscan un desafío competitivo y para adultos que desean mantenerse en forma de una manera dinámica, estratégica y altamente efectiva.',
+    descLarga: '¿Querés probarlo? Podés usar una de tus 3 clases de prueba para asistir a una clase de Jiu Jitsu. Te invitamos a probar cuando quieras.',
     icono:  '🥋',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Jiu Jitsu en Unbex 🥋'),
     paraQuien: 'Jóvenes y adultos que buscan defensa personal, un desafío competitivo o mantenerse en forma de manera dinámica.',
     objetivos: 'Aprendés técnica, defensa personal y ganás disciplina, fuerza y agilidad mental.',
-    duracion:  '60 minutos',
+    duracion:  '90 minutos',
   },
   {
     clave:  'fiit',
@@ -285,7 +287,7 @@ export const precios = {
     {
       id: 'mb',
       nombre: 'Salón M&B',
-      desc: 'Yoga, Stretching, Pilates Mat, Zumba, Localizada/GAP, FIIT, Judo Kids',
+      desc: 'Yoga, Stretching, Pilates Mat, Zumba, Localizada/GAP, FIIT, Body Pump, Judo Kids',
       planes: [
         { plan: '4 clases',  precio: 39050, efvo: 35500 },
         { plan: '8 clases',  precio: 50600, efvo: 46000 },
@@ -306,6 +308,15 @@ export const precios = {
         { plan: '20 clases', precio: 77000, efvo: 70000 },
         { plan: '24 clases', precio: 83600, efvo: 76000 },
         { plan: 'Ilimitado', precio: 90200, efvo: 82000, destacado: true },
+      ],
+    },
+    {
+      id: 'jiu-jitsu',
+      nombre: 'Jiu Jitsu',
+      desc: 'Academia Real Jiu Jitsu · Clases de 90 min',
+      planes: [
+        { plan: '4 clases', precio: 50000, efvo: 50000 },
+        { plan: '8 clases', precio: 60000, efvo: 60000 },
       ],
     },
     {
@@ -372,7 +383,7 @@ export const consultorios = [
   { nombre: 'Psicología Deportiva',    icono: '🧠', desc: 'Fortalecé tu mentalidad para superar cualquier obstáculo. Gestión del estrés y motivación.',                                                                                                                                                                                              wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Psicología Deportiva en Unbex 🧠') },
   { nombre: 'Acupuntura',              icono: '🪡', desc: 'Alivio del dolor y equilibrio sistémico y energético.',                                                                                                                                                                                                                                    wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Acupuntura en Unbex 🪡') },
   { nombre: 'Detox Pedilúvico Iónico', icono: '💧', desc: 'Limpieza profunda de toxinas a través de los pies activando tu sistema linfático para mejorar tu circulación y energía.',                                                                                                                                                                 wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Detox Pedilúvico Iónico en Unbex 💧') },
-  { nombre: 'Masaje Deportivo',        icono: '💆', desc: 'Recuperación post-entrenamiento. Descomprime tu contractura o libera tu sobrecarga muscular.',                                                                                                                                                                                             wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Masaje Deportivo en Unbex 💆') },
+  { nombre: 'Masajes',                 icono: '💆', desc: 'Descontracturantes, pre y pos competencia. Liberá la tensión muscular, recuperate más rápido y prepará tu cuerpo para rendir al máximo.',                                                                                                                                                wa: WA_BASE + encodeURIComponent('Hola! Quiero solicitar una reserva para Masajes en Unbex 💆') },
 ];
 
 export const horarios = [

@@ -4,6 +4,9 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Link from 'next/link';
 import { WA_NUMBER } from '@/data/disciplines';
+import { getSupabaseAdmin } from '@/lib/supabase';
+import DirectorioProfesionales from './DirectorioProfesionales';
+import FormProfesional from './FormProfesional';
 
 export const metadata = {
   title: 'Comunidad Unbex | Más que un gimnasio',
@@ -40,7 +43,31 @@ const pilares = [
   { numero: '2',    label: 'Años de comunidad' },
 ];
 
-export default function ComunidadUnbex() {
+export const revalidate = 60;
+
+async function getProfesionalesAprobados() {
+  const supabaseAdmin = getSupabaseAdmin();
+  if (!supabaseAdmin) {
+    console.error('Supabase no configurado: faltan variables de entorno.');
+    return [];
+  }
+
+  const { data, error } = await supabaseAdmin
+    .from('profesionales')
+    .select('id, nombre, apellido, rubro, descripcion, telefono, instagram, zona')
+    .eq('estado', 'aprobado')
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error al obtener profesionales:', error);
+    return [];
+  }
+  return data;
+}
+
+export default async function ComunidadUnbex() {
+  const profesionales = await getProfesionalesAprobados();
+
   return (
     <>
       <Topbar />
@@ -110,7 +137,7 @@ export default function ComunidadUnbex() {
                 <div className="comunidad-momento__video-wrap">
                   <iframe
                     className="comunidad-momento__iframe"
-                    src="https://www.youtube-nocookie.com/embed/iZz8V3jFh9s?autoplay=1&mute=1&loop=1&playlist=iZz8V3jFh9s&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    src="https://www.youtube-nocookie.com/embed/iZz8V3jFh9s?autoplay=1&mute=1&loop=1&playlist=iZz8V3jFh9s&controls=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3"
                     title="Fiesta Unbex"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -131,7 +158,7 @@ export default function ComunidadUnbex() {
                 <div className="comunidad-momento__video-wrap">
                   <iframe
                     className="comunidad-momento__iframe"
-                    src="https://www.youtube-nocookie.com/embed/sKEs6BVCbhE?autoplay=1&mute=1&loop=1&playlist=sKEs6BVCbhE&controls=1&rel=0&modestbranding=1&playsinline=1"
+                    src="https://www.youtube-nocookie.com/embed/sKEs6BVCbhE?autoplay=1&mute=1&loop=1&playlist=sKEs6BVCbhE&controls=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3"
                     title="Unbex Challenge"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -148,6 +175,32 @@ export default function ComunidadUnbex() {
               </div>
 
             </div>
+          </div>
+        </section>
+
+        {/* BOLSA DE PROFESIONALES */}
+        <section id="profesionales" className="comunidad-bolsa">
+          <div className="section__container">
+            <span className="section__eyebrow">RED DE PROFESIONALES</span>
+            <h2 className="section__title comunidad-bolsa__title">Bolsa de profesionales Unbex</h2>
+            <p className="section__subtitle comunidad-bolsa__subtitle">
+              Profesionales de la comunidad Unbex ofreciendo sus servicios: entrenadores, nutricionistas,
+              kinesiólogos y mucho más.
+            </p>
+            <DirectorioProfesionales profesionales={profesionales} />
+          </div>
+        </section>
+
+        {/* PUBLICAR PERFIL */}
+        <section id="publicar-perfil" className="trabaja-postulate comunidad-publicar">
+          <div className="section__container">
+            <span className="section__eyebrow">SUMÁ TU PERFIL</span>
+            <h2 className="section__title">¿Sos profesional del fitness o bienestar?</h2>
+            <p className="section__subtitle">
+              Publicá tus datos y ofrecé tus servicios a toda la comunidad Unbex. Tu publicación se revisa
+              antes de mostrarse en el directorio.
+            </p>
+            <FormProfesional />
           </div>
         </section>
 

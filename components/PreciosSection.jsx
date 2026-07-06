@@ -11,6 +11,7 @@ const TABS = [
   { id: 'black',          label: 'Salón Black'    },
   { id: 'mb',             label: 'Salón M&B'      },
   { id: 'full',           label: 'Full Unbex'     },
+  { id: 'jiu-jitsu',      label: 'Jiu Jitsu'      },
   { id: 'jubilados',      label: 'Jubilados +70'  },
   { id: 'open-box',       label: 'Open Box'       },
   { id: 'open-matutino',  label: 'Open Matutino'  },
@@ -21,6 +22,7 @@ const BLOQUES_POR_TAB = {
   black:           [precios.clases.find(b => b.id === 'black')],
   mb:              [precios.clases.find(b => b.id === 'mb')],
   full:            [precios.clases.find(b => b.id === 'full')],
+  'jiu-jitsu':     [precios.clases.find(b => b.id === 'jiu-jitsu')],
   jubilados:       [precios.clases.find(b => b.id === 'jubilados')],
   'open-box':      [precios.espacio.find(b => b.id === 'open-box')],
   'open-matutino': [precios.espacio.find(b => b.id === 'open-matutino')],
@@ -32,9 +34,7 @@ const MEDIOS_PAGO = [
   { icono: '🔄', nombre: 'Transferencia / CVU' },
   { icono: '📱', nombre: 'Mercado Pago' },
   { icono: '💳', nombre: 'MODO' },
-  { icono: '💳', nombre: 'Visa' },
-  { icono: '💳', nombre: 'Mastercard' },
-  { icono: '💳', nombre: 'American Express' },
+  { icono: '💳', nombre: 'Tarjetas de débito y crédito' },
 ];
 
 function fmt(n) {
@@ -69,13 +69,14 @@ function PlanCard({ plan, nombre, animDelay = 0 }) {
 }
 
 function BloquePrecios({ bloque }) {
+  const count = bloque.planes.length;
   return (
     <div className="precio-bloque">
       <div className="precio-bloque__header">
         <h3 className="precio-bloque__nombre">{bloque.nombre}</h3>
         <p className="precio-bloque__desc">{bloque.desc}</p>
       </div>
-      <div className="precio-bloque__cards">
+      <div className={`precio-bloque__cards precio-bloque__cards--${count}`}>
         {bloque.planes.map((p, i) => (
           <PlanCard key={p.plan} plan={p} nombre={bloque.nombre} animDelay={i * 60} />
         ))}

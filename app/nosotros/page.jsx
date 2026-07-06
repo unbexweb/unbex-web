@@ -98,7 +98,7 @@ export default function NosotrosPage() {
           </div>
         </section>
 
-        {/* CTA */}
+        {/* CTA PRUEBA */}
         <section className="trabaja-postulate">
           <div className="section__container">
             <span className="section__eyebrow">EMPEZÁ HOY</span>
@@ -119,6 +119,19 @@ export default function NosotrosPage() {
                 Ver disciplinas
               </Link>
             </div>
+          </div>
+        </section>
+
+        {/* GANCHO TENÉ TU UNBEX */}
+        <section className="trabaja-banner">
+          <div className="trabaja-banner__content">
+            <h2 className="trabaja-banner__title">¿Querés tener tu propio Unbex?</h2>
+            <p className="trabaja-banner__sub">
+              Llevá el modelo Unbex a tu ciudad. Franquicia, metodología y comunidad — todo el sistema listo para vos.
+            </p>
+            <Link href="/tene-tu-unbex" className="trabaja-banner__btn">
+              Quiero saber más
+            </Link>
           </div>
         </section>
 

@@ -128,9 +128,10 @@ button {
 
 /* ========== TOPBAR ========== */
 :root {
-  --topbar-height: 32px;
-  --navbar-height: 62px;
-  --header-total: calc(var(--topbar-height) + var(--navbar-height));
+  --topbar-height:  32px;
+  --navbar-height:  62px;
+  --header-total:   calc(var(--topbar-height) + var(--navbar-height));
+  --marquee-height: 40px;
 }
 
 .topbar {
@@ -476,7 +477,7 @@ button {
 /* ========== HERO (INDEX) ========== */
 .hero {
   position: relative;
-  height: 100vh;
+  height: 89vh;
   overflow: hidden;
   display: flex;
   align-items: stretch;
@@ -552,15 +553,19 @@ button {
 }
 
 .hero__content {
-  position: relative;
+  position: absolute;
+  top: var(--navbar-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   text-align: center;
-  padding: 0 var(--spacing-sm) 10vh;
+  padding: 0 var(--spacing-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: var(--spacing-sm);
-  transform: translateX(2vw);
 }
 
 .hero__title {
@@ -611,6 +616,121 @@ button {
 }
 
 .hero__volume:hover { background: rgba(0,0,0,0.6); }
+
+/* ─── SCROLL INDICATOR ───────────────────────────────────────────── */
+.hero-scroll-hint {
+  height: 11vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 0.4s ease;
+}
+.hero-scroll-hint--oculto {
+  opacity: 0;
+  pointer-events: none;
+}
+.hero-scroll-hint__chevrons {
+  position: relative;
+  width: 22px;
+  height: 30px;
+  animation: heroScrollBounce 1.5s ease-in-out infinite;
+}
+.hero-scroll-hint__chevrons::before,
+.hero-scroll-hint__chevrons::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 11px;
+  border-right: 2.5px solid var(--color-rosa);
+  border-bottom: 2.5px solid var(--color-rosa);
+  transform: rotate(45deg);
+}
+.hero-scroll-hint__chevrons::before { top: 0; opacity: 0.45; }
+.hero-scroll-hint__chevrons::after  { top: 11px; }
+@keyframes heroScrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(8px); }
+}
+
+/* ─── HERO CARRUSEL ─────────────────────────────────────────────── */
+/* Flechas laterales del carrusel — posición absoluta a los costados */
+.hero__carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--color-accent);
+  border: 2px solid rgba(253, 227, 216, 0.45);
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: background 0.25s, border-color 0.25s, opacity 0.25s;
+}
+
+.hero__carousel-btn:hover {
+  background: rgba(0, 0, 0, 0.45);
+  border-color: var(--color-accent);
+  opacity: 1;
+}
+
+.hero__carousel-btn--prev {
+  left: 1.25rem;
+}
+
+.hero__carousel-btn--next {
+  right: 1.25rem;
+}
+
+/* Desktop: la flecha izquierda arranca después del sidebar */
+@media (min-width: 768px) {
+  .hero__carousel-btn--prev {
+    left: calc(290px + 1.25rem);
+  }
+}
+
+/* Puntos indicadores — centrados abajo */
+.hero__carousel-dots {
+  position: absolute;
+  bottom: 1.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Desktop: sidebar 290px → centro del área de video = 50vw + 145px */
+@media (min-width: 768px) {
+  .hero__carousel-dots {
+    left: calc(50% + 145px);
+  }
+}
+
+.hero__carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.hero__carousel-dot--active {
+  background: var(--color-accent);
+  transform: scale(1.4);
+}
 
 /* ========== HERO DISCIPLINA ========== */
 .disciplina-hero {
@@ -1012,7 +1132,7 @@ button {
 
 .horarios__tab {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 999px;
   padding: 0.4rem 1.4rem;
   color: var(--color-text);
@@ -1021,12 +1141,30 @@ button {
   font-weight: 500;
   letter-spacing: 0.02em;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.72;
   transition: all var(--transition-fast);
 }
 
-.horarios__tab--active { background: var(--color-primary); color: var(--color-text-light); opacity: 1; }
-.horarios__tab:not(.horarios__tab--active):hover { opacity: 0.8; }
+.horarios__tab--active {
+  background: rgba(253, 227, 216, 0.07);
+  border-color: rgba(253, 227, 216, 0.6);
+  color: var(--color-accent);
+  opacity: 1;
+  box-shadow:
+    0 0 7px rgba(253, 227, 216, 0.5),
+    0 0 18px rgba(253, 227, 216, 0.22),
+    0 0 36px rgba(253, 227, 216, 0.08),
+    inset 0 0 10px rgba(253, 227, 216, 0.04);
+  text-shadow:
+    0 0 7px rgba(253, 227, 216, 0.85),
+    0 0 16px rgba(253, 227, 216, 0.4);
+}
+
+.horarios__tab:not(.horarios__tab--active):hover {
+  opacity: 1;
+  color: var(--color-accent);
+  text-shadow: 0 0 6px rgba(253, 227, 216, 0.38);
+}
 
 .horarios__panel { display: none; }
 .horarios__panel--active { display: block; }
@@ -1105,6 +1243,116 @@ button {
 
 .horarios__badge--especifica { background-color: var(--color-text-light); color: var(--color-primary); }
 .horarios__badge--combinada  { background-color: var(--color-primary); color: var(--color-text-light); border: 1px solid var(--color-primary-light); }
+
+/* ========== HORARIOS — TABS DE DÍA Y LISTA (SOLO MOBILE) ========== */
+.horarios__dia-tabs { display: none; }
+.horarios__mobile-lista { display: none; }
+
+.horarios__dia-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  opacity: 0.72;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+}
+
+.horarios__dia-tab--active {
+  background: rgba(253, 227, 216, 0.07);
+  border-color: rgba(253, 227, 216, 0.6);
+  color: var(--color-accent);
+  opacity: 1;
+  box-shadow:
+    0 0 7px rgba(253, 227, 216, 0.5),
+    0 0 18px rgba(253, 227, 216, 0.22);
+  text-shadow: 0 0 6px rgba(253, 227, 216, 0.6);
+}
+
+.horarios__dia-tab:not(.horarios__dia-tab--active):hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.horarios__mobile-fila {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  animation: horarios-mobile-fade 0.25s ease;
+}
+
+.horarios__mobile-fila:last-child { border-bottom: none; }
+
+.horarios__mobile-hora {
+  color: var(--color-text-light);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  width: 52px;
+  flex-shrink: 0;
+}
+
+.horarios__mobile-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.horarios__mobile-badges .horarios__badge {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.horarios__mobile-empty {
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  font-size: var(--text-sm);
+  animation: horarios-mobile-fade 0.25s ease;
+}
+
+@keyframes horarios-mobile-fade {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 767px) {
+  .horarios__table-wrap { display: none; }
+
+  .horarios__dia-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border: 2px solid var(--color-primary);
+    border-radius: 999px;
+    padding: 3px;
+    margin: 0 auto var(--spacing-md);
+    width: fit-content;
+    max-width: 100%;
+  }
+  .horarios__dia-tabs::-webkit-scrollbar { display: none; }
+
+  .horarios__mobile-lista {
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.06);
+    background-color: #171717;
+  }
+}
 
 /* ========== HORARIOS — CARDS DE DISCIPLINA ========== */
 .horario-grid {
@@ -1514,7 +1762,7 @@ body.salon-mb .topbar {
 }
 
 .precio-bloque {
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md) var(--spacing-sm);
 }
 
 .precio-bloque:nth-child(odd)  { background: #0a0a0a; }
@@ -1538,7 +1786,7 @@ body.salon-mb .topbar {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--color-text-light);
-  opacity: 0.55;
+  opacity: 0.85;
   letter-spacing: 0.02em;
 }
 
@@ -1547,6 +1795,10 @@ body.salon-mb .topbar {
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: var(--spacing-sm);
 }
+
+.precio-bloque__cards--2 { grid-template-columns: repeat(2, minmax(180px, 280px)); justify-content: center; }
+.precio-bloque__cards--4 { grid-template-columns: repeat(4, 1fr); }
+.precio-bloque__cards--6 { grid-template-columns: repeat(3, 1fr); }
 
 .precio-card {
   position: relative;
@@ -1591,7 +1843,7 @@ body.salon-mb .topbar {
   font-family: var(--font-body);
   font-size: var(--text-sm);
   color: var(--color-text-light);
-  opacity: 0.6;
+  opacity: 0.9;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -2095,7 +2347,9 @@ main.salon-mb .trabaja-hero__overlay {
 }
 
 .contacto__dato-icono {
-  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -2335,6 +2589,346 @@ main.salon-mb .trabaja-hero__overlay {
   .trabaja-form__row { grid-template-columns: 1fr; }
 }
 
+.trabaja-form__textarea { resize: vertical; min-height: 80px; font-family: var(--font-body); }
+
+.trabaja-form__counter {
+  text-transform: none;
+  font-weight: 400;
+  opacity: 0.6;
+  letter-spacing: normal;
+}
+
+/* ========== BOLSA DE PROFESIONALES ========== */
+.comunidad-bolsa {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0a;
+  padding: var(--spacing-xl) 0;
+}
+
+.comunidad-bolsa::before,
+.comunidad-bolsa::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.comunidad-bolsa::before {
+  box-shadow:
+     50px  80px 0 1px rgba(255,255,255,0.8),
+    180px 250px 0 1px rgba(255,255,255,0.6),
+    320px 620px 0 1px rgba(255,255,255,0.7),
+    450px 150px 0 1px rgba(255,255,255,0.5),
+    620px 780px 0 1px rgba(255,255,255,0.8),
+    740px 350px 0 1px rgba(255,255,255,0.6),
+    860px 550px 0 1px rgba(255,255,255,0.7),
+   1050px 100px 0 1px rgba(255,255,255,0.5),
+   1180px 450px 0 1px rgba(255,255,255,0.8),
+   1320px 800px 0 1px rgba(255,255,255,0.6),
+   1450px 220px 0 1px rgba(255,255,255,0.7),
+   1580px 650px 0 1px rgba(255,255,255,0.5),
+    700px 900px 0 1px rgba(255,255,255,0.8),
+   1100px 300px 0 1px rgba(255,255,255,0.6),
+    250px 880px 0 1px rgba(255,255,255,0.7);
+  animation: destello-a 6s ease-in-out infinite alternate;
+  will-change: opacity;
+}
+
+.comunidad-bolsa::after {
+  box-shadow:
+     80px 500px 0 1px rgba(255,255,255,0.6),
+    220px  50px 0 1px rgba(255,255,255,0.7),
+    380px 400px 0 1px rgba(255,255,255,0.5),
+    530px 700px 0 1px rgba(255,255,255,0.8),
+    680px 180px 0 1px rgba(255,255,255,0.6),
+    800px 950px 0 1px rgba(255,255,255,0.7),
+    950px 720px 0 1px rgba(255,255,255,0.5),
+   1150px 580px 0 1px rgba(255,255,255,0.8),
+   1280px  30px 0 1px rgba(255,255,255,0.6),
+   1400px 380px 0 1px rgba(255,255,255,0.7),
+   1530px 850px 0 1px rgba(255,255,255,0.5),
+   1720px 200px 0 1px rgba(255,255,255,0.8),
+     30px 720px 0 1px rgba(255,255,255,0.6),
+    920px 420px 0 1px rgba(255,255,255,0.7),
+   1650px 500px 0 1px rgba(255,255,255,0.5);
+  animation: destello-b 9s ease-in-out infinite alternate;
+  will-change: opacity;
+}
+
+.comunidad-bolsa .section__container {
+  position: relative;
+  z-index: 1;
+}
+
+.comunidad-bolsa__title {
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 14px;
+}
+
+.comunidad-bolsa__title::after {
+  content: '';
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-rosa), transparent);
+  border-radius: 2px;
+}
+
+.comunidad-bolsa__subtitle { color: rgba(255,255,255,0.6); }
+
+/* ---------- Buscador y filtro de zona ---------- */
+.directorio-filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 640px;
+  margin: 0 auto var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  .directorio-filtros { flex-direction: row; align-items: center; }
+}
+
+.directorio-search {
+  position: relative;
+  flex: 1;
+}
+
+.directorio-search__icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: rgba(255,255,255,0.4);
+  pointer-events: none;
+}
+
+.directorio-search__input {
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  padding: 0.9rem 1.4rem 0.9rem 3.1rem;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  outline: none;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.directorio-search__input::placeholder { color: rgba(255,255,255,0.35); }
+
+.directorio-search__input:focus {
+  border-color: var(--color-rosa);
+  background: #1f1f1f;
+}
+
+.directorio-zona-select {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 100%;
+  background: #1a1a1a;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 999px;
+  padding: 0.9rem 2.6rem 0.9rem 1.4rem;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  outline: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDE3D8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1.2rem center;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+@media (min-width: 640px) {
+  .directorio-zona-select { width: 220px; }
+}
+
+.directorio-zona-select:focus { border-color: var(--color-rosa); background: #1f1f1f; }
+.directorio-zona-select option { background: #1a1a1a; color: #fff; }
+
+.directorio__vacio {
+  text-align: center;
+  color: rgba(255,255,255,0.55);
+  padding: var(--spacing-md) 0;
+}
+
+/* ---------- Grilla y cards ---------- */
+.directorio__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 640px) {
+  .directorio__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .directorio__grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.directorio-card {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--border-radius-lg);
+  padding: 28px;
+  text-align: left;
+  transition: border-color var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.directorio-card:hover {
+  border-color: rgba(253,227,216,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+}
+
+.directorio-card__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.directorio-card__avatar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-violeta);
+  color: var(--color-rosa);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 100;
+}
+
+.directorio-card__nombre {
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  font-weight: 100;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.directorio-card__rubro {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-violeta);
+  background: var(--color-rosa);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.directorio-card__zona {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+}
+
+.directorio-card__zona svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.directorio-card__desc {
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.directorio-card__whatsapp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+  background: #25D366;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  padding: 0.75rem 1rem;
+  border-radius: var(--border-radius-md);
+  text-decoration: none;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.directorio-card__whatsapp svg { width: 18px; height: 18px; }
+
+.directorio-card__whatsapp:hover {
+  background: #1fb659;
+  transform: translateY(-2px);
+}
+
+.directorio-card__instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.directorio-card__instagram svg { width: 16px; height: 16px; }
+
+.directorio-card__instagram:hover { color: #ffffff; }
+
+/* ---------- CTA "Sumá tu perfil" ---------- */
+.directorio__cta {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+.directorio__cta-btn {
+  display: inline-block;
+  padding: 1rem 2.6rem;
+  border: 1.5px solid var(--color-rosa);
+  border-radius: 999px;
+  color: var(--color-rosa);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: var(--text-base);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.directorio__cta-btn:hover {
+  background: var(--color-rosa);
+  color: var(--color-violeta);
+  transform: translateY(-2px);
+}
+
 
 /* ========== NAVBAR — transición hero mode ========== */
 .navbar {
@@ -2350,9 +2944,10 @@ main.salon-mb .trabaja-hero__overlay {
 }
 
 /* ========== HOME — padding por sidebar fijo ========== */
+
 @media (min-width: 768px) {
   .home-main { padding-left: 290px; }
-  /* El hero es full-bleed — escapa del padding del sidebar */
+  /* Hero es full-bleed — escapa del padding del sidebar */
   .home-main > .hero {
     margin-left: -290px;
     width: 100vw;
@@ -2417,7 +3012,6 @@ main.salon-mb .trabaja-hero__overlay {
   color: var(--color-text);
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.2s ease;
 }
 
@@ -2564,18 +3158,7 @@ main.salon-mb .trabaja-hero__overlay {
     top: 0;
   }
 
-  /* Hero: título y slogan en la parte superior-central del hero */
-  .hero__content {
-    justify-content: flex-start;
-    transform: none;
-    padding-top: calc(var(--header-total) + var(--spacing-md));
-    padding-bottom: 0;
-  }
-
-  /* Padding-top ajustado cuando topbar está oculto — usa solo la altura del navbar */
-  body:has(.topbar--oculto) .hero__content {
-    padding-top: calc(var(--navbar-height) + var(--spacing-md));
-  }
+  /* Mobile: topbar oculto → navbar a top:0; top del global ya usa --navbar-height */
 
   /* Botón volumen: arriba a la derecha, visible sin scrollear y separado del WhatsApp */
   .hero__volume {
@@ -2624,6 +3207,51 @@ main.salon-mb .trabaja-hero__overlay {
   animation: loader-pulse 1.8s ease-in-out infinite;
 }
 
+/* ========== MARQUEE BANNER — reposiciona toda la UI ========== */
+/* Estas reglas van al final para sobreescribir mobile media queries */
+
+/* navbar móvil y logo debajo del banner */
+body:has(.marquee-banner) .navbar {
+  top: var(--marquee-height);
+}
+body:has(.marquee-banner) .navbar__logo {
+  top: var(--marquee-height);
+}
+
+/* home-main: empuja el hero debajo del banner fijo */
+body:has(.marquee-banner) .home-main {
+  padding-top: var(--marquee-height);
+}
+
+/* hero: 89vh menos el banner fijo */
+body:has(.marquee-banner) .hero {
+  height: calc(89vh - var(--marquee-height));
+}
+
+/* hero content: centrado en el espacio debajo de la navbar */
+body:has(.marquee-banner) .hero__content {
+  top: var(--navbar-height);
+}
+
+/* ── Desktop: banner solo a la derecha del sidebar; sidebar desde top:0 ── */
+@media (min-width: 768px) {
+  /* banner arranca donde termina el sidebar */
+  body:has(.marquee-banner) .marquee-banner {
+    left: 290px;
+  }
+
+  /* logo sube al tope del sidebar */
+  body:has(.marquee-banner) .navbar__logo {
+    top: 0;
+  }
+
+  /* sidebar desde top:0 — ocupa el espacio del banner en su columna */
+  body:has(.marquee-banner) .navbar-lateral {
+    top: 0;
+    padding-top: calc(var(--navbar-height) + 1.5rem);
+  }
+}
+
 /* ─── MARQUEE BANNER ─────────────────────────────────────────────── */
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -2631,11 +3259,22 @@ main.salon-mb .trabaja-hero__overlay {
 }
 
 .marquee-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 200;
   overflow: hidden;
-  background: var(--color-primary);
+  background: var(--color-accent);
   padding: 10px 0;
-  position: relative;
-  z-index: 2;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.marquee-banner--oculto {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
 .marquee-banner__track {
@@ -2649,15 +3288,15 @@ main.salon-mb .trabaja-hero__overlay {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.05em;
-  color: var(--color-accent);
+  color: var(--color-primary);
   padding-right: 0;
   text-transform: uppercase;
 }
 
 /* ─── MEDIOS DE PAGO (en sección precios) ───────────────────────── */
 .precios__medios-pago {
-  margin-top: 2.5rem;
-  padding-top: 2rem;
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
   border-top: 1px solid var(--color-border);
   text-align: center;
 }

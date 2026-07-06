@@ -6,7 +6,13 @@ import { useIntersectionObserver } from '@/hooks/useIntersectionObserver';
 import TabHint from '@/components/TabHint';
 
 const ORDEN_DIAS = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
+const DIA_LABEL_CORTO = { lun: 'Lun', mar: 'Mar', mie: 'Mié', jue: 'Jue', vie: 'Vie', sab: 'Sáb' };
+const DIA_POR_GETDAY = { 0: 'lun', 1: 'lun', 2: 'mar', 3: 'mie', 4: 'jue', 5: 'vie', 6: 'sab' };
 const LABEL_EXTRA = { oly: 'OLY', allout: 'Allout' };
+
+function diaActualDefault() {
+  return DIA_POR_GETDAY[new Date().getDay()];
+}
 
 function getDisciplinaMap() {
   return new Map(disciplinas.map(d => [d.clave, d]));
@@ -31,7 +37,7 @@ function badgeTitulo(entry) {
     (entry.nota ? ' — ' + entry.nota : '');
 }
 
-function TablaHorarios({ salon }) {
+function TablaHorarios({ salon, diaMobile }) {
   const [wrapRef, isVisible] = useIntersectionObserver({ threshold: 0.05 });
   const entradas = horarios.filter(h => h.salon === salon);
   const horas = [...new Set(entradas.map(h => h.hora))].sort();
@@ -39,56 +45,90 @@ function TablaHorarios({ salon }) {
   // Solo días que tienen al menos una clase en este salón
   const dias = ORDEN_DIAS.filter(d => entradas.some(h => h.dias.includes(d)));
 
-  return (
-    <div ref={wrapRef} className={`horarios__table-wrap${isVisible ? ' is-visible' : ''}`}>
-      <table className="horarios__table">
-        <thead>
-          <tr>
-            <th className="horarios__th-hora">Hora</th>
-            {dias.map(dia => (
-              <th key={dia}>{DIAS_SEMANA[dia]}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {horas.map(hora => (
-            <tr key={hora}>
-              <td className="horarios__hora">{hora}</td>
-              {dias.map(dia => {
-                const matches = entradas.filter(h => h.hora === hora && h.dias.includes(dia));
+  const entradasDia = entradas.filter(h => h.dias.includes(diaMobile));
+  const horasDia = [...new Set(entradasDia.map(h => h.hora))].sort();
 
-                if (!matches.length) {
+  return (
+    <>
+      <div ref={wrapRef} className={`horarios__table-wrap${isVisible ? ' is-visible' : ''}`}>
+        <table className="horarios__table">
+          <thead>
+            <tr>
+              <th className="horarios__th-hora">Hora</th>
+              {dias.map(dia => (
+                <th key={dia}>{DIAS_SEMANA[dia]}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {horas.map(hora => (
+              <tr key={hora}>
+                <td className="horarios__hora">{hora}</td>
+                {dias.map(dia => {
+                  const matches = entradas.filter(h => h.hora === hora && h.dias.includes(dia));
+
+                  if (!matches.length) {
+                    return (
+                      <td key={dia}>
+                        <span className="horarios__empty">—</span>
+                      </td>
+                    );
+                  }
+
                   return (
                     <td key={dia}>
-                      <span className="horarios__empty">—</span>
+                      <div className="horarios__cell">
+                        {matches.map((entry, i) => {
+                          const combinada = entry.claves.length > 1;
+                          return (
+                            <span
+                              key={i}
+                              className={`horarios__badge ${combinada ? 'horarios__badge--combinada' : 'horarios__badge--especifica'}`}
+                              title={badgeTitulo(entry)}
+                            >
+                              {badgeTexto(entry)}
+                            </span>
+                          );
+                        })}
+                      </div>
                     </td>
                   );
-                }
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
-                return (
-                  <td key={dia}>
-                    <div className="horarios__cell">
-                      {matches.map((entry, i) => {
-                        const combinada = entry.claves.length > 1;
-                        return (
-                          <span
-                            key={i}
-                            className={`horarios__badge ${combinada ? 'horarios__badge--combinada' : 'horarios__badge--especifica'}`}
-                            title={badgeTitulo(entry)}
-                          >
-                            {badgeTexto(entry)}
-                          </span>
-                        );
-                      })}
-                    </div>
-                  </td>
-                );
-              })}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <div className="horarios__mobile-lista" key={diaMobile}>
+        {horasDia.length === 0 ? (
+          <p className="horarios__mobile-empty">Sin clases este día</p>
+        ) : (
+          horasDia.map(hora => {
+            const matches = entradasDia.filter(h => h.hora === hora);
+            return (
+              <div key={hora} className="horarios__mobile-fila">
+                <span className="horarios__mobile-hora">{hora}</span>
+                <div className="horarios__mobile-badges">
+                  {matches.map((entry, i) => {
+                    const combinada = entry.claves.length > 1;
+                    return (
+                      <span
+                        key={i}
+                        className={`horarios__badge ${combinada ? 'horarios__badge--combinada' : 'horarios__badge--especifica'}`}
+                        title={badgeTitulo(entry)}
+                      >
+                        {badgeTexto(entry)}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </>
   );
 }
 
@@ -96,6 +136,7 @@ const SALON_IDS = ['black', 'mb'];
 
 export default function HorariosGrid() {
   const [tab, setTab] = useState('black');
+  const [diaMobile, setDiaMobile] = useState(diaActualDefault);
   const tabsRef = useRef([]);
   const activeIndex = SALON_IDS.indexOf(tab);
 
@@ -128,11 +169,23 @@ export default function HorariosGrid() {
           </div>
         </div>
 
+        <div className="horarios__dia-tabs" id="horariosDiaTabs">
+          {ORDEN_DIAS.map(d => (
+            <button
+              key={d}
+              className={`horarios__dia-tab${diaMobile === d ? ' horarios__dia-tab--active' : ''}`}
+              onClick={() => setDiaMobile(d)}
+            >
+              {DIA_LABEL_CORTO[d]}
+            </button>
+          ))}
+        </div>
+
         <div className={`horarios__panel${tab === 'black' ? ' horarios__panel--active' : ''}`} id="horarios-black">
-          <TablaHorarios salon="black" />
+          <TablaHorarios salon="black" diaMobile={diaMobile} />
         </div>
         <div className={`horarios__panel${tab === 'mb' ? ' horarios__panel--active' : ''}`} id="horarios-mb">
-          <TablaHorarios salon="mb" />
+          <TablaHorarios salon="mb" diaMobile={diaMobile} />
         </div>
       </div>
     </section>

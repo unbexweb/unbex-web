@@ -70,6 +70,9 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
       {isHome && !isMobile && (
         <nav className="navbar-lateral navbar-lateral--activo" aria-label="Navegación lateral">
           <ul className="navbar-lateral__menu">
+            <li>
+              <Link href="/nosotros" className="navbar-lateral__link" onClick={closeAll}>Nosotros</Link>
+            </li>
             <li onMouseEnter={() => onDisciplinaHover?.(null)} onMouseLeave={() => onDisciplinaHover?.(null)}>
               <a href="#disciplinas" className="navbar-lateral__link" onClick={closeAll}>Disciplinas</a>
             </li>
@@ -81,12 +84,6 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
             </li>
             <li onMouseEnter={() => onDisciplinaHover?.('precios')} onMouseLeave={() => onDisciplinaHover?.(null)}>
               <a href="#precios" className="navbar-lateral__link" onClick={closeAll}>Precios</a>
-            </li>
-            <li>
-              <a href="#contacto" className="navbar-lateral__link" onClick={closeAll}>Contacto</a>
-            </li>
-            <li>
-              <Link href="/nosotros" className="navbar-lateral__link" onClick={closeAll}>Nosotros</Link>
             </li>
             <li>
               <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
@@ -102,6 +99,9 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
               <Link href="/tene-tu-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
                 Tené tu Unbex
               </Link>
+            </li>
+            <li>
+              <a href="#contacto" className="navbar-lateral__link" onClick={closeAll}>Contacto</a>
             </li>
           </ul>
         </nav>

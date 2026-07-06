@@ -20,6 +20,7 @@ import { disciplinas, consultorios } from '@/data/disciplines';
 export default function Home() {
   const [videoActivo, setVideoActivo] = useState(null);
   const [estaEnHero, setEstaEnHero] = useState(true);
+  const [bannerVisible, setBannerVisible] = useState(true);
   const [cargando, setCargando] = useState(true);
   const [saliendo, setSaliendo] = useState(false);
   const listoRef = useRef(false);
@@ -44,9 +45,10 @@ export default function Home() {
 
   useEffect(() => {
     function onScroll() {
+      const y = window.scrollY;
       const hero = document.getElementById('hero');
-      if (!hero) return;
-      setEstaEnHero(window.scrollY < hero.offsetHeight * 0.85);
+      if (hero) setEstaEnHero(y < hero.offsetHeight * 0.85);
+      setBannerVisible(y < 20);
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -55,6 +57,7 @@ export default function Home() {
 
   return (
     <>
+      <MarqueeBanner visible={bannerVisible} />
       {cargando && (
         <div className={`page-loader${saliendo ? ' page-loader--saliendo' : ''}`}>
           <Image
@@ -71,7 +74,15 @@ export default function Home() {
       <Navbar onDisciplinaHover={setVideoActivo} estaEnHero={estaEnHero} />
       <main className="home-main">
         <HeroIndex videoActivo={videoActivo} estaEnHero={estaEnHero} onListo={handleVideoListo} />
-        <MarqueeBanner />
+
+        <div
+          className={`hero-scroll-hint${bannerVisible ? '' : ' hero-scroll-hint--oculto'}`}
+          onClick={() => document.getElementById('disciplinas')?.scrollIntoView({ behavior: 'smooth' })}
+          role="button"
+          aria-label="Ir a disciplinas"
+        >
+          <span className="hero-scroll-hint__chevrons" aria-hidden="true" />
+        </div>
 
         {/* DISCIPLINAS */}
         <section className="disciplinas" id="disciplinas">
@@ -81,7 +92,7 @@ export default function Home() {
             <div className="section__container">
               <span className="section__eyebrow">SALÓN BLACK</span>
               <AnimatedSection as="h2" className="section__title">Fuerza y rendimiento</AnimatedSection>
-              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamiento de alta intensidad, musculación y disciplinas de potencia</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamiento de alta intensidad, Fuerza y disciplinas de potencia</AnimatedSection>
               <div className="cards">
                 {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
@@ -135,21 +146,21 @@ export default function Home() {
             <div className="contacto__layout">
               <div className="contacto__info">
                 <div className="contacto__dato">
-                  <span className="contacto__dato-icono">📍</span>
+                  <img src="/img/cards/Iconos_Ubicacion.png" alt="Ubicación" className="contacto__dato-icono" />
                   <div>
                     <p className="contacto__dato-titulo">Dirección</p>
                     <p className="contacto__dato-texto">Pacheco 1956, C1431<br />Ciudad Autónoma de Buenos Aires</p>
                   </div>
                 </div>
                 <div className="contacto__dato">
-                  <span className="contacto__dato-icono">🕐</span>
+                  <img src="/img/cards/Iconos_Horarios.png" alt="Horarios" className="contacto__dato-icono" />
                   <div>
                     <p className="contacto__dato-titulo">Horarios</p>
                     <p className="contacto__dato-texto">Lunes a Viernes: 7:00 – 21:00<br />Sábados: 9:00 – 12:00</p>
                   </div>
                 </div>
                 <div className="contacto__dato">
-                  <span className="contacto__dato-icono">💬</span>
+                  <img src="/img/cards/wsp.png" alt="WhatsApp" className="contacto__dato-icono" />
                   <div>
                     <p className="contacto__dato-titulo">WhatsApp</p>
                     <a
@@ -164,11 +175,11 @@ export default function Home() {
                 </div>
 
                 <div className="contacto__dato">
-                  <span className="contacto__dato-icono">⭐</span>
+                  <img src="/img/cards/Iconos_Calificacion de google.png" alt="Calificación Google" className="contacto__dato-icono" />
                   <div>
                     <p className="contacto__dato-titulo">Calificación en Google</p>
                     <a
-                      href="https://maps.google.com/maps?q=Pacheco+1956%2C+C1431+Buenos+Aires%2C+Argentina"
+                      href="https://search.google.com/local/writereview?placeid=ChIJw1OQBje3vJUR7CRv_4oo6tA&source=g.page.m.ia._&utm_source=gbp&laa=nmx-review-solicitation-ia2"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="contacto__dato-texto contacto__google-link"
