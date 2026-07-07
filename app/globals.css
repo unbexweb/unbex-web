@@ -2398,7 +2398,7 @@ main.salon-mb .trabaja-hero__overlay {
 /* ========== PÁGINA TRABAJAR CON NOSOTROS ========== */
 .trabaja-hero {
   position: relative;
-  height: 100vh;
+  height: 89vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2929,6 +2929,51 @@ main.salon-mb .trabaja-hero__overlay {
   transform: translateY(-2px);
 }
 
+/* ========== PUBLICAR PERFIL — esquema oscuro ========== */
+.comunidad-publicar { background: #0a0a0a; }
+
+.comunidad-publicar__title { color: #ffffff; }
+.comunidad-publicar__subtitle { color: rgba(255,255,255,0.6); }
+
+.comunidad-publicar .trabaja-form__label { color: var(--color-accent); }
+
+.comunidad-publicar .trabaja-form__input {
+  background: #1a1a1a;
+  border-color: rgba(255,255,255,0.1);
+  color: #ffffff;
+}
+
+.comunidad-publicar .trabaja-form__input::placeholder { color: #888888; }
+
+.comunidad-publicar .trabaja-form__input:focus {
+  background: #1f1f1f;
+  border-color: var(--color-accent);
+}
+
+.comunidad-publicar .trabaja-form__select option { background: #1a1a1a; color: #ffffff; }
+
+.comunidad-publicar .trabaja-form__btn {
+  background: var(--color-violeta);
+  color: var(--color-rosa);
+}
+
+.comunidad-publicar .trabaja-form__btn:hover {
+  background: var(--color-rosa);
+  color: var(--color-violeta);
+}
+
+.comunidad-publicar .trabaja-form__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.comunidad-publicar .trabaja-form__success-btn {
+  display: inline-block;
+  text-decoration: none;
+}
+
 
 /* ========== NAVBAR — transición hero mode ========== */
 .navbar {
@@ -3370,6 +3415,22 @@ body:has(.marquee-banner) .hero__content {
     radial-gradient(ellipse at 30% 40%, rgba(122,61,135,0.6) 0%, transparent 60%),
     radial-gradient(ellipse at 75% 65%, rgba(75,37,86,0.5) 0%, transparent 55%),
     url('/img/hero_fallback.jpg') center/cover no-repeat;
+}
+
+.franquicia-hero__bg {
+  background:
+    url('/img/banner_teneTuUnbex.png') center/contain no-repeat,
+    radial-gradient(ellipse at 60% 40%, rgba(122,61,135,0.5) 0%, transparent 65%),
+    radial-gradient(ellipse at 20% 70%, rgba(75,37,86,0.6) 0%, transparent 60%),
+    var(--color-background);
+}
+
+.rrhh-hero__bg {
+  background:
+    url('/img/banner_RRHH.png') center/contain no-repeat,
+    radial-gradient(ellipse at 60% 40%, rgba(122,61,135,0.5) 0%, transparent 65%),
+    radial-gradient(ellipse at 20% 70%, rgba(75,37,86,0.6) 0%, transparent 60%),
+    var(--color-background);
 }
 
 

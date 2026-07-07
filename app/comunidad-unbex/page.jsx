@@ -7,6 +7,7 @@ import { WA_NUMBER } from '@/data/disciplines';
 import { getSupabaseAdmin } from '@/lib/supabase';
 import DirectorioProfesionales from './DirectorioProfesionales';
 import FormProfesional from './FormProfesional';
+import ScrollHint from '@/components/ScrollHint';
 
 export const metadata = {
   title: 'Comunidad Unbex | Más que un gimnasio',
@@ -86,6 +87,8 @@ export default async function ComunidadUnbex() {
             </p>
           </div>
         </section>
+
+        <ScrollHint target=".trabaja-info" />
 
         {/* VALORES */}
         <section className="trabaja-info">
@@ -195,8 +198,8 @@ export default async function ComunidadUnbex() {
         <section id="publicar-perfil" className="trabaja-postulate comunidad-publicar">
           <div className="section__container">
             <span className="section__eyebrow">SUMÁ TU PERFIL</span>
-            <h2 className="section__title">¿Sos profesional del fitness o bienestar?</h2>
-            <p className="section__subtitle">
+            <h2 className="section__title comunidad-publicar__title">¿Sos profesional del fitness o bienestar?</h2>
+            <p className="section__subtitle comunidad-publicar__subtitle">
               Publicá tus datos y ofrecé tus servicios a toda la comunidad Unbex. Tu publicación se revisa
               antes de mostrarse en el directorio.
             </p>

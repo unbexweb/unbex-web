@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Link from 'next/link';
 import { WA_NUMBER } from '@/data/disciplines';
+import ScrollHint from '@/components/ScrollHint';
 
 export const metadata = {
   title: 'Nosotros | Unbex Argentina',
@@ -54,6 +55,8 @@ export default function NosotrosPage() {
             </p>
           </div>
         </section>
+
+        <ScrollHint target=".trabaja-info" />
 
         {/* HISTORIA */}
         <section className="trabaja-info">

@@ -3,6 +3,7 @@ import Topbar from '@/components/Topbar';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
+import ScrollHint from '@/components/ScrollHint';
 
 export const metadata = {
   title: 'Trabajá con nosotros | Unbex',
@@ -34,8 +35,8 @@ export default function TrabajarConNosotros() {
       <Navbar />
       <main>
         {/* HERO */}
-        <section className="trabaja-hero">
-          <div className="trabaja-hero__bg" />
+        <section className="trabaja-hero rrhh-hero">
+          <div className="trabaja-hero__bg rrhh-hero__bg" />
           <div className="trabaja-hero__overlay" />
           <div className="trabaja-hero__content">
             <p className="disciplina-hero__salon">ÚNETE AL EQUIPO</p>
@@ -45,6 +46,8 @@ export default function TrabajarConNosotros() {
             </p>
           </div>
         </section>
+
+        <ScrollHint target=".trabaja-info" />
 
         {/* BENEFICIOS */}
         <section className="trabaja-info">
