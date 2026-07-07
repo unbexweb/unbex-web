@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { ZONAS } from '@/data/zonas';
+import { WA_NUMBER } from '@/data/disciplines';
 
 const RUBROS_SUGERIDOS = [
   'Personal Trainer',
@@ -21,6 +22,7 @@ const MAX_DESCRIPCION = 200;
 export default function FormProfesional() {
   const [estado, setEstado] = useState('idle'); // idle | enviando | exito | error
   const [descripcion, setDescripcion] = useState('');
+  const [datosEnviados, setDatosEnviados] = useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -37,6 +39,11 @@ export default function FormProfesional() {
       const json = await res.json();
 
       if (json.success) {
+        setDatosEnviados({
+          nombre: data.get('nombre'),
+          apellido: data.get('apellido'),
+          rubro: data.get('rubro'),
+        });
         setEstado('exito');
         form.reset();
         setDescripcion('');
@@ -49,9 +56,24 @@ export default function FormProfesional() {
   }
 
   if (estado === 'exito') {
+    const mensajeWa = `Hola! Acabo de cargar mi perfil en la Bolsa de Profesionales de Unbex. Soy ${datosEnviados.nombre} ${datosEnviados.apellido}, ${datosEnviados.rubro}.`;
+    const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(mensajeWa)}`;
+
     return (
       <div className="trabaja-form__success">
-        ¡Gracias! Tu publicación está pendiente de aprobación.
+        <p>
+          ¡Gracias por sumarte! Tu publicación fue enviada y está pendiente de aprobación.
+          Para confirmar tu carga, envianos un mensaje por WhatsApp al establecimiento así
+          verificamos tus datos y activamos tu perfil.
+        </p>
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="trabaja-form__btn trabaja-form__success-btn"
+        >
+          Confirmar por WhatsApp
+        </a>
       </div>
     );
   }
