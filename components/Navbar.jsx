@@ -12,10 +12,16 @@ const DISC_MB    = disciplinas.filter(d => d.salon === 'mb');
 export default function Navbar({ onDisciplinaHover = null, estaEnHero = false }) {
   const pathname = usePathname();
   const isHome = pathname === '/';
+  const isCrosstraining = pathname === '/disciplinas/crosstraining';
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobile, setIsMobile] = useState(true); // true por defecto → SSR-safe: no monta lateral nav
+  const [disciplinasLateralAbiertas, setDisciplinasLateralAbiertas] = useState(false);
+  const [salonesFlyoutAbiertos, setSalonesFlyoutAbiertos] = useState({ black: false, mb: false });
+  const [flyoutPos, setFlyoutPos] = useState({ top: 0, left: 0 });
   const navRef = useRef(null);
+  const disciplinasFlyoutRef = useRef(null);
+  const disciplinasBtnRef = useRef(null);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767px)');
@@ -28,10 +34,23 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
   function closeAll() {
     setMenuOpen(false);
     setOpenDropdown(null);
+    setDisciplinasLateralAbiertas(false);
   }
 
   function toggleDropdown(name) {
     setOpenDropdown(prev => prev === name ? null : name);
+  }
+
+  function toggleSalonFlyout(salon) {
+    setSalonesFlyoutAbiertos(prev => ({ ...prev, [salon]: !prev[salon] }));
+  }
+
+  function toggleDisciplinasLateral() {
+    if (!disciplinasLateralAbiertas && disciplinasBtnRef.current) {
+      const rect = disciplinasBtnRef.current.getBoundingClientRect();
+      setFlyoutPos({ top: rect.top, left: rect.right + 8 });
+    }
+    setDisciplinasLateralAbiertas(prev => !prev);
   }
 
   function handleLogoClick(e) {
@@ -53,6 +72,20 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
     document.addEventListener('mousedown', onClickOutside);
     return () => document.removeEventListener('mousedown', onClickOutside);
   }, [openDropdown]);
+
+  // Cierra el flyout de Disciplinas (nav lateral) al hacer click fuera
+  useEffect(() => {
+    if (!disciplinasLateralAbiertas) return;
+    function onClickOutside(e) {
+      if (
+        disciplinasFlyoutRef.current?.contains(e.target) ||
+        disciplinasBtnRef.current?.contains(e.target)
+      ) return;
+      setDisciplinasLateralAbiertas(false);
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, [disciplinasLateralAbiertas]);
 
   return (
     <>
@@ -107,7 +140,98 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
         </nav>
       )}
 
-      <nav className={`navbar${isHome ? ' navbar--hero-mode' : ''}`} id="navbar" ref={navRef}>
+      {/* Nav lateral — página de Crosstraining, solo desktop */}
+      {isCrosstraining && !isMobile && (
+        <nav className="navbar-lateral navbar-lateral--activo" aria-label="Navegación lateral">
+          <ul className="navbar-lateral__menu">
+            <li>
+              <Link href="/nosotros" className="navbar-lateral__link" onClick={closeAll}>Nosotros</Link>
+            </li>
+
+            <li>
+              <button
+                ref={disciplinasBtnRef}
+                className="navbar-lateral__link navbar-lateral__link--toggle"
+                onClick={toggleDisciplinasLateral}
+                aria-expanded={disciplinasLateralAbiertas}
+              >
+                Disciplinas
+                <span aria-hidden="true">{disciplinasLateralAbiertas ? '▴' : '▾'}</span>
+              </button>
+            </li>
+
+            <li>
+              <Link href="/#consultorios" className="navbar-lateral__link" onClick={closeAll}>Consultorios</Link>
+            </li>
+            <li>
+              <Link href="/#horarios" className="navbar-lateral__link" onClick={closeAll}>Horarios</Link>
+            </li>
+            <li>
+              <Link href="/#precios" className="navbar-lateral__link" onClick={closeAll}>Precios</Link>
+            </li>
+            <li>
+              <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
+                Comunidad Unbex
+              </Link>
+            </li>
+            <li>
+              <Link href="/trabajar-con-nosotros" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
+                Trabajá con nosotros
+              </Link>
+            </li>
+            <li>
+              <Link href="/tene-tu-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
+                Tené tu Unbex
+              </Link>
+            </li>
+            <li>
+              <Link href="/#contacto" className="navbar-lateral__link" onClick={closeAll}>Contacto</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
+
+      {/* Flyout de Disciplinas — fuera del sidebar (que tiene overflow-y:auto) para que no se recorte */}
+      {isCrosstraining && !isMobile && disciplinasLateralAbiertas && (
+        <ul
+          className="navbar-lateral__flyout"
+          ref={disciplinasFlyoutRef}
+          style={{ top: flyoutPos.top, left: flyoutPos.left }}
+        >
+          <li>
+            <button
+              className="navbar-lateral__flyout-header"
+              onClick={() => toggleSalonFlyout('black')}
+              aria-expanded={salonesFlyoutAbiertos.black}
+            >
+              Salón Black
+              <span aria-hidden="true">{salonesFlyoutAbiertos.black ? '▴' : '▾'}</span>
+            </button>
+          </li>
+          {salonesFlyoutAbiertos.black && DISC_BLACK.map(d => (
+            <li key={d.clave}>
+              <Link href={`/disciplinas/${d.clave}`} className="navbar-lateral__link" onClick={closeAll}>{d.nombre}</Link>
+            </li>
+          ))}
+          <li>
+            <button
+              className="navbar-lateral__flyout-header"
+              onClick={() => toggleSalonFlyout('mb')}
+              aria-expanded={salonesFlyoutAbiertos.mb}
+            >
+              Salón M&amp;B
+              <span aria-hidden="true">{salonesFlyoutAbiertos.mb ? '▴' : '▾'}</span>
+            </button>
+          </li>
+          {salonesFlyoutAbiertos.mb && DISC_MB.map(d => (
+            <li key={d.clave}>
+              <Link href={`/disciplinas/${d.clave}`} className="navbar-lateral__link" onClick={closeAll}>{d.nombre}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <nav className={`navbar${isHome || isCrosstraining ? ' navbar--hero-mode' : ''}`} id="navbar" ref={navRef}>
         <div className="navbar__container">
 
           <button

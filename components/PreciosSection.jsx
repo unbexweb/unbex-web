@@ -131,6 +131,11 @@ export default function PreciosSection() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  useEffect(() => {
+    const tabParam = new URLSearchParams(window.location.search).get('tab');
+    if (TABS.some(t => t.id === tabParam)) setTab(tabParam);
+  }, []);
+
   const waInicio  = WA_BASE + encodeURIComponent('Hola! Quiero empezar con las 3 clases de prueba en Unbex 🎉');
   const waConsulta = WA_BASE + encodeURIComponent('Hola! Quiero consultar sobre los planes de Unbex 💪');
 

@@ -20,20 +20,20 @@ const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 // VIDEOS DE DISCIPLINAS — ID de YouTube por disciplina
 // null = sin video → el hero mostrará solo el overlay con imagen de fondo
 // ─────────────────────────────────────────────────────────────────────────────
-// IDs de YouTube Shorts para el hero de cada página de disciplina
+// IDs de YouTube (horizontal 16:9) para el hero de cada página de disciplina
 export const DISCIPLINA_HERO_VIDEOS = {
-  'crosstraining':'99h6wu9kzHg',
-  'musculacion':  'XQpj-C2ixJA',
-  'tercera-edad': 'LgDiPy5erNk',
-  'open-box':     '1KqONYTao14',
-  'yoga':         'uVzazDXbd2o',
-  'stretching':   'newpxNaMEE0',
-  'pilates':      'DKDWHG4LzPA',
-  'zumba':        'r3avBfOcJ-A',
-  'judo-kids':    'V79eKUOyZ0g',
-  'jiu-jitsu':    'nACPzNB8HO8',
-  'localizada':   'BCp5wIV5FT4',
-  'body-pump':    'IwbyVkPnYrE',
+  'crosstraining':'ARsCWnzWVrA',
+  'musculacion':  '1pqnYx30RfU',
+  'tercera-edad': 'zcN2i25e2L4',
+  'open-box':     'a_LUX8NXi08',
+  'yoga':         'OQKnh2ozn6Y',
+  'stretching':   'a_yDJptwTkY',
+  'pilates':      '7mJjTjZ-hJw',
+  'zumba':        '49aeK_8oF4U',
+  'judo-kids':    'BKJUWvh28Jw',
+  'jiu-jitsu':    'AdWC3ktuUbs',
+  'localizada':   'jevYGgKhTzA',
+  'body-pump':    'pe2C1ja7Gy0',
 };
 
 // IDs de YouTube para el overlay del hero principal
@@ -60,8 +60,8 @@ export const DISCIPLINA_VIDEOS = {
 // Cada entrada: { desktop: 'ID_YT', mobile: 'ID_YT' | null }
 // Si mobile es null, usa desktop como fallback en móvil.
 export const HERO_VIDEOS = [
-  { desktop: 'LBlgzPZ-yy8', mobile: 'DQ4VHcQ3aXM' },
-  { desktop: 'CvbFD1Qy_OQ', mobile: null },
+  { desktop: 'qXCb6Dj84IY', mobile: 'AZP9yih5V4s' },
+  { desktop: 'LvyFA9S21S8', mobile: 'LvyFA9S21S8' },
 ];
 
 export const CONTACTO = {
@@ -144,6 +144,31 @@ export const disciplinas = [
     paraQuien: 'Quienes quieren entrenar a su ritmo y con libertad de horarios, eligiendo qué trabajar cada día.',
     objetivos: 'Entrenás de forma autónoma combinando los espacios y equipamiento según tus metas.',
     duracion:  'Reserva por hora',
+  },
+  {
+    clave:     'all-out',
+    nombre:    'All Out',
+    salon:     'black',
+    img:       'card_disciplinas_allout.jpg',
+    desc:      'All Out es nuestra planificación de Crossfit pensada para un público avanzado con conocimientos previos en la disciplina. Ideal tanto para quienes quieren competir como para los que buscan llevar su nivel un paso más allá. No es un entrenamiento personalizado, pero contás con seguimiento de tu progreso en cada sesión.',
+    icono:  '🏆',
+    color:  'card--blue',
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre All Out en Unbex 🏆'),
+    paraQuien: 'Atletas avanzados con experiencia en Crossfit que buscan competir o subir su nivel de entrenamiento.',
+    objetivos: 'Elevás tu rendimiento con una planificación estructurada de alto nivel y seguimiento de tu progreso.',
+    duracion:  '120 minutos aprox.',
+    // Horarios propios: solo se muestran en /disciplinas/all-out, no en la grilla de Horarios del main.
+    horarios: {
+      lunes:     ['07:00 a 21:00'],
+      martes:    ['07:00 a 21:00'],
+      miercoles: ['07:00 a 21:00'],
+      jueves:    ['07:00 a 21:00'],
+      viernes:   ['07:00 a 21:00'],
+      sabado:    ['09:00 a 13:00'],
+      domingo:   [],
+    },
+    // Link "Conocé los planes de All Out" en su página → precios con este tab preseleccionado
+    precioTab: 'all-out',
   },
   // ── SALÓN M&B ─────────────────────────────────────────────────────────────
   {

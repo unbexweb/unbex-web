@@ -30,12 +30,13 @@ export default async function DisciplinaPage({ params }) {
   const videoId = DISCIPLINA_HERO_VIDEOS[slug] || null;
   const isMb     = disciplina.salon === 'mb';
   const isBlack  = disciplina.salon === 'black';
+  const tieneNavLateral = slug === 'crosstraining';
 
   return (
     <>
       <Topbar />
       <Navbar />
-      <main className={isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''}>
+      <main className={`${isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''}${tieneNavLateral ? ' disciplina-main--lateral' : ''}`}>
 
         <HeroWrapper disciplina={disciplina} videoId={videoId} />
 
@@ -55,7 +56,7 @@ export default async function DisciplinaPage({ params }) {
               <div className="disciplina-info__horarios">
                 <h2 className="section__title">Horarios</h2>
                 <div className="horarios__tabla" id="horariosTabla">
-                  <HorariosTable clave={slug} nombreDisciplina={disciplina.nombre} />
+                  <HorariosTable clave={slug} nombreDisciplina={disciplina.nombre} horariosSemana={disciplina.horarios} />
                 </div>
               </div>
 
@@ -105,6 +106,17 @@ export default async function DisciplinaPage({ params }) {
             </div>
           </div>
         </section>
+
+        {disciplina.precioTab && (
+          <section className="section__container">
+            <div className="precios__cta-bottom">
+              <p className="precios__cta-bottom-text">¿Querés conocer los planes de {disciplina.nombre}?</p>
+              <a href={`/?tab=${disciplina.precioTab}#precios`} className="precios__cta-bottom-btn">
+                Conocé los planes de {disciplina.nombre}
+              </a>
+            </div>
+          </section>
+        )}
 
       </main>
 

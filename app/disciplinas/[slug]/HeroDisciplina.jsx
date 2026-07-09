@@ -8,6 +8,8 @@ export default function HeroDisciplina({ disciplina, videoId }) {
 
   return (
     <section className="disciplina-hero" id="disciplinaHero">
+      <h1 className="sr-only">{disciplina.nombre}</h1>
+
       <div className="disciplina-hero__video-container">
         {embedSrc ? (
           <iframe
@@ -28,14 +30,19 @@ export default function HeroDisciplina({ disciplina, videoId }) {
             }}
           />
         )}
-        <div className="disciplina-hero__overlay" />
       </div>
 
-      <div className="disciplina-hero__content">
-        <p className="disciplina-hero__salon">
-          {disciplina.salon === 'black' ? 'Salón Black' : 'Salón M&B'}
-        </p>
-        <h1 className="disciplina-hero__title">{disciplina.nombre}</h1>
+      <p className="disciplina-hero__salon disciplina-hero__salon--overlay">
+        {disciplina.salon === 'black' ? 'Salón Black' : 'Salón M&B'}
+      </p>
+
+      <div
+        className="disciplina-hero__scroll-hint"
+        onClick={() => document.querySelector('.disciplina-info')?.scrollIntoView({ behavior: 'smooth' })}
+        role="button"
+        aria-label="Bajar"
+      >
+        <span className="hero-scroll-hint__chevrons" aria-hidden="true" />
       </div>
     </section>
   );
