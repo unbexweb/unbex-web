@@ -30,13 +30,12 @@ export default async function DisciplinaPage({ params }) {
   const videoId = DISCIPLINA_HERO_VIDEOS[slug] || null;
   const isMb     = disciplina.salon === 'mb';
   const isBlack  = disciplina.salon === 'black';
-  const tieneNavLateral = slug === 'crosstraining';
 
   return (
     <>
       <Topbar />
       <Navbar />
-      <main className={`${isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''}${tieneNavLateral ? ' disciplina-main--lateral' : ''}`}>
+      <main className={`${isMb ? 'salon-mb' : isBlack ? 'salon-black' : ''} disciplina-main--lateral`}>
 
         <HeroWrapper disciplina={disciplina} videoId={videoId} />
 

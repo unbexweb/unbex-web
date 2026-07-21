@@ -22,18 +22,20 @@ const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 // ─────────────────────────────────────────────────────────────────────────────
 // IDs de YouTube (horizontal 16:9) para el hero de cada página de disciplina
 export const DISCIPLINA_HERO_VIDEOS = {
-  'crosstraining':'ARsCWnzWVrA',
-  'musculacion':  '1pqnYx30RfU',
-  'tercera-edad': 'zcN2i25e2L4',
-  'open-box':     'a_LUX8NXi08',
-  'yoga':         'OQKnh2ozn6Y',
-  'stretching':   'a_yDJptwTkY',
-  'pilates':      '7mJjTjZ-hJw',
-  'zumba':        '49aeK_8oF4U',
-  'judo-kids':    'BKJUWvh28Jw',
-  'jiu-jitsu':    'AdWC3ktuUbs',
-  'localizada':   'jevYGgKhTzA',
-  'body-pump':    'pe2C1ja7Gy0',
+  'crosstraining':'SjZSSFfkaX0',
+  'funcional':    'jePQAspEmCA',
+  'musculacion':  '5k3hVLDBdK0',
+  'tercera-edad': 'v_UDXEbgB7c',
+  'open-box':     'NzMYHtFcEuA',
+  'yoga':         'W6dfSrJZvCM',
+  'stretching':   'IZIXX0GfMMw',
+  'pilates':      'PKvrN2NZhw0',
+  'zumba':        '9ZJEFNa7Gsg',
+  'judo-kids':    '7_Y-ui7By48',
+  'jiu-jitsu':    'NI4pXTfitzo',
+  'fiit':         'iXYI17zQkwk',
+  'localizada':   'IO0KEAT89kg',
+  'body-pump':    'MeVekXTbmOY',
 };
 
 // IDs de YouTube para el overlay del hero principal
@@ -169,6 +171,16 @@ export const disciplinas = [
     },
     // Link "Conocé los planes de All Out" en su página → precios con este tab preseleccionado
     precioTab: 'all-out',
+  },
+  {
+    clave:  'levantamiento-olimpico',
+    nombre: 'Levantamiento Olímpico',
+    salon:  'black',
+    img:    'card_disciplinas_olimpico.jpg',
+    icono:  '🏋️',
+    color:  'card--blue',
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Levantamiento Olímpico en Unbex 🏋️'),
+    // Pendiente: desc, descLarga, paraQuien, objetivos, duracion, horarios e imagen definitiva.
   },
   // ── SALÓN M&B ─────────────────────────────────────────────────────────────
   {

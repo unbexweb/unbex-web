@@ -12,7 +12,7 @@ const DISC_MB    = disciplinas.filter(d => d.salon === 'mb');
 export default function Navbar({ onDisciplinaHover = null, estaEnHero = false }) {
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const isCrosstraining = pathname === '/disciplinas/crosstraining';
+  const isDisciplinaPage = pathname.startsWith('/disciplinas/');
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isMobile, setIsMobile] = useState(true); // true por defecto → SSR-safe: no monta lateral nav
@@ -140,8 +140,8 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
         </nav>
       )}
 
-      {/* Nav lateral — página de Crosstraining, solo desktop */}
-      {isCrosstraining && !isMobile && (
+      {/* Nav lateral — páginas de disciplinas, solo desktop */}
+      {isDisciplinaPage && !isMobile && (
         <nav className="navbar-lateral navbar-lateral--activo" aria-label="Navegación lateral">
           <ul className="navbar-lateral__menu">
             <li>
@@ -192,7 +192,7 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
       )}
 
       {/* Flyout de Disciplinas — fuera del sidebar (que tiene overflow-y:auto) para que no se recorte */}
-      {isCrosstraining && !isMobile && disciplinasLateralAbiertas && (
+      {isDisciplinaPage && !isMobile && disciplinasLateralAbiertas && (
         <ul
           className="navbar-lateral__flyout"
           ref={disciplinasFlyoutRef}
@@ -231,7 +231,7 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
         </ul>
       )}
 
-      <nav className={`navbar${isHome || isCrosstraining ? ' navbar--hero-mode' : ''}`} id="navbar" ref={navRef}>
+      <nav className={`navbar${isHome || isDisciplinaPage ? ' navbar--hero-mode' : ''}`} id="navbar" ref={navRef}>
         <div className="navbar__container">
 
           <button
