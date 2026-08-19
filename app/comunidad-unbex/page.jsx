@@ -10,7 +10,7 @@ import FormProfesional from './FormProfesional';
 import ScrollHint from '@/components/ScrollHint';
 
 export const metadata = {
-  title: 'Comunidad Unbex | Más que un gimnasio',
+  title: 'Comunidad Unbex | Más que un centro deportivo',
   description: 'En Unbex somos una comunidad. Personas reales que se superan juntas cada día.',
 };
 
@@ -38,7 +38,7 @@ const valores = [
 ];
 
 const pilares = [
-  { numero: '500+', label: 'Miembros activos' },
+  { numero: 'cientos', label: 'Miembros activos' },
   { numero: '14',   label: 'Disciplinas disponibles' },
   { numero: '6',    label: 'Días a la semana' },
   { numero: '2',    label: 'Años de comunidad' },
@@ -83,7 +83,7 @@ export default async function ComunidadUnbex() {
             <p className="disciplina-hero__salon">MÁS QUE UN GIMNASIO</p>
             <h1 className="disciplina-hero__title">Comunidad Unbex</h1>
             <p className="disciplina-hero__desc">
-              Un espacio donde el entrenamiento es el punto de partida, pero la comunidad es lo que te hace volver.
+              Un espacio donde el entrenamiento es el punto de partida, pero la comunidad es lo que te hace lograr tus objetivos.
             </p>
           </div>
         </section>
@@ -185,7 +185,7 @@ export default async function ComunidadUnbex() {
         <section id="profesionales" className="comunidad-bolsa">
           <div className="section__container">
             <span className="section__eyebrow">RED DE PROFESIONALES</span>
-            <h2 className="section__title comunidad-bolsa__title">Bolsa de profesionales Unbex</h2>
+            <h2 className="section__title comunidad-bolsa__title">Gabinete de profesionales Unbex</h2>
             <p className="section__subtitle comunidad-bolsa__subtitle">
               Profesionales de la comunidad Unbex ofreciendo sus servicios: entrenadores, nutricionistas,
               kinesiólogos y mucho más.

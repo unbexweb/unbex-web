@@ -1,0 +1,780 @@
+==================================================================================
+TEXTOS DEL SITIO UNBEX ARGENTINA — RELEVAMIENTO COMPLETO POR SECCIÓN
+==================================================================================
+Generado a partir del código fuente del proyecto (app/, components/, data/).
+Cada bloque indica el ARCHIVO de origen y la SECCIÓN/COMPONENTE donde aparece el texto.
+
+==================================================================================
+1. METADATOS GLOBALES DEL SITIO (SEO)
+==================================================================================
+Archivo: app/layout.jsx
+
+Título de pestaña (title):
+  Unbex Argentina — Gimnasio
+
+Descripción (meta description / Open Graph):
+  Centro de entrenamiento y bienestar en Buenos Aires. Crosstraining, Musculación,
+  Yoga, Pilates, Zumba y más.
+
+Open Graph:
+  - siteName: Unbex Argentina
+  - locale: es_AR
+  - imagen alt: Unbex Argentina — Centro de entrenamiento y bienestar
+
+Datos estructurados (JSON-LD / Google):
+  - Nombre: Unbex Argentina
+  - Descripción: Centro de entrenamiento y bienestar. Crosstraining, Musculación,
+    Yoga, Pilates, Zumba y más.
+  - Teléfono: +541123989560
+  - Email: frandb@unbexargentina.com
+  - Dirección: Pacheco 1956, C1431, Ciudad Autónoma de Buenos Aires, AR
+  - Horarios: Lunes a Viernes 07:00–21:00 · Sábados 09:00–12:00
+  - Redes: instagram.com/unbex.ar · facebook.com/unbex.ar
+
+==================================================================================
+2. TOPBAR / MARQUEE BANNER (cinta superior animada)
+==================================================================================
+Archivo: components/MarqueeBanner.jsx
+
+Texto en loop continuo:
+  "Vení y probá nuestras actividades  ·  3 clases de prueba sin cargo  ·  "
+
+(components/Topbar.jsx no contiene texto propio, es un contenedor vacío)
+
+==================================================================================
+3. NAVBAR (menú de navegación)
+==================================================================================
+Archivo: components/Navbar.jsx
+
+Links del menú principal (Home):
+  - Nosotros
+  - Comunidad Unbex (botón destacado)
+  - Disciplinas
+  - Consultorios
+  - Horarios
+  - Precios
+  - Trabajá con nosotros (botón destacado)
+  - Tené tu Unbex (botón destacado)
+  - Contacto
+
+Links del menú en páginas internas (con dropdowns):
+  - Nosotros
+  - Comunidad Unbex (botón destacado)
+  - Disciplinas ▾ (dropdown con encabezados "Salón Black" / "Salón M&B" y el listado
+    de disciplinas de cada salón, tomado de data/disciplines.js)
+  - Consultorios ▾ (dropdown con el listado de consultorios)
+  - Horarios
+  - Precios
+  - Trabajá con nosotros (botón destacado)
+  - Tené tu Unbex (botón destacado)
+  - Contacto
+
+Nav lateral (desktop, home y páginas de disciplina): mismos links que el menú
+principal, formato vertical.
+
+Botón toggle mobile: aria-label "Abrir menú"
+
+==================================================================================
+4. HOME — PÁGINA PRINCIPAL (app/page.jsx)
+==================================================================================
+
+--- 4.1 HERO PRINCIPAL ---
+Archivo: components/HeroIndex.jsx
+
+Título (H1):        Unbex
+Subtítulo:           It's not about training, it's about unlocking yourself
+Botón volumen (aria-label): "Activar sonido" / "Silenciar"
+Botones carrusel (aria-label): "Video anterior" / "Video siguiente" / "Video {n}"
+Scroll hint (aria-label, app/page.jsx): "Ir a disciplinas"
+
+--- 4.2 SECCIÓN "SALÓN BLACK" ---
+Archivo: app/page.jsx
+
+Eyebrow (etiqueta superior):  SALÓN BLACK
+Título (H2):                  Fuerza y rendimiento
+Subtítulo:                    Entrenamiento de Fuerza y disciplinas de alta intensidad y potencia
+
+Cards de disciplinas del Salón Black (fuente: data/disciplines.js):
+
+  1) CROSSTRAINING
+     Short: Cross
+     Descripción corta: Entrenamiento de alta intensidad basado en movimientos
+       olímpicos. Fuerza, potencia y comunidad. Cupos limitados.
+     Descripción larga: Es un sistema de entrenamiento de alta intensidad basado en
+       movimientos olímpicos y gimnásticos. Lo mejor de nuestro método es que es
+       100% adaptable: desde jóvenes que buscan su máximo potencial hasta adultos
+       mayores que quieren mantener su independencia y vitalidad. Aquí, la
+       intensidad se ajusta a vos, no vos a ella.
+     ¿Para quién?: Personas de todos los niveles que buscan superarse día a día.
+       No importa tu punto de partida, las cargas y movimientos se adaptan a vos.
+     Objetivos: Ganás fuerza, potencia, resistencia y mejorás tu condición física
+       general en comunidad.
+     Duración: 60 minutos
+     Icono: ⚡  |  Mensaje WhatsApp: "Hola! Quiero info sobre Crosstraining en Unbex ⚡"
+
+  2) FUNCIONAL
+     Short: Funcional
+     Descripción corta: Entrenamiento funcional adaptado a tu nivel. Movimientos
+       Funcionales, resultados reales. Cupos limitados.
+     Descripción larga: El entrenamiento funcional trabaja los patrones de
+       movimiento del cuerpo humano: empujar, halar, agachar, rotar y cargar. Cada
+       clase está diseñada para mejorar tu rendimiento en la vida cotidiana y en el
+       deporte, con una metodología 100% adaptable a tu nivel y objetivos.
+     ¿Para quién?: Quienes quieren un entrenamiento dinámico y variado, de
+       cualquier nivel y edad.
+     Objetivos: Mejorás tu fuerza, agilidad y resistencia con movimientos naturales
+       aplicables a tu vida diaria.
+     Duración: 60 minutos
+     Icono: 🏃  |  Mensaje WhatsApp: "Hola! Quiero info sobre Funcional en Unbex 🏃"
+
+  3) MUSCULACIÓN
+     Short: Muscu
+     Descripción: El entrenamiento de fuerza es la medicina más efectiva para el
+       cuerpo. Nuestras clases de musculación ofrecen un ambiente diseñado para que
+       personas de todas las edades cumplan con sus objetivos individuales. Con
+       rutinas personalizadas, te ayudamos a ganar fuerza funcional y confianza,
+       adaptando cada ejercicio y su carga a tus capacidades actuales.
+     ¿Para quién?: Personas de todas las edades que quieran tonificar, ganar masa
+       muscular o mejorar su salud, con rutinas adaptadas a cada uno.
+     Objetivos: Desarrollo de fuerza, tonificación muscular y confianza con un plan
+       personalizado y guiado.
+     Duración: 60 minutos
+     Icono: 💪  |  Mensaje WhatsApp: "Hola! Quiero info sobre Musculación en Unbex 💪"
+
+  4) 3RA EDAD
+     Descripción: Nuestras clases para adultos mayores están diseñadas para
+       mantener el cuerpo en movimiento y la mente ágil. Nos enfocamos en
+       ejercicios que mejoran la autonomía diaria: equilibrio para prevenir caídas,
+       fuerza para cargar las compras y flexibilidad para jugar con los nietos.
+       Porque la edad es solo un número cuando el cuerpo se siente fuerte y vital.
+     ¿Para quién?: Adultos mayores que quieren mantenerse activos, fuertes y
+       autónomos en un ambiente cuidado y amigable.
+     Objetivos: Mejorás tu fuerza, equilibrio, flexibilidad y coordinación para vivir el día a
+       día con más vitalidad.
+     Duración: 60 minutos
+     Icono: 🌟  |  Mensaje WhatsApp: "Hola! Quiero info sobre la clase de 3ra Edad en Unbex 🌟"
+
+  5) OPEN BOX
+     Descripción: Sesión libre en el salón Black para entrenar a tu ritmo con
+       equipamiento completo. Cupos limitados.
+     ¿Para quién?: Quienes quieren entrenar a su ritmo y con libertad de horarios,
+       eligiendo qué trabajar cada día.
+     Objetivos: Entrenás de forma autónoma combinando los espacios y equipamiento
+       según tus metas.
+     Duración: Reserva por hora
+     Icono: 🏟️  |  Mensaje WhatsApp: "Hola! Quiero info sobre Open Box en Unbex 🏟️"
+
+  6) ALL OUT
+     Descripción: All Out es nuestra planificación de Crossfit pensada para un
+       público avanzado con conocimientos previos en la disciplina. Ideal tanto
+       para quienes quieren competir como para los que buscan llevar su nivel un
+       paso más allá. No es un entrenamiento personalizado, pero contás con
+       seguimiento de tu progreso en cada sesión.
+     ¿Para quién?: Personal con experiencia en Crossfit que buscan
+       competir o subir su nivel de entrenamiento.
+     Objetivos: Elevás tu rendimiento con una planificación estructurada de alto
+       nivel y seguimiento de tu progreso.
+     Duración: 120 minutos aprox.
+     Icono: 🏆  |  Mensaje WhatsApp: "Hola! Quiero info sobre All Out en Unbex 🏆"
+
+--- 4.3 SECCIÓN "SALÓN M&B" ---
+Archivo: app/page.jsx
+
+Eyebrow:      SALÓN M&B
+Título (H2):  Movimiento y bienestar
+Subtítulo:    Yoga, Pilates Mat, Zumba, artes marciales y más actividades grupales
+
+Cards de disciplinas del Salón M&B (fuente: data/disciplines.js):
+
+  1) YOGA
+     Descripción: El Yoga es mucho más que estiramientos; es una disciplina
+       integral que conecta tu respiración con el movimiento. En nuestras clases,
+       trabajamos la flexibilidad, el tono muscular y la calma mental. Nuestras sesiones de Yoga están diseñadas para adaptarse
+       a cada nivel y etapa de la vida.
+     ¿Para quién?: Todas las personas y todas las edades que buscan conectar
+       cuerpo y mente, sin importar su flexibilidad inicial.
+     Objetivos: Ganarás flexibilidad, tono muscular y calma mental en un ambiente
+       relajado.
+     Duración: 60 minutos
+     Icono: 🧘  |  Mensaje WhatsApp: "Hola! Quiero info sobre Yoga en Unbex 🧘"
+
+  2) STRETCHING
+     Descripción: Nuestras clases de Stretching están diseñadas para liberar la
+       tensión muscular, mejorar la postura y acelerar la recuperación de todo el
+       cuerpo después del esfuerzo. Es el complemento indispensable para quienes
+       hacen Crosstraining o Musculación y quieren evitar lesiones mientras ganan
+       un rango de movimiento óptimo.
+     ¿Para quién?: Cualquier persona que quiera mejorar su flexibilidad y
+       recuperación, ideal como complemento de otras disciplinas.
+     Objetivos: Liberás tensión muscular, mejorás tu postura y prevenís lesiones.
+     Duración: 60 minutos
+     Icono: 🤸  |  Mensaje WhatsApp: "Hola! Quiero info sobre Stretching en Unbex 🤸"
+
+  3) PILATES MAT
+     Descripción: Basado en los principios de control, precisión y fluidez, el
+       Pilates Mat utiliza el propio peso corporal y elementos pequeños para
+       desafiar tu resistencia. Es el método perfecto para todas las edades, ya que
+       no tiene impacto articular. Te ayudará a moverte con más elegancia y
+       eficiencia en tu vida diaria, eliminando dolores posturales y ganando una
+       fuerza real y funcional.
+     ¿Para quién?: Personas de todas las edades, incluso quienes buscan una
+       actividad sin impacto articular.
+     Objetivos: Fortalecés tu core, mejorás tu postura y te movés con más
+       elegancia y eficiencia.
+     Duración: 60 minutos
+     Icono: 🧘  |  Mensaje WhatsApp: "Hola! Quiero info sobre Pilates Mat en Unbex 🧘"
+
+  4) ZUMBA
+     Descripción: Combinamos ritmos hipnóticos con movimientos fáciles de seguir
+       para crear un entrenamiento cardiovascular increíble. Es la clase ideal
+       para todas las edades: aquí no importa si sabés bailar o no, lo que importa
+       es mover el cuerpo, liberar endorfinas y salir con una sonrisa. ¡Vení a
+       quemar calorías mientras te divertís!
+     ¿Para quién?: Todos los que quieran divertirse mientras entrenan, sepan
+       bailar o no, de cualquier edad.
+     Objetivos: Quemás calorías, mejorás tu resistencia cardiovascular y liberás
+       endorfinas.
+     Duración: 60 minutos
+     Icono: 💃  |  Mensaje WhatsApp: "Hola! Quiero info sobre Zumba en Unbex 💃"
+
+  5) JUDO KIDS
+     Descripción: El Judo es una de las disciplinas más recomendadas para el
+       desarrollo integral en la infancia. Para niños de 6 a 12 años. A través del
+       juego y la técnica, los chicos aprenden valores fundamentales como el
+       respeto, la disciplina y el compañerismo. Una actividad que les ayuda a
+       canalizar su energía de forma positiva mientras construyen una base sólida
+       de confianza en sí mismos.
+     ¿Para quién?: Niños de 6 a 12 años que quieran aprender una disciplina
+       formativa y divertida.
+     Objetivos: Desarrollan respeto, disciplina, confianza y canalizan su energía
+       de forma positiva.
+     Duración: 60 minutos
+     Icono: 🥋  |  Mensaje WhatsApp: "Hola! Quiero info sobre Judo Kids en Unbex 🥋"
+
+  6) JIU JITSU
+     Descripción: Más que un sistema de defensa personal, el brazilian Jiu Jitsu es un
+       estilo de vida que promueve la disciplina y la camaradería. Las clases están
+       a cargo de la Academia Real Jiu Jitsu y ofrecen un ambiente seguro para
+       aprender proyecciones, controles y escapes. Al ser un deporte de intensidad
+       adaptable, es perfecto para jóvenes que buscan un desafío competitivo y para
+       adultos que desean mantenerse en forma de una manera dinámica, estratégica y
+       altamente efectiva.
+     Descripción larga (extra): ¿Querés probarlo? Podés usar una de tus 3 clases de
+       prueba para asistir a una clase de Jiu Jitsu. Te invitamos a probar cuando
+       quieras.
+     ¿Para quién?: Jóvenes y adultos que buscan defensa personal, un desafío
+       competitivo o mantenerse en forma de manera dinámica.
+     Objetivos: Aprendés técnica, defensa personal y ganás disciplina, fuerza y
+       agilidad mental.
+     Duración: 90 minutos
+     Icono: 🥋  |  Mensaje WhatsApp: "Hola! Quiero info sobre Jiu Jitsu en Unbex 🥋"
+
+  7) FIIT
+     Descripción: Si buscás una clase donde el tiempo vuele, el funcional hiit es para
+       vos. Diseñamos circuitos que desafían tu agilidad y resistencia
+       cardiovascular. Al ser un método 100% escalable, adaptamos cada estación a
+       tu nivel físico y edad, garantizando un entrenamiento seguro, divertido y
+       sumamente efectivo para transformar tu composición corporal.
+     ¿Para quién?: Todos los niveles y edades que buscan un entrenamiento intenso
+       y dinámico, con ejercicios que se adaptan a tu ritmo.
+     Objetivos: Mejorás tu resistencia y quemás grasa con trabajo de alta
+       intensidad por tiempo, mayormente en formato Tabata.
+     Duración: 60 minutos
+     Icono: 🔥  |  Mensaje WhatsApp: "Hola! Quiero info sobre FIIT en Unbex 🔥"
+
+  8) LOCALIZADA/GAP
+     Descripción: Concentramos toda la energía en las zonas que más te interesan.
+       GAP es un entrenamiento de resistencia muscular diseñado para fortalecer y
+       definir el tren inferior y el core, mientras que localizada complementa el tren superior.
+       Es una clase apta para todas las edades, ya que cada ejercicio permite variantes de intensidad. Si buscás firmeza,
+       mejor postura y resultados localizados, esta es tu clase.
+     ¿Para quién?: Personas de todas las edades que quieran trabajar zonas
+       específicas como glúteos, abdomen y piernas.
+     Objetivos: Fortalecés y definís con resultados localizados.
+     Duración: 60 minutos
+     Icono: 💪  |  Mensaje WhatsApp: "Hola! Quiero info sobre Localizada/GAP en Unbex 💪"
+
+  9) BODY PUMP
+     Descripción: Fortalecé todo tu cuerpo con el programa original con barra y
+       discos. Al ritmo de los mejores hits, realizarás repeticiones de alta
+       efectividad para tonificar y esculpir tus músculos. Gracias a que vos elegís
+       el peso, es una actividad ideal para todas las edades y niveles de condición
+       física: desde principiantes que buscan firmeza hasta atletas que quieren
+       mejorar su resistencia muscular.
+     ¿Para quién?: Todos los niveles y edades, desde principiantes hasta quienes
+       buscan mejorar su resistencia muscular.
+     Objetivos: Tonificás y esculpís todo el cuerpo al ritmo de la música,
+       eligiendo vos la carga.
+     Duración: 60 minutos
+     Icono: 🏋️  |  Mensaje WhatsApp: "Hola! Quiero info sobre Body Pump en Unbex 🏋️"
+
+--- 4.4 SECCIÓN "CONSULTORIOS" ---
+Archivo: app/page.jsx + data/disciplines.js (array "consultorios")
+
+Eyebrow:      CONSULTORIO INTERDISCIPLINARIO
+Título (H2):  Consultorios
+Subtítulo:    En Unbex creemos que el entrenamiento es solo una parte del éxito, para complementarlo ofrecemos un abordaje interdisciplinario único con
+              profesionales dedicados a optimizar tu cuerpo y mente.
+
+Cards (componente components/ConsultoriosGrid.jsx, botón "Solicitar reserva" en cada una):
+
+  - KINESIOLOGÍA 🩺
+    Recuperación de lesiones y descarga muscular para mantenerte siempre en
+    movimiento y evaluaciones de fuerza. Consultas, tratamientos y mediciones.
+
+  - NUTRICIÓN 🥗
+    Planes de alimentación personalizados de calidad según tus metas, mediciones
+    antropométricas para que conozcas tu composición corporal y objetivos a corto,
+    mediano y largo plazo con seguimiento profesional.
+
+  - PSICOLOGÍA DEPORTIVA 🧠
+    Fortalecé tu mentalidad para superar cualquier obstáculo. Gestión del estrés y
+    motivación.
+
+  - ACUPUNTURA 🪡
+    Alivio del dolor y equilibrio sistémico y energético.
+
+  - DETOX PEDILÚVICO IÓNICO 💧
+    Limpieza profunda de toxinas a través de los pies activando tu sistema
+    linfático para mejorar tu circulación y energía.
+
+  - MASAJES 💆
+    Descontracturantes, pre y pos competencia. Liberá la tensión muscular,
+    recuperate más rápido y prepará tu cuerpo para rendir al máximo.
+
+(Nota: existe también un array "servicios" en data/disciplines.js —Kinesiología,
+Depilación, Entrenamiento personal, Evaluaciones físicas— definido pero sin uso
+visible actualmente en la home; se referencia junto a components/ServicioCard.jsx.)
+
+--- 4.5 SECCIÓN "HORARIOS" ---
+Archivo: components/HorariosGrid.jsx
+
+Eyebrow:      CUÁNDO ENTRENAMOS
+Título (H2):  Horarios
+Subtítulo:    Elegí tu salón y encontrá tu turno ideal
+
+Tabs: "Salón Black" / "Salón M&B"
+Tabs de día (mobile): Lun / Mar / Mié / Jue / Vie / Sáb
+Texto sin clases (mobile): "Sin clases este día"
+Celda vacía en tabla: "—"
+
+(La grilla horaria en sí son datos tabulares —horas, días, disciplinas—, ver
+data/disciplines.js, array "horarios". No se transcriben celda por celda por ser
+tabla numérica, pero están disponibles en ese archivo si se necesitan.)
+
+--- 4.6 SECCIÓN "PRECIOS" ---
+Archivo: components/PreciosSection.jsx + data/disciplines.js (objeto "precios")
+
+CTA superior: "3 clases de prueba — Empezá hoy" → botón "Escribinos por WhatsApp"
+Título (H2): Planes y Precios
+
+Tabs (nombre de cada bloque de planes):
+  - Salón Black
+  - Salón M&B
+  - Full Unbex
+  - Jiu Jitsu
+  - Jubilados +70
+  - Open Box
+  - Open Matutino
+  - All Out
+
+Bloques de precios (nombre + descripción, fuente data/disciplines.js):
+
+  SALÓN BLACK — Musculación, Crosstraining, Funcional, 3ra Edad
+    Planes: 4, 8, 12 (destacado "Más elegido"), 16, 20, 24 clases.
+
+  SALÓN M&B — Yoga, Stretching, Pilates Mat, Zumba, Localizada/GAP, FIIT, Body
+    Pump, Judo Kids
+    Planes: 4, 8, 12, 16, 20, 24 clases.
+
+  FULL UNBEX — Acceso ambos salones, combiná como quieras
+    Planes: 8, 12, 16, 20, 24 clases, Ilimitado (destacado "Más elegido").
+
+  JIU JITSU — Academia Real Jiu Jitsu · Clases de 90 min
+    Planes: 4, 8 clases.
+
+  JUBILADOS +70 — Acceso ambos salones
+    Planes: 8, 12, 16, 20, 24 clases, Ilimitado.
+
+  OPEN BOX — Reservas de 7 a 21hs
+    Planes: 4, 12, 24, 48 horas.
+
+  OPEN MATUTINO — Reservas de 7 a 15hs
+    Planes: 4, 12, 24, 48 horas.
+
+  ALL OUT — Los valores NO incluyen plani
+    Planes: 4, 12, 24, 48 horas.
+
+Cada card de plan incluye la etiqueta "Promo efectivo" y el botón "Consultanos"
+(link de WhatsApp: "Hola! Quiero consultar sobre el plan {plan} de {nombre} en
+Unbex 💪").
+
+Medios de pago (título "Medios de pago"):
+  💵 Efectivo · 🔄 Transferencia / CVU · 📱 Mercado Pago · 💳 MODO ·
+  💳 Tarjetas de débito y crédito
+
+CTA inferior: "¿No encontrás tu plan? Consultanos" → botón "Hablar por WhatsApp"
+
+--- 4.7 SECCIÓN "CONTACTO" ---
+Archivo: app/page.jsx
+
+Eyebrow:      ENCONTRANOS
+Título (H2):  Contacto
+Subtítulo:    Estamos en Villa Uruiza, listos para recibirte.
+
+Datos de contacto:
+  - Dirección: Pacheco 1956, C1431 — Ciudad Autónoma de Buenos Aires
+  - Horarios: Lunes a Viernes: 7:00 – 21:00 / Sábados: 9:00 – 12:00
+  - WhatsApp: +54 9 11 2398-9560
+  - Calificación en Google: ★★★★★ "Ver reseñas en Google"
+
+Mapa embebido de Google Maps (Pacheco 1956, CABA).
+
+--- 4.8 BANNER "TRABAJÁ CON NOSOTROS" (footer de la home) ---
+Archivo: app/page.jsx
+
+Título:     ¿Querés ser parte del equipo Unbex?
+Texto:      Sumate a nuestro staff. Siempre estamos abiertos a incorporar nuevos
+            integrantes al equipo.
+Botón:      Ver más
+
+--- 4.9 FOOTER ---
+Archivo: components/Footer.jsx
+
+Texto: © 2026 Unbex. Todos los derechos reservados.
+
+==================================================================================
+5. PÁGINA "NOSOTROS" (app/nosotros/page.jsx)
+==================================================================================
+Metadata SEO:
+  Título:      Nosotros | Unbex Argentina
+  Descripción: Conocé quiénes somos, nuestra historia, misión y el equipo detrás de
+               Unbex Argentina.
+
+--- HERO ---
+Eyebrow:  QUIÉNES SOMOS
+Título:   Nosotros
+Bajada:   Más de dos años transformando vidas en Buenos Aires.
+
+--- SECCIÓN "NUESTRA HISTORIA" ---
+Eyebrow:  NUESTRA HISTORIA
+Título:   ¿Cómo nació Unbex?
+Texto:    Unbex nació con una convicción simple: el deporte y el bienestar deben
+          estar al alcance de todos. Desde nuestros inicios en Pacheco 1956, CABA,
+          construimos un espacio donde el entrenamiento de alto nivel convive con
+          la calidez de una comunidad real. Hoy somos más de 500 miembros activos,
+          14 disciplinas disponibles y un equipo de profesionales dedicado a sacar
+          lo mejor de cada persona.
+
+--- SECCIÓN "NUESTRA MISIÓN" ---
+Eyebrow:  NUESTRA MISIÓN
+Título:   Lo que nos mueve
+Texto:    Creemos que entrenar va mucho más allá del físico. Nuestro propósito es
+          acompañarte en un proceso integral: cuerpo, mente y comunidad. Que cada
+          clase en Unbex sea un paso más hacia la mejor versión de vos mismo.
+
+--- SECCIÓN "POR QUÉ ELEGIRNOS" ---
+Eyebrow:  POR QUÉ ELEGIRNOS
+Título:   Lo que nos hace diferentes
+
+Cards (4):
+  🏆 Profesionales certificados
+     Cada instructor tiene formación específica y pasión real por lo que enseña.
+     Tu progreso está en buenas manos.
+
+  🎯 Adaptado a cada persona
+     No hay rutinas genéricas. Cada plan se ajusta a tu nivel, objetivos y
+     condición física.
+
+  🏛️ Instalaciones de primer nivel
+     Equipamiento moderno, salones amplios y espacios diseñados para que des lo
+     mejor de vos.
+
+  💜 Comunidad de verdad
+     En Unbex te vas a sentir parte de algo. Un espacio de respeto, motivación y
+     superación colectiva.
+
+--- CTA "EMPEZÁ HOY" ---
+Eyebrow:  EMPEZÁ HOY
+Título:   ¿Querés conocernos?
+Texto:    Vení y realizá 3 clases de prueba. Sin compromiso, sin excusas.
+Botones:  "Escribinos por WhatsApp" (mensaje: "Hola! Quiero conocer Unbex y hacer
+         las clases de prueba 💪") / "Ver disciplinas"
+
+--- BANNER "TENÉ TU UNBEX" ---
+Título:   ¿Querés tener tu propio Unbex?
+Texto:    Llevá el modelo Unbex a tu zona. Franquicia, metodología y comunidad —
+          todo el sistema listo para vos.
+Botón:    Quiero saber más
+
+Mensaje flotante de WhatsApp de esta página: "Hola! Quiero saber más sobre Unbex 💜"
+
+==================================================================================
+6. PÁGINA "COMUNIDAD UNBEX" (app/comunidad-unbex/page.jsx)
+==================================================================================
+Metadata SEO:
+  Título:      Comunidad Unbex | Más que un centro deportivo
+  Descripción: En Unbex somos una comunidad. Personas reales que se superan juntas
+               cada día.
+
+--- HERO ---
+Eyebrow:  MÁS QUE UN GIMNASIO
+Título:   Comunidad Unbex
+Bajada:   Un espacio donde el entrenamiento es el punto de partida, pero la
+          comunidad es lo que te hace lograr tus objetivos.
+
+--- SECCIÓN "NUESTROS VALORES" ---
+Eyebrow:  LO QUE NOS UNE
+Título:   Nuestros valores
+Subtítulo: En Unbex creemos que el bienestar real se construye en comunidad.
+
+Cards (4):
+  🤝 Pertenencia real
+     No sos un número. Acá te conocemos, te acompañamos y celebramos cada logro
+     tuyo.
+
+  🔥 Superación colectiva
+     Cuando uno se esfuerza, todos se inspiran. El progreso de cada miembro
+     impulsa al grupo.
+
+  💜 Inclusión y respeto
+     Todos los niveles, todas las edades, todos los cuerpos. Unbex es para vos,
+     sin excusas.
+
+  🌱 Crecimiento constante
+     Entrenamos el cuerpo, pero también la mente. Cada clase es una oportunidad de
+     crecer.
+
+--- SECCIÓN "UNBEX EN NÚMEROS" ---
+Eyebrow:  UNBEX EN NÚMEROS
+Título:   Una comunidad que crece
+
+Estadísticas:
+ cientos  Miembros activos
+  14    Disciplinas disponibles
+  6     Días a la semana
+  2     Años de comunidad
+
+--- SECCIÓN "MOMENTOS QUE NOS DEFINEN" ---
+Eyebrow:  UNBEX EN ACCIÓN
+Título:   Momentos que nos definen
+Subtítulo: Celebraciones, desafíos y todo lo que hace única a la comunidad Unbex.
+
+  🎉 Fiesta — Fiesta Unbex
+     Porque entrenar juntos es mucho más que sudar. Cada año celebramos todo lo
+     que logramos como comunidad — con música, energía y la familia Unbex al
+     completo.
+
+  💪 Challenge — Unbex Challenge
+     Un desafío que pone a prueba los límites de toda la comunidad. ¿Hasta dónde
+     podés llegar? En Unbex, siempre más lejos de lo que creías.
+
+--- SECCIÓN "BOLSA DE PROFESIONALES" ---
+Eyebrow:  RED DE PROFESIONALES
+Título:   Gabinete de profesionales Unbex
+Subtítulo: Profesionales de la comunidad Unbex ofreciendo sus servicios:
+           entrenadores, nutricionistas, kinesiólogos y mucho más.
+
+Directorio (componente DirectorioProfesionales.jsx):
+  - Buscador: placeholder "Buscá por rubro o nombre..."
+  - Filtro zona: opción por defecto "Todas las zonas"
+  - Sin resultados (sin profesionales cargados): "Todavía no hay profesionales
+    publicados. ¡Sé el primero en sumarte!"
+  - Sin resultados (búsqueda sin coincidencias): "No encontramos profesionales
+    para tu búsqueda."
+  - Cada card: botón "Escribir por WhatsApp" y, si tiene Instagram, botón
+    "Instagram"
+  - CTA final del directorio: "Sumá tu perfil a la bolsa"
+
+--- SECCIÓN "PUBLICAR PERFIL" (formulario) ---
+Eyebrow:  SUMÁ TU PERFIL
+Título:   ¿Sos profesional del fitness o bienestar?
+Subtítulo: Publicá tus datos y ofrecé tus servicios a toda la comunidad Unbex. Tu
+           publicación se revisa antes de mostrarse en el directorio.
+
+Formulario (componente FormProfesional.jsx):
+  Campos: Nombre, Apellido, Rubro (con sugerencias: Personal Trainer,
+  Nutricionista, Kinesiólogo/a, Masajista, Preparador/a físico/a, Psicólogo/a
+  deportivo/a, Fotógrafo/a deportivo/a, Coach nutricional, Podólogo/a deportivo/a,
+  Entrenador/a de running), Zona (placeholder "Seleccioná tu zona", opciones en
+  data/zonas.js: Villa Urquiza, Villa Pueyrredón, Coghlan, Saavedra, Belgrano,
+  Núñez, Colegiales, Villa Ortúzar, Parque Chas, Agronomía, Chacarita, Palermo,
+  Otro), Descripción corta (placeholder "Contá brevemente qué ofrecés", máx. 200
+  caracteres), Teléfono/WhatsApp, Instagram (opcional).
+
+  Botón: "Publicar mi perfil" (estado enviando: "Enviando...")
+  Error: "Hubo un error al enviar. Intentá de nuevo."
+  Éxito: "¡Gracias por sumarte! Tu publicación fue enviada y está pendiente de
+  aprobación. Para confirmar tu carga, envianos un mensaje por WhatsApp al
+  establecimiento así verificamos tus datos y activamos tu perfil." → botón
+  "Confirmar por WhatsApp"
+
+--- CTA FINAL "SUMATE" ---
+Eyebrow:  SUMATE
+Título:   ¿Querés ser parte?
+Texto:    Empezá con 3 clases de prueba y viví la experiencia Unbex desde adentro.
+Botones:  "Escribinos por WhatsApp" (mensaje: "Hola! Quiero sumarme a la Comunidad
+          Unbex 💪") / "Ver planes y precios"
+
+Mensaje flotante de WhatsApp de esta página: "Hola, quiero saber más sobre la
+Comunidad Unbex 💜"
+
+==================================================================================
+7. PÁGINA "TENÉ TU UNBEX" — FRANQUICIAS (app/tene-tu-unbex/page.jsx)
+==================================================================================
+Metadata SEO:
+  Título:      Tené tu Unbex | Franquicias
+  Descripción: Abrí tu propio Unbex. Un modelo probado, soporte total y una marca
+               con identidad propia.
+
+--- HERO ---
+Eyebrow:  FRANQUICIAS
+Título:   Tené tu Unbex
+Bajada:   Abrí tu propio gimnasio con el respaldo de una marca que ya funciona.
+
+--- SECCIÓN "POR QUÉ UNBEX" ---
+Eyebrow:  POR QUÉ UNBEX
+Título:   Un negocio con respaldo
+Subtítulo: No arrancás de cero — arrancás con todo lo que aprendimos.
+
+Cards (3):
+  🏢 Modelo probado
+     Accedé a un sistema de gestión y entrenamiento que ya funciona, con procesos
+     claros desde el primer día.
+
+  📊 Soporte total
+     Te acompañamos en la apertura, el equipamiento, la comunicación y el día a
+     día de tu gimnasio.
+
+  💡 Marca con identidad
+     Sumate a una comunidad con estética, valores y filosofía propios que generan
+     pertenencia real.
+
+--- SECCIÓN "CONSULTANOS" (formulario) ---
+Eyebrow:  EMPEZÁ HOY
+Título:   Consultanos
+Subtítulo: Completá el formulario y te contamos todo sobre la franquicia.
+
+Formulario (FormFranquicia.jsx):
+  Campos: Nombre, Apellido, Email (placeholder "tu@email.com"), Teléfono, Ciudad /
+  Provincia (placeholder "¿Dónde querés abrir?"), Contanos más sobre tu proyecto
+  (placeholder "¿Tenés local? ¿Experiencia en el sector? ¿Preguntas?").
+  Botón: "Enviar consulta" (estado enviando: "Enviando...")
+  Error: "Hubo un error al enviar. Intentá de nuevo."
+  Éxito: "✅ ¡Consulta enviada! Nos ponemos en contacto a la brevedad."
+
+Mensaje flotante de WhatsApp de esta página: "Hola, quiero información sobre la
+franquicia Unbex"
+
+==================================================================================
+8. PÁGINA "TRABAJÁ CON NOSOTROS" (app/trabajar-con-nosotros/page.jsx)
+==================================================================================
+Metadata SEO:
+  Título:      Trabajá con nosotros | Unbex
+  Descripción: Si te apasiona el movimiento, el bienestar y ayudar a otros a
+               superarse, este es tu lugar.
+
+--- HERO ---
+Eyebrow:  ÚNETE AL EQUIPO
+Título:   Trabajá con nosotros
+Bajada:   Si te apasiona el movimiento, el bienestar y ayudar a otros a superarse,
+          este es tu lugar.
+
+--- SECCIÓN "POR QUÉ ELEGIRNOS" ---
+Eyebrow:  POR QUÉ ELEGIRNOS
+Título:   Un lugar donde crecer
+Subtítulo: En Unbex valoramos a las personas tanto como al entrenamiento.
+
+Cards (3):
+  🏋️ Pasión compartida
+     Trabajá rodeado de personas que viven el deporte y el bienestar como un
+     estilo de vida.
+
+  🤝 Comunidad real
+     Formá parte de un equipo unido, con buen clima de trabajo y valores
+     genuinos.
+
+  📈 Crecimiento profesional
+     Desarrollá tu carrera en un espacio en expansión con oportunidades reales.
+
+--- SECCIÓN "POSTULATE" (formulario) ---
+Eyebrow:  UNITE AL EQUIPO
+Título:   Postulate
+Subtítulo: Completá el formulario y nos ponemos en contacto a la brevedad.
+
+Formulario (FormPostulacion.jsx):
+  Campos: Nombre, Apellido, Puesto (select, placeholder "Seleccioná un puesto",
+  opciones: Profesor/a de Crosstraining & Funcional, Profesor/a de Musculación,
+  Profesor/a de Yoga, Profesor/a de Pilates Mat, Profesor/a de Zumba, Profesor/a
+  de Stretching, Profesor/a de FIIT, Profesor/a de Body Pump, Profesor/a de
+  Localizada/GAP, Instructor/a de Judo Kids, Instructor/a de Jiu Jitsu,
+  Kinesiólogo/a, Recepción / Atención al cliente, Otro), CV en PDF (botón
+  "📎 Adjuntar CV").
+  Aviso archivo grande: "El archivo supera los 5 MB. Comprimí el PDF o usá un
+  archivo más liviano."
+  Botón: "Enviar postulación" (estado enviando: "Enviando...")
+  Error: "Hubo un error al enviar. Intentá de nuevo."
+  Éxito: "✅ ¡Postulación enviada! Nos pondremos en contacto a la brevedad."
+
+Mensaje flotante de WhatsApp de esta página: "Hola, quiero trabajar en Unbex"
+
+==================================================================================
+9. PÁGINAS DE DISCIPLINA — /disciplinas/[slug] (plantilla dinámica)
+==================================================================================
+Archivos: app/disciplinas/[slug]/page.jsx, HeroDisciplina.jsx, HeroWrapper.jsx
+Contenido variable según la disciplina (ver textos completos en la sección 4.2 y
+4.3 de este documento — descripción, "para quién", objetivos y duración de cada
+una salen del mismo array data/disciplines.js).
+
+Estructura fija de la plantilla (se repite en las 15 páginas de disciplina):
+
+  - Hero: título oculto visualmente (h1, solo lectores de pantalla) = nombre de la
+    disciplina. Etiqueta superpuesta: "Salón Black" o "Salón M&B" según corresponda.
+
+  - Sección info (2 columnas):
+      Columna izquierda: "¿Qué es {Nombre de la disciplina}?" + descripción corta
+        y, si existe, descripción larga.
+      Columna derecha: "Horarios" (tabla específica de esa disciplina).
+
+  - Sección bloques (3 tarjetas con ícono):
+      "¿Para quién es?"       → texto "paraQuien" (o "Información próximamente")
+      "¿Qué vas a lograr?"    → texto "objetivos" (o "Información próximamente")
+      "Duración de la clase"  → texto "duracion" (o "Información próximamente")
+
+  - CTA condicional (solo en All Out, que tiene precioTab definido):
+      "¿Querés conocer los planes de {Nombre}?" → botón "Conocé los planes de
+      {Nombre}"
+
+  Mensaje flotante de WhatsApp: "Hola! Quiero info sobre {Nombre de la disciplina}
+  en Unbex"
+
+==================================================================================
+10. PÁGINAS DE ERROR
+==================================================================================
+Archivo: app/error.jsx
+  Título:  Algo salió mal
+  Texto:   {mensaje del error} o, por defecto, "Ocurrió un error inesperado."
+  Botón:   Reintentar
+
+Archivo: app/global-error.jsx
+  Título:  Error crítico
+  Texto:   {mensaje del error} o, por defecto, "La aplicación encontró un error
+           grave."
+  Botón:   Recargar
+
+==================================================================================
+11. ELEMENTOS FLOTANTES / TRANSVERSALES
+==================================================================================
+Archivo: components/WhatsappFloat.jsx
+  Botón flotante de WhatsApp, aria-label: "Contactar por WhatsApp". El mensaje
+  predefinido cambia según la página (detallado en cada sección de este documento).
+
+Archivo: components/ScrollHint.jsx (usado en Nosotros, Comunidad, Tené tu Unbex,
+Trabajá con nosotros) — indicador visual de "scroll hacia abajo", sin texto propio.
+
+Archivo: components/TabHint.jsx — indicador visual animado bajo los tabs activos
+(Horarios / Precios), sin texto propio.
+
+==================================================================================
+FIN DEL RELEVAMIENTO
+==================================================================================

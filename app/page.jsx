@@ -92,7 +92,7 @@ export default function Home() {
             <div className="section__container">
               <span className="section__eyebrow">SALÓN BLACK</span>
               <AnimatedSection as="h2" className="section__title">Fuerza y rendimiento</AnimatedSection>
-              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamiento de alta intensidad, Fuerza y disciplinas de potencia</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamiento de Fuerza y disciplinas de alta intensidad y potencia</AnimatedSection>
               <div className="cards">
                 {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
@@ -106,7 +106,7 @@ export default function Home() {
             <div className="section__container">
               <span className="section__eyebrow">SALÓN M&amp;B</span>
               <AnimatedSection as="h2" className="section__title">Movimiento y bienestar</AnimatedSection>
-              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Yoga, pilates, zumba, artes marciales y más actividades grupales</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Yoga, Pilates Mat, Zumba, artes marciales y más actividades grupales</AnimatedSection>
               <div className="cards">
                 {disciplinas.filter(d => d.salon === 'mb').map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
@@ -121,7 +121,7 @@ export default function Home() {
               <span className="section__eyebrow">CONSULTORIO INTERDISCIPLINARIO</span>
               <AnimatedSection as="h2" className="section__title">Consultorios</AnimatedSection>
               <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>
-                En nuestro consultorio entendemos que el entrenamiento es solo una parte del éxito. Ofrecemos un abordaje interdisciplinario único con profesionales dedicados a optimizar tu cuerpo y mente.
+                En Unbex creemos que el entrenamiento es solo una parte del éxito, para complementarlo ofrecemos un abordaje interdisciplinario único con profesionales dedicados a optimizar tu cuerpo y mente.
               </AnimatedSection>
               <ConsultoriosGrid items={consultorios} />
             </div>
@@ -140,7 +140,7 @@ export default function Home() {
             <span className="section__eyebrow">ENCONTRANOS</span>
             <AnimatedSection as="h2" className="section__title">Contacto</AnimatedSection>
             <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>
-              Estamos en el corazón de Buenos Aires, listos para recibirte.
+              Estamos en Villa Uruiza, listos para recibirte.
             </AnimatedSection>
 
             <div className="contacto__layout">

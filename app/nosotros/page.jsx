@@ -4,7 +4,9 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Link from 'next/link';
 import { WA_NUMBER } from '@/data/disciplines';
+import { MISION_TEXTO, VISION_TEXTO, VALORES } from '@/data/nosotros';
 import ScrollHint from '@/components/ScrollHint';
+import AnimatedSection from '@/components/AnimatedSection';
 
 export const metadata = {
   title: 'Nosotros | Unbex Argentina',
@@ -22,7 +24,7 @@ const diferenciadores = [
   {
     icono: '🎯',
     titulo: 'Adaptado a cada persona',
-    desc: 'No hay rutinas genéricas. Cada plan se ajusta a tu nivel, objetivos y condición física real.',
+    desc: 'No hay rutinas genéricas. Cada plan se ajusta a tu nivel, objetivos y condición física.',
   },
   {
     icono: '🏛️',
@@ -75,12 +77,35 @@ export default function NosotrosPage() {
         {/* MISIÓN */}
         <section className="trabaja-info">
           <div className="section__container">
-            <span className="section__eyebrow">NUESTRA MISIÓN</span>
-            <h2 className="section__title">Lo que nos mueve</h2>
-            <p className="nosotros-mision__texto">
-              Creemos que entrenar va mucho más allá del físico. Nuestro propósito es acompañarte en un proceso
-              integral: cuerpo, mente y comunidad. Que cada clase en Unbex sea un paso más hacia la mejor versión de vos mismo.
-            </p>
+            <span className="section__eyebrow">NUESTRO PROPÓSITO</span>
+            <h2 className="section__title">Misión</h2>
+            <p className="nosotros-texto">{MISION_TEXTO}</p>
+          </div>
+        </section>
+
+        {/* VISIÓN */}
+        <section className="trabaja-info">
+          <div className="section__container">
+            <span className="section__eyebrow">HACIA DÓNDE VAMOS</span>
+            <h2 className="section__title">Visión</h2>
+            <p className="nosotros-texto">{VISION_TEXTO}</p>
+          </div>
+        </section>
+
+        {/* VALORES */}
+        <section className="trabaja-info">
+          <div className="section__container">
+            <span className="section__eyebrow">LO QUE NOS DEFINE</span>
+            <h2 className="section__title">Valores</h2>
+            <div className="nosotros-valores">
+              {VALORES.map((valor, i) => (
+                <AnimatedSection key={valor.titulo} className="valores-card" delay={i * 80}>
+                  <span className="valores-card__icon">{valor.icono}</span>
+                  <h3 className="valores-card__title">{valor.titulo}</h3>
+                  <p className="valores-card__desc">{valor.desc}</p>
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -107,11 +132,11 @@ export default function NosotrosPage() {
             <span className="section__eyebrow">EMPEZÁ HOY</span>
             <h2 className="section__title">¿Querés conocernos?</h2>
             <p className="section__subtitle">
-              Vení y probá 3 clases de prueba. Sin compromiso, sin excusas.
+              Vení y realizá 3 clases de prueba. Sin compromiso, sin excusas.
             </p>
             <div className="comunidad-cta-btns">
               <a
-                href={`${WA_BASE}${encodeURIComponent('Hola! Quiero conocer Unbex y probar 3 clases de prueba 💪')}`}
+                href={`${WA_BASE}${encodeURIComponent('Hola! Quiero conocer Unbex y hacer las clases de prueba 💪')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="trabaja-form__btn"
@@ -130,7 +155,7 @@ export default function NosotrosPage() {
           <div className="trabaja-banner__content">
             <h2 className="trabaja-banner__title">¿Querés tener tu propio Unbex?</h2>
             <p className="trabaja-banner__sub">
-              Llevá el modelo Unbex a tu ciudad. Franquicia, metodología y comunidad — todo el sistema listo para vos.
+              Llevá el modelo Unbex a tu zona. Franquicia, metodología y comunidad — todo el sistema listo para vos.
             </p>
             <Link href="/tene-tu-unbex" className="trabaja-banner__btn">
               Quiero saber más

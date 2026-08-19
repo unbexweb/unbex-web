@@ -106,6 +106,11 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
             <li>
               <Link href="/nosotros" className="navbar-lateral__link" onClick={closeAll}>Nosotros</Link>
             </li>
+            <li>
+              <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
+                Comunidad Unbex
+              </Link>
+            </li>
             <li onMouseEnter={() => onDisciplinaHover?.(null)} onMouseLeave={() => onDisciplinaHover?.(null)}>
               <a href="#disciplinas" className="navbar-lateral__link" onClick={closeAll}>Disciplinas</a>
             </li>
@@ -117,11 +122,6 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
             </li>
             <li onMouseEnter={() => onDisciplinaHover?.('precios')} onMouseLeave={() => onDisciplinaHover?.(null)}>
               <a href="#precios" className="navbar-lateral__link" onClick={closeAll}>Precios</a>
-            </li>
-            <li>
-              <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
-                Comunidad Unbex
-              </Link>
             </li>
             <li>
               <Link href="/trabajar-con-nosotros" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
@@ -147,6 +147,11 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
             <li>
               <Link href="/nosotros" className="navbar-lateral__link" onClick={closeAll}>Nosotros</Link>
             </li>
+            <li>
+              <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
+                Comunidad Unbex
+              </Link>
+            </li>
 
             <li>
               <button
@@ -168,11 +173,6 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
             </li>
             <li>
               <Link href="/#precios" className="navbar-lateral__link" onClick={closeAll}>Precios</Link>
-            </li>
-            <li>
-              <Link href="/comunidad-unbex" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
-                Comunidad Unbex
-              </Link>
             </li>
             <li>
               <Link href="/trabajar-con-nosotros" className="navbar-lateral__link navbar-lateral__link--cta" onClick={closeAll}>
@@ -247,17 +247,16 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
           {/* Menú home — links directos sin dropdowns */}
           {isHome && (
             <ul className={`navbar__menu${menuOpen ? ' open' : ''}`} id="navbarMenu">
-              <li><a href="#disciplinas" className="navbar__link" onClick={closeAll}>Disciplinas</a></li>
-              <li><a href="#consultorios" className="navbar__link" onClick={closeAll}>Consultorios</a></li>
-              <li><a href="#horarios"    className="navbar__link" onClick={closeAll}>Horarios</a></li>
-              <li><a href="#precios"     className="navbar__link" onClick={closeAll}>Precios</a></li>
-              <li><a href="#contacto"    className="navbar__link" onClick={closeAll}>Contacto</a></li>
               <li><Link href="/nosotros" className="navbar__link" onClick={closeAll}>Nosotros</Link></li>
               <li>
                 <Link href="/comunidad-unbex" className="navbar__link navbar__link--cta" onClick={closeAll}>
                   Comunidad Unbex
                 </Link>
               </li>
+              <li><a href="#disciplinas" className="navbar__link" onClick={closeAll}>Disciplinas</a></li>
+              <li><a href="#consultorios" className="navbar__link" onClick={closeAll}>Consultorios</a></li>
+              <li><a href="#horarios"    className="navbar__link" onClick={closeAll}>Horarios</a></li>
+              <li><a href="#precios"     className="navbar__link" onClick={closeAll}>Precios</a></li>
               <li>
                 <Link href="/trabajar-con-nosotros" className="navbar__link navbar__link--cta" onClick={closeAll}>
                   Trabajá con nosotros
@@ -268,12 +267,16 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
                   Tené tu Unbex
                 </Link>
               </li>
+              <li><a href="#contacto"    className="navbar__link" onClick={closeAll}>Contacto</a></li>
             </ul>
           )}
 
           {/* Menú páginas internas — con dropdowns en Disciplinas y Consultorios */}
           {!isHome && (
             <ul className={`navbar__menu${menuOpen ? ' open' : ''}`} id="navbarMenu">
+
+              <li><Link href="/nosotros"                className="navbar__link" onClick={closeAll}>Nosotros</Link></li>
+              <li><Link href="/comunidad-unbex"         className="navbar__link navbar__link--cta" onClick={closeAll}>Comunidad Unbex</Link></li>
 
               <li className={`navbar__item navbar__item--dropdown${openDropdown === 'disciplinas' ? ' open' : ''}`}>
                 <button
@@ -320,11 +323,9 @@ export default function Navbar({ onDisciplinaHover = null, estaEnHero = false })
 
               <li><Link href="/#horarios"               className="navbar__link" onClick={closeAll}>Horarios</Link></li>
               <li><Link href="/#precios"                className="navbar__link" onClick={closeAll}>Precios</Link></li>
-              <li><Link href="/#contacto"               className="navbar__link" onClick={closeAll}>Contacto</Link></li>
-              <li><Link href="/nosotros"                className="navbar__link" onClick={closeAll}>Nosotros</Link></li>
-              <li><Link href="/comunidad-unbex"         className="navbar__link navbar__link--cta" onClick={closeAll}>Comunidad Unbex</Link></li>
               <li><Link href="/trabajar-con-nosotros"   className="navbar__link navbar__link--cta" onClick={closeAll}>Trabajá con nosotros</Link></li>
               <li><Link href="/tene-tu-unbex"           className="navbar__link navbar__link--cta" onClick={closeAll}>Tené tu Unbex</Link></li>
+              <li><Link href="/#contacto"               className="navbar__link" onClick={closeAll}>Contacto</Link></li>
 
             </ul>
           )}

@@ -8,7 +8,7 @@ import TabHint from '@/components/TabHint';
 const ORDEN_DIAS = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
 const DIA_LABEL_CORTO = { lun: 'Lun', mar: 'Mar', mie: 'Mié', jue: 'Jue', vie: 'Vie', sab: 'Sáb' };
 const DIA_POR_GETDAY = { 0: 'lun', 1: 'lun', 2: 'mar', 3: 'mie', 4: 'jue', 5: 'vie', 6: 'sab' };
-const LABEL_EXTRA = { oly: 'OLY', allout: 'Allout' };
+const LABEL_EXTRA = { allout: 'Allout' };
 
 function diaActualDefault() {
   return DIA_POR_GETDAY[new Date().getDay()];
