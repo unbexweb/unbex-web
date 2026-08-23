@@ -510,7 +510,7 @@ button {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  background: url('/img/hero_fallback.jpg') center/cover no-repeat;
+  background: url('/img/hero_fallback.png') center/cover no-repeat;
 }
 
 .hero__video-container {
@@ -760,7 +760,7 @@ button {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  background: url('/img/hero_fallback.jpg') center/cover no-repeat;
+  background: url('/img/hero_fallback.png') center/cover no-repeat;
 }
 
 .disciplina-hero__video-container {
@@ -2170,7 +2170,7 @@ body.salon-mb .topbar {
   background:
     radial-gradient(ellipse at 70% 30%, rgba(245,198,198,0.5) 0%, transparent 60%),
     radial-gradient(ellipse at 20% 70%, rgba(122,61,135,0.55) 0%, transparent 60%),
-    url('/img/hero_fallback.jpg') center/cover no-repeat;
+    url('/img/hero_fallback.png') center/cover no-repeat;
 }
 
 main.salon-mb .trabaja-hero__overlay {
@@ -2441,7 +2441,7 @@ main.salon-mb .trabaja-hero__overlay {
   background:
     radial-gradient(ellipse at 60% 40%, rgba(122,61,135,0.5) 0%, transparent 65%),
     radial-gradient(ellipse at 20% 70%, rgba(75,37,86,0.6) 0%, transparent 60%),
-    url('/img/hero_fallback.jpg') center/cover no-repeat;
+    url('/img/hero_fallback.png') center/cover no-repeat;
 }
 
 .trabaja-hero__overlay {
@@ -3548,7 +3548,7 @@ body:has(.marquee-banner) .hero__content {
   background:
     radial-gradient(ellipse at 30% 40%, rgba(122,61,135,0.6) 0%, transparent 60%),
     radial-gradient(ellipse at 75% 65%, rgba(75,37,86,0.5) 0%, transparent 55%),
-    url('/img/hero_fallback.jpg') center/cover no-repeat;
+    url('/img/hero_fallback.png') center/cover no-repeat;
 }
 
 .franquicia-hero__bg {

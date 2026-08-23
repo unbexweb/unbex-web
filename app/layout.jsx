@@ -16,7 +16,7 @@ export const metadata = {
     type:        'website',
     images: [
       {
-        url:    '/img/hero_fallback.jpg',
+        url:    '/img/hero_fallback.png',
         width:  1200,
         height: 630,
         alt:    'Unbex Argentina — Centro de entrenamiento y bienestar',
