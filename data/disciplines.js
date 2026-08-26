@@ -62,8 +62,12 @@ export const DISCIPLINA_VIDEOS = {
 // Cada entrada: { desktop: 'ID_YT', mobile: 'ID_YT' | null }
 // Si mobile es null, usa desktop como fallback en móvil.
 export const HERO_VIDEOS = [
-  { desktop: 'qXCb6Dj84IY', mobile: 'AZP9yih5V4s' },
-  { desktop: 'LvyFA9S21S8', mobile: 'LvyFA9S21S8' },
+  { desktop: 'X_nWX1HN2qY', mobile: null }, // Dron
+  { desktop: 'qXCb6Dj84IY', mobile: null }, // Tienda
+  { desktop: '2-RuugIaXzM', mobile: null }, // Comunidad
+  { desktop: 'e-50q3ZFXjE', mobile: null }, // Bar
+  { desktop: 'VtptkYoi-6A', mobile: null }, // Accesorios Shop
+  { desktop: '6LbyXWEsfYg', mobile: null }, // Indumentaria
 ];
 
 export const CONTACTO = {
