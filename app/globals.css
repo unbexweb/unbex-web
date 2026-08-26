@@ -2410,6 +2410,15 @@ main.salon-mb .trabaja-hero__overlay {
   color: var(--color-accent);
 }
 
+.contacto__mapa-link {
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contacto__mapa-link:hover {
+  color: var(--color-accent);
+}
+
 .contacto__mapa {
   border-radius: var(--border-radius-lg);
   overflow: hidden;
@@ -3347,42 +3356,42 @@ body:has(.disciplina-main--lateral) .navbar-lateral {
 /* Estas reglas van al final para sobreescribir mobile media queries */
 
 /* navbar móvil y logo debajo del banner */
-body:has(.marquee-banner) .navbar {
+body:has(.marquee-banner:not(.marquee-banner--oculto)) .navbar {
   top: var(--marquee-height);
 }
-body:has(.marquee-banner) .navbar__logo {
+body:has(.marquee-banner:not(.marquee-banner--oculto)) .navbar__logo {
   top: var(--marquee-height);
 }
 
 /* home-main: empuja el hero debajo del banner fijo */
-body:has(.marquee-banner) .home-main {
+body:has(.marquee-banner:not(.marquee-banner--oculto)) .home-main {
   padding-top: var(--marquee-height);
 }
 
 /* hero: 89vh menos el banner fijo */
-body:has(.marquee-banner) .hero {
+body:has(.marquee-banner:not(.marquee-banner--oculto)) .hero {
   height: calc(89vh - var(--marquee-height));
 }
 
 /* hero content: centrado en el espacio debajo de la navbar */
-body:has(.marquee-banner) .hero__content {
+body:has(.marquee-banner:not(.marquee-banner--oculto)) .hero__content {
   top: var(--navbar-height);
 }
 
 /* ── Desktop: banner solo a la derecha del sidebar; sidebar desde top:0 ── */
 @media (min-width: 768px) {
   /* banner arranca donde termina el sidebar */
-  body:has(.marquee-banner) .marquee-banner {
+  body:has(.marquee-banner:not(.marquee-banner--oculto)) .marquee-banner {
     left: 290px;
   }
 
   /* logo sube al tope del sidebar */
-  body:has(.marquee-banner) .navbar__logo {
+  body:has(.marquee-banner:not(.marquee-banner--oculto)) .navbar__logo {
     top: 0;
   }
 
   /* sidebar desde top:0 — ocupa el espacio del banner en su columna */
-  body:has(.marquee-banner) .navbar-lateral {
+  body:has(.marquee-banner:not(.marquee-banner--oculto)) .navbar-lateral {
     top: 0;
     padding-top: calc(var(--navbar-height) + 1.5rem);
   }

@@ -149,7 +149,14 @@ export default function Home() {
                   <img src="/img/cards/Iconos_Ubicacion.png" alt="Ubicación" className="contacto__dato-icono" />
                   <div>
                     <p className="contacto__dato-titulo">Dirección</p>
-                    <p className="contacto__dato-texto">Pacheco 1956, C1431<br />Ciudad Autónoma de Buenos Aires</p>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=UNBEX+Pacheco+1956%2C+C1431+Ciudad+Aut%C3%B3noma+de+Buenos+Aires&query_place_id=ChIJw1OQBje3vJUR7CRv_4oo6tA"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="contacto__dato-texto contacto__mapa-link"
+                    >
+                      Pacheco 1956, C1431<br />Ciudad Autónoma de Buenos Aires
+                    </a>
                   </div>
                 </div>
                 <div className="contacto__dato">
