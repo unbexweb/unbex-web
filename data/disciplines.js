@@ -36,6 +36,7 @@ export const DISCIPLINA_HERO_VIDEOS = {
   'fiit':         'iXYI17zQkwk',
   'localizada':   'IO0KEAT89kg',
   'body-pump':    'MeVekXTbmOY',
+  // 'levantamiento-olimpico': pendiente — agregar el ID de YouTube (referencia: hero_disciplinas_levantamientoolimpico)
 };
 
 // IDs de YouTube para el overlay del hero principal
@@ -181,11 +182,16 @@ export const disciplinas = [
     nombre: 'Levantamiento Olímpico',
     short:  'Oly',
     salon:  'black',
-    img:    'card_disciplinas_olimpico.jpg',
+    img:    'card_disciplinas_levantamientoolimpico.jpg', // pendiente: subir la imagen con este nombre
+    desc:   'El Levantamiento Olímpico es una de las disciplinas más completas y técnicas del deporte, y en Unbex la ponemos a tu alcance sin importar tu punto de partida. Nuestras clases son 100% guiadas y están pensadas para que aprendas y perfecciones los dos movimientos clásicos: el arranque y el envión. No necesitás experiencia previa ni ser un atleta avanzado. Trabajamos paso a paso, desglosando cada fase del movimiento para que entiendas la técnica, ganes confianza y avances a tu ritmo. Ya sea que estés dando tus primeros levantamientos o que quieras pulir detalles para levantar mejor, nuestro entrenador te acompaña en cada repetición corrigiendo la postura, la movilidad y el timing. Vas a mejorar tu fuerza, tu coordinación y tu control corporal mientras dominás una técnica que te sirve para cualquier otra disciplina. Vení a descubrir de lo que sos capaz.',
     icono:  '🏋️',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Levantamiento Olímpico en Unbex 🏋️'),
-    // Pendiente: desc, descLarga, paraQuien, objetivos, duracion, horarios e imagen definitiva.
+    paraQuien: 'Cualquier persona que quiera aprender levantamiento olímpico desde cero o mejorar su técnica en arranque y envión. No requiere experiencia previa.',
+    objetivos: 'Aprendés y perfeccionás la técnica de los levantamientos olímpicos ganando fuerza, coordinación y control, siempre con guía profesional.',
+    duracion:  '60 minutos',
+    // Horarios: usa la grilla compartida de `horarios` más abajo (jueves 20:00 combinado
+    // con Cross/Func/Muscu, sábado 13:00 clase propia) — no necesita horariosSemana propio.
   },
   // ── SALÓN M&B ─────────────────────────────────────────────────────────────
   {
@@ -318,12 +324,12 @@ export const precios = {
       nombre: 'Salón Black',
       desc: 'Musculación, Crosstraining, Funcional, 3ra Edad',
       planes: [
-        { plan: '4 clases',  precio: 34650, efvo: 31500 },
-        { plan: '8 clases',  precio: 48400, efvo: 44000 },
-        { plan: '12 clases', precio: 54450, efvo: 49500, destacado: true },
-        { plan: '16 clases', precio: 61600, efvo: 56000 },
-        { plan: '20 clases', precio: 66550, efvo: 60500 },
-        { plan: '24 clases', precio: 71500, efvo: 65000 },
+        { plan: '4 clases',  precio: 39000, efvo: 35500 },
+        { plan: '8 clases',  precio: 54300, efvo: 49500 },
+        { plan: '12 clases', precio: 61000, efvo: 55500, destacado: true },
+        { plan: '16 clases', precio: 69000, efvo: 63000 },
+        { plan: '20 clases', precio: 74500, efvo: 68000 },
+        { plan: '24 clases', precio: 80000, efvo: 73000 },
       ],
     },
     {
@@ -331,12 +337,12 @@ export const precios = {
       nombre: 'Salón M&B',
       desc: 'Yoga, Stretching, Pilates Mat, Zumba, Localizada/GAP, FIIT, Body Pump, Judo Kids',
       planes: [
-        { plan: '4 clases',  precio: 39050, efvo: 35500 },
-        { plan: '8 clases',  precio: 50600, efvo: 46000 },
-        { plan: '12 clases', precio: 59400, efvo: 54000 },
-        { plan: '16 clases', precio: 67100, efvo: 61000 },
-        { plan: '20 clases', precio: 73700, efvo: 67000 },
-        { plan: '24 clases', precio: 78100, efvo: 71000 },
+        { plan: '4 clases',  precio: 44000, efvo: 40000 },
+        { plan: '8 clases',  precio: 56500, efvo: 51500 },
+        { plan: '12 clases', precio: 66500, efvo: 60500 },
+        { plan: '16 clases', precio: 75200, efvo: 68500 },
+        { plan: '20 clases', precio: 82600, efvo: 75000 },
+        { plan: '24 clases', precio: 87500, efvo: 79500 },
       ],
     },
     {
@@ -344,12 +350,12 @@ export const precios = {
       nombre: 'Full Unbex',
       desc: 'Acceso ambos salones, combiná como quieras',
       planes: [
-        { plan: '8 clases',  precio: 54450, efvo: 49500 },
-        { plan: '12 clases', precio: 63800, efvo: 58000 },
-        { plan: '16 clases', precio: 71500, efvo: 65000 },
-        { plan: '20 clases', precio: 77000, efvo: 70000 },
-        { plan: '24 clases', precio: 83600, efvo: 76000 },
-        { plan: 'Ilimitado', precio: 90200, efvo: 82000, destacado: true },
+        { plan: '8 clases',  precio: 61000, efvo: 55500 },
+        { plan: '12 clases', precio: 71500, efvo: 65000 },
+        { plan: '16 clases', precio: 80000, efvo: 73000 },
+        { plan: '20 clases', precio: 86300, efvo: 78500 },
+        { plan: '24 clases', precio: 93600, efvo: 85000 },
+        { plan: 'Ilimitado', precio: 101000, efvo: 92000, destacado: true },
       ],
     },
     {
@@ -366,12 +372,12 @@ export const precios = {
       nombre: 'Jubilados +70',
       desc: 'Acceso ambos salones',
       planes: [
-        { plan: '8 clases',  precio: 33000, efvo: 30000 },
-        { plan: '12 clases', precio: 37400, efvo: 34000 },
-        { plan: '16 clases', precio: 44000, efvo: 40000 },
-        { plan: '20 clases', precio: 50600, efvo: 46000 },
-        { plan: '24 clases', precio: 57750, efvo: 52500 },
-        { plan: 'Ilimitado', precio: 62700, efvo: 57000 },
+        { plan: '8 clases',  precio: 37000, efvo: 33500 },
+        { plan: '12 clases', precio: 42000, efvo: 38000 },
+        { plan: '16 clases', precio: 49300, efvo: 45000 },
+        { plan: '20 clases', precio: 56700, efvo: 51500 },
+        { plan: '24 clases', precio: 64700, efvo: 59000 },
+        { plan: 'Ilimitado', precio: 70300, efvo: 64000 },
       ],
     },
   ],
@@ -381,21 +387,21 @@ export const precios = {
       nombre: 'Open Box',
       desc: 'Reservas de 7 a 21hs',
       planes: [
-        { plan: '4 horas',  precio: 31350, efvo: 28000 },
-        { plan: '12 horas', precio: 50400, efvo: 45000 },
-        { plan: '24 horas', precio: 68900, efvo: 61500 },
-        { plan: '48 horas', precio: 90700, efvo: 81000 },
+        { plan: '4 horas',  precio: 35200, efvo: 31500 },
+        { plan: '12 horas', precio: 56500, efvo: 50500 },
+        { plan: '24 horas', precio: 77200, efvo: 69000 },
+        { plan: '48 horas', precio: 101600, efvo: 91000 },
       ],
     },
     {
       id: 'open-matutino',
-      nombre: 'Open Matutino',
+      nombre: 'Open Box Matutino',
       desc: 'Reservas de 7 a 15hs',
       planes: [
-        { plan: '4 horas',  precio: 21300, efvo: 19000 },
-        { plan: '12 horas', precio: 35300, efvo: 31500 },
-        { plan: '24 horas', precio: 47600, efvo: 42500 },
-        { plan: '48 horas', precio: 63850, efvo: 57000 },
+        { plan: '4 horas',  precio: 24000, efvo: 21500 },
+        { plan: '12 horas', precio: 40000, efvo: 35000 },
+        { plan: '24 horas', precio: 53000, efvo: 47500 },
+        { plan: '48 horas', precio: 71500, efvo: 64000 },
       ],
     },
     {
@@ -403,10 +409,10 @@ export const precios = {
       nombre: 'All Out',
       desc: 'Los valores NO incluyen plani',
       planes: [
-        { plan: '4 horas',  precio: 26000, efvo: 23000 },
-        { plan: '12 horas', precio: 40300, efvo: 36000 },
-        { plan: '24 horas', precio: 56550, efvo: 50500 },
-        { plan: '48 horas', precio: 75000, efvo: 67000 },
+        { plan: '4 horas',  precio: 29200, efvo: 26000 },
+        { plan: '12 horas', precio: 45200, efvo: 40500 },
+        { plan: '24 horas', precio: 63400, efvo: 56500 },
+        { plan: '48 horas', precio: 84000, efvo: 75000 },
       ],
     },
   ],
@@ -436,8 +442,8 @@ export const horarios = [
   // Turnos libres L-V (el alumno elige entre Cross / Func / Muscu)
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'08:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'10:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'12:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'10:00', claves:['crosstraining','funcional'], nota:'El alumno elige' },
+  { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'12:00', claves:['crosstraining','funcional'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'16:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'17:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'18:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
@@ -452,13 +458,15 @@ export const horarios = [
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'15:00', claves:['musculacion'], nota:null },
 
   // 3ra Edad — Salón Black
+  { salon:'black', dias:['mar','jue'], hora:'09:00', claves:['tercera-edad'], nota:null },
   { salon:'black', dias:['mar','jue'], hora:'11:00', claves:['tercera-edad'], nota:null },
 
   // Sábado Black
   { salon:'black', dias:['sab'], hora:'09:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'10:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'11:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['sab'], hora:'12:00', claves:['allout'],                             nota:null },
+  { salon:'black', dias:['sab'], hora:'12:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
+  { salon:'black', dias:['sab'], hora:'13:00', claves:['levantamiento-olimpico'],                 nota:null },
 
   // Open Box — L-V 07:00–21:00 · Sábado 09:00–14:00 (badge junto a las demás clases)
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['open-box'], nota:null },
@@ -494,8 +502,9 @@ export const horarios = [
   { salon:'mb', dias:['vie'],             hora:'11:00', claves:['stretching'] },
   { salon:'mb', dias:['lun'],             hora:'12:00', claves:['stretching'] },
   { salon:'mb', dias:['mar','jue'],       hora:'18:00', claves:['stretching'] },
-  { salon:'mb', dias:['lun'],             hora:'16:00', claves:['yoga'] },
   { salon:'mb', dias:['mie'],             hora:'18:00', claves:['yoga'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'09:00', claves:['tercera-edad'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'11:00', claves:['tercera-edad'] },
   { salon:'mb', dias:['mar','jue'],       hora:'16:00', claves:['tercera-edad'] },
   { salon:'mb', dias:['lun','vie'],       hora:'18:00', claves:['judo-kids'] },
   { salon:'mb', dias:['mar','jue'],       hora:'19:00', claves:['zumba'] },
