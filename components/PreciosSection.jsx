@@ -85,8 +85,11 @@ function BloquePrecios({ bloque }) {
   );
 }
 
-function PreciosAcordeon() {
-  const [openIds, setOpenIds] = useState([]);
+function PreciosAcordeon({ initialOpenId = null }) {
+  // PreciosAcordeon recién se monta cuando el padre ya resolvió isMobile y el tab
+  // de la URL (ambos se setean en efectos del padre dentro del mismo commit), así
+  // que initialOpenId ya viene correcto en el primer render.
+  const [openIds, setOpenIds] = useState(initialOpenId ? [initialOpenId] : []);
 
   function toggle(id) {
     setOpenIds(prev => prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]);
@@ -119,8 +122,10 @@ function PreciosAcordeon() {
 
 export default function PreciosSection() {
   const [tab, setTab] = useState('black');
+  const [tabDesdeUrl, setTabDesdeUrl] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const tabsRef = useRef([]);
+  const sectionRef = useRef(null);
   const activeIndex = TABS.findIndex(t => t.id === tab);
 
   useEffect(() => {
@@ -133,14 +138,31 @@ export default function PreciosSection() {
 
   useEffect(() => {
     const tabParam = new URLSearchParams(window.location.search).get('tab');
-    if (TABS.some(t => t.id === tabParam)) setTab(tabParam);
+    if (TABS.some(t => t.id === tabParam)) {
+      setTab(tabParam);
+      setTabDesdeUrl(tabParam);
+    }
+  }, []);
+
+  // PreciosSection se carga con dynamic(ssr:false), así que id="precios" no existe
+  // en el HTML inicial: el scroll nativo del navegador al hash puede no encontrarlo.
+  // Lo hacemos a mano una vez que la sección ya está montada.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const debeScrollear = TABS.some(t => t.id === params.get('tab')) || window.location.hash === '#precios';
+    if (!debeScrollear) return;
+
+    const timer = setTimeout(() => {
+      sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   const waInicio  = WA_BASE + encodeURIComponent('Hola! Quiero empezar con las 3 clases de prueba en Unbex 🎉');
   const waConsulta = WA_BASE + encodeURIComponent('Hola! Quiero consultar sobre los planes de Unbex 💪');
 
   return (
-    <section className="precios" id="precios">
+    <section className="precios" id="precios" ref={sectionRef}>
       <div className="section__container">
 
         <div className="precios__cta-top">
@@ -153,7 +175,7 @@ export default function PreciosSection() {
         <h2 className="section__title">Planes y Precios</h2>
 
         {isMobile ? (
-          <PreciosAcordeon />
+          <PreciosAcordeon initialOpenId={tabDesdeUrl} />
         ) : (
           <>
             <div className="tab-hint-wrap">
