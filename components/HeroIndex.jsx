@@ -17,6 +17,10 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
     return () => window.removeEventListener('resize', check);
   }, []);
 
+  useEffect(() => {
+    setVideoIndex(0);
+  }, [esMobile]);
+
   function handleIframeLoad() {
     if (listoLlamado.current || !onListo) return;
     listoLlamado.current = true;
@@ -36,7 +40,9 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
     return () => document.removeEventListener('visibilitychange', onVisibility);
   }, []);
 
-  const totalVideos = HERO_VIDEOS.length;
+  // En mobile los videos 3 a 6 (índices 2 a 5) se ven mal recortados, se excluyen del carrusel
+  const videos = esMobile ? HERO_VIDEOS.slice(0, 2) : HERO_VIDEOS;
+  const totalVideos = videos.length;
 
   // Auto-avance: espera que el video termine (YouTube dispara state=0 al final, incluso con loop=1)
   // Fallback: si infoDelivery trae la duración, programa un timer de respaldo
@@ -92,7 +98,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
   }
 
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
-  const entry = HERO_VIDEOS[videoIndex];
+  const entry = videos[videoIndex] || videos[0];
   const videoActual = (esMobile && entry.mobile) ? entry.mobile : entry.desktop;
   const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}&cc_load_policy=0&iv_load_policy=3`;
 
@@ -158,7 +164,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
           </button>
 
           <div className="hero__carousel-dots">
-            {HERO_VIDEOS.map((_, i) => (
+            {videos.map((_, i) => (
               <button
                 key={i}
                 className={`hero__carousel-dot${i === videoIndex ? ' hero__carousel-dot--active' : ''}`}
