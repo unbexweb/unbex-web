@@ -156,7 +156,7 @@ export const disciplinas = [
     clave:     'all-out',
     nombre:    'All Out',
     salon:     'black',
-    img:       'card_disciplinas_allout.jpg',
+    img:       'card_disciplinas_allOut.jpeg',
     desc:      'All Out es nuestra planificación de Crossfit pensada para un público avanzado con conocimientos previos en la disciplina. Ideal tanto para quienes quieren competir como para los que buscan llevar su nivel un paso más allá. No es un entrenamiento personalizado, pero contás con seguimiento de tu progreso en cada sesión.',
     icono:  '🏆',
     color:  'card--blue',
@@ -182,7 +182,7 @@ export const disciplinas = [
     nombre: 'Levantamiento Olímpico',
     short:  'Oly',
     salon:  'black',
-    img:    'card_disciplinas_levantamientoolimpico.jpg', // pendiente: subir la imagen con este nombre
+    img:    'card_disciplinas_OLY.jpeg',
     desc:   'El Levantamiento Olímpico es una de las disciplinas más completas y técnicas del deporte, y en Unbex la ponemos a tu alcance sin importar tu punto de partida. Nuestras clases son 100% guiadas y están pensadas para que aprendas y perfecciones los dos movimientos clásicos: el arranque y el envión. No necesitás experiencia previa ni ser un atleta avanzado. Trabajamos paso a paso, desglosando cada fase del movimiento para que entiendas la técnica, ganes confianza y avances a tu ritmo. Ya sea que estés dando tus primeros levantamientos o que quieras pulir detalles para levantar mejor, nuestro entrenador te acompaña en cada repetición corrigiendo la postura, la movilidad y el timing. Vas a mejorar tu fuerza, tu coordinación y tu control corporal mientras dominás una técnica que te sirve para cualquier otra disciplina. Vení a descubrir de lo que sos capaz.',
     icono:  '🏋️',
     color:  'card--blue',

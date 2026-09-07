@@ -14,4 +14,3 @@
 
 - [ ] **Favicon y manifest** — agregar `manifest.json` e íconos para PWA
 - [ ] **Videos de disciplinas faltantes** — `funcional`, `fiit` y `levantamiento-olimpico` no tienen video, muestran imagen de card como fallback
-- [ ] **Imagen de Levantamiento Olímpico** — subir `public/img/cards/card_disciplinas_levantamientoolimpico.jpg`
