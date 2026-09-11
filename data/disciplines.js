@@ -183,6 +183,7 @@ export const disciplinas = [
     short:  'Oly',
     salon:  'black',
     img:    'card_disciplinas_OLY.jpeg',
+    heroImg: 'oli-hero.png',
     desc:   'El Levantamiento Olímpico es una de las disciplinas más completas y técnicas del deporte, y en Unbex la ponemos a tu alcance sin importar tu punto de partida. Nuestras clases son 100% guiadas y están pensadas para que aprendas y perfecciones los dos movimientos clásicos: el arranque y el envión. No necesitás experiencia previa ni ser un atleta avanzado. Trabajamos paso a paso, desglosando cada fase del movimiento para que entiendas la técnica, ganes confianza y avances a tu ritmo. Ya sea que estés dando tus primeros levantamientos o que quieras pulir detalles para levantar mejor, nuestro entrenador te acompaña en cada repetición corrigiendo la postura, la movilidad y el timing. Vas a mejorar tu fuerza, tu coordinación y tu control corporal mientras dominás una técnica que te sirve para cualquier otra disciplina. Vení a descubrir de lo que sos capaz.',
     icono:  '🏋️',
     color:  'card--blue',
