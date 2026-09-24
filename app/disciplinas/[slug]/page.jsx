@@ -8,13 +8,13 @@ import HeroWrapper from './HeroWrapper';
 import { disciplinas, DISCIPLINA_HERO_VIDEOS } from '@/data/disciplines';
 
 export function generateStaticParams() {
-  return disciplinas.map(d => ({ slug: d.clave }));
+  return disciplinas.filter(d => !d.pendiente).map(d => ({ slug: d.clave }));
 }
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   const disciplina = disciplinas.find(d => d.clave === slug);
-  if (!disciplina) return {};
+  if (!disciplina || disciplina.pendiente) return {};
   return {
     title: `${disciplina.nombre} | Unbex`,
     description: disciplina.desc,
@@ -25,7 +25,7 @@ export default async function DisciplinaPage({ params }) {
   const { slug } = await params;
   const disciplina = disciplinas.find(d => d.clave === slug);
 
-  if (!disciplina) notFound();
+  if (!disciplina || disciplina.pendiente) notFound();
 
   const videoId = DISCIPLINA_HERO_VIDEOS[slug] || null;
   const isMb     = disciplina.salon === 'mb';

@@ -108,7 +108,7 @@ export default function Home() {
               <AnimatedSection as="h2" className="section__title">Movimiento y bienestar</AnimatedSection>
               <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Yoga, Pilates Mat, Zumba, artes marciales y más actividades grupales</AnimatedSection>
               <div className="cards">
-                {disciplinas.filter(d => d.salon === 'mb').map((d, i) => (
+                {disciplinas.filter(d => d.salon === 'mb' && !d.pendiente).map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
                 ))}
               </div>

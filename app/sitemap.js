@@ -11,7 +11,7 @@ export default function sitemap() {
     { url: `${BASE}/trabajar-con-nosotros`,   lastModified: new Date(), changeFrequency: 'monthly', priority: 0.6 },
   ];
 
-  const disciplinaPages = disciplinas.map(d => ({
+  const disciplinaPages = disciplinas.filter(d => !d.pendiente).map(d => ({
     url:             `${BASE}/disciplinas/${d.clave}`,
     lastModified:    new Date(),
     changeFrequency: 'monthly',

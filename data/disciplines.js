@@ -313,6 +313,22 @@ export const disciplinas = [
     objetivos: 'Tonificás y esculpís todo el cuerpo al ritmo de la música, eligiendo vos la carga.',
     duracion:  '60 minutos',
   },
+  {
+    clave:  'power-step',
+    nombre: 'Power Step',
+    salon:  'mb',
+    img:    null,
+    desc:   null,
+    icono:  null,
+    color:  null,
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Power Step en Unbex'),
+    paraQuien: null,
+    objetivos: null,
+    duracion:  null,
+    // Pendiente: desc, descLarga, paraQuien, objetivos, duracion, icono, color, img y video — completar cuando esté la info.
+    // `pendiente: true` la excluye de la card y de la página individual hasta completar los datos (ver app/page.jsx, sitemap.js y disciplinas/[slug]).
+    pendiente: true,
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -336,7 +352,7 @@ export const precios = {
     {
       id: 'mb',
       nombre: 'Salón M&B',
-      desc: 'Yoga, Stretching, Pilates Mat, Zumba, Localizada/GAP, FIIT, Body Pump, Judo Kids',
+      desc: 'Yoga, Stretching, Pilates Mat, Zumba, Localizada/GAP, FIIT, Body Pump, Judo Kids, Power Step',
       planes: [
         { plan: '4 clases',  precio: 44000, efvo: 40000 },
         { plan: '8 clases',  precio: 56500, efvo: 51500 },
@@ -495,9 +511,11 @@ export const horarios = [
   // ═══════════════════════════════════════════════════════════════════════════
   // SALÓN M&B
   // ═══════════════════════════════════════════════════════════════════════════
+  { salon:'mb', dias:['lun','vie'],       hora:'07:00', claves:['power-step'] },
+  { salon:'mb', dias:['lun'],             hora:'08:00', claves:['body-pump'] },
+  { salon:'mb', dias:['vie'],             hora:'08:00', claves:['localizada'] },
   { salon:'mb', dias:['lun','mie','vie'], hora:'09:00', claves:['fiit'] },
   { salon:'mb', dias:['mie'],             hora:'19:00', claves:['fiit'] },
-  { salon:'mb', dias:['vie'],             hora:'20:00', claves:['fiit'] },
   { salon:'mb', dias:['jue'],             hora:'10:00', claves:['pilates'] },
   { salon:'mb', dias:['mar','jue'],       hora:'17:00', claves:['pilates'] },
   { salon:'mb', dias:['vie'],             hora:'11:00', claves:['stretching'] },
