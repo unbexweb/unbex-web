@@ -17,22 +17,18 @@ const WA_BASE = `https://wa.me/${WA_NUMBER}?text=`;
 
 const diferenciadores = [
   {
-    icono: '🏆',
     titulo: 'Profesionales certificados',
     desc: 'Cada instructor tiene formación específica y pasión real por lo que enseña. Tu progreso está en buenas manos.',
   },
   {
-    icono: '🎯',
     titulo: 'Adaptado a cada persona',
     desc: 'No hay rutinas genéricas. Cada plan se ajusta a tu nivel, objetivos y condición física.',
   },
   {
-    icono: '🏛️',
     titulo: 'Instalaciones de primer nivel',
     desc: 'Equipamiento moderno, salones amplios y espacios diseñados para que des lo mejor de vos.',
   },
   {
-    icono: '💜',
     titulo: 'Comunidad de verdad',
     desc: 'En Unbex te vas a sentir parte de algo. Un espacio de respeto, motivación y superación colectiva.',
   },
@@ -116,13 +112,15 @@ export default function NosotrosPage() {
           <div className="section__container">
             <span className="section__eyebrow">POR QUÉ ELEGIRNOS</span>
             <h2 className="section__title">Lo que nos hace diferentes</h2>
-            <div className="trabaja-beneficios">
-              {diferenciadores.map(item => (
-                <div key={item.titulo} className="trabaja-card">
-                  <span className="trabaja-card__icon">{item.icono}</span>
-                  <h3 className="trabaja-card__title">{item.titulo}</h3>
-                  <p className="trabaja-card__desc">{item.desc}</p>
-                </div>
+            <div className="nosotros-valores">
+              {diferenciadores.map((item, i) => (
+                <AnimatedSection key={item.titulo} className="valores-item" delay={i * 80}>
+                  <span className="valores-item__num">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="valores-item__body">
+                    <h3 className="valores-item__title">{item.titulo}</h3>
+                    <p className="valores-item__desc">{item.desc}</p>
+                  </div>
+                </AnimatedSection>
               ))}
             </div>
           </div>
