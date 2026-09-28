@@ -99,10 +99,12 @@ export default function NosotrosPage() {
             <h2 className="section__title">Valores</h2>
             <div className="nosotros-valores">
               {VALORES.map((valor, i) => (
-                <AnimatedSection key={valor.titulo} className="valores-card" delay={i * 80}>
-                  <span className="valores-card__icon">{valor.icono}</span>
-                  <h3 className="valores-card__title">{valor.titulo}</h3>
-                  <p className="valores-card__desc">{valor.desc}</p>
+                <AnimatedSection key={valor.titulo} className="valores-item" delay={i * 80}>
+                  <span className="valores-item__num">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="valores-item__body">
+                    <h3 className="valores-item__title">{valor.titulo}</h3>
+                    <p className="valores-item__desc">{valor.desc}</p>
+                  </div>
                 </AnimatedSection>
               ))}
             </div>
