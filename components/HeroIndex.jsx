@@ -104,6 +104,8 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
 
   return (
     <section className={`hero${estaEnHero ? ' hero--lateral-activo' : ''}`} id="hero">
+      <h1 className="sr-only">Unbex</h1>
+
       <div className="hero__video-container">
 
         <iframe
@@ -129,11 +131,6 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
         )}
 
         {/* <div className="hero__overlay" /> */}
-      </div>
-
-      <div className="hero__content">
-        <h1 className="hero__title">Unbex</h1>
-        <p className="hero__subtitle">It's not about training, it's about unlocking yourself</p>
       </div>
 
       <button
