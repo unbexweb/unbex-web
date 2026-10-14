@@ -910,22 +910,6 @@ button {
   font-size: var(--text-lg);
 }
 
-.section--salon .section__title {
-  font-size: var(--text-3xl);
-}
-
-@media (min-width: 768px) {
-  .section--salon .section__title {
-    font-size: calc(var(--text-3xl) + var(--spacing-xs));
-  }
-}
-
-@media (min-width: 1280px) {
-  .section--salon .section__title {
-    font-size: calc(var(--text-3xl) + var(--spacing-sm));
-  }
-}
-
 @media (min-width: 768px) {
   .hero__title { font-size: var(--text-3xl); }
   .section__title { font-size: var(--text-3xl); }
