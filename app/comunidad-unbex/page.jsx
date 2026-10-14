@@ -185,7 +185,7 @@ export default async function ComunidadUnbex() {
         <section id="profesionales" className="comunidad-bolsa">
           <div className="section__container">
             <span className="section__eyebrow">RED DE PROFESIONALES</span>
-            <h2 className="section__title comunidad-bolsa__title">Gabinete de profesionales Unbex</h2>
+            <h2 className="section__title comunidad-bolsa__title">Socios de la comunidad de Unbex ofreciendo sus servicios</h2>
             <p className="section__subtitle comunidad-bolsa__subtitle">
               Profesionales de la comunidad Unbex ofreciendo sus servicios: entrenadores, nutricionistas,
               kinesiólogos y mucho más.
@@ -198,7 +198,7 @@ export default async function ComunidadUnbex() {
         <section id="publicar-perfil" className="trabaja-postulate comunidad-publicar">
           <div className="section__container">
             <span className="section__eyebrow">SUMÁ TU PERFIL</span>
-            <h2 className="section__title comunidad-publicar__title">¿Sos profesional del fitness o bienestar?</h2>
+            <h2 className="section__title comunidad-publicar__title">¿Sos profesional y querés ofrecer tus servicios?</h2>
             <p className="section__subtitle comunidad-publicar__subtitle">
               Publicá tus datos y ofrecé tus servicios a toda la comunidad Unbex. Tu publicación se revisa
               antes de mostrarse en el directorio.

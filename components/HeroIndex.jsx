@@ -44,42 +44,15 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
   const videos = esMobile ? HERO_VIDEOS.slice(0, 2) : HERO_VIDEOS;
   const totalVideos = videos.length;
 
-  // Auto-avance: espera que el video termine (YouTube dispara state=0 al final, incluso con loop=1)
-  // Fallback: si infoDelivery trae la duración, programa un timer de respaldo
+  // Auto-avance: cada video se muestra un tiempo fijo y después pasa al siguiente, en loop.
+  // (YouTube no dispara los eventos de postMessage de forma confiable con loop=1, así que
+  // no se puede depender de "el video terminó" para avanzar.)
   useEffect(() => {
     if (totalVideos <= 1) return;
-
-    let timer = null;
-    let timerSet = false;
-
-    function onMessage(e) {
-      if (!e.origin.includes('youtube')) return;
-      try {
-        const data = JSON.parse(e.data);
-
-        // state 0 = video terminó → avanzar al siguiente
-        if (data.event === 'onStateChange' && data.info === 0) {
-          clearTimeout(timer);
-          setVideoIndex(prev => (prev + 1) % totalVideos);
-          return;
-        }
-
-        // Fallback: infoDelivery incluye duración → programar avance al final del video
-        if (!timerSet && data.event === 'infoDelivery' && data.info?.duration > 0) {
-          timerSet = true;
-          const remaining = (data.info.duration - (data.info.currentTime || 0)) * 1000;
-          if (remaining > 1000) {
-            timer = setTimeout(() => setVideoIndex(prev => (prev + 1) % totalVideos), remaining);
-          }
-        }
-      } catch {}
-    }
-
-    window.addEventListener('message', onMessage);
-    return () => {
-      window.removeEventListener('message', onMessage);
-      clearTimeout(timer);
-    };
+    const timer = setTimeout(() => {
+      setVideoIndex(prev => (prev + 1) % totalVideos);
+    }, 12000);
+    return () => clearTimeout(timer);
   }, [videoIndex, totalVideos]);
 
   const irA = useCallback((idx) => {

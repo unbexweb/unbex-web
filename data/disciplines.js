@@ -89,7 +89,7 @@ export const disciplinas = [
     salon:     'black',
     img:       'card_disciplinas_crossfit.jpg',
     desc:      'Entrenamiento de alta intensidad basado en movimientos olímpicos, fuerza, potencia, core, gimnásticos y desarrollo de skills. Cupos limitados.',
-    descLarga: 'Es un sistema de entrenamiento de alta intensidad basado en movimientos olímpicos y gimnásticos. Lo mejor de nuestro método es que es 100% adaptable: desde jóvenes que buscan su máximo potencial hasta adultos mayores que quieren mantener su independencia y vitalidad. Aquí, la intensidad se ajusta a vos, no vos a ella.',
+    descLarga: 'Lo mejor de nuestro método es que es 100% adaptable: desde jóvenes que buscan su máximo potencial hasta adultos mayores que quieren mantener su independencia y vitalidad. Aquí, la intensidad se ajusta a vos, no vos a ella.',
     icono:  '⚡',
     color:  'card--blue',
     wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Crosstraining en Unbex ⚡'),
@@ -144,6 +144,19 @@ export const disciplinas = [
     // con Cross/Func/Muscu, sábado 13:00 clase propia) — no necesita horariosSemana propio.
   },
   {
+    clave:  'tercera-edad',
+    nombre: '3ra Edad',
+    salon:  'black',
+    img:    'card_disciplinas_3raedad.jpg',
+    desc:   'Nuestras clases para adultos mayores están diseñadas para mantener el cuerpo en movimiento y la mente ágil. Nos enfocamos en ejercicios que mejoran la autonomía diaria: equilibrio para prevenir caídas, fuerza para cargar las compras y flexibilidad para jugar con los nietos. Porque la edad es solo un número cuando el cuerpo se siente fuerte y vital.',
+    icono:  '🌟',
+    color:  'card--green',
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre la clase de 3ra Edad en Unbex 🌟'),
+    paraQuien: 'Adultos mayores que quieren mantenerse activos, fuertes y autónomos en un ambiente cuidado y amigable.',
+    objetivos: 'Mejorás tu fuerza, equilibrio, flexibilidad y coordinación para vivir el día a día con más vitalidad.',
+    duracion:  '60 minutos',
+  },
+  {
     clave:  'open-box',
     nombre: 'Open Box',
     salon:  'black',
@@ -180,19 +193,6 @@ export const disciplinas = [
     },
     // Link "Conocé los planes de All Out" en su página → precios con este tab preseleccionado
     precioTab: 'all-out',
-  },
-  {
-    clave:  'tercera-edad',
-    nombre: '3ra Edad',
-    salon:  'black',
-    img:    'card_disciplinas_3raedad.jpg',
-    desc:   'Nuestras clases para adultos mayores están diseñadas para mantener el cuerpo en movimiento y la mente ágil. Nos enfocamos en ejercicios que mejoran la autonomía diaria: equilibrio para prevenir caídas, fuerza para cargar las compras y flexibilidad para jugar con los nietos. Porque la edad es solo un número cuando el cuerpo se siente fuerte y vital.',
-    icono:  '🌟',
-    color:  'card--green',
-    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre la clase de 3ra Edad en Unbex 🌟'),
-    paraQuien: 'Adultos mayores que quieren mantenerse activos, fuertes y autónomos en un ambiente cuidado y amigable.',
-    objetivos: 'Mejorás tu fuerza, equilibrio, flexibilidad y coordinación para vivir el día a día con más vitalidad.',
-    duracion:  '60 minutos',
   },
   // ── SALÓN M&B ─────────────────────────────────────────────────────────────
   {

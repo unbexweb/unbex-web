@@ -906,6 +906,10 @@ button {
   margin-bottom: 10px;
 }
 
+.section--salon .section__eyebrow {
+  font-size: var(--text-sm);
+}
+
 @media (min-width: 768px) {
   .hero__title { font-size: var(--text-3xl); }
   .section__title { font-size: var(--text-3xl); }
@@ -1716,6 +1720,64 @@ body.salon-mb .topbar {
 }
 
 .trabaja-banner__btn:hover { opacity: 0.85; }
+
+/* ========== HOME — CTA DE INTRO (3 clases + preview Nosotros) ========== */
+.home-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.home-nosotros-preview {
+  max-width: 640px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.home-nosotros-preview__texto {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text-light);
+}
+
+.home-nosotros-preview__btn {
+  display: inline-block;
+  padding: 0.6rem 1.8rem;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--border-radius-sm);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.home-nosotros-preview__btn:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* ========== BANNER INFO FIJO SOBRE SALONES ========== */
+.salones-info-banner {
+  text-align: center;
+  background: var(--color-accent);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 10px 16px;
+  border-radius: var(--border-radius-sm);
+  width: fit-content;
+  margin: 0 auto var(--spacing-md);
+}
 
 /* ========== PRECIOS ========== */
 .precios {

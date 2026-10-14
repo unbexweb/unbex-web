@@ -15,7 +15,12 @@ import WhatsappFloat from '@/components/WhatsappFloat';
 import Footer from '@/components/Footer';
 import ConsultoriosGrid from '@/components/ConsultoriosGrid';
 import MarqueeBanner from '@/components/MarqueeBanner';
-import { disciplinas, consultorios } from '@/data/disciplines';
+import { disciplinas, consultorios, WA_NUMBER } from '@/data/disciplines';
+import { MISION_TEXTO } from '@/data/nosotros';
+
+const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
+const waClasesPrueba = WA_BASE + encodeURIComponent('Hola! Quiero empezar con las 3 clases de prueba en Unbex 🎉');
+const misionExtracto = MISION_TEXTO.split('. ').slice(0, 2).join('. ') + '.';
 
 export default function Home() {
   const [videoActivo, setVideoActivo] = useState(null);
@@ -84,15 +89,38 @@ export default function Home() {
           <span className="hero-scroll-hint__chevrons" aria-hidden="true" />
         </div>
 
+        {/* CTA 3 CLASES + NOSOTROS */}
+        <section className="section">
+          <div className="section__container home-intro">
+            <div className="precios__cta-top">
+              <p className="precios__cta-top-text">3 clases de prueba — Empezá hoy</p>
+              <a href={waClasesPrueba} target="_blank" rel="noopener noreferrer" className="precios__cta-top-btn">
+                Escribinos por WhatsApp
+              </a>
+            </div>
+
+            <div className="home-nosotros-preview">
+              <p className="home-nosotros-preview__texto">{misionExtracto}</p>
+              <Link href="/nosotros" className="home-nosotros-preview__btn">
+                Conocé más sobre nosotros
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* DISCIPLINAS */}
         <section className="disciplinas" id="disciplinas">
 
+          <div className="section__container">
+            <p className="salones-info-banner">Todas las clases son con reserva y cupos limitados</p>
+          </div>
+
           {/* SALÓN BLACK */}
-          <section className="section">
+          <section className="section section--salon">
             <div className="section__container">
               <span className="section__eyebrow">SALÓN BLACK</span>
-              <AnimatedSection as="h2" className="section__title">Fuerza y rendimiento</AnimatedSection>
-              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamiento de Fuerza y disciplinas de alta intensidad y potencia</AnimatedSection>
+              <AnimatedSection as="h2" className="section__title">Acondicionamiento metabólico y rendimiento</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamientos de Fuerza y disciplinas de alta intensidad y potencia</AnimatedSection>
               <div className="cards">
                 {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
@@ -102,7 +130,7 @@ export default function Home() {
           </section>
 
           {/* SALÓN M&B */}
-          <section className="section">
+          <section className="section section--salon">
             <div className="section__container">
               <span className="section__eyebrow">SALÓN M&amp;B</span>
               <AnimatedSection as="h2" className="section__title">Movimiento y bienestar</AnimatedSection>
@@ -210,6 +238,18 @@ export default function Home() {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA TENÉ TU UNBEX */}
+        <section className="section">
+          <div className="section__container">
+            <div className="precios__cta-top">
+              <p className="precios__cta-top-text">¿Querés tu propio Unbex?</p>
+              <Link href="/tene-tu-unbex" className="precios__cta-top-btn">
+                Conocé Tené tu Unbex
+              </Link>
             </div>
           </div>
         </section>
