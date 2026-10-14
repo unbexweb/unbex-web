@@ -14,29 +14,6 @@ export const metadata = {
   description: 'En Unbex somos una comunidad. Personas reales que se superan juntas cada día.',
 };
 
-const valores = [
-  {
-    icono: '🤝',
-    titulo: 'Pertenencia real',
-    desc: 'No sos un número. Acá te conocemos, te acompañamos y celebramos cada logro tuyo.',
-  },
-  {
-    icono: '🔥',
-    titulo: 'Superación colectiva',
-    desc: 'Cuando uno se esfuerza, todos se inspiran. El progreso de cada miembro impulsa al grupo.',
-  },
-  {
-    icono: '💜',
-    titulo: 'Inclusión y respeto',
-    desc: 'Todos los niveles, todas las edades, todos los cuerpos. Unbex es para vos, sin excusas.',
-  },
-  {
-    icono: '🌱',
-    titulo: 'Crecimiento constante',
-    desc: 'Entrenamos el cuerpo, pero también la mente. Cada clase es una oportunidad de crecer.',
-  },
-];
-
 export const revalidate = 60;
 
 async function getProfesionalesAprobados() {
@@ -81,22 +58,7 @@ export default async function ComunidadUnbex() {
           </div>
         </section>
 
-        <ScrollHint target=".trabaja-info" />
-
-        {/* VALORES */}
-        <section className="trabaja-info">
-          <div className="section__container">
-            <div className="trabaja-beneficios comunidad-valores">
-              {valores.map(v => (
-                <div key={v.titulo} className="trabaja-card comunidad-card">
-                  <span className="trabaja-card__icon">{v.icono}</span>
-                  <h3 className="trabaja-card__title">{v.titulo}</h3>
-                  <p className="trabaja-card__desc">{v.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ScrollHint target=".comunidad-momentos" />
 
         {/* MOMENTOS */}
         <section className="comunidad-momentos">
