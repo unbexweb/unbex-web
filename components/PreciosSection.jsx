@@ -173,6 +173,10 @@ export default function PreciosSection() {
         </div>
 
         <h2 className="section__title">Planes y Precios</h2>
+        <p className="section__subtitle">
+          Comprás la cantidad de clases que quieras y tenés 30 días corridos para usarlas. Te incluye
+          las disciplinas de cada salón, y el Full te incluye ambos salones (excepto Jiu Jitsu).
+        </p>
 
         {isMobile ? (
           <PreciosAcordeon initialOpenId={tabDesdeUrl} />
