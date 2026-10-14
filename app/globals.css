@@ -1168,15 +1168,21 @@ button {
   background: transparent;
   border: 1px solid transparent;
   border-radius: 999px;
-  padding: 0.55rem 2.2rem;
+  padding: 0.4rem 1.4rem;
   color: var(--color-text);
   font-family: var(--font-body);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
   cursor: pointer;
   opacity: 0.72;
   transition: all var(--transition-fast);
+}
+
+/* Tabs de salón más grandes, solo en la sección Horarios (no en Precios) */
+#horarios .horarios__tab {
+  padding: 0.55rem 2.2rem;
+  font-size: var(--text-base);
 }
 
 .horarios__tab--active {
