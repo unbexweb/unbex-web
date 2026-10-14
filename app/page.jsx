@@ -119,7 +119,7 @@ export default function Home() {
           <section className="section section--salon">
             <div className="section__container">
               <span className="section__eyebrow">SALÓN BLACK</span>
-              <AnimatedSection as="h2" className="section__title">Acondicionamiento metabólico y rendimiento</AnimatedSection>
+              <AnimatedSection as="h2" className="section__title">Fuerza y acondicionamiento metabólico</AnimatedSection>
               <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamientos de Fuerza y disciplinas de alta intensidad y potencia</AnimatedSection>
               <div className="cards">
                 {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
