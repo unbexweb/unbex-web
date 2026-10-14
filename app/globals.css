@@ -907,7 +907,23 @@ button {
 }
 
 .section--salon .section__eyebrow {
-  font-size: var(--text-sm);
+  font-size: var(--text-lg);
+}
+
+.section--salon .section__title {
+  font-size: var(--text-3xl);
+}
+
+@media (min-width: 768px) {
+  .section--salon .section__title {
+    font-size: calc(var(--text-3xl) + var(--spacing-xs));
+  }
+}
+
+@media (min-width: 1280px) {
+  .section--salon .section__title {
+    font-size: calc(var(--text-3xl) + var(--spacing-sm));
+  }
 }
 
 @media (min-width: 768px) {
@@ -1765,6 +1781,8 @@ body.salon-mb .topbar {
 
 /* ========== BANNER INFO FIJO SOBRE SALONES ========== */
 .salones-info-banner {
+  display: block;
+  width: 100%;
   text-align: center;
   background: var(--color-accent);
   color: var(--color-primary);
@@ -1773,10 +1791,8 @@ body.salon-mb .topbar {
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 10px 16px;
-  border-radius: var(--border-radius-sm);
-  width: fit-content;
-  margin: 0 auto var(--spacing-md);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  margin: 0 0 var(--spacing-md);
 }
 
 /* ========== PRECIOS ========== */

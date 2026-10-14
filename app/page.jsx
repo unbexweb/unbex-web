@@ -111,9 +111,7 @@ export default function Home() {
         {/* DISCIPLINAS */}
         <section className="disciplinas" id="disciplinas">
 
-          <div className="section__container">
-            <p className="salones-info-banner">Todas las clases son con reserva y cupos limitados</p>
-          </div>
+          <p className="salones-info-banner">Todas las clases son con reserva y cupos limitados</p>
 
           {/* SALÓN BLACK */}
           <section className="section section--salon">
