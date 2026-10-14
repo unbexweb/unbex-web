@@ -121,8 +121,7 @@ export default async function ComunidadUnbex() {
             <span className="section__eyebrow">RED DE PROFESIONALES</span>
             <h2 className="section__title comunidad-bolsa__title">RED DE PROFESIONALES</h2>
             <p className="section__subtitle comunidad-bolsa__subtitle">
-              Profesionales de la comunidad Unbex ofreciendo sus servicios: entrenadores, nutricionistas,
-              kinesiólogos y mucho más.
+              Porque en Unbex nos ayudamos entre todos, sumá tus servicios al portal para que otros socios puedan contactarte.
             </p>
             <DirectorioProfesionales profesionales={profesionales} />
           </div>
