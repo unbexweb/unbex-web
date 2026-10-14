@@ -86,11 +86,6 @@ export default async function ComunidadUnbex() {
         {/* VALORES */}
         <section className="trabaja-info">
           <div className="section__container">
-            <span className="section__eyebrow">LO QUE NOS UNE</span>
-            <h2 className="section__title">Nuestros valores</h2>
-            <p className="section__subtitle">
-              En Unbex creemos que el bienestar real se construye en comunidad.
-            </p>
             <div className="trabaja-beneficios comunidad-valores">
               {valores.map(v => (
                 <div key={v.titulo} className="trabaja-card comunidad-card">
