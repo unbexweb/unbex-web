@@ -37,13 +37,6 @@ const valores = [
   },
 ];
 
-const pilares = [
-  { numero: 'cientos', label: 'Miembros activos' },
-  { numero: '14',   label: 'Disciplinas disponibles' },
-  { numero: '6',    label: 'Días a la semana' },
-  { numero: '2',    label: 'Años de comunidad' },
-];
-
 export const revalidate = 60;
 
 async function getProfesionalesAprobados() {
@@ -110,22 +103,6 @@ export default async function ComunidadUnbex() {
           </div>
         </section>
 
-        {/* NÚMEROS */}
-        <section className="comunidad-numeros">
-          <div className="section__container">
-            <span className="section__eyebrow">UNBEX EN NÚMEROS</span>
-            <h2 className="section__title">Una comunidad que crece</h2>
-            <div className="comunidad-stats">
-              {pilares.map(p => (
-                <div key={p.label} className="comunidad-stat">
-                  <span className="comunidad-stat__numero">{p.numero}</span>
-                  <span className="comunidad-stat__label">{p.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* MOMENTOS */}
         <section className="comunidad-momentos">
           <div className="section__container">
@@ -185,7 +162,7 @@ export default async function ComunidadUnbex() {
         <section id="profesionales" className="comunidad-bolsa">
           <div className="section__container">
             <span className="section__eyebrow">RED DE PROFESIONALES</span>
-            <h2 className="section__title comunidad-bolsa__title">Socios de la comunidad de Unbex ofreciendo sus servicios</h2>
+            <h2 className="section__title comunidad-bolsa__title">RED DE PROFESIONALES</h2>
             <p className="section__subtitle comunidad-bolsa__subtitle">
               Profesionales de la comunidad Unbex ofreciendo sus servicios: entrenadores, nutricionistas,
               kinesiólogos y mucho más.
@@ -197,12 +174,7 @@ export default async function ComunidadUnbex() {
         {/* PUBLICAR PERFIL */}
         <section id="publicar-perfil" className="trabaja-postulate comunidad-publicar">
           <div className="section__container">
-            <span className="section__eyebrow">SUMÁ TU PERFIL</span>
-            <h2 className="section__title comunidad-publicar__title">¿Sos profesional y querés ofrecer tus servicios?</h2>
-            <p className="section__subtitle comunidad-publicar__subtitle">
-              Publicá tus datos y ofrecé tus servicios a toda la comunidad Unbex. Tu publicación se revisa
-              antes de mostrarse en el directorio.
-            </p>
+            <h2 className="section__title comunidad-publicar__title">Sumá tu perfil</h2>
             <FormProfesional />
           </div>
         </section>
