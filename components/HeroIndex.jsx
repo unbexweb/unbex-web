@@ -3,12 +3,35 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { DISCIPLINA_VIDEOS, HERO_VIDEOS } from '@/data/disciplines';
 
+// Carga el script oficial de la IFrame Player API de YouTube una sola vez,
+// sin importar cuántos componentes la necesiten.
+let ytApiPromise = null;
+function cargarYouTubeAPI() {
+  if (typeof window === 'undefined') return Promise.resolve(null);
+  if (window.YT && window.YT.Player) return Promise.resolve(window.YT);
+  if (ytApiPromise) return ytApiPromise;
+
+  ytApiPromise = new Promise(resolve => {
+    const previo = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => {
+      previo?.();
+      resolve(window.YT);
+    };
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    document.head.appendChild(tag);
+  });
+  return ytApiPromise;
+}
+
 export default function HeroIndex({ videoActivo = null, estaEnHero = false, onListo }) {
   const [muted, setMuted] = useState(true);
   const [esMobile, setEsMobile] = useState(false);
   const [videoIndex, setVideoIndex] = useState(0);
-  const iframeRef = useRef(null);
+  const playerContainerRef = useRef(null);
+  const playerRef = useRef(null);
   const listoLlamado = useRef(false);
+  const avanzarRef = useRef(() => {});
 
   useEffect(() => {
     const check = () => setEsMobile(window.innerWidth < 768);
@@ -21,59 +44,95 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
     setVideoIndex(0);
   }, [esMobile]);
 
-  function handleIframeLoad() {
+  function handleListo() {
     if (listoLlamado.current || !onListo) return;
     listoLlamado.current = true;
     onListo();
   }
 
-  useEffect(() => {
-    const onVisibility = () => {
-      if (!iframeRef.current) return;
-      const cmd = document.hidden ? 'pauseVideo' : 'playVideo';
-      iframeRef.current.contentWindow?.postMessage(
-        JSON.stringify({ event: 'command', func: cmd, args: [] }),
-        '*'
-      );
-    };
-    document.addEventListener('visibilitychange', onVisibility);
-    return () => document.removeEventListener('visibilitychange', onVisibility);
-  }, []);
-
   // En mobile los videos 3 a 6 (índices 2 a 5) se ven mal recortados, se excluyen del carrusel
   const videos = esMobile ? HERO_VIDEOS.slice(0, 2) : HERO_VIDEOS;
   const totalVideos = videos.length;
 
-  // Auto-avance: cada video se muestra un tiempo fijo y después pasa al siguiente, en loop.
-  // (YouTube no dispara los eventos de postMessage de forma confiable con loop=1, así que
-  // no se puede depender de "el video terminó" para avanzar.)
+  avanzarRef.current = () => {
+    setVideoIndex(prev => (prev + 1) % totalVideos);
+  };
+
+  const entry = videos[videoIndex] || videos[0];
+  const videoActual = (esMobile && entry.mobile) ? entry.mobile : entry.desktop;
+
+  // Crea (o recrea) el player de YouTube para el video actual. El avance al
+  // siguiente video ocurre cuando el estado del player pasa a ENDED (fin real
+  // del video), no por un tiempo fijo — así nunca se corta antes de terminar.
   useEffect(() => {
-    if (totalVideos <= 1) return;
-    const timer = setTimeout(() => {
-      setVideoIndex(prev => (prev + 1) % totalVideos);
-    }, 12000);
-    return () => clearTimeout(timer);
-  }, [videoIndex, totalVideos]);
+    let destruido = false;
+
+    cargarYouTubeAPI().then(YT => {
+      if (destruido || !YT || !playerContainerRef.current) return;
+
+      playerRef.current = new YT.Player(playerContainerRef.current, {
+        videoId: videoActual,
+        host: 'https://www.youtube-nocookie.com',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 0,
+          rel: 0,
+          modestbranding: 1,
+          playsinline: 1,
+          cc_load_policy: 0,
+          iv_load_policy: 3,
+          origin: window.location.origin,
+        },
+        events: {
+          onReady: event => {
+            event.target.getIframe().classList.add('hero__video');
+            event.target.mute();
+            event.target.playVideo();
+            handleListo();
+          },
+          onStateChange: event => {
+            if (event.data === YT.PlayerState.ENDED && totalVideos > 1) {
+              avanzarRef.current();
+            }
+          },
+        },
+      });
+    });
+
+    return () => {
+      destruido = true;
+      playerRef.current?.destroy?.();
+      playerRef.current = null;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [videoActual]);
+
+  useEffect(() => {
+    const onVisibility = () => {
+      const player = playerRef.current;
+      if (!player) return;
+      if (document.hidden) player.pauseVideo?.();
+      else player.playVideo?.();
+    };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, []);
 
   const irA = useCallback((idx) => {
     setVideoIndex(((idx % totalVideos) + totalVideos) % totalVideos);
   }, [totalVideos]);
 
   function toggleMute() {
-    if (!iframeRef.current) return;
+    const player = playerRef.current;
+    if (!player) return;
     const newMuted = !muted;
-    const cmd = newMuted ? 'mute' : 'unMute';
-    iframeRef.current.contentWindow?.postMessage(
-      JSON.stringify({ event: 'command', func: cmd, args: [] }),
-      '*'
-    );
+    if (newMuted) player.mute();
+    else player.unMute();
     setMuted(newMuted);
   }
 
   const overlayVideoId = videoActivo ? (DISCIPLINA_VIDEOS[videoActivo] || null) : null;
-  const entry = videos[videoIndex] || videos[0];
-  const videoActual = (esMobile && entry.mobile) ? entry.mobile : entry.desktop;
-  const embedSrc = `https://www.youtube-nocookie.com/embed/${videoActual}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&loop=1&playlist=${videoActual}&cc_load_policy=0&iv_load_policy=3`;
 
   return (
     <section className={`hero${estaEnHero ? ' hero--lateral-activo' : ''}`} id="hero">
@@ -81,16 +140,7 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
 
       <div className="hero__video-container">
 
-        <iframe
-          key={videoActual}
-          ref={iframeRef}
-          className="hero__video"
-          src={embedSrc}
-          title="Unbex hero"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          onLoad={handleIframeLoad}
-        />
+        <div ref={playerContainerRef} />
 
         {overlayVideoId && (
           <iframe
