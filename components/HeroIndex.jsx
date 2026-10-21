@@ -95,6 +95,11 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
             handleListo();
           },
           onStateChange: event => {
+            // El módulo de captions puede recargarse solo al empezar a reproducir
+            // en algunos videos con subtítulos forzados — se vuelve a descargar.
+            if (event.data === YT.PlayerState.PLAYING) {
+              event.target.unloadModule?.('captions');
+            }
             if (event.data === YT.PlayerState.ENDED && totalVideos > 1) {
               avanzarRef.current();
             }
