@@ -317,17 +317,17 @@ export const disciplinas = [
     clave:  'power-step',
     nombre: 'Power Step',
     salon:  'mb',
-    img:    null,
-    desc:   null,
-    icono:  null,
-    color:  null,
-    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Power Step en Unbex'),
-    paraQuien: null,
-    objetivos: null,
-    duracion:  null,
-    // Pendiente: desc, descLarga, paraQuien, objetivos, duracion, icono, color, img y video — completar cuando esté la info.
-    // `pendiente: true` la excluye de la card y de la página individual hasta completar los datos (ver app/page.jsx, sitemap.js y disciplinas/[slug]).
-    pendiente: true,
+    img:    'card_disciplinas_powerStep.png',
+    desc:   'Power Step es una clase de entrenamiento cardiovascular grupal que utiliza una plataforma regulable (step) para realizar coreografías y secuencias al ritmo de la música. Mejorás tu resistencia, tonificás piernas y glúteos y quemás calorías mientras te divertís. Apta para todos los niveles, adaptando la intensidad y la altura del step a cada persona.',
+    icono:  '🪜',
+    color:  'card--blue',
+    wa:     WA_BASE + encodeURIComponent('Hola! Quiero info sobre Power Step en Unbex 🪜'),
+    paraQuien: 'Personas de todos los niveles que quieran un entrenamiento cardiovascular dinámico y divertido al ritmo de la música.',
+    objetivos: 'Mejorás tu resistencia cardiovascular, tonificás el tren inferior y quemás calorías.',
+    duracion:  '60 minutos',
+    // Horarios: usa la grilla compartida de `horarios` más abajo (lunes y viernes 07:00) —
+    // no necesita horariosSemana propio.
+    // Video hero pendiente: usa la imagen como fondo hasta tener el video.
   },
 ];
 
