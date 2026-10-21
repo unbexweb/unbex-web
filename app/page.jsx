@@ -118,7 +118,7 @@ export default function Home() {
             <div className="section__container">
               <span className="section__eyebrow">SALÓN BLACK</span>
               <AnimatedSection as="h2" className="section__title">Fuerza y acondicionamiento metabólico</AnimatedSection>
-              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Entrenamientos de Fuerza y disciplinas de alta intensidad y potencia</AnimatedSection>
+              <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Crosstraining, funcional, musculación y más disciplinas relacionadas</AnimatedSection>
               <div className="cards">
                 {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
