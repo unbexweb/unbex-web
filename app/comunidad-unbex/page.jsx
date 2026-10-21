@@ -112,30 +112,25 @@ export default async function ComunidadUnbex() {
                 </div>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        {/* GALERÍA DE VIDEOS */}
-        <section className="comunidad-galeria">
-          <div className="section__container">
-            <span className="section__eyebrow">UNBEX EN VIDEO</span>
-            <h2 className="section__title">Así se vive Unbex</h2>
-            <div className="comunidad-galeria__carrusel">
-              {COMUNIDAD_VIDEOS.map(v => (
-                <div key={v.id} className="comunidad-galeria__item">
-                  <div className="comunidad-galeria__video-wrap">
+              {COMUNIDAD_VIDEOS.map((v, i) => (
+                <div key={v.id} className={`comunidad-momento${i % 2 === 1 ? ' comunidad-momento--invertido' : ''}`}>
+                  <div className="comunidad-momento__video-wrap">
                     <iframe
-                      className="comunidad-galeria__iframe"
-                      src={`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}&controls=0&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3`}
+                      className="comunidad-momento__iframe"
+                      src={`https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}&controls=1&rel=0&modestbranding=1&playsinline=1&cc_load_policy=0&iv_load_policy=3`}
                       title={v.titulo}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     />
                   </div>
-                  <p className="comunidad-galeria__titulo">{v.titulo}</p>
+                  <div className="comunidad-momento__texto">
+                    <span className="comunidad-momento__tag">{v.tag}</span>
+                    <h3 className="comunidad-momento__titulo">{v.titulo}</h3>
+                    <p className="comunidad-momento__desc">{v.desc}</p>
+                  </div>
                 </div>
               ))}
+
             </div>
           </div>
         </section>
