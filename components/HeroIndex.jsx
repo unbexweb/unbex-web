@@ -88,6 +88,9 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
           onReady: event => {
             event.target.getIframe().classList.add('hero__video');
             event.target.mute();
+            // cc_load_policy=0 no alcanza en algunos videos con subtítulos forzados;
+            // descargar el módulo de captions los apaga igual.
+            event.target.unloadModule?.('captions');
             event.target.playVideo();
             handleListo();
           },
