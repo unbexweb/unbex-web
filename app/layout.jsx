@@ -4,11 +4,11 @@ const BASE_URL = 'https://www.unbexargentina.com';
 
 export const metadata = {
   metadataBase: new URL(BASE_URL),
-  title:       'Unbex Argentina — Gimnasio',
+  title:       'Unbex Argentina — Centro de entrenamiento',
   description: 'Centro de entrenamiento y bienestar en Buenos Aires. Crosstraining, Musculación, Yoga, Pilates, Zumba y más.',
   icons: { icon: '/favicon.png' },
   openGraph: {
-    title:       'Unbex Argentina — Gimnasio',
+    title:       'Unbex Argentina — Centro de entrenamiento',
     description: 'Centro de entrenamiento y bienestar en Buenos Aires. Crosstraining, Musculación, Yoga, Pilates, Zumba y más.',
     url:         BASE_URL,
     siteName:    'Unbex Argentina',

@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import Link from 'next/link';
 import { WA_NUMBER } from '@/data/disciplines';
-import { MISION_TEXTO, VISION_TEXTO, VALORES } from '@/data/nosotros';
+import { MISION_TEXTO, VISION_TEXTO, VALORES, HISTORIA } from '@/data/nosotros';
 import ScrollHint from '@/components/ScrollHint';
 import AnimatedSection from '@/components/AnimatedSection';
 
@@ -59,14 +59,15 @@ export default function NosotrosPage() {
         {/* HISTORIA */}
         <section className="trabaja-info">
           <div className="section__container">
-            <span className="section__eyebrow">NUESTRA HISTORIA</span>
-            <h2 className="section__title">¿Cómo nació Unbex?</h2>
-            <p className="section__subtitle" style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center' }}>
-              Unbex nació con una convicción simple: el deporte y el bienestar deben estar al alcance de todos.
-              Desde nuestros inicios en Pacheco 1956, CABA, construimos un espacio donde el entrenamiento de alto
-              nivel convive con la calidez de una comunidad real. Hoy somos más de 500 miembros activos,
-              14 disciplinas disponibles y un equipo de profesionales dedicado a sacar lo mejor de cada persona.
-            </p>
+            <AnimatedSection as="span" className="section__eyebrow">{HISTORIA.eyebrow}</AnimatedSection>
+            <AnimatedSection as="h2" className="section__title" delay={60}>{HISTORIA.titulo}</AnimatedSection>
+            <div className="nosotros-historia">
+              {HISTORIA.parrafos.map((parrafo, i) => (
+                <AnimatedSection as="p" key={i} className="nosotros-historia__parrafo" delay={120 + i * 80}>
+                  {parrafo}
+                </AnimatedSection>
+              ))}
+            </div>
           </div>
         </section>
 

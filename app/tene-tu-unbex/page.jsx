@@ -19,7 +19,7 @@ const beneficios = [
   {
     icono: '📊',
     titulo: 'Soporte total',
-    desc: 'Te acompañamos en la apertura, el equipamiento, la comunicación y el día a día de tu gimnasio.',
+    desc: 'Te acompañamos en la apertura, el equipamiento, la comunicación y el día a día de tu centro de entrenamiento.',
   },
   {
     icono: '💡',
@@ -42,7 +42,7 @@ export default function TeneTuUnbex() {
             <p className="disciplina-hero__salon">FRANQUICIAS</p>
             <h1 className="disciplina-hero__title">Tené tu Unbex</h1>
             <p className="disciplina-hero__desc">
-              Abrí tu propio gimnasio con el respaldo de una marca que ya funciona.
+              Abrí tu propio centro de entrenamiento con el respaldo de una marca que ya funciona.
             </p>
           </div>
         </section>

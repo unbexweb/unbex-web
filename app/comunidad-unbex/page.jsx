@@ -51,7 +51,7 @@ export default async function ComunidadUnbex() {
           <div className="trabaja-hero__bg comunidad-hero__bg" />
           <div className="trabaja-hero__overlay" />
           <div className="trabaja-hero__content">
-            <p className="disciplina-hero__salon">MÁS QUE UN GIMNASIO</p>
+            <p className="disciplina-hero__salon">MÁS QUE UN CENTRO DE ENTRENAMIENTO</p>
             <h1 className="disciplina-hero__title">Comunidad Unbex</h1>
             <p className="disciplina-hero__desc">
               Un espacio donde el entrenamiento es el punto de partida, pero la comunidad es lo que te hace lograr tus objetivos.
