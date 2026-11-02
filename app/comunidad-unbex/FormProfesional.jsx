@@ -4,19 +4,6 @@ import { useState } from 'react';
 import { ZONAS } from '@/data/zonas';
 import { WA_NUMBER } from '@/data/disciplines';
 
-const RUBROS_SUGERIDOS = [
-  'Personal Trainer',
-  'Nutricionista',
-  'Kinesiólogo/a',
-  'Masajista',
-  'Preparador/a físico/a',
-  'Psicólogo/a deportivo/a',
-  'Fotógrafo/a deportivo/a',
-  'Coach nutricional',
-  'Podólogo/a deportivo/a',
-  'Entrenador/a de running',
-];
-
 const MAX_DESCRIPCION = 200;
 
 export default function FormProfesional() {
@@ -115,15 +102,9 @@ export default function FormProfesional() {
           type="text"
           className="trabaja-form__input"
           placeholder="Ej: Personal Trainer"
-          list="rubros-sugeridos"
           maxLength={60}
           required
         />
-        <datalist id="rubros-sugeridos">
-          {RUBROS_SUGERIDOS.map(r => (
-            <option key={r} value={r} />
-          ))}
-        </datalist>
       </div>
 
       <div className="trabaja-form__group">
