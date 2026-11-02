@@ -3639,10 +3639,14 @@ body:has(.marquee-banner:not(.marquee-banner--oculto)) .hero__content {
 }
 
 .nosotros-hero__bg {
-  background:
+  background-color: var(--color-primary);
+  background-image:
     radial-gradient(ellipse at 30% 40%, rgba(122,61,135,0.6) 0%, transparent 60%),
     radial-gradient(ellipse at 75% 65%, rgba(75,37,86,0.5) 0%, transparent 55%),
-    url('/img/hero_nosotros.png') center/cover no-repeat;
+    url('/img/hero_nosotros.png');
+  background-position: center;
+  background-size: auto, auto, 80%;
+  background-repeat: no-repeat;
 }
 
 .franquicia-hero__bg {
