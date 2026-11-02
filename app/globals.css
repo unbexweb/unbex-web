@@ -556,6 +556,15 @@ button {
   background-color: var(--color-overlay, rgba(0,0,0,0.55));
 }
 
+/* Capa transparente sobre el video del hero que tiene `link` (ej: Tienda de
+   Puntos) — captura el click ya que el iframe de YouTube tiene pointer-events:none. */
+.hero__video-clicklayer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+
 .hero__video--overlay {
   position: absolute;
   inset: 0;
@@ -3570,6 +3579,11 @@ body:has(.marquee-banner:not(.marquee-banner--oculto)) .hero__content {
   font-weight: 500;
   line-height: 1.7;
   color: var(--color-text);
+}
+
+.tienda-puntos__cta {
+  text-align: center;
+  margin-top: var(--spacing-md);
 }
 
 .nosotros-historia {

@@ -60,13 +60,15 @@ export const DISCIPLINA_VIDEOS = {
 };
 
 // Videos del hero principal — array para el carrusel.
-// Cada entrada: { desktop: 'ID_YT', mobile: 'ID_YT' | null }
+// Cada entrada: { desktop: 'ID_YT', mobile: 'ID_YT' | null, link: '/ruta' | undefined }
 // Si mobile es null, usa desktop como fallback en móvil.
+// `link` (opcional): si está, ese video del carrusel es clickeable y redirige ahí.
 export const HERO_VIDEOS = [
   { desktop: 'Yznj2mwwBo0', mobile: null },
   { desktop: 'qXCb6Dj84IY', mobile: null }, // Tienda
   { desktop: 'e-50q3ZFXjE', mobile: null }, // Bar
   { desktop: 'VtptkYoi-6A', mobile: null }, // Accesorios Shop
+  { desktop: 'euMCvDslrKs', mobile: null, link: '/comunidad-unbex#tienda-de-puntos' }, // Tienda de Puntos
 ];
 
 export const CONTACTO = {

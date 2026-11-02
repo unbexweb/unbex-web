@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import { DISCIPLINA_VIDEOS, HERO_VIDEOS } from '@/data/disciplines';
 
 // Carga el script oficial de la IFrame Player API de YouTube una sola vez,
@@ -149,6 +150,14 @@ export default function HeroIndex({ videoActivo = null, estaEnHero = false, onLi
       <div className="hero__video-container">
 
         <div ref={playerContainerRef} />
+
+        {entry.link && (
+          <Link
+            href={entry.link}
+            className="hero__video-clicklayer"
+            aria-label="Ir a la Tienda de Puntos"
+          />
+        )}
 
         {overlayVideoId && (
           <iframe
