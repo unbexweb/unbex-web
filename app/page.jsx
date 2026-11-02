@@ -122,7 +122,7 @@ export default function Home() {
               <AnimatedSection as="h2" className="section__title">Fuerza y acondicionamiento metabólico</AnimatedSection>
               <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Crosstraining, funcional, musculación y más disciplinas relacionadas</AnimatedSection>
               <div className="cards">
-                {disciplinas.filter(d => d.salon === 'black').map((d, i) => (
+                {disciplinas.filter(d => d.salon === 'black' && !d.oculto).map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
                 ))}
               </div>
@@ -136,7 +136,7 @@ export default function Home() {
               <AnimatedSection as="h2" className="section__title">Movimiento y bienestar</AnimatedSection>
               <AnimatedSection as="p" className="section__subtitle" animation="anim-fade" delay={100}>Yoga, Pilates Mat, Zumba, artes marciales y más actividades grupales</AnimatedSection>
               <div className="cards">
-                {disciplinas.filter(d => d.salon === 'mb' && !d.pendiente).map((d, i) => (
+                {disciplinas.filter(d => d.salon === 'mb' && !d.pendiente && !d.oculto).map((d, i) => (
                   <DisciplinaCard key={d.clave} disciplina={d} animDelay={i * 80} />
                 ))}
               </div>

@@ -8,7 +8,7 @@ import HeroWrapper from './HeroWrapper';
 import { disciplinas, DISCIPLINA_HERO_VIDEOS } from '@/data/disciplines';
 
 export function generateStaticParams() {
-  return disciplinas.filter(d => !d.pendiente).map(d => ({ slug: d.clave }));
+  return disciplinas.filter(d => !d.pendiente && !d.oculto).map(d => ({ slug: d.clave }));
 }
 
 export async function generateMetadata({ params }) {

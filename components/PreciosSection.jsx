@@ -29,6 +29,9 @@ const BLOQUES_POR_TAB = {
   'all-out':       [precios.espacio.find(b => b.id === 'all-out')],
 };
 
+// Tabs visibles: se excluyen los bloques marcados como oculto (ej: All Out)
+const TABS_VISIBLES = TABS.filter(t => !BLOQUES_POR_TAB[t.id][0]?.oculto);
+
 const MEDIOS_PAGO = [
   { icono: '💵', nombre: 'Efectivo' },
   { icono: '🔄', nombre: 'Transferencia / CVU' },
@@ -97,7 +100,7 @@ function PreciosAcordeon({ initialOpenId = null }) {
 
   return (
     <div className="precios-acordeon">
-      {TABS.map(t => {
+      {TABS_VISIBLES.map(t => {
         const isOpen = openIds.includes(t.id);
         const bloque = BLOQUES_POR_TAB[t.id][0];
         return (
@@ -126,7 +129,7 @@ export default function PreciosSection() {
   const [isMobile, setIsMobile] = useState(false);
   const tabsRef = useRef([]);
   const sectionRef = useRef(null);
-  const activeIndex = TABS.findIndex(t => t.id === tab);
+  const activeIndex = TABS_VISIBLES.findIndex(t => t.id === tab);
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 640px)');
@@ -138,7 +141,7 @@ export default function PreciosSection() {
 
   useEffect(() => {
     const tabParam = new URLSearchParams(window.location.search).get('tab');
-    if (TABS.some(t => t.id === tabParam)) {
+    if (TABS_VISIBLES.some(t => t.id === tabParam)) {
       setTab(tabParam);
       setTabDesdeUrl(tabParam);
     }
@@ -149,7 +152,7 @@ export default function PreciosSection() {
   // Lo hacemos a mano una vez que la sección ya está montada.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const debeScrollear = TABS.some(t => t.id === params.get('tab')) || window.location.hash === '#precios';
+    const debeScrollear = TABS_VISIBLES.some(t => t.id === params.get('tab')) || window.location.hash === '#precios';
     if (!debeScrollear) return;
 
     const timer = setTimeout(() => {
@@ -185,7 +188,7 @@ export default function PreciosSection() {
             <div className="tab-hint-wrap">
               <div className="horarios__tabs">
                 <TabHint activeIndex={activeIndex} tabsRef={tabsRef} />
-                {TABS.map((t, i) => (
+                {TABS_VISIBLES.map((t, i) => (
                   <button
                     key={t.id}
                     ref={el => tabsRef.current[i] = el}
@@ -198,7 +201,7 @@ export default function PreciosSection() {
               </div>
             </div>
 
-            {TABS.map(t => (
+            {TABS_VISIBLES.map(t => (
               <div key={t.id} className={`horarios__panel${tab === t.id ? ' horarios__panel--active' : ''}`}>
                 <div className="precios__contenido">
                   {BLOQUES_POR_TAB[t.id].map(bloque => (

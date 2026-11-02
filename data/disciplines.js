@@ -171,6 +171,10 @@ export const disciplinas = [
     clave:     'all-out',
     nombre:    'All Out',
     salon:     'black',
+    // Oculta la card del main, el link/CTA a precios y la quita del sitemap y
+    // de generateStaticParams — pero la página /disciplinas/all-out sigue
+    // funcionando si se visita directo. Volver a poner en false para reactivar.
+    oculto:    true,
     img:       'card_disciplinas_allOut.jpeg',
     desc:      'All Out es nuestra planificación de Crossfit pensada para un público avanzado con conocimientos previos en la disciplina. Ideal tanto para quienes quieren competir como para los que buscan llevar su nivel un paso más allá. No es un entrenamiento personalizado, pero contás con seguimiento de tu progreso en cada sesión.',
     icono:  '🏆',
@@ -422,6 +426,7 @@ export const precios = {
     {
       id: 'all-out',
       nombre: 'All Out',
+      oculto: true, // oculta el tab en Precios — volver a false para reactivar
       desc: 'Los valores NO incluyen plani',
       planes: [
         { plan: '4 horas',  precio: 29200, efvo: 26000 },

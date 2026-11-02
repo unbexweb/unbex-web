@@ -6,8 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { disciplinas, consultorios } from '@/data/disciplines';
 
-const DISC_BLACK = disciplinas.filter(d => d.salon === 'black');
-const DISC_MB    = disciplinas.filter(d => d.salon === 'mb');
+const DISC_BLACK = disciplinas.filter(d => d.salon === 'black' && !d.oculto);
+const DISC_MB    = disciplinas.filter(d => d.salon === 'mb' && !d.oculto);
 
 export default function Navbar({ onDisciplinaHover = null, estaEnHero = false }) {
   const pathname = usePathname();
