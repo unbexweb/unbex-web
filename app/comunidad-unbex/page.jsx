@@ -135,28 +135,6 @@ export default async function ComunidadUnbex() {
           </div>
         </section>
 
-        {/* TIENDA DE PUNTOS */}
-        <section className="trabaja-info tienda-puntos" id="tienda-de-puntos">
-          <div className="section__container">
-            <span className="section__eyebrow">BENEFICIOS</span>
-            <h2 className="section__title">Tienda de Puntos</h2>
-            <p className="nosotros-texto">
-              Por cada compra que hacés en Unbex sumás puntos que después podés canjear por
-              productos en el local. Acumulá con tus compras y aprovechá tus beneficios.
-            </p>
-            <div className="tienda-puntos__cta">
-              <a
-                href="https://outsidethebox.tiendadepuntos.com/app/score"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="trabaja-banner__btn"
-              >
-                Ver mis puntos
-              </a>
-            </div>
-          </div>
-        </section>
-
         {/* BOLSA DE PROFESIONALES */}
         <section id="profesionales" className="comunidad-bolsa">
           <div className="section__container">
@@ -174,6 +152,29 @@ export default async function ComunidadUnbex() {
           <div className="section__container">
             <h2 className="section__title comunidad-publicar__title">Sumá tu perfil</h2>
             <FormProfesional />
+          </div>
+        </section>
+
+        {/* TIENDA DE PUNTOS */}
+        <section className="trabaja-info tienda-puntos" id="tienda-de-puntos">
+          <div className="section__container">
+            <span className="section__eyebrow">BENEFICIOS</span>
+            <h2 className="section__title">Tienda de Puntos</h2>
+            <p className="nosotros-texto">
+              Entrená, comprá y ganá. En Unbex cada compra suma. Acumulá puntos con todo lo que
+              consumís y canjealos por productos, indumentaria y beneficios exclusivos en el
+              local. Mientras más entrenás, más ganás.
+            </p>
+            <div className="tienda-puntos__cta">
+              <a
+                href="https://outsidethebox.tiendadepuntos.com/app/score"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="trabaja-banner__btn"
+              >
+                Ver mis puntos
+              </a>
+            </div>
           </div>
         </section>
 
