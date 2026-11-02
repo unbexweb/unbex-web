@@ -16,11 +16,12 @@ import Footer from '@/components/Footer';
 import ConsultoriosGrid from '@/components/ConsultoriosGrid';
 import MarqueeBanner from '@/components/MarqueeBanner';
 import { disciplinas, consultorios, WA_NUMBER } from '@/data/disciplines';
-import { MISION_TEXTO } from '@/data/nosotros';
+import { HISTORIA } from '@/data/nosotros';
 
 const WA_BASE = 'https://wa.me/' + WA_NUMBER + '?text=';
 const waClasesPrueba = WA_BASE + encodeURIComponent('Hola! Quiero empezar con las 3 clases de prueba en Unbex 🎉');
-const misionExtracto = MISION_TEXTO.split('. ').slice(0, 2).join('. ') + '.';
+const historiaTeaserInicio = HISTORIA.parrafos[0];
+const historiaTeaserCierre = 'Les contamos un poco de nuestra historia:';
 
 export default function Home() {
   const [videoActivo, setVideoActivo] = useState(null);
@@ -100,7 +101,8 @@ export default function Home() {
             </div>
 
             <div className="home-nosotros-preview">
-              <p className="home-nosotros-preview__texto">{misionExtracto}</p>
+              <p className="home-nosotros-preview__texto">{historiaTeaserInicio}</p>
+              <p className="home-nosotros-preview__texto">{historiaTeaserCierre}</p>
               <Link href="/nosotros" className="home-nosotros-preview__btn">
                 Conocé más sobre nosotros
               </Link>
