@@ -64,11 +64,9 @@ export const DISCIPLINA_VIDEOS = {
 // Si mobile es null, usa desktop como fallback en móvil.
 export const HERO_VIDEOS = [
   { desktop: 'Yznj2mwwBo0', mobile: null },
-  { desktop: 'X_nWX1HN2qY', mobile: null }, // Dron
   { desktop: 'qXCb6Dj84IY', mobile: null }, // Tienda
   { desktop: 'e-50q3ZFXjE', mobile: null }, // Bar
   { desktop: 'VtptkYoi-6A', mobile: null }, // Accesorios Shop
-  { desktop: '6LbyXWEsfYg', mobile: null }, // Indumentaria
 ];
 
 export const CONTACTO = {
