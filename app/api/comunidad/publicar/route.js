@@ -74,7 +74,7 @@ export async function POST(request) {
     const aprobarUrl = `${siteUrl}/api/comunidad/moderar?token=${token}&accion=aprobar`;
     const rechazarUrl = `${siteUrl}/api/comunidad/moderar?token=${token}&accion=rechazar`;
 
-    await resend.emails.send({
+    const { error: resendError } = await resend.emails.send({
       from: 'Unbex Web <onboarding@resend.dev>',
       to: ['unbex.web@gmail.com'],
       subject: `Nueva publicación de profesional - ${nombre} ${apellido}`,
@@ -92,6 +92,18 @@ export async function POST(request) {
         </p>
       `,
     });
+
+    // resend.emails.send no lanza excepción si la API rechaza el envío (ej: dominio
+    // no verificado, destinatario no permitido en modo sandbox) — devuelve `error`
+    // en la respuesta. Si no se chequea, el registro queda guardado en Supabase
+    // pero el mail de moderación nunca sale, sin que nada lo reporte como falla.
+    if (resendError) {
+      console.error('Resend rechazó el envío del mail de moderación:', resendError);
+      return NextResponse.json(
+        { success: false, error: `El perfil se guardó pero no se pudo enviar el mail de moderación: ${resendError.message}` },
+        { status: 502 }
+      );
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {

@@ -13,7 +13,7 @@ export async function POST(request) {
     const ciudad = formData.get('ciudad');
     const mensaje = formData.get('mensaje');
 
-    await resend.emails.send({
+    const { error: resendError } = await resend.emails.send({
       from: 'Unbex Web <onboarding@resend.dev>',
       to: ['frandb@unbexargentina.com'],
       subject: `Nueva consulta de franquicia - ${nombre} ${apellido}`,
@@ -27,6 +27,13 @@ export async function POST(request) {
         <p>${mensaje}</p>
       `,
     });
+
+    // resend.emails.send no lanza excepción si la API rechaza el envío — devuelve
+    // `error` en la respuesta, hay que chequearlo a mano.
+    if (resendError) {
+      console.error('Resend rechazó el envío de la consulta de franquicia:', resendError);
+      return NextResponse.json({ success: false, error: resendError.message }, { status: 502 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
