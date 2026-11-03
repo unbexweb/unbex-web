@@ -1,4 +1,5 @@
 import './globals.css';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 const BASE_URL = 'https://www.unbexargentina.com';
 
@@ -16,7 +17,7 @@ export const metadata = {
     type:        'website',
     images: [
       {
-        url:    '/img/hero_fallback.png',
+        url:    '/img/og-image.jpg',
         width:  1200,
         height: 630,
         alt:    'Unbex Argentina — Centro de entrenamiento y bienestar',
@@ -70,6 +71,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <GoogleAnalytics />
       </body>
     </html>
   );

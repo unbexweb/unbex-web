@@ -5,9 +5,18 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import ScrollHint from '@/components/ScrollHint';
 
+const TITLE = 'Tené tu Unbex | Franquicias';
+const DESCRIPTION = 'Abrí tu propio Unbex. Un modelo probado, soporte total y una marca con identidad propia.';
+
 export const metadata = {
-  title: 'Tené tu Unbex | Franquicias',
-  description: 'Abrí tu propio Unbex. Un modelo probado, soporte total y una marca con identidad propia.',
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/tene-tu-unbex',
+    images: [{ url: '/img/og-image.jpg', width: 1200, height: 630, alt: TITLE }],
+  },
 };
 
 const beneficios = [

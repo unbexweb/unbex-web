@@ -8,9 +8,18 @@ import { MISION_TEXTO, VISION_TEXTO, VALORES, HISTORIA } from '@/data/nosotros';
 import ScrollHint from '@/components/ScrollHint';
 import AnimatedSection from '@/components/AnimatedSection';
 
+const TITLE = 'Nosotros | Unbex Argentina';
+const DESCRIPTION = 'Conocé quiénes somos, nuestra historia, misión y el equipo detrás de Unbex Argentina.';
+
 export const metadata = {
-  title: 'Nosotros | Unbex Argentina',
-  description: 'Conocé quiénes somos, nuestra historia, misión y el equipo detrás de Unbex Argentina.',
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/nosotros',
+    images: [{ url: '/img/og-image.jpg', width: 1200, height: 630, alt: TITLE }],
+  },
 };
 
 const WA_BASE = `https://wa.me/${WA_NUMBER}?text=`;

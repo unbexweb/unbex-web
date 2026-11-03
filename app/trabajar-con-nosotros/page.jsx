@@ -5,9 +5,18 @@ import Footer from '@/components/Footer';
 import WhatsappFloat from '@/components/WhatsappFloat';
 import ScrollHint from '@/components/ScrollHint';
 
+const TITLE = 'Trabajá con nosotros | Unbex';
+const DESCRIPTION = 'Si te apasiona el movimiento, el bienestar y ayudar a otros a superarse, este es tu lugar.';
+
 export const metadata = {
-  title: 'Trabajá con nosotros | Unbex',
-  description: 'Si te apasiona el movimiento, el bienestar y ayudar a otros a superarse, este es tu lugar.',
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/trabajar-con-nosotros',
+    images: [{ url: '/img/og-image.jpg', width: 1200, height: 630, alt: TITLE }],
+  },
 };
 
 const beneficios = [

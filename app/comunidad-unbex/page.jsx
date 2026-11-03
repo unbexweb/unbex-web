@@ -10,9 +10,18 @@ import DirectorioProfesionales from './DirectorioProfesionales';
 import FormProfesional from './FormProfesional';
 import ScrollHint from '@/components/ScrollHint';
 
+const TITLE = 'Comunidad Unbex | Más que un centro deportivo';
+const DESCRIPTION = 'En Unbex somos una comunidad. Personas reales que se superan juntas cada día.';
+
 export const metadata = {
-  title: 'Comunidad Unbex | Más que un centro deportivo',
-  description: 'En Unbex somos una comunidad. Personas reales que se superan juntas cada día.',
+  title: TITLE,
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: '/comunidad-unbex',
+    images: [{ url: '/img/og-image.jpg', width: 1200, height: 630, alt: TITLE }],
+  },
 };
 
 export const revalidate = 60;

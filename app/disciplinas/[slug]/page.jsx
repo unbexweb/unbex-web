@@ -15,9 +15,19 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const disciplina = disciplinas.find(d => d.clave === slug);
   if (!disciplina || disciplina.pendiente) return {};
+
+  const title = `${disciplina.nombre} | Unbex`;
+  const ogImage = disciplina.img ? `/img/cards/${disciplina.img}` : '/img/og-image.jpg';
+
   return {
-    title: `${disciplina.nombre} | Unbex`,
+    title,
     description: disciplina.desc,
+    openGraph: {
+      title,
+      description: disciplina.desc,
+      url: `/disciplinas/${disciplina.clave}`,
+      images: [{ url: ogImage, alt: title }],
+    },
   };
 }
 
