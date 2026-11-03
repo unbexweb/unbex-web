@@ -1,5 +1,5 @@
 import './globals.css';
-import GoogleAnalytics from '@/components/GoogleAnalytics';
+import { GoogleAnalytics } from '@next/third-parties/google';
 
 const BASE_URL = 'https://www.unbexargentina.com';
 
@@ -71,7 +71,7 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <GoogleAnalytics />
+        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />}
       </body>
     </html>
   );
