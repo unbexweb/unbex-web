@@ -535,5 +535,7 @@ export const horarios = [
   { salon:'mb', dias:['vie'],             hora:'19:00', claves:['body-pump'] },
   { salon:'mb', dias:['mar','jue'],       hora:'20:00', claves:['localizada'] },
   { salon:'mb', dias:['sab'],             hora:'12:00', claves:['localizada'] },
-  { salon:'mb', dias:['lun','mie'],       hora:'20:00', claves:['jiu-jitsu'] },
+  { salon:'mb', dias:['mar','jue'],       hora:'07:00', claves:['jiu-jitsu'] },
+  { salon:'mb', dias:['mie'],             hora:'20:00', claves:['jiu-jitsu'] },
+  { salon:'mb', dias:['sab'],             hora:'09:00', claves:['jiu-jitsu'] },
 ];
