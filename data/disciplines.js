@@ -489,7 +489,7 @@ export const horarios = [
   { salon:'black', dias:['sab'], hora:'10:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'11:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
   { salon:'black', dias:['sab'], hora:'12:00', claves:['crosstraining','funcional','musculacion'], nota:'El alumno elige' },
-  { salon:'black', dias:['sab'], hora:'13:00', claves:['levantamiento-olimpico'],                 nota:null },
+  { salon:'black', dias:['sab'], hora:'13:00', claves:['levantamiento-olimpico','musculacion'],   nota:null },
 
   // Open Box — L-V 07:00–21:00 · Sábado 09:00–14:00 (badge junto a las demás clases)
   { salon:'black', dias:['lun','mar','mie','jue','vie'], hora:'07:00', claves:['open-box'], nota:null },
@@ -512,7 +512,6 @@ export const horarios = [
   { salon:'black', dias:['sab'],                         hora:'11:00', claves:['open-box'], nota:null },
   { salon:'black', dias:['sab'],                         hora:'12:00', claves:['open-box'], nota:null },
   { salon:'black', dias:['sab'],                         hora:'13:00', claves:['open-box'], nota:null },
-  { salon:'black', dias:['sab'],                         hora:'14:00', claves:['open-box'], nota:null },
 
   // ═══════════════════════════════════════════════════════════════════════════
   // SALÓN M&B
