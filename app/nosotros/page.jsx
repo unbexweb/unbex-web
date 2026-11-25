@@ -106,7 +106,6 @@ export default function NosotrosPage() {
             <div className="nosotros-valores">
               {VALORES.map((valor, i) => (
                 <AnimatedSection key={valor.titulo} className="valores-item" delay={i * 80}>
-                  <span className="valores-item__num">{String(i + 1).padStart(2, '0')}</span>
                   <div className="valores-item__body">
                     <h3 className="valores-item__title">{valor.titulo}</h3>
                     <p className="valores-item__desc">{valor.desc}</p>
@@ -125,7 +124,6 @@ export default function NosotrosPage() {
             <div className="nosotros-valores">
               {diferenciadores.map((item, i) => (
                 <AnimatedSection key={item.titulo} className="valores-item" delay={i * 80}>
-                  <span className="valores-item__num">{String(i + 1).padStart(2, '0')}</span>
                   <div className="valores-item__body">
                     <h3 className="valores-item__title">{item.titulo}</h3>
                     <p className="valores-item__desc">{item.desc}</p>
