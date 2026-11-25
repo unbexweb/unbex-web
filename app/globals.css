@@ -3657,6 +3657,13 @@ body:has(.marquee-banner:not(.marquee-banner--oculto)) .hero__content {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 767px) {
+  .nosotros-hero__bg {
+    background-position: center, center, 68% center;
+    background-size: auto, auto, cover;
+  }
+}
+
 .franquicia-hero__bg {
   background:
     url('/img/banner_teneTuUnbex.png') center/contain no-repeat,
